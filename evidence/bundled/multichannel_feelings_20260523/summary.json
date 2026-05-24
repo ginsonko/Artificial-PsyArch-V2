@@ -1,0 +1,961 @@
+{
+  "schema_id": "multichannel_feelings_report/v1",
+  "schema_version": "1.0",
+  "generated_at": "2026-05-23T13:35:17.046301",
+  "time": {
+    "runtime_rows": [
+      {
+        "gap_ticks": 1,
+        "target_delta_t": 1.0,
+        "time_confidence": 1.0,
+        "best_center": 1.0,
+        "signal_strength": 1.0,
+        "cluster_count": 1,
+        "state_top_labels": [
+          "text::apple",
+          "timefelt::elapsed",
+          "attr::punishment_signal"
+        ]
+      },
+      {
+        "gap_ticks": 2,
+        "target_delta_t": 1.2912,
+        "time_confidence": 0.7364,
+        "best_center": 1.2918,
+        "signal_strength": 0.5208,
+        "cluster_count": 2,
+        "state_top_labels": [
+          "text::apple",
+          "timefelt::elapsed",
+          "attr::punishment_signal"
+        ]
+      },
+      {
+        "gap_ticks": 4,
+        "target_delta_t": 1.848,
+        "time_confidence": 0.7282,
+        "best_center": 1.8484,
+        "signal_strength": 0.2911,
+        "cluster_count": 4,
+        "state_top_labels": [
+          "text::apple",
+          "timefelt::elapsed",
+          "attr::punishment_signal"
+        ]
+      },
+      {
+        "gap_ticks": 6,
+        "target_delta_t": 1.9104,
+        "time_confidence": 0.6559,
+        "best_center": 1.9098,
+        "signal_strength": 0.238,
+        "cluster_count": 6,
+        "state_top_labels": [
+          "text::apple",
+          "timefelt::elapsed",
+          "attr::punishment_signal"
+        ]
+      }
+    ],
+    "runtime_passed": true,
+    "monotonic_prefix_passed": true,
+    "recall_rows": [
+      {
+        "text": "eat banana",
+        "score": 0.6348,
+        "time_intent_bonus": 0.9
+      },
+      {
+        "text": "eat apple",
+        "score": 0.5743,
+        "time_intent_bonus": 0.0
+      }
+    ],
+    "recall_passed": true
+  },
+  "emotion": {
+    "rows": [
+      {
+        "tick_index": 0,
+        "text": "3",
+        "elapsed_ms": 3.2875,
+        "surprise": 0.78,
+        "dissonance": 0.0,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 0.0,
+        "pressure": 0.429,
+        "raw_surprise": 0.78,
+        "raw_dissonance": 0.0,
+        "underprediction_mass": 1.0,
+        "overprediction_mass": 0.0,
+        "alignment_score": 0.0,
+        "grasp_score": 0.0,
+        "committed_alignment_score": 0.0,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.0,
+        "pending_punishment": 0.0,
+        "queued_reward": 0.0,
+        "queued_punishment": 0.1435,
+        "state_top_labels": [
+          "text::3"
+        ]
+      },
+      {
+        "tick_index": 1,
+        "text": "3",
+        "elapsed_ms": 4.9487,
+        "surprise": 0.0,
+        "dissonance": 0.36,
+        "correctness": 0.5152,
+        "grasp": 0.3865,
+        "expectation": 1.0,
+        "pressure": 0.198,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 0.36,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 0.5,
+        "alignment_score": 0.8,
+        "grasp_score": 0.56,
+        "committed_alignment_score": 0.6677,
+        "committed_grasp_score": 0.3944,
+        "pending_reward": 0.0,
+        "pending_punishment": 0.1435,
+        "queued_reward": 0.35,
+        "queued_punishment": 0.095,
+        "state_top_labels": [
+          "text::3",
+          "attr::punishment_signal"
+        ]
+      },
+      {
+        "tick_index": 2,
+        "text": "",
+        "elapsed_ms": 6.4559,
+        "surprise": 0.0,
+        "dissonance": 1.0,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 0.0,
+        "pressure": 0.55,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.5,
+        "alignment_score": 0.0,
+        "grasp_score": 0.0,
+        "committed_alignment_score": 0.0,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.35,
+        "pending_punishment": 0.095,
+        "queued_reward": 0.0,
+        "queued_punishment": 0.1848,
+        "state_top_labels": [
+          "text::3",
+          "timefelt::elapsed",
+          "attr::reward_signal",
+          "attr::punishment_signal"
+        ]
+      },
+      {
+        "tick_index": 3,
+        "text": "8",
+        "elapsed_ms": 8.538,
+        "surprise": 0.78,
+        "dissonance": 0.9912,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 0.0,
+        "pressure": 0.9742,
+        "raw_surprise": 0.78,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 1.0,
+        "overprediction_mass": 1.5,
+        "alignment_score": 0.0,
+        "grasp_score": 0.0,
+        "committed_alignment_score": 0.0,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.0,
+        "pending_punishment": 0.1848,
+        "queued_reward": 0.0018,
+        "queued_punishment": 0.1871,
+        "state_top_labels": [
+          "text::3",
+          "text::8",
+          "timefelt::elapsed",
+          "attr::punishment_signal",
+          "attr::reward_signal"
+        ]
+      },
+      {
+        "tick_index": 4,
+        "text": "8",
+        "elapsed_ms": 10.3206,
+        "surprise": 0.4317,
+        "dissonance": 0.9686,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 1.0,
+        "pressure": 0.7701,
+        "raw_surprise": 0.4498,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 0.5767,
+        "overprediction_mass": 1.5,
+        "alignment_score": 0.2896,
+        "grasp_score": 0.0,
+        "committed_alignment_score": 0.1544,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.0018,
+        "pending_punishment": 0.1871,
+        "queued_reward": 0.1542,
+        "queued_punishment": 0.0616,
+        "state_top_labels": [
+          "text::3",
+          "text::8",
+          "attr::punishment_signal",
+          "timefelt::elapsed",
+          "attr::reward_signal"
+        ]
+      },
+      {
+        "tick_index": 5,
+        "text": "8",
+        "elapsed_ms": 11.3956,
+        "surprise": 0.0,
+        "dissonance": 0.8851,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 1.0,
+        "pressure": 0.4868,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.7629,
+        "alignment_score": 0.5315,
+        "grasp_score": 0.0721,
+        "committed_alignment_score": 0.3879,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.1542,
+        "pending_punishment": 0.0616,
+        "queued_reward": 0.1974,
+        "queued_punishment": 0.0389,
+        "state_top_labels": [
+          "text::3",
+          "text::8",
+          "attr::punishment_signal",
+          "timefelt::elapsed",
+          "attr::reward_signal"
+        ]
+      },
+      {
+        "tick_index": 6,
+        "text": "8",
+        "elapsed_ms": 12.1176,
+        "surprise": 0.0,
+        "dissonance": 0.8455,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 1.0,
+        "pressure": 0.465,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.7678,
+        "alignment_score": 0.5156,
+        "grasp_score": 0.0735,
+        "committed_alignment_score": 0.418,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.1974,
+        "pending_punishment": 0.0389,
+        "queued_reward": 0.0882,
+        "queued_punishment": 0.0372,
+        "state_top_labels": [
+          "text::3",
+          "text::8",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      },
+      {
+        "tick_index": 7,
+        "text": "8",
+        "elapsed_ms": 12.2869,
+        "surprise": 0.0,
+        "dissonance": 0.8111,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 1.0,
+        "pressure": 0.4461,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 0.9945,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.3812,
+        "alignment_score": 0.548,
+        "grasp_score": 0.1727,
+        "committed_alignment_score": 0.4539,
+        "committed_grasp_score": 0.0407,
+        "pending_reward": 0.0882,
+        "pending_punishment": 0.0372,
+        "queued_reward": 0.1148,
+        "queued_punishment": 0.0357,
+        "state_top_labels": [
+          "text::3",
+          "text::8",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      },
+      {
+        "tick_index": 8,
+        "text": "8",
+        "elapsed_ms": 12.8153,
+        "surprise": 0.0,
+        "dissonance": 0.7025,
+        "correctness": 0.2007,
+        "grasp": 0.0,
+        "expectation": 1.0,
+        "pressure": 0.3864,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 0.8808,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.2234,
+        "alignment_score": 0.5647,
+        "grasp_score": 0.2181,
+        "committed_alignment_score": 0.472,
+        "committed_grasp_score": 0.0928,
+        "pending_reward": 0.1148,
+        "pending_punishment": 0.0357,
+        "queued_reward": 0.1613,
+        "queued_punishment": 0.0309,
+        "state_top_labels": [
+          "text::8",
+          "text::3",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      },
+      {
+        "tick_index": 9,
+        "text": "8",
+        "elapsed_ms": 13.5331,
+        "surprise": 0.0,
+        "dissonance": 0.6051,
+        "correctness": 0.2495,
+        "grasp": 0.1473,
+        "expectation": 1.0,
+        "pressure": 0.3328,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 0.7597,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.0552,
+        "alignment_score": 0.5861,
+        "grasp_score": 0.2712,
+        "committed_alignment_score": 0.4939,
+        "committed_grasp_score": 0.1504,
+        "pending_reward": 0.1613,
+        "pending_punishment": 0.0309,
+        "queued_reward": 0.1314,
+        "queued_punishment": 0.0266,
+        "state_top_labels": [
+          "text::8",
+          "text::3",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      },
+      {
+        "tick_index": 10,
+        "text": "8",
+        "elapsed_ms": 13.9881,
+        "surprise": 0.0,
+        "dissonance": 0.6706,
+        "correctness": 0.2344,
+        "grasp": 0.0,
+        "expectation": 1.0,
+        "pressure": 0.3688,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 0.7958,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.1053,
+        "alignment_score": 0.5792,
+        "grasp_score": 0.2548,
+        "committed_alignment_score": 0.4901,
+        "committed_grasp_score": 0.1367,
+        "pending_reward": 0.1314,
+        "pending_punishment": 0.0266,
+        "queued_reward": 0.08,
+        "queued_punishment": 0.0439,
+        "state_top_labels": [
+          "text::8",
+          "text::3",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      },
+      {
+        "tick_index": 11,
+        "text": "",
+        "elapsed_ms": 13.4366,
+        "surprise": 0.0,
+        "dissonance": 0.9433,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 0.0,
+        "pressure": 0.5188,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 2.0644,
+        "alignment_score": 0.0,
+        "grasp_score": 0.0,
+        "committed_alignment_score": 0.0,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.08,
+        "pending_punishment": 0.0439,
+        "queued_reward": 0.0,
+        "queued_punishment": 0.1015,
+        "state_top_labels": [
+          "text::8",
+          "text::3",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      },
+      {
+        "tick_index": 12,
+        "text": "",
+        "elapsed_ms": 14.5924,
+        "surprise": 0.0,
+        "dissonance": 0.9341,
+        "correctness": 0.0,
+        "grasp": 0.0,
+        "expectation": 0.0,
+        "pressure": 0.5138,
+        "raw_surprise": 0.0,
+        "raw_dissonance": 1.0,
+        "underprediction_mass": 0.0,
+        "overprediction_mass": 1.9033,
+        "alignment_score": 0.0,
+        "grasp_score": 0.0,
+        "committed_alignment_score": 0.0,
+        "committed_grasp_score": 0.0,
+        "pending_reward": 0.0,
+        "pending_punishment": 0.1015,
+        "queued_reward": 0.0018,
+        "queued_punishment": 0.0411,
+        "state_top_labels": [
+          "text::8",
+          "text::3",
+          "attr::punishment_signal",
+          "attr::reward_signal",
+          "timefelt::elapsed"
+        ]
+      }
+    ],
+    "novelty_passed": true,
+    "repeat_correctness_passed": true,
+    "relearn_8_passed": true,
+    "recovery_feedback": {
+      "reward": 0.35,
+      "punishment": 0.008,
+      "notes": [
+        "intrinsic_correctness_delta_reward",
+        "intrinsic_grasp_delta_reward",
+        "intrinsic_surprise_recovery_reward",
+        "intrinsic_dissonance_recovery_reward",
+        "intrinsic_expectation_tonic_reward",
+        "intrinsic_pressure_tonic_punishment"
+      ]
+    },
+    "feedback_signal_state_top": [
+      "text::hello",
+      "text::world",
+      "attr::reward_signal"
+    ],
+    "feedback_signal_passed": true
+  },
+  "rhythm": {
+    "regular": {
+      "rows": [
+        {
+          "tick_index": 0,
+          "text": "beat",
+          "labels": [],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 1,
+          "text": "",
+          "labels": [
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 2,
+          "text": "beat",
+          "labels": [
+            "timefelt::elapsed",
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 3,
+          "text": "",
+          "labels": [
+            "timefelt::elapsed",
+            "attr::reward_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 4,
+          "text": "beat",
+          "labels": [
+            "timefelt::elapsed",
+            "rhythmfelt::pulse",
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 1.0,
+          "pulse_regularity": 1.0,
+          "pulse_groove": 0.6065,
+          "pulse_period_ticks": 2.0
+        },
+        {
+          "tick_index": 5,
+          "text": "",
+          "labels": [
+            "rhythmfelt::pulse",
+            "rhythmfelt::phase_expectation",
+            "attr::reward_signal"
+          ],
+          "pulse_confidence": 1.0,
+          "pulse_regularity": 1.0,
+          "pulse_groove": 0.5937,
+          "pulse_period_ticks": 2.0
+        },
+        {
+          "tick_index": 6,
+          "text": "beat",
+          "labels": [
+            "rhythmfelt::pulse",
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 1.0,
+          "pulse_regularity": 1.0,
+          "pulse_groove": 0.5837,
+          "pulse_period_ticks": 2.0
+        }
+      ],
+      "trace": {
+        "enabled": true,
+        "candidate_count": 1,
+        "family_count": 1,
+        "pulse_preview": [
+          {
+            "family_key": "text::beat",
+            "period_ticks": 2.0,
+            "regularity": 1.0,
+            "confidence": 1.0,
+            "groove": 0.5837
+          }
+        ],
+        "phase_preview": [],
+        "best_pulse": {
+          "family_key": "text::beat",
+          "period_ticks": 2.0,
+          "regularity": 1.0,
+          "confidence": 1.0,
+          "groove": 0.5837
+        }
+      },
+      "best_pulse": {
+        "period_ticks": 2.0,
+        "regularity": 1.0,
+        "confidence": 1.0,
+        "groove": 0.5837
+      },
+      "query_spacetime": {
+        "rhythm_period_ticks": 2.0,
+        "rhythm_confidence": 1.0,
+        "rhythm_family_key": "text::beat"
+      }
+    },
+    "irregular": {
+      "rows": [
+        {
+          "tick_index": 0,
+          "text": "beat",
+          "labels": [],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 1,
+          "text": "beat",
+          "labels": [
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 2,
+          "text": "",
+          "labels": [
+            "timefelt::elapsed",
+            "attr::reward_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 3,
+          "text": "",
+          "labels": [
+            "timefelt::elapsed",
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 4,
+          "text": "beat",
+          "labels": [
+            "timefelt::elapsed"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 5,
+          "text": "",
+          "labels": [
+            "attr::reward_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 6,
+          "text": "",
+          "labels": [
+            "attr::punishment_signal"
+          ],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 7,
+          "text": "",
+          "labels": [],
+          "pulse_confidence": 0.0,
+          "pulse_regularity": 0.0,
+          "pulse_groove": 0.0,
+          "pulse_period_ticks": 0.0
+        },
+        {
+          "tick_index": 8,
+          "text": "beat",
+          "labels": [
+            "rhythmfelt::pulse"
+          ],
+          "pulse_confidence": 0.5928,
+          "pulse_regularity": 0.5393,
+          "pulse_groove": 0.5342,
+          "pulse_period_ticks": 3.724
+        },
+        {
+          "tick_index": 9,
+          "text": "",
+          "labels": [
+            "timefelt::elapsed",
+            "rhythmfelt::pulse",
+            "attr::reward_signal"
+          ],
+          "pulse_confidence": 0.5928,
+          "pulse_regularity": 0.5393,
+          "pulse_groove": 0.5286,
+          "pulse_period_ticks": 3.724
+        }
+      ],
+      "trace": {
+        "enabled": true,
+        "candidate_count": 0,
+        "family_count": 1,
+        "pulse_preview": [
+          {
+            "family_key": "text::beat",
+            "period_ticks": 3.724,
+            "regularity": 0.5393,
+            "confidence": 0.5928,
+            "groove": 0.5286
+          }
+        ],
+        "phase_preview": [],
+        "best_pulse": {
+          "family_key": "text::beat",
+          "period_ticks": 3.724,
+          "regularity": 0.5393,
+          "confidence": 0.5928,
+          "groove": 0.5286
+        }
+      },
+      "best_pulse": {
+        "period_ticks": 3.724,
+        "regularity": 0.5393,
+        "confidence": 0.5928,
+        "groove": 0.5286
+      },
+      "query_spacetime": {
+        "rhythm_period_ticks": 3.724,
+        "rhythm_confidence": 0.5928,
+        "rhythm_family_key": "text::beat"
+      }
+    },
+    "runtime_passed": true,
+    "recall_rows": [
+      {
+        "text": "beat",
+        "score": 0.9525,
+        "rhythm_intent_bonus": 0.63
+      },
+      {
+        "text": "beat",
+        "score": 0.9158,
+        "rhythm_intent_bonus": 0.0
+      },
+      {
+        "text": "offbeat",
+        "score": 0.3795,
+        "rhythm_intent_bonus": 0.0155
+      }
+    ],
+    "recall_passed": true
+  },
+  "motion_recall": {
+    "rows": [
+      {
+        "memory_id": "mem_000002",
+        "text": "move",
+        "score": 0.8076,
+        "motion_intent_bonus": 0.7942
+      },
+      {
+        "memory_id": "mem_000001",
+        "text": "move",
+        "score": 0.7679,
+        "motion_intent_bonus": 0.0
+      }
+    ],
+    "passed": true
+  },
+  "feedback_recall": {
+    "positive_top": {
+      "memory_id": "mem_000001",
+      "feedback_intent_bonus": 0.9862
+    },
+    "negative_top": {
+      "memory_id": "mem_000002",
+      "feedback_intent_bonus": 0.9862
+    },
+    "passed": true
+  },
+  "visual": {
+    "ocr_training": {
+      "accepted": false,
+      "trained_epochs": 12,
+      "train_raw_budget": 512,
+      "train_patch_budget": 24,
+      "train_focus_budget": 12
+    },
+    "ocr_probe_rows": [
+      {
+        "pair_id": "digit_3",
+        "target_text_label": "three",
+        "bn_best_text": "three",
+        "bn_target_rank": 1,
+        "cstar_best_text": "three",
+        "state_best_text": "three",
+        "strict_success": true,
+        "state_success": true,
+        "raw_sample_count": 64,
+        "memory_write_count": 8,
+        "focus_priority_count": 8,
+        "global_structure_count": 5
+      },
+      {
+        "pair_id": "digit_8",
+        "target_text_label": "eight",
+        "bn_best_text": "three",
+        "bn_target_rank": 4,
+        "cstar_best_text": "three",
+        "state_best_text": "three",
+        "strict_success": false,
+        "state_success": false,
+        "raw_sample_count": 64,
+        "memory_write_count": 8,
+        "focus_priority_count": 8,
+        "global_structure_count": 5
+      }
+    ],
+    "ocr_passed": false,
+    "motion_probe": {
+      "labels": [
+        "motionfelt::trend",
+        "attr::punishment_signal"
+      ],
+      "motion_trace": {
+        "confidence": 0.3374,
+        "best_speed": 0.2192
+      },
+      "dynamic_track_count": 28,
+      "dynamic_object_count": 0,
+      "dynamic_salience_mean": 0.1974
+    },
+    "motion_passed": true
+  },
+  "audio": {
+    "focus_probe": {
+      "before_focus": {
+        "center_hz": 1200.0,
+        "bandwidth_octaves": 1.15
+      },
+      "before_focus_priority_count": 4,
+      "focus_target_hz": 1000.0,
+      "effects": {
+        "audio_moved": true,
+        "audio_focus_after": {
+          "center_hz": 1000.0,
+          "bandwidth_octaves": 0.7557
+        },
+        "audio_attention_boost": {
+          "active": true,
+          "strength": 1.0,
+          "ticks_left": 3,
+          "target_center_hz": 1000.0,
+          "target_bandwidth_octaves": 0.7557,
+          "source_action": "continue_audio_focus",
+          "window_budget_bonus": 12,
+          "focus_budget_bonus": 8,
+          "bandwidth_scale": 0.35,
+          "focus_gain": 1.4,
+          "attention_mode": "auditory_focus"
+        }
+      },
+      "after_focus": {
+        "center_hz": 1000.0,
+        "bandwidth_octaves": 0.7557
+      },
+      "after_focus_priority_count": 5,
+      "after_strongest_window": {
+        "dominant_hz": 880.0,
+        "focus_bonus": 0.5295,
+        "freq_center_hz": 1000.0
+      }
+    },
+    "focus_passed": true,
+    "semantic_probe_rows": [
+      {
+        "label": "tone_low",
+        "bn_preview": [
+          {
+            "text": "tone_low",
+            "score": 0.4291
+          },
+          {
+            "text": "tone_low",
+            "score": 0.36
+          },
+          {
+            "text": "tone_high",
+            "score": 0.3156
+          },
+          {
+            "text": "tone_high",
+            "score": 0.3145
+          }
+        ],
+        "state_top": [
+          "text::tone_low",
+          "audio::win_3",
+          "audio::win_2",
+          "audio::win_1",
+          "attr::reward_signal",
+          "audio::win_4",
+          "rhythmfelt::pulse",
+          "audio::win_0",
+          "audio::global_band_0",
+          "text::tone_high"
+        ]
+      },
+      {
+        "label": "tone_high",
+        "bn_preview": [
+          {
+            "text": "",
+            "score": 0.4802
+          },
+          {
+            "text": "tone_low",
+            "score": 0.4716
+          },
+          {
+            "text": "tone_low",
+            "score": 0.3941
+          },
+          {
+            "text": "",
+            "score": 0.3281
+          }
+        ],
+        "state_top": [
+          "text::tone_low",
+          "audio::win_3",
+          "audio::win_2",
+          "audio::win_1",
+          "audio::win_4",
+          "attr::reward_signal",
+          "audio::win_0",
+          "rhythmfelt::pulse",
+          "audio::global_band_0",
+          "text::tone_high"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "schema_id",
+    "schema_version",
+    "text",
+    "source_type"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "enum": ["text_input_envelope/v1"] },
+    "schema_version": { "type": "string" },
+    "text": { "type": "string" },
+    "source_type": { "type": "string" },
+    "source_id": { "type": "string" },
+    "metadata": { "type": "object" }
+  },
+  "additionalProperties": true
+}
+

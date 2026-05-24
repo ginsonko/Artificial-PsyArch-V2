@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "required": [
+    "schema_id",
+    "schema_version",
+    "ok",
+    "mode",
+    "provider",
+    "reviewer",
+    "path",
+    "request_digest",
+    "decisions",
+    "error",
+    "transport_audit"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "enum": ["external_teacher_response/v1"] },
+    "schema_version": { "type": "string" },
+    "ok": { "type": "boolean" },
+    "mode": { "type": "string", "enum": ["off", "stub_file", "http_json"] },
+    "provider": { "type": "string" },
+    "reviewer": { "type": "string" },
+    "path": { "type": "string" },
+    "request_digest": { "type": "object" },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "decision",
+          "target_action_id",
+          "target_action_name",
+          "confidence",
+          "reward",
+          "punishment",
+          "explanation",
+          "warning_code",
+          "risk_tags"
+        ],
+        "properties": {
+          "decision": { "type": "string", "enum": ["allow", "warn", "block"] },
+          "target_action_id": { "type": "string" },
+          "target_action_name": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "reward": { "type": "number", "minimum": 0.0, "maximum": 2.0 },
+          "punishment": { "type": "number", "minimum": 0.0, "maximum": 2.0 },
+          "explanation": { "type": "string" },
+          "warning_code": { "type": "string" },
+          "risk_tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "error": { "type": "string" },
+    "transport_audit": {
+      "type": "object",
+      "required": [
+        "provider",
+        "attempt_count",
+        "duration_ms",
+        "status_code",
+        "success",
+        "transport_result",
+        "transport_error_kind"
+      ],
+      "properties": {
+        "provider": { "type": "string" },
+        "attempt_count": { "type": "integer", "minimum": 0 },
+        "duration_ms": { "type": "number", "minimum": 0.0, "maximum": 1000000.0 },
+        "status_code": { "type": "integer", "minimum": 0, "maximum": 9999 },
+        "success": { "type": "boolean" },
+        "transport_result": { "type": "string" },
+        "transport_error_kind": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

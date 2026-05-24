@@ -1,0 +1,9 @@
+# Continuous video / real video file inputs
+opencv-python>=4.8
+av>=12.0
+
+# Real device stream inputs
+sounddevice>=0.4.7
+
+# More formal ANN index layer
+faiss-cpu>=1.7.4

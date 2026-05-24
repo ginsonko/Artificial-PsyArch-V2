@@ -1,0 +1,2965 @@
+{
+  "schema_id": "audio_ocr_probe/v1",
+  "schema_version": "1.0",
+  "generated_at": "2026-05-24T09:12:59",
+  "audio_manifest": [
+    {
+      "pair_id": "tone_low_rise",
+      "text_label": "tone_low",
+      "audio_path": "outputs\\audio_ocr_like_20260524_post_vectorboost\\generated_audio\\tone_low_rise.wav",
+      "start_hz": 320.0,
+      "end_hz": 480.0,
+      "duration_sec": 0.24
+    },
+    {
+      "pair_id": "tone_high_rise",
+      "text_label": "tone_high",
+      "audio_path": "outputs\\audio_ocr_like_20260524_post_vectorboost\\generated_audio\\tone_high_rise.wav",
+      "start_hz": 760.0,
+      "end_hz": 980.0,
+      "duration_sec": 0.24
+    }
+  ],
+  "audio_signatures": {
+    "tone_low_rise": {
+      "audio_labels": [
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0",
+        "audio::global::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0",
+        "audio::global_band_0"
+      ],
+      "memory_labels": [
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0"
+      ],
+      "global_labels": [
+        "audio::global::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0"
+      ],
+      "band_labels": [
+        "audio::global_band_0"
+      ],
+      "feature_summary": {
+        "tonal_clarity": 0.812,
+        "noisiness": 0.1074,
+        "pitch_stability": 0.7356,
+        "harmonic_ratio": 0.8457,
+        "percussive_ratio": 0.0945,
+        "voiced_probability": 0.8647,
+        "spectral_contrast": 0.6634,
+        "spectral_flatness": 0.0006,
+        "spectral_bandwidth_ratio": 0.0103,
+        "spectral_rolloff_ratio": 0.0597,
+        "spectral_centroid_ratio": 0.0572,
+        "onset_strength": 0.0,
+        "novelty": 0.7,
+        "peak_prominence": 1.0,
+        "dominant_band_index": 0,
+        "dominant_hz": 457.7538,
+        "signal_presence": 1.0,
+        "window_count": 4,
+        "dominant_profile": "harmonic",
+        "memory_feature_code": "pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0"
+      },
+      "dominant_hz": 560.0
+    },
+    "tone_high_rise": {
+      "audio_labels": [
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct3_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr0_vp4_ct3_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfha_tc4_nz0_ps4_hr4_pr0_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::global::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::global_band_1"
+      ],
+      "memory_labels": [
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct3_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr0_vp4_ct3_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfha_tc4_nz0_ps4_hr4_pr0_vp4_ct4_fl0_bw0_ro0_ce0_db1"
+      ],
+      "global_labels": [
+        "audio::global::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1"
+      ],
+      "band_labels": [
+        "audio::global_band_1"
+      ],
+      "feature_summary": {
+        "tonal_clarity": 0.7818,
+        "noisiness": 0.1719,
+        "pitch_stability": 0.7252,
+        "harmonic_ratio": 0.7749,
+        "percussive_ratio": 0.1698,
+        "voiced_probability": 0.8065,
+        "spectral_contrast": 0.6686,
+        "spectral_flatness": 0.0006,
+        "spectral_bandwidth_ratio": 0.0095,
+        "spectral_rolloff_ratio": 0.1219,
+        "spectral_centroid_ratio": 0.1187,
+        "onset_strength": 0.0,
+        "novelty": 0.7,
+        "peak_prominence": 1.0,
+        "dominant_band_index": 1,
+        "dominant_hz": 945.497,
+        "signal_presence": 1.0,
+        "window_count": 4,
+        "dominant_profile": "tonal",
+        "memory_feature_code": "pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1"
+      },
+      "dominant_hz": 1080.0
+    }
+  },
+  "attempts": [
+    {
+      "train_epochs": 6,
+      "reward_value": 1.0,
+      "stabilize_ticks": 8,
+      "acceptance_observation_ticks": 4,
+      "training_rows": [
+        {
+          "tick_index": 0,
+          "epoch": 0,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 22.8012,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "",
+          "cstar_best_text": "",
+          "cstar_margin": 0.0,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 1,
+          "epoch": 0,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 28.8181,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -8.6376,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 2,
+          "epoch": 1,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 31.1488,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 3.7892,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 3,
+          "epoch": 1,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 47.7569,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -18.2546,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 4,
+          "epoch": 2,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 50.926,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 16.3351,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 5,
+          "epoch": 2,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 110.1996,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -18.1833,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 6,
+          "epoch": 3,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 60.8216,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 9.8617,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 7,
+          "epoch": 3,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 61.2415,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -16.2485,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 8,
+          "epoch": 4,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 61.4433,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 11.1947,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 9,
+          "epoch": 4,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 59.9851,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -13.5774,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 10,
+          "epoch": 5,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 62.8504,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 12.44,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 11,
+          "epoch": 5,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 58.0844,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -15.0565,
+          "reward": 1.0
+        }
+      ],
+      "stabilize_rows": [
+        {
+          "tick_index": 12,
+          "elapsed_ms": 48.7063,
+          "state_pool_size": 36
+        },
+        {
+          "tick_index": 13,
+          "elapsed_ms": 49.0552,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 14,
+          "elapsed_ms": 49.0826,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 15,
+          "elapsed_ms": 67.7966,
+          "state_pool_size": 34
+        },
+        {
+          "tick_index": 16,
+          "elapsed_ms": 64.3123,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 17,
+          "elapsed_ms": 53.0665,
+          "state_pool_size": 34
+        },
+        {
+          "tick_index": 18,
+          "elapsed_ms": 54.0569,
+          "state_pool_size": 32
+        },
+        {
+          "tick_index": 19,
+          "elapsed_ms": 53.4776,
+          "state_pool_size": 31
+        }
+      ],
+      "acceptance_rows": [
+        {
+          "pair_id": "tone_low_rise",
+          "target_text_label": "tone_low",
+          "observation_ticks": 4,
+          "tick_rows": [
+            {
+              "probe_tick_index": 0,
+              "elapsed_ms": 30.5104,
+              "window_count": 4,
+              "memory_write_count": 8,
+              "global_structure_count": 2,
+              "focus_priority_count": 4,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 0,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 87.8136,
+              "state_best_text": "tone_low",
+              "state_margin": 1.5,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 1,
+              "elapsed_ms": 34.2093,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 11.856,
+              "state_best_text": "tone_low",
+              "state_margin": 2.85,
+              "focus_has_target": false,
+              "strict_success": true
+            },
+            {
+              "probe_tick_index": 2,
+              "elapsed_ms": 35.5389,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 0,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 40.3868,
+              "state_best_text": "tone_low",
+              "state_margin": 4.065,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 3,
+              "elapsed_ms": 28.8319,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 1,
+              "focus_priority_count": 5,
+              "bn_best_text": "",
+              "bn_target_rank": 0,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 25.4186,
+              "state_best_text": "tone_low",
+              "state_margin": 3.9005,
+              "focus_has_target": false,
+              "strict_success": false
+            }
+          ],
+          "final_evaluation": {
+            "bn_exact_ranked": [],
+            "bn_best_text": "",
+            "bn_target_rank": 0,
+            "bn_target_score": 0.0,
+            "bn_success": false,
+            "cstar_best_text": "tone_low",
+            "cstar_target_energy": 39.7658,
+            "cstar_distractor_best_energy": 14.3472,
+            "cstar_margin": 25.4186,
+            "cstar_success": true,
+            "state_best_text": "tone_low",
+            "state_target_energy": 5.1585,
+            "state_distractor_best_energy": 1.258,
+            "state_margin": 3.9005,
+            "state_success": true,
+            "focus_units": [
+              "win_3",
+              "win_2",
+              "听觉全局特征[band::0]",
+              "win_1"
+            ],
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          "first_strict_success_tick": 1,
+          "mean_elapsed_ms": 32.2726
+        },
+        {
+          "pair_id": "tone_high_rise",
+          "target_text_label": "tone_high",
+          "observation_ticks": 4,
+          "tick_rows": [
+            {
+              "probe_tick_index": 0,
+              "elapsed_ms": 38.4595,
+              "window_count": 4,
+              "memory_write_count": 8,
+              "global_structure_count": 2,
+              "focus_priority_count": 4,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -51.7119,
+              "state_best_text": "tone_low",
+              "state_margin": -1.5,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 1,
+              "elapsed_ms": 40.645,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -7.7543,
+              "state_best_text": "tone_low",
+              "state_margin": -1.8101,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 2,
+              "elapsed_ms": 45.0645,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -35.942,
+              "state_best_text": "tone_low",
+              "state_margin": -2.7405,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 3,
+              "elapsed_ms": 40.7163,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_high",
+              "cstar_margin": 0.7392,
+              "state_best_text": "tone_low",
+              "state_margin": -2.3813,
+              "focus_has_target": false,
+              "strict_success": true
+            }
+          ],
+          "final_evaluation": {
+            "bn_exact_ranked": [
+              {
+                "memory_id": "mem_000046",
+                "text": "tone_high",
+                "score": 0.34,
+                "tick_index": 11
+              },
+              {
+                "memory_id": "mem_000002",
+                "text": "tone_low",
+                "score": 0.3327,
+                "tick_index": -1
+              },
+              {
+                "memory_id": "mem_000010",
+                "text": "tone_low",
+                "score": 0.3273,
+                "tick_index": 2
+              },
+              {
+                "memory_id": "mem_000014",
+                "text": "tone_high",
+                "score": 0.3271,
+                "tick_index": 3
+              },
+              {
+                "memory_id": "mem_000030",
+                "text": "tone_high",
+                "score": 0.3257,
+                "tick_index": 7
+              }
+            ],
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "bn_target_score": 0.34,
+            "bn_success": true,
+            "cstar_best_text": "tone_high",
+            "cstar_target_energy": 13.0341,
+            "cstar_distractor_best_energy": 12.2949,
+            "cstar_margin": 0.7392,
+            "cstar_success": true,
+            "state_best_text": "tone_low",
+            "state_target_energy": 2.6921,
+            "state_distractor_best_energy": 5.0734,
+            "state_margin": -2.3813,
+            "state_success": false,
+            "focus_units": [
+              "win_3",
+              "win_2",
+              "win_1",
+              "听觉全局特征[band::1]"
+            ],
+            "focus_has_target": false,
+            "strict_success": true
+          },
+          "first_strict_success_tick": 3,
+          "mean_elapsed_ms": 41.2213
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "train_epochs": 8,
+      "reward_value": 1.0,
+      "stabilize_ticks": 8,
+      "acceptance_observation_ticks": 4,
+      "training_rows": [
+        {
+          "tick_index": 0,
+          "epoch": 0,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 13.2589,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "",
+          "cstar_best_text": "",
+          "cstar_margin": 0.0,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 1,
+          "epoch": 0,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 23.8548,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -8.6376,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 2,
+          "epoch": 1,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 37.9931,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 3.7892,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 3,
+          "epoch": 1,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 40.5139,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -18.2546,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 4,
+          "epoch": 2,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 47.9379,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 16.3351,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 5,
+          "epoch": 2,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 68.0131,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -18.1833,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 6,
+          "epoch": 3,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 70.6767,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 9.8617,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 7,
+          "epoch": 3,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 80.1317,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -16.2485,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 8,
+          "epoch": 4,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 54.5374,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 11.1947,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 9,
+          "epoch": 4,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 87.6179,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -13.5774,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 10,
+          "epoch": 5,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 64.4362,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 12.44,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 11,
+          "epoch": 5,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 72.7321,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -15.0565,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 12,
+          "epoch": 6,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 69.2889,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": -0.812,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 13,
+          "epoch": 6,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 67.2488,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 19.3263,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 14,
+          "epoch": 7,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 67.6293,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 1.4315,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 15,
+          "epoch": 7,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 69.1402,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 0.5517,
+          "reward": 1.0
+        }
+      ],
+      "stabilize_rows": [
+        {
+          "tick_index": 16,
+          "elapsed_ms": 57.3104,
+          "state_pool_size": 36
+        },
+        {
+          "tick_index": 17,
+          "elapsed_ms": 60.1123,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 18,
+          "elapsed_ms": 63.0801,
+          "state_pool_size": 34
+        },
+        {
+          "tick_index": 19,
+          "elapsed_ms": 61.2675,
+          "state_pool_size": 33
+        },
+        {
+          "tick_index": 20,
+          "elapsed_ms": 65.1515,
+          "state_pool_size": 33
+        },
+        {
+          "tick_index": 21,
+          "elapsed_ms": 56.7755,
+          "state_pool_size": 33
+        },
+        {
+          "tick_index": 22,
+          "elapsed_ms": 56.8314,
+          "state_pool_size": 33
+        },
+        {
+          "tick_index": 23,
+          "elapsed_ms": 53.3763,
+          "state_pool_size": 33
+        }
+      ],
+      "acceptance_rows": [
+        {
+          "pair_id": "tone_low_rise",
+          "target_text_label": "tone_low",
+          "observation_ticks": 4,
+          "tick_rows": [
+            {
+              "probe_tick_index": 0,
+              "elapsed_ms": 36.9627,
+              "window_count": 4,
+              "memory_write_count": 8,
+              "global_structure_count": 2,
+              "focus_priority_count": 4,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 11.9067,
+              "state_best_text": "tone_low",
+              "state_margin": 0.6737,
+              "focus_has_target": false,
+              "strict_success": true
+            },
+            {
+              "probe_tick_index": 1,
+              "elapsed_ms": 38.8163,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 2,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 19.7855,
+              "state_best_text": "tone_low",
+              "state_margin": 1.4894,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 2,
+              "elapsed_ms": 41.3736,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 37.0787,
+              "state_best_text": "tone_low",
+              "state_margin": 2.5267,
+              "focus_has_target": false,
+              "strict_success": true
+            },
+            {
+              "probe_tick_index": 3,
+              "elapsed_ms": 30.7667,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 1,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 2,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 38.6696,
+              "state_best_text": "tone_low",
+              "state_margin": 3.0633,
+              "focus_has_target": false,
+              "strict_success": false
+            }
+          ],
+          "final_evaluation": {
+            "bn_exact_ranked": [
+              {
+                "memory_id": "mem_000062",
+                "text": "tone_high",
+                "score": 0.3589,
+                "tick_index": 15
+              },
+              {
+                "memory_id": "mem_000018",
+                "text": "tone_low",
+                "score": 0.3576,
+                "tick_index": 4
+              },
+              {
+                "memory_id": "mem_000030",
+                "text": "tone_high",
+                "score": 0.3485,
+                "tick_index": 7
+              }
+            ],
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 2,
+            "bn_target_score": 0.3576,
+            "bn_success": false,
+            "cstar_best_text": "tone_low",
+            "cstar_target_energy": 73.4915,
+            "cstar_distractor_best_energy": 34.8219,
+            "cstar_margin": 38.6696,
+            "cstar_success": true,
+            "state_best_text": "tone_low",
+            "state_target_energy": 5.1585,
+            "state_distractor_best_energy": 2.0952,
+            "state_margin": 3.0633,
+            "state_success": true,
+            "focus_units": [
+              "win_3",
+              "win_2",
+              "听觉全局特征[band::0]",
+              "win_1"
+            ],
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          "first_strict_success_tick": 0,
+          "mean_elapsed_ms": 36.9798
+        },
+        {
+          "pair_id": "tone_high_rise",
+          "target_text_label": "tone_high",
+          "observation_ticks": 4,
+          "tick_rows": [
+            {
+              "probe_tick_index": 0,
+              "elapsed_ms": 40.4852,
+              "window_count": 4,
+              "memory_write_count": 8,
+              "global_structure_count": 2,
+              "focus_priority_count": 4,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -6.3227,
+              "state_best_text": "tone_low",
+              "state_margin": -0.4976,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 1,
+              "elapsed_ms": 41.5542,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -26.4743,
+              "state_best_text": "tone_low",
+              "state_margin": -1.4867,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 2,
+              "elapsed_ms": 41.0446,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_high",
+              "cstar_margin": 7.9556,
+              "state_best_text": "tone_low",
+              "state_margin": -0.8309,
+              "focus_has_target": false,
+              "strict_success": true
+            },
+            {
+              "probe_tick_index": 3,
+              "elapsed_ms": 45.8902,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -32.717,
+              "state_best_text": "tone_low",
+              "state_margin": -1.8101,
+              "focus_has_target": false,
+              "strict_success": false
+            }
+          ],
+          "final_evaluation": {
+            "bn_exact_ranked": [
+              {
+                "memory_id": "mem_000022",
+                "text": "tone_high",
+                "score": 0.3669,
+                "tick_index": 5
+              },
+              {
+                "memory_id": "mem_000038",
+                "text": "tone_high",
+                "score": 0.3636,
+                "tick_index": 9
+              },
+              {
+                "memory_id": "mem_000026",
+                "text": "tone_low",
+                "score": 0.3576,
+                "tick_index": 6
+              },
+              {
+                "memory_id": "mem_000034",
+                "text": "tone_low",
+                "score": 0.3552,
+                "tick_index": 8
+              },
+              {
+                "memory_id": "mem_000046",
+                "text": "tone_high",
+                "score": 0.352,
+                "tick_index": 11
+              }
+            ],
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "bn_target_score": 0.3669,
+            "bn_success": true,
+            "cstar_best_text": "tone_low",
+            "cstar_target_energy": 13.4798,
+            "cstar_distractor_best_energy": 46.1968,
+            "cstar_margin": -32.717,
+            "cstar_success": false,
+            "state_best_text": "tone_low",
+            "state_target_energy": 2.892,
+            "state_distractor_best_energy": 4.7021,
+            "state_margin": -1.8101,
+            "state_success": false,
+            "focus_units": [
+              "win_3",
+              "win_2",
+              "win_1",
+              "global_band_1"
+            ],
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          "first_strict_success_tick": 2,
+          "mean_elapsed_ms": 42.2435
+        }
+      ],
+      "accepted": false
+    },
+    {
+      "train_epochs": 10,
+      "reward_value": 1.0,
+      "stabilize_ticks": 8,
+      "acceptance_observation_ticks": 4,
+      "training_rows": [
+        {
+          "tick_index": 0,
+          "epoch": 0,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 12.1357,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "",
+          "cstar_best_text": "",
+          "cstar_margin": 0.0,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 1,
+          "epoch": 0,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 24.2857,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -8.6376,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 2,
+          "epoch": 1,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 32.1955,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 3.7892,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 3,
+          "epoch": 1,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 40.4938,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -18.2546,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 4,
+          "epoch": 2,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 50.4163,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 16.3351,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 5,
+          "epoch": 2,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 50.769,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -18.1833,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 6,
+          "epoch": 3,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 59.1574,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 9.8617,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 7,
+          "epoch": 3,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 84.2161,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -16.2485,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 8,
+          "epoch": 4,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 51.345,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 11.1947,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 9,
+          "epoch": 4,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 56.7705,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -13.5774,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 10,
+          "epoch": 5,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 60.3116,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 12.44,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 11,
+          "epoch": 5,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 61.3805,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -15.0565,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 12,
+          "epoch": 6,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 62.6225,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": -0.812,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 13,
+          "epoch": 6,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 68.8376,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 19.3263,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 14,
+          "epoch": 7,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 66.9989,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 1.4315,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 15,
+          "epoch": 7,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 68.0975,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 0.5517,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 16,
+          "epoch": 8,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 73.2753,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 65.661,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 17,
+          "epoch": 8,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 74.6131,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 61.7549,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 18,
+          "epoch": 9,
+          "pair_id": "tone_low_rise",
+          "text_label": "tone_low",
+          "elapsed_ms": 93.6564,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 74.9575,
+          "reward": 1.0
+        },
+        {
+          "tick_index": 19,
+          "epoch": 9,
+          "pair_id": "tone_high_rise",
+          "text_label": "tone_high",
+          "elapsed_ms": 87.2295,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 72.8685,
+          "reward": 1.0
+        }
+      ],
+      "stabilize_rows": [
+        {
+          "tick_index": 20,
+          "elapsed_ms": 60.319,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 21,
+          "elapsed_ms": 61.8828,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 22,
+          "elapsed_ms": 66.3641,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 23,
+          "elapsed_ms": 61.6104,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 24,
+          "elapsed_ms": 67.2878,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 25,
+          "elapsed_ms": 61.8041,
+          "state_pool_size": 35
+        },
+        {
+          "tick_index": 26,
+          "elapsed_ms": 63.7253,
+          "state_pool_size": 34
+        },
+        {
+          "tick_index": 27,
+          "elapsed_ms": 60.6707,
+          "state_pool_size": 32
+        }
+      ],
+      "acceptance_rows": [
+        {
+          "pair_id": "tone_low_rise",
+          "target_text_label": "tone_low",
+          "observation_ticks": 4,
+          "tick_rows": [
+            {
+              "probe_tick_index": 0,
+              "elapsed_ms": 51.5608,
+              "window_count": 4,
+              "memory_write_count": 8,
+              "global_structure_count": 2,
+              "focus_priority_count": 4,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 13.0295,
+              "state_best_text": "tone_low",
+              "state_margin": 0.6645,
+              "focus_has_target": false,
+              "strict_success": true
+            },
+            {
+              "probe_tick_index": 1,
+              "elapsed_ms": 44.9666,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 0,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": 33.3856,
+              "state_best_text": "tone_low",
+              "state_margin": 1.3382,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 2,
+              "elapsed_ms": 49.1006,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_high",
+              "cstar_margin": -8.3732,
+              "state_best_text": "tone_low",
+              "state_margin": 0.6526,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 3,
+              "elapsed_ms": 47.9067,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 1,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 0,
+              "cstar_best_text": "tone_high",
+              "cstar_margin": -40.1042,
+              "state_best_text": "tone_high",
+              "state_margin": -0.6008,
+              "focus_has_target": false,
+              "strict_success": false
+            }
+          ],
+          "final_evaluation": {
+            "bn_exact_ranked": [
+              {
+                "memory_id": "mem_000030",
+                "text": "tone_high",
+                "score": 0.3617,
+                "tick_index": 7
+              }
+            ],
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 0,
+            "bn_target_score": 0.0,
+            "bn_success": false,
+            "cstar_best_text": "tone_high",
+            "cstar_target_energy": 10.5218,
+            "cstar_distractor_best_energy": 50.626,
+            "cstar_margin": -40.1042,
+            "cstar_success": false,
+            "state_best_text": "tone_high",
+            "state_target_energy": 3.4737,
+            "state_distractor_best_energy": 4.0745,
+            "state_margin": -0.6008,
+            "state_success": false,
+            "focus_units": [
+              "win_3",
+              "win_2",
+              "win_1",
+              "听觉全局特征[band::0]"
+            ],
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          "first_strict_success_tick": 0,
+          "mean_elapsed_ms": 48.3837
+        },
+        {
+          "pair_id": "tone_high_rise",
+          "target_text_label": "tone_high",
+          "observation_ticks": 4,
+          "tick_rows": [
+            {
+              "probe_tick_index": 0,
+              "elapsed_ms": 46.5036,
+              "window_count": 4,
+              "memory_write_count": 8,
+              "global_structure_count": 2,
+              "focus_priority_count": 4,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -48.3086,
+              "state_best_text": "tone_low",
+              "state_margin": -1.5,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 1,
+              "elapsed_ms": 48.2373,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 4,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -29.409,
+              "state_best_text": "tone_low",
+              "state_margin": -2.0669,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 2,
+              "elapsed_ms": 49.5778,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_low",
+              "bn_target_rank": 3,
+              "cstar_best_text": "tone_low",
+              "cstar_margin": -37.6733,
+              "state_best_text": "tone_low",
+              "state_margin": -4.065,
+              "focus_has_target": false,
+              "strict_success": false
+            },
+            {
+              "probe_tick_index": 3,
+              "elapsed_ms": 80.4433,
+              "window_count": 5,
+              "memory_write_count": 10,
+              "global_structure_count": 2,
+              "focus_priority_count": 5,
+              "bn_best_text": "tone_high",
+              "bn_target_rank": 1,
+              "cstar_best_text": "tone_high",
+              "cstar_margin": 21.5894,
+              "state_best_text": "tone_low",
+              "state_margin": -1.7288,
+              "focus_has_target": false,
+              "strict_success": true
+            }
+          ],
+          "final_evaluation": {
+            "bn_exact_ranked": [
+              {
+                "memory_id": "mem_000046",
+                "text": "tone_high",
+                "score": 0.3716,
+                "tick_index": 11
+              },
+              {
+                "memory_id": "mem_000074",
+                "text": "tone_low",
+                "score": 0.3685,
+                "tick_index": 18
+              },
+              {
+                "memory_id": "mem_000022",
+                "text": "tone_high",
+                "score": 0.3673,
+                "tick_index": 5
+              },
+              {
+                "memory_id": "mem_000062",
+                "text": "tone_high",
+                "score": 0.3663,
+                "tick_index": 15
+              },
+              {
+                "memory_id": "mem_000038",
+                "text": "tone_high",
+                "score": 0.366,
+                "tick_index": 9
+              },
+              {
+                "memory_id": "mem_000030",
+                "text": "tone_high",
+                "score": 0.3638,
+                "tick_index": 7
+              }
+            ],
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "bn_target_score": 0.3716,
+            "bn_success": true,
+            "cstar_best_text": "tone_high",
+            "cstar_target_energy": 27.7522,
+            "cstar_distractor_best_energy": 6.1628,
+            "cstar_margin": 21.5894,
+            "cstar_success": true,
+            "state_best_text": "tone_low",
+            "state_target_energy": 2.2628,
+            "state_distractor_best_energy": 3.9916,
+            "state_margin": -1.7288,
+            "state_success": false,
+            "focus_units": [
+              "win_3",
+              "win_2",
+              "win_1",
+              "global_band_1"
+            ],
+            "focus_has_target": false,
+            "strict_success": true
+          },
+          "first_strict_success_tick": 3,
+          "mean_elapsed_ms": 56.1905
+        }
+      ],
+      "accepted": false
+    }
+  ],
+  "selected_attempt": {
+    "train_epochs": 6,
+    "reward_value": 1.0,
+    "stabilize_ticks": 8,
+    "acceptance_observation_ticks": 4,
+    "training_rows": [
+      {
+        "tick_index": 0,
+        "epoch": 0,
+        "pair_id": "tone_low_rise",
+        "text_label": "tone_low",
+        "elapsed_ms": 22.8012,
+        "window_count": 4,
+        "memory_write_count": 8,
+        "global_structure_count": 2,
+        "focus_priority_count": 4,
+        "bn_best_text": "",
+        "cstar_best_text": "",
+        "cstar_margin": 0.0,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 1,
+        "epoch": 0,
+        "pair_id": "tone_high_rise",
+        "text_label": "tone_high",
+        "elapsed_ms": 28.8181,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_low",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -8.6376,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 2,
+        "epoch": 1,
+        "pair_id": "tone_low_rise",
+        "text_label": "tone_low",
+        "elapsed_ms": 31.1488,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": 3.7892,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 3,
+        "epoch": 1,
+        "pair_id": "tone_high_rise",
+        "text_label": "tone_high",
+        "elapsed_ms": 47.7569,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_low",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -18.2546,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 4,
+        "epoch": 2,
+        "pair_id": "tone_low_rise",
+        "text_label": "tone_low",
+        "elapsed_ms": 50.926,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_low",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": 16.3351,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 5,
+        "epoch": 2,
+        "pair_id": "tone_high_rise",
+        "text_label": "tone_high",
+        "elapsed_ms": 110.1996,
+        "window_count": 4,
+        "memory_write_count": 8,
+        "global_structure_count": 2,
+        "focus_priority_count": 4,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -18.1833,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 6,
+        "epoch": 3,
+        "pair_id": "tone_low_rise",
+        "text_label": "tone_low",
+        "elapsed_ms": 60.8216,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_low",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": 9.8617,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 7,
+        "epoch": 3,
+        "pair_id": "tone_high_rise",
+        "text_label": "tone_high",
+        "elapsed_ms": 61.2415,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -16.2485,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 8,
+        "epoch": 4,
+        "pair_id": "tone_low_rise",
+        "text_label": "tone_low",
+        "elapsed_ms": 61.4433,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_low",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": 11.1947,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 9,
+        "epoch": 4,
+        "pair_id": "tone_high_rise",
+        "text_label": "tone_high",
+        "elapsed_ms": 59.9851,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -13.5774,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 10,
+        "epoch": 5,
+        "pair_id": "tone_low_rise",
+        "text_label": "tone_low",
+        "elapsed_ms": 62.8504,
+        "window_count": 4,
+        "memory_write_count": 8,
+        "global_structure_count": 2,
+        "focus_priority_count": 4,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": 12.44,
+        "reward": 1.0
+      },
+      {
+        "tick_index": 11,
+        "epoch": 5,
+        "pair_id": "tone_high_rise",
+        "text_label": "tone_high",
+        "elapsed_ms": 58.0844,
+        "window_count": 5,
+        "memory_write_count": 10,
+        "global_structure_count": 2,
+        "focus_priority_count": 5,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -15.0565,
+        "reward": 1.0
+      }
+    ],
+    "stabilize_rows": [
+      {
+        "tick_index": 12,
+        "elapsed_ms": 48.7063,
+        "state_pool_size": 36
+      },
+      {
+        "tick_index": 13,
+        "elapsed_ms": 49.0552,
+        "state_pool_size": 35
+      },
+      {
+        "tick_index": 14,
+        "elapsed_ms": 49.0826,
+        "state_pool_size": 35
+      },
+      {
+        "tick_index": 15,
+        "elapsed_ms": 67.7966,
+        "state_pool_size": 34
+      },
+      {
+        "tick_index": 16,
+        "elapsed_ms": 64.3123,
+        "state_pool_size": 35
+      },
+      {
+        "tick_index": 17,
+        "elapsed_ms": 53.0665,
+        "state_pool_size": 34
+      },
+      {
+        "tick_index": 18,
+        "elapsed_ms": 54.0569,
+        "state_pool_size": 32
+      },
+      {
+        "tick_index": 19,
+        "elapsed_ms": 53.4776,
+        "state_pool_size": 31
+      }
+    ],
+    "acceptance_rows": [
+      {
+        "pair_id": "tone_low_rise",
+        "target_text_label": "tone_low",
+        "observation_ticks": 4,
+        "tick_rows": [
+          {
+            "probe_tick_index": 0,
+            "elapsed_ms": 30.5104,
+            "window_count": 4,
+            "memory_write_count": 8,
+            "global_structure_count": 2,
+            "focus_priority_count": 4,
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 0,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": 87.8136,
+            "state_best_text": "tone_low",
+            "state_margin": 1.5,
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          {
+            "probe_tick_index": 1,
+            "elapsed_ms": 34.2093,
+            "window_count": 5,
+            "memory_write_count": 10,
+            "global_structure_count": 2,
+            "focus_priority_count": 5,
+            "bn_best_text": "tone_low",
+            "bn_target_rank": 1,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": 11.856,
+            "state_best_text": "tone_low",
+            "state_margin": 2.85,
+            "focus_has_target": false,
+            "strict_success": true
+          },
+          {
+            "probe_tick_index": 2,
+            "elapsed_ms": 35.5389,
+            "window_count": 5,
+            "memory_write_count": 10,
+            "global_structure_count": 2,
+            "focus_priority_count": 5,
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 0,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": 40.3868,
+            "state_best_text": "tone_low",
+            "state_margin": 4.065,
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          {
+            "probe_tick_index": 3,
+            "elapsed_ms": 28.8319,
+            "window_count": 5,
+            "memory_write_count": 10,
+            "global_structure_count": 1,
+            "focus_priority_count": 5,
+            "bn_best_text": "",
+            "bn_target_rank": 0,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": 25.4186,
+            "state_best_text": "tone_low",
+            "state_margin": 3.9005,
+            "focus_has_target": false,
+            "strict_success": false
+          }
+        ],
+        "final_evaluation": {
+          "bn_exact_ranked": [],
+          "bn_best_text": "",
+          "bn_target_rank": 0,
+          "bn_target_score": 0.0,
+          "bn_success": false,
+          "cstar_best_text": "tone_low",
+          "cstar_target_energy": 39.7658,
+          "cstar_distractor_best_energy": 14.3472,
+          "cstar_margin": 25.4186,
+          "cstar_success": true,
+          "state_best_text": "tone_low",
+          "state_target_energy": 5.1585,
+          "state_distractor_best_energy": 1.258,
+          "state_margin": 3.9005,
+          "state_success": true,
+          "focus_units": [
+            "win_3",
+            "win_2",
+            "听觉全局特征[band::0]",
+            "win_1"
+          ],
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        "first_strict_success_tick": 1,
+        "mean_elapsed_ms": 32.2726
+      },
+      {
+        "pair_id": "tone_high_rise",
+        "target_text_label": "tone_high",
+        "observation_ticks": 4,
+        "tick_rows": [
+          {
+            "probe_tick_index": 0,
+            "elapsed_ms": 38.4595,
+            "window_count": 4,
+            "memory_write_count": 8,
+            "global_structure_count": 2,
+            "focus_priority_count": 4,
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": -51.7119,
+            "state_best_text": "tone_low",
+            "state_margin": -1.5,
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          {
+            "probe_tick_index": 1,
+            "elapsed_ms": 40.645,
+            "window_count": 5,
+            "memory_write_count": 10,
+            "global_structure_count": 2,
+            "focus_priority_count": 5,
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": -7.7543,
+            "state_best_text": "tone_low",
+            "state_margin": -1.8101,
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          {
+            "probe_tick_index": 2,
+            "elapsed_ms": 45.0645,
+            "window_count": 5,
+            "memory_write_count": 10,
+            "global_structure_count": 2,
+            "focus_priority_count": 5,
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "cstar_best_text": "tone_low",
+            "cstar_margin": -35.942,
+            "state_best_text": "tone_low",
+            "state_margin": -2.7405,
+            "focus_has_target": false,
+            "strict_success": false
+          },
+          {
+            "probe_tick_index": 3,
+            "elapsed_ms": 40.7163,
+            "window_count": 5,
+            "memory_write_count": 10,
+            "global_structure_count": 2,
+            "focus_priority_count": 5,
+            "bn_best_text": "tone_high",
+            "bn_target_rank": 1,
+            "cstar_best_text": "tone_high",
+            "cstar_margin": 0.7392,
+            "state_best_text": "tone_low",
+            "state_margin": -2.3813,
+            "focus_has_target": false,
+            "strict_success": true
+          }
+        ],
+        "final_evaluation": {
+          "bn_exact_ranked": [
+            {
+              "memory_id": "mem_000046",
+              "text": "tone_high",
+              "score": 0.34,
+              "tick_index": 11
+            },
+            {
+              "memory_id": "mem_000002",
+              "text": "tone_low",
+              "score": 0.3327,
+              "tick_index": -1
+            },
+            {
+              "memory_id": "mem_000010",
+              "text": "tone_low",
+              "score": 0.3273,
+              "tick_index": 2
+            },
+            {
+              "memory_id": "mem_000014",
+              "text": "tone_high",
+              "score": 0.3271,
+              "tick_index": 3
+            },
+            {
+              "memory_id": "mem_000030",
+              "text": "tone_high",
+              "score": 0.3257,
+              "tick_index": 7
+            }
+          ],
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 1,
+          "bn_target_score": 0.34,
+          "bn_success": true,
+          "cstar_best_text": "tone_high",
+          "cstar_target_energy": 13.0341,
+          "cstar_distractor_best_energy": 12.2949,
+          "cstar_margin": 0.7392,
+          "cstar_success": true,
+          "state_best_text": "tone_low",
+          "state_target_energy": 2.6921,
+          "state_distractor_best_energy": 5.0734,
+          "state_margin": -2.3813,
+          "state_success": false,
+          "focus_units": [
+            "win_3",
+            "win_2",
+            "win_1",
+            "听觉全局特征[band::1]"
+          ],
+          "focus_has_target": false,
+          "strict_success": true
+        },
+        "first_strict_success_tick": 3,
+        "mean_elapsed_ms": 41.2213
+      }
+    ],
+    "accepted": false
+  },
+  "audio_only_probe_rows": [
+    {
+      "pair_id": "tone_low_rise",
+      "target_text_label": "tone_low",
+      "observation_ticks": 6,
+      "tick_rows": [
+        {
+          "probe_tick_index": 0,
+          "elapsed_ms": 36.8183,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 0,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 87.8136,
+          "state_best_text": "tone_low",
+          "state_margin": 1.5,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 1,
+          "elapsed_ms": 34.1667,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "bn_target_rank": 1,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 11.856,
+          "state_best_text": "tone_low",
+          "state_margin": 2.85,
+          "focus_has_target": false,
+          "strict_success": true
+        },
+        {
+          "probe_tick_index": 2,
+          "elapsed_ms": 34.2952,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 0,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 40.3868,
+          "state_best_text": "tone_low",
+          "state_margin": 4.065,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 3,
+          "elapsed_ms": 31.4109,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 1,
+          "focus_priority_count": 5,
+          "bn_best_text": "",
+          "bn_target_rank": 0,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 25.4186,
+          "state_best_text": "tone_low",
+          "state_margin": 3.9005,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 4,
+          "elapsed_ms": 32.3019,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 1,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "bn_target_rank": 1,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 24.6071,
+          "state_best_text": "tone_low",
+          "state_margin": 4.5413,
+          "focus_has_target": true,
+          "strict_success": true
+        },
+        {
+          "probe_tick_index": 5,
+          "elapsed_ms": 28.3135,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 1,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 2,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": 40.8864,
+          "state_best_text": "tone_low",
+          "state_margin": 5.3759,
+          "focus_has_target": true,
+          "strict_success": false
+        }
+      ],
+      "final_evaluation": {
+        "bn_exact_ranked": [
+          {
+            "memory_id": "mem_000006",
+            "text": "tone_high",
+            "score": 0.3471,
+            "tick_index": 1
+          },
+          {
+            "memory_id": "mem_000002",
+            "text": "tone_low",
+            "score": 0.3452,
+            "tick_index": -1
+          },
+          {
+            "memory_id": "mem_000026",
+            "text": "tone_low",
+            "score": 0.3416,
+            "tick_index": 6
+          }
+        ],
+        "bn_best_text": "tone_high",
+        "bn_target_rank": 2,
+        "bn_target_score": 0.3452,
+        "bn_success": false,
+        "cstar_best_text": "tone_low",
+        "cstar_target_energy": 47.5866,
+        "cstar_distractor_best_energy": 6.7002,
+        "cstar_margin": 40.8864,
+        "cstar_success": true,
+        "state_best_text": "tone_low",
+        "state_target_energy": 7.0284,
+        "state_distractor_best_energy": 1.6525,
+        "state_margin": 5.3759,
+        "state_success": true,
+        "focus_units": [
+          "tone_low",
+          "win_3",
+          "global_band_0",
+          "win_2"
+        ],
+        "focus_has_target": true,
+        "strict_success": false
+      },
+      "first_strict_success_tick": 1,
+      "mean_elapsed_ms": 32.8844
+    },
+    {
+      "pair_id": "tone_high_rise",
+      "target_text_label": "tone_high",
+      "observation_ticks": 6,
+      "tick_rows": [
+        {
+          "probe_tick_index": 0,
+          "elapsed_ms": 32.8376,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 1,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -51.7119,
+          "state_best_text": "tone_low",
+          "state_margin": -1.5,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 1,
+          "elapsed_ms": 38.8087,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 1,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -7.7543,
+          "state_best_text": "tone_low",
+          "state_margin": -1.8101,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 2,
+          "elapsed_ms": 50.1181,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 1,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -35.942,
+          "state_best_text": "tone_low",
+          "state_margin": -2.7405,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 3,
+          "elapsed_ms": 44.2871,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_high",
+          "bn_target_rank": 1,
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 0.7392,
+          "state_best_text": "tone_low",
+          "state_margin": -2.3813,
+          "focus_has_target": false,
+          "strict_success": true
+        },
+        {
+          "probe_tick_index": 4,
+          "elapsed_ms": 43.3092,
+          "window_count": 5,
+          "memory_write_count": 10,
+          "global_structure_count": 2,
+          "focus_priority_count": 5,
+          "bn_best_text": "tone_low",
+          "bn_target_rank": 2,
+          "cstar_best_text": "tone_high",
+          "cstar_margin": 3.4926,
+          "state_best_text": "tone_low",
+          "state_margin": -1.8312,
+          "focus_has_target": false,
+          "strict_success": false
+        },
+        {
+          "probe_tick_index": 5,
+          "elapsed_ms": 71.9129,
+          "window_count": 4,
+          "memory_write_count": 8,
+          "global_structure_count": 2,
+          "focus_priority_count": 4,
+          "bn_best_text": "tone_low",
+          "bn_target_rank": 2,
+          "cstar_best_text": "tone_low",
+          "cstar_margin": -25.2703,
+          "state_best_text": "tone_low",
+          "state_margin": -2.7047,
+          "focus_has_target": false,
+          "strict_success": false
+        }
+      ],
+      "final_evaluation": {
+        "bn_exact_ranked": [
+          {
+            "memory_id": "mem_000002",
+            "text": "tone_low",
+            "score": 0.334,
+            "tick_index": -1
+          },
+          {
+            "memory_id": "mem_000022",
+            "text": "tone_high",
+            "score": 0.3307,
+            "tick_index": 5
+          },
+          {
+            "memory_id": "mem_000026",
+            "text": "tone_low",
+            "score": 0.33,
+            "tick_index": 6
+          }
+        ],
+        "bn_best_text": "tone_low",
+        "bn_target_rank": 2,
+        "bn_target_score": 0.3307,
+        "bn_success": false,
+        "cstar_best_text": "tone_low",
+        "cstar_target_energy": 10.6059,
+        "cstar_distractor_best_energy": 35.8762,
+        "cstar_margin": -25.2703,
+        "cstar_success": false,
+        "state_best_text": "tone_low",
+        "state_target_energy": 3.974,
+        "state_distractor_best_energy": 6.6787,
+        "state_margin": -2.7047,
+        "state_success": false,
+        "focus_units": [
+          "win_3",
+          "win_2",
+          "听觉全局特征[band::1]",
+          "win_1"
+        ],
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      "first_strict_success_tick": 3,
+      "mean_elapsed_ms": 46.8789
+    }
+  ],
+  "text_only_reverse_probe_rows": [
+    {
+      "pair_id": "tone_low_rise",
+      "target_text_label": "tone_low",
+      "target_audio_labels": [
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0",
+        "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0",
+        "audio::global::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct3_fl0_bw0_ro0_ce0_db0",
+        "audio::global_band_0"
+      ],
+      "observation_ticks": 6,
+      "tick_rows": [
+        {
+          "probe_tick_index": 0,
+          "elapsed_ms": 26.6663,
+          "bn_best_text": "",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": 13.8258,
+          "audio_state_margin": 0.32,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 1,
+          "elapsed_ms": 30.9405,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": 2.4841,
+          "audio_state_margin": 0.288,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 2,
+          "elapsed_ms": 33.585,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": 3.2775,
+          "audio_state_margin": 0.0648,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 3,
+          "elapsed_ms": 27.3184,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": 1.2204,
+          "audio_state_margin": 0.1383,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 4,
+          "elapsed_ms": 22.8264,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": 8.6381,
+          "audio_state_margin": 0.8002,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 5,
+          "elapsed_ms": 22.5552,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": 2.5473,
+          "audio_state_margin": 0.7203,
+          "audio_strict_success": true
+        }
+      ],
+      "final_text_evaluation": {
+        "bn_exact_ranked": [
+          {
+            "memory_id": "mem_000038",
+            "text": "tone_high",
+            "score": 0.3677,
+            "tick_index": 9
+          }
+        ],
+        "bn_best_text": "tone_high",
+        "bn_target_rank": 0,
+        "bn_target_score": 0.0,
+        "bn_success": false,
+        "cstar_best_text": "tone_low",
+        "cstar_target_energy": 33.6565,
+        "cstar_distractor_best_energy": 15.216,
+        "cstar_margin": 18.4405,
+        "cstar_success": true,
+        "state_best_text": "tone_low",
+        "state_target_energy": 11.4969,
+        "state_distractor_best_energy": 2.9583,
+        "state_margin": 8.5386,
+        "state_success": true,
+        "focus_units": [
+          "tone_low",
+          "win_3",
+          "win_2",
+          "win_1"
+        ],
+        "focus_has_target": true,
+        "strict_success": false
+      },
+      "final_audio_evaluation": {
+        "cstar_label_energies": {
+          "audio::global_band_0": 0.73,
+          "audio::global_band_1": 1.4998,
+          "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0": 1.1057
+        },
+        "state_label_energies": {
+          "audio::global_band_0": 0.2277,
+          "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0": 0.1642
+        },
+        "cstar_target_energy": 4.0471,
+        "cstar_distractor_best_energy": 1.4998,
+        "cstar_margin": 2.5473,
+        "state_target_energy": 0.7203,
+        "state_distractor_best_energy": 0.0,
+        "state_margin": 0.7203,
+        "cstar_best_pair_id": "tone_low_rise",
+        "state_best_pair_id": "tone_low_rise",
+        "cstar_success": true,
+        "state_success": true,
+        "strict_success": true,
+        "target_pair_id": "tone_low_rise"
+      },
+      "first_audio_success_tick": 0,
+      "mean_elapsed_ms": 27.3153
+    },
+    {
+      "pair_id": "tone_high_rise",
+      "target_text_label": "tone_high",
+      "target_audio_labels": [
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct3_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfto_tc4_nz1_ps4_hr4_pr0_vp4_ct3_fl0_bw0_ro0_ce0_db1",
+        "audio::mem::pfha_tc4_nz0_ps4_hr4_pr0_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::global::pfto_tc4_nz1_ps4_hr4_pr1_vp4_ct4_fl0_bw0_ro0_ce0_db1",
+        "audio::global_band_1"
+      ],
+      "observation_ticks": 6,
+      "tick_rows": [
+        {
+          "probe_tick_index": 0,
+          "elapsed_ms": 23.9287,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_high",
+          "audio_cstar_best_pair_id": "tone_high_rise",
+          "audio_state_best_pair_id": "tone_high_rise",
+          "audio_cstar_margin": 3.0269,
+          "audio_state_margin": 0.1256,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 1,
+          "elapsed_ms": 24.2294,
+          "bn_best_text": "",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_high_rise",
+          "audio_cstar_margin": -0.9679,
+          "audio_state_margin": 0.033,
+          "audio_strict_success": false
+        },
+        {
+          "probe_tick_index": 2,
+          "elapsed_ms": 28.0719,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_high_rise",
+          "audio_cstar_margin": -2.3169,
+          "audio_state_margin": 0.0098,
+          "audio_strict_success": false
+        },
+        {
+          "probe_tick_index": 3,
+          "elapsed_ms": 31.4332,
+          "bn_best_text": "tone_high",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_high_rise",
+          "audio_state_best_pair_id": "tone_high_rise",
+          "audio_cstar_margin": 3.951,
+          "audio_state_margin": 0.2442,
+          "audio_strict_success": true
+        },
+        {
+          "probe_tick_index": 4,
+          "elapsed_ms": 25.3848,
+          "bn_best_text": "",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "",
+          "audio_state_best_pair_id": "tone_high_rise",
+          "audio_cstar_margin": 0.0,
+          "audio_state_margin": 0.2198,
+          "audio_strict_success": false
+        },
+        {
+          "probe_tick_index": 5,
+          "elapsed_ms": 25.8557,
+          "bn_best_text": "tone_low",
+          "cstar_best_text": "tone_low",
+          "audio_cstar_best_pair_id": "tone_low_rise",
+          "audio_state_best_pair_id": "tone_low_rise",
+          "audio_cstar_margin": -2.3035,
+          "audio_state_margin": 0.1178,
+          "audio_strict_success": false
+        }
+      ],
+      "final_text_evaluation": {
+        "bn_exact_ranked": [
+          {
+            "memory_id": "mem_000002",
+            "text": "tone_low",
+            "score": 0.3641,
+            "tick_index": -1
+          }
+        ],
+        "bn_best_text": "tone_low",
+        "bn_target_rank": 0,
+        "bn_target_score": 0.0,
+        "bn_success": false,
+        "cstar_best_text": "tone_low",
+        "cstar_target_energy": 1.7863,
+        "cstar_distractor_best_energy": 90.637,
+        "cstar_margin": -88.8507,
+        "cstar_success": false,
+        "state_best_text": "tone_high",
+        "state_target_energy": 6.7667,
+        "state_distractor_best_energy": 5.966,
+        "state_margin": 0.8007,
+        "state_success": true,
+        "focus_units": [
+          "tone_high",
+          "tone_low",
+          "win_3",
+          "win_2"
+        ],
+        "focus_has_target": true,
+        "strict_success": false
+      },
+      "final_audio_evaluation": {
+        "cstar_label_energies": {
+          "audio::global_band_0": 1.9948,
+          "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0": 2.3035
+        },
+        "state_label_energies": {
+          "audio::global_band_0": 0.147,
+          "audio::global_band_1": 0.2648,
+          "audio::mem::pfha_tc4_nz0_ps4_hr5_pr0_vp5_ct4_fl0_bw0_ro0_ce0_db0": 0.1325
+        },
+        "cstar_target_energy": 0.0,
+        "cstar_distractor_best_energy": 2.3035,
+        "cstar_margin": -2.3035,
+        "state_target_energy": 0.2648,
+        "state_distractor_best_energy": 0.147,
+        "state_margin": 0.1178,
+        "cstar_best_pair_id": "tone_low_rise",
+        "state_best_pair_id": "tone_low_rise",
+        "cstar_success": false,
+        "state_success": true,
+        "strict_success": false,
+        "target_pair_id": "tone_high_rise"
+      },
+      "first_audio_success_tick": 0,
+      "mean_elapsed_ms": 26.484
+    }
+  ],
+  "switching_probe": {
+    "warm_pair_id": "tone_low_rise",
+    "target_pair_id": "tone_high_rise",
+    "warm_ticks": 4,
+    "observation_ticks": 8,
+    "warm_rows": [
+      {
+        "probe_tick_index": 0,
+        "elapsed_ms": 33.3147,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "state_best_text": "tone_low",
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 1,
+        "elapsed_ms": 45.1337,
+        "bn_best_text": "tone_low",
+        "cstar_best_text": "tone_low",
+        "state_best_text": "tone_low",
+        "strict_success": true
+      },
+      {
+        "probe_tick_index": 2,
+        "elapsed_ms": 40.6303,
+        "bn_best_text": "tone_high",
+        "cstar_best_text": "tone_low",
+        "state_best_text": "tone_low",
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 3,
+        "elapsed_ms": 34.9364,
+        "bn_best_text": "",
+        "cstar_best_text": "tone_low",
+        "state_best_text": "tone_low",
+        "strict_success": false
+      }
+    ],
+    "switch_rows": [
+      {
+        "probe_tick_index": 0,
+        "elapsed_ms": 45.8798,
+        "bn_best_text": "tone_high",
+        "bn_target_rank": 1,
+        "cstar_best_text": "tone_high",
+        "cstar_margin": 9.2352,
+        "state_best_text": "tone_low",
+        "state_margin": -2.8968,
+        "focus_has_target": false,
+        "strict_success": true
+      },
+      {
+        "probe_tick_index": 1,
+        "elapsed_ms": 73.7884,
+        "bn_best_text": "tone_low",
+        "bn_target_rank": 2,
+        "cstar_best_text": "tone_high",
+        "cstar_margin": 27.1489,
+        "state_best_text": "tone_low",
+        "state_margin": -1.4729,
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 2,
+        "elapsed_ms": 42.5999,
+        "bn_best_text": "tone_high",
+        "bn_target_rank": 1,
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -5.9818,
+        "state_best_text": "tone_low",
+        "state_margin": -1.7919,
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 3,
+        "elapsed_ms": 45.8514,
+        "bn_best_text": "tone_high",
+        "bn_target_rank": 1,
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -4.317,
+        "state_best_text": "tone_low",
+        "state_margin": -1.9504,
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 4,
+        "elapsed_ms": 50.0382,
+        "bn_best_text": "tone_low",
+        "bn_target_rank": 2,
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -18.8924,
+        "state_best_text": "tone_low",
+        "state_margin": -2.8646,
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 5,
+        "elapsed_ms": 51.5001,
+        "bn_best_text": "tone_high",
+        "bn_target_rank": 1,
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -29.1496,
+        "state_best_text": "tone_low",
+        "state_margin": -3.6698,
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 6,
+        "elapsed_ms": 45.4879,
+        "bn_best_text": "tone_low",
+        "bn_target_rank": 2,
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -4.8954,
+        "state_best_text": "tone_low",
+        "state_margin": -3.7245,
+        "focus_has_target": false,
+        "strict_success": false
+      },
+      {
+        "probe_tick_index": 7,
+        "elapsed_ms": 47.1384,
+        "bn_best_text": "tone_low",
+        "bn_target_rank": 2,
+        "cstar_best_text": "tone_low",
+        "cstar_margin": -8.4597,
+        "state_best_text": "tone_low",
+        "state_margin": -4.0346,
+        "focus_has_target": false,
+        "strict_success": false
+      }
+    ],
+    "final_evaluation": {
+      "bn_exact_ranked": [
+        {
+          "memory_id": "mem_000018",
+          "text": "tone_low",
+          "score": 0.3427,
+          "tick_index": 4
+        },
+        {
+          "memory_id": "mem_000046",
+          "text": "tone_high",
+          "score": 0.3406,
+          "tick_index": 11
+        },
+        {
+          "memory_id": "mem_000002",
+          "text": "tone_low",
+          "score": 0.3378,
+          "tick_index": -1
+        },
+        {
+          "memory_id": "mem_000006",
+          "text": "tone_high",
+          "score": 0.3354,
+          "tick_index": 1
+        },
+        {
+          "memory_id": "mem_000034",
+          "text": "tone_low",
+          "score": 0.3353,
+          "tick_index": 8
+        },
+        {
+          "memory_id": "mem_000014",
+          "text": "tone_high",
+          "score": 0.3353,
+          "tick_index": 3
+        }
+      ],
+      "bn_best_text": "tone_low",
+      "bn_target_rank": 2,
+      "bn_target_score": 0.3406,
+      "bn_success": false,
+      "cstar_best_text": "tone_low",
+      "cstar_target_energy": 10.1322,
+      "cstar_distractor_best_energy": 18.5919,
+      "cstar_margin": -8.4597,
+      "cstar_success": false,
+      "state_best_text": "tone_low",
+      "state_target_energy": 5.8327,
+      "state_distractor_best_energy": 9.8673,
+      "state_margin": -4.0346,
+      "state_success": false,
+      "focus_units": [
+        "win_3",
+        "win_2",
+        "win_1",
+        "win_4"
+      ],
+      "focus_has_target": false,
+      "strict_success": false
+    },
+    "bn_flip_tick": 0,
+    "cstar_flip_tick": 0,
+    "state_flip_tick": null,
+    "focus_flip_tick": null
+  },
+  "config": {
+    "reward_value": 1.0,
+    "stabilize_ticks": 8,
+    "acceptance_observation_ticks": 4,
+    "audio_probe_ticks": 6,
+    "reverse_probe_ticks": 6,
+    "switch_warm_ticks": 4,
+    "switch_observation_ticks": 8,
+    "train_epochs_candidates": [
+      6,
+      8,
+      10
+    ]
+  }
+}

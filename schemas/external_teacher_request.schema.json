@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "required": [
+    "schema_id",
+    "schema_version",
+    "tick_index",
+    "candidate_actions",
+    "focus_preview",
+    "bn_preview_ids",
+    "state_summary",
+    "request_digest"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "enum": ["external_teacher_request/v1"] },
+    "schema_version": { "type": "string" },
+    "tick_index": { "type": "integer", "minimum": -1 },
+    "candidate_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["action_id", "action_name", "drive"],
+        "properties": {
+          "action_id": { "type": "string" },
+          "action_name": { "type": "string" },
+          "drive": { "type": "number", "minimum": 0.0, "maximum": 1.5 }
+        },
+        "additionalProperties": true
+      }
+    },
+    "focus_preview": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "bn_preview_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "state_summary": {
+      "type": "object",
+      "required": [
+        "state_pool_size",
+        "recent_external_count",
+        "verbatim_chars",
+        "anchor_count",
+        "residual_count",
+        "residual_total_unresolved_mass"
+      ],
+      "properties": {
+        "state_pool_size": { "type": "integer", "minimum": 0 },
+        "recent_external_count": { "type": "integer", "minimum": 0 },
+        "verbatim_chars": { "type": "integer", "minimum": 0 },
+        "anchor_count": { "type": "integer", "minimum": 0 },
+        "residual_count": { "type": "integer", "minimum": 0 },
+        "residual_total_unresolved_mass": { "type": "number", "minimum": 0.0, "maximum": 1000000.0 }
+      },
+      "additionalProperties": true
+    },
+    "request_digest": {
+      "type": "object",
+      "required": ["tick_index", "candidate_action_count", "top_actions", "focus_preview", "bn_preview_ids"],
+      "properties": {
+        "tick_index": { "type": "integer", "minimum": -1 },
+        "candidate_action_count": { "type": "integer", "minimum": 0 },
+        "top_actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["action_id", "action_name", "drive"],
+            "properties": {
+              "action_id": { "type": "string" },
+              "action_name": { "type": "string" },
+              "drive": { "type": "number", "minimum": 0.0, "maximum": 1.5 }
+            },
+            "additionalProperties": true
+          }
+        },
+        "focus_preview": { "type": "array", "items": { "type": "string" } },
+        "bn_preview_ids": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

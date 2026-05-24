@@ -1,0 +1,600 @@
+{
+  "label": "Phase25 多模态教学+海豚训练展示运行",
+  "config_overrides": {
+    "autonomous_teacher_enabled": false,
+    "autonomous_llm_gate_enabled": false,
+    "autonomous_external_teacher_enabled": false,
+    "executor_enabled": false,
+    "intrinsic_feedback_enabled": true,
+    "memory_candidate_limit": 224,
+    "memory_ann_top_k": 72,
+    "short_term_successor_tail_limit": 14,
+    "state_pool_anchor_cache_limit": 16,
+    "state_pool_residual_unit_limit": 56,
+    "r_state_head_limit": 4,
+    "r_state_items_per_head": 8,
+    "text_sensor_budget": 10,
+    "text_sensor_fatigue_threshold": 999,
+    "text_sensor_max_suppression": 0.0,
+    "vision_edge_candidate_gain": 1.9,
+    "vision_edge_priority_gain": 1.45,
+    "vision_attention_boost_enabled": true,
+    "vision_attention_boost_decay": 0.72,
+    "vision_patch_budget": 20,
+    "vision_focus_patch_budget": 10,
+    "vision_raw_state_budget": 96,
+    "vision_reconstruction_patch_budget": 1024,
+    "vision_attention_boost_max_extra_raw_budget": 128,
+    "vision_attention_boost_max_extra_focus_budget": 10,
+    "vision_attention_boost_min_radius_scale": 0.28,
+    "vision_attention_boost_edge_gain": 1.35,
+    "vision_attention_boost_gaze_sigma_scale": 0.52,
+    "hearing_window_budget": 18,
+    "hearing_focus_band_count": 14,
+    "hearing_focus_bandwidth_octaves": 1.1,
+    "hearing_attention_boost_enabled": true,
+    "hearing_attention_boost_decay": 0.8,
+    "hearing_attention_boost_max_extra_window_budget": 10,
+    "hearing_attention_boost_max_extra_focus_budget": 8,
+    "hearing_attention_boost_min_bandwidth_scale": 0.58,
+    "hearing_attention_boost_focus_gain": 1.45,
+    "hearing_static_dedup_delta_threshold": 0.02,
+    "hearing_static_dedup_band_similarity_threshold": 0.92,
+    "hearing_static_dedup_max_suppression": 0.85,
+    "hearing_auditory_fatigue_decay": 0.82,
+    "hearing_auditory_fatigue_step": 0.16,
+    "hearing_auditory_fatigue_max": 1.0
+  },
+  "mode": "multimodal",
+  "max_ticks": 86,
+  "items": [
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "apple",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "multimodal_showcase::train::apple",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::apple"
+        ]
+      }
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::apple"
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "banana",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "multimodal_showcase::train::banana",
+      "external_feedback": {
+        "reward": 0.9,
+        "punishment": 0.0,
+        "notes": [
+          "showcase::banana"
+        ]
+      }
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_bridge"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_bridge"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_bridge"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_bridge"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_bridge"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_bridge"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "source_type": "showcase_probe::vision::apple"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "source_type": "showcase_probe::vision::apple"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "source_type": "showcase_probe::vision::apple"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "source_type": "showcase_probe::vision::apple"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "source_type": "showcase_probe::vision::apple"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.png",
+      "source_type": "showcase_probe::vision::apple"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "showcase_probe::audio::apple"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "showcase_probe::audio::apple"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "showcase_probe::audio::apple"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "showcase_probe::audio::apple"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "showcase_probe::audio::apple"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\apple.wav",
+      "source_type": "showcase_probe::audio::apple"
+    },
+    {
+      "text": "apple",
+      "source_type": "showcase_probe::text::apple"
+    },
+    {
+      "text": "apple",
+      "source_type": "showcase_probe::text::apple"
+    },
+    {
+      "text": "apple",
+      "source_type": "showcase_probe::text::apple"
+    },
+    {
+      "text": "apple",
+      "source_type": "showcase_probe::text::apple"
+    },
+    {
+      "text": "apple",
+      "source_type": "showcase_probe::text::apple"
+    },
+    {
+      "text": "apple",
+      "source_type": "showcase_probe::text::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::apple"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::apple"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "source_type": "showcase_probe::vision::banana"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "source_type": "showcase_probe::vision::banana"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "source_type": "showcase_probe::vision::banana"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "source_type": "showcase_probe::vision::banana"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "source_type": "showcase_probe::vision::banana"
+    },
+    {
+      "text": "",
+      "image_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.png",
+      "source_type": "showcase_probe::vision::banana"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "showcase_probe::audio::banana"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "showcase_probe::audio::banana"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "showcase_probe::audio::banana"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "showcase_probe::audio::banana"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "showcase_probe::audio::banana"
+    },
+    {
+      "text": "",
+      "audio_path": "H:\\AP原型实验第二期\\outputs\\multimodal_teaching_compare_20260524\\current\\assets\\banana.wav",
+      "source_type": "showcase_probe::audio::banana"
+    },
+    {
+      "text": "banana",
+      "source_type": "showcase_probe::text::banana"
+    },
+    {
+      "text": "banana",
+      "source_type": "showcase_probe::text::banana"
+    },
+    {
+      "text": "banana",
+      "source_type": "showcase_probe::text::banana"
+    },
+    {
+      "text": "banana",
+      "source_type": "showcase_probe::text::banana"
+    },
+    {
+      "text": "banana",
+      "source_type": "showcase_probe::text::banana"
+    },
+    {
+      "text": "banana",
+      "source_type": "showcase_probe::text::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::banana"
+    },
+    {
+      "text": "",
+      "source_type": "multimodal_showcase::idle_probe_after::banana"
+    }
+  ]
+}

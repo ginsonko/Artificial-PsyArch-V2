@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "required": [
+    "schema_id",
+    "schema_version",
+    "run_id",
+    "tick_index",
+    "tick_id",
+    "status",
+    "generated_at_ms",
+    "input_preview",
+    "state_top",
+    "r_state_preview",
+    "a_focus_preview",
+    "notes"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "enum": ["tick_summary/v1"] },
+    "schema_version": { "type": "string" },
+    "run_id": { "type": "string" },
+    "tick_index": { "type": "integer", "minimum": 0 },
+    "tick_id": { "type": "string" },
+    "status": { "type": "string" },
+    "generated_at_ms": { "type": "integer", "minimum": 0 },
+    "input_preview": { "type": "string" },
+    "state_top": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sa_label", "energy"],
+        "properties": {
+          "sa_label": { "type": "string" },
+          "energy": { "type": "number" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "r_state_preview": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "a_focus_preview": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}
+

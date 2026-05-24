@@ -1,0 +1,93 @@
+{
+  "schema_id": "auto_tuner_v2",
+  "schema_version": "1.0",
+  "enabled": true,
+  "profiles": [
+    {
+      "profile_id": "baseline_default",
+      "enabled": true,
+      "display_name": "默认基线",
+      "description": "稳定环境下的默认调参基线。",
+      "when": [
+        {
+          "metric": "metrics.logic_ms",
+          "op": "<",
+          "value": 150.0
+        }
+      ],
+      "adjustments": [
+        {
+          "target": "attention.focus_gain",
+          "value": 1.35
+        },
+        {
+          "target": "sampling.increment_budget",
+          "value": 48.0
+        },
+        {
+          "target": "prediction.successor_bias_gain",
+          "value": 1.18
+        },
+        {
+          "target": "state.current_input_gain",
+          "value": 1.0
+        },
+        {
+          "target": "state.history_suppression_gain",
+          "value": 1.0
+        },
+        {
+          "target": "state.prediction_suppression_gain",
+          "value": 1.0
+        },
+        {
+          "target": "state.surprise_focus_gain",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "profile_id": "high_load_guard",
+      "enabled": true,
+      "display_name": "高负载保护",
+      "description": "当单 tick 耗时变大时，收紧采样增量和注意力预算，防止性能失控。",
+      "when": [
+        {
+          "metric": "metrics.logic_ms",
+          "op": ">=",
+          "value": 150.0
+        }
+      ],
+      "adjustments": [
+        {
+          "target": "attention.focus_gain",
+          "value": 1.05
+        },
+        {
+          "target": "sampling.increment_budget",
+          "value": 32.0
+        },
+        {
+          "target": "prediction.successor_bias_gain",
+          "value": 1.05
+        },
+        {
+          "target": "state.current_input_gain",
+          "value": 0.9
+        },
+        {
+          "target": "state.history_suppression_gain",
+          "value": 1.1
+        },
+        {
+          "target": "state.prediction_suppression_gain",
+          "value": 1.15
+        },
+        {
+          "target": "state.surprise_focus_gain",
+          "value": 1.0
+        }
+      ]
+    }
+  ]
+}

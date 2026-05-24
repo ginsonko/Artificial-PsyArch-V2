@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "required": [
+    "schema_id",
+    "schema_version",
+    "run_id",
+    "run_kind",
+    "status",
+    "label",
+    "created_at_ms",
+    "started_at_ms",
+    "updated_at_ms",
+    "finished_at_ms",
+    "tick_planned",
+    "tick_done",
+    "latest_tick_index",
+    "paths",
+    "config_snapshot"
+  ],
+  "properties": {
+    "schema_id": { "type": "string", "enum": ["run_manifest/v1"] },
+    "schema_version": { "type": "string" },
+    "run_id": { "type": "string" },
+    "run_kind": { "type": "string" },
+    "status": { "type": "string" },
+    "label": { "type": "string" },
+    "created_at_ms": { "type": "integer", "minimum": 0 },
+    "started_at_ms": { "type": "integer", "minimum": 0 },
+    "updated_at_ms": { "type": "integer", "minimum": 0 },
+    "finished_at_ms": { "type": "integer", "minimum": 0 },
+    "tick_planned": { "type": "integer", "minimum": 0 },
+    "tick_done": { "type": "integer", "minimum": 0 },
+    "latest_tick_index": { "type": "integer", "minimum": -1 },
+    "paths": {
+      "type": "object",
+      "required": ["run_dir", "live_dir", "chunks_dir", "system_dir"],
+      "properties": {
+        "run_dir": { "type": "string" },
+        "live_dir": { "type": "string" },
+        "chunks_dir": { "type": "string" },
+        "system_dir": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "config_snapshot": {
+      "type": "object",
+      "required": ["host", "port", "live_ring_limit", "run_chunk_size", "text_sensor_budget", "r_state_head_limit"],
+      "properties": {
+        "host": { "type": "string" },
+        "port": { "type": "integer" },
+        "live_ring_limit": { "type": "integer" },
+        "run_chunk_size": { "type": "integer" },
+        "text_sensor_budget": { "type": "integer" },
+        "r_state_head_limit": { "type": "integer" }
+      },
+      "additionalProperties": true
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

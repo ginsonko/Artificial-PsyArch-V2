@@ -1,0 +1,24 @@
+{
+  "label": "Phase22 AP-agent 数据集级耦合样例",
+  "config_overrides": {
+    "executor_enabled": true,
+    "executor_dry_run": true,
+    "executor_screenshot_enabled": false,
+    "autonomous_external_teacher_enabled": false
+  },
+  "runs": [
+    {
+      "label": "AP-agent coupling smoke",
+      "texts": [
+        "今天 天气 不错",
+        "今天 天气 不错",
+        "我 想 出门"
+      ],
+      "after": {
+        "save_checkpoint_path": "../outputs/ap_agent_runtime_checkpoint.json",
+        "export_memory_bundle_dir": "../outputs/ap_agent_memory_bundle",
+        "inspect_memory_bundle": true
+      }
+    }
+  ]
+}
