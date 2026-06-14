@@ -32,6 +32,20 @@ PREDICTION_META_KEYS = {
     "dynamic_slot_role",
     "slot_role",
     "previous_prefix",
+    "token",
+    "candidate_token",
+    "expected_token",
+    "source",
+    "source_event_type",
+    "cursor_before",
+    "cursor_after",
+    "visible_text_before",
+    "visible_text_after",
+    "action_param_reason",
+    "action_id",
+    "parameter_kind",
+    "self_generated",
+    "readout_expected_token",
 }
 
 

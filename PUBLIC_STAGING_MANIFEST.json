@@ -1,9 +1,9 @@
 {
   "schema_id": "apv2_public_repo_staging_manifest/v1",
   "repo_id": "Artificial-PsyArch-V2",
-  "generated_at": "2026-06-14T23:38:16",
+  "generated_at": "2026-06-14T23:44:00",
   "file_count": 240,
-  "total_bytes": 10070696,
+  "total_bytes": 10082950,
   "items": [
     {
       "path": ".gitignore",
@@ -352,8 +352,8 @@
     },
     {
       "path": "docs/Release_APV2_NewsArticle_20260614.md",
-      "bytes": 6119,
-      "sha256": "1a224769f5d2f640dd65ee9f428275f52e0b4aa98f774ce9822b75d2eab29ab9"
+      "bytes": 6411,
+      "sha256": "84836ab3a03fc62887fa6a7d662e0387490d2bae07541ec22095f5639d21ac1d"
     },
     {
       "path": "docs/Release_APV2_RepositorySetup_20260614.md",
@@ -642,8 +642,8 @@
     },
     {
       "path": "memory/spacetime/transition_store.py",
-      "bytes": 12349,
-      "sha256": "eb501dc619acd3d47d6b632a9233e6a691263083bc3475fb6ca6c446c76f50f7"
+      "bytes": 12672,
+      "sha256": "541dca60a2728f5174f0e9c8490b69456ef9ff975e6a6e044817a2ec8eafccc2"
     },
     {
       "path": "memory/store/__init__.py",
@@ -652,8 +652,8 @@
     },
     {
       "path": "memory/store/memory_store.py",
-      "bytes": 318798,
-      "sha256": "a13f813af5c5b8418e0c7009f93885fd9be8404a65981efe5f4507c972e25f37"
+      "bytes": 322421,
+      "sha256": "216ee7cdd797c12222e958a8fb93c27cb15a8037a24a9c2745cb0bb78c558394"
     },
     {
       "path": "NOTICE.md",
@@ -878,47 +878,47 @@
     {
       "path": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.docx",
       "bytes": 39323,
-      "sha256": "74751450cfcc48ad397ef288b362e61b4f95dd453e79984ac0676c195ed7453f"
+      "sha256": "0ee8d8d40a28c14c3398654e376b17e4073f3204e931b2691e7026fcdd3e4b8c"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.pdf",
       "bytes": 213193,
-      "sha256": "b9ecc84ca977be640960fab67e75e75279a24854087f30858e8f3850eb9b09bb"
+      "sha256": "266eec500ac05846eda4dddc4d5eb2b9bf089ac28300ebbc10d6226b2252bf7c"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.docx",
-      "bytes": 420245,
-      "sha256": "a6c84e86d7cf8a32e9cab4147e70a9833515ff950f4193720651197999dc916b"
+      "bytes": 420421,
+      "sha256": "64e16e7ba4aebc13b95bd976a7199bdc59d5b1ffa19dc902d32bb6eef8f1aa9a"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.pdf",
-      "bytes": 666017,
-      "sha256": "0e5f95bb6a6bdf39365aa747dc51ced1fdfcb7850ccedac1f2be3af7e4b26a33"
+      "bytes": 673857,
+      "sha256": "65b8de876b7d885e8a4f961f09ffa3dbd0c46bf461adbf7ca80a0be1c3167303"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.docx",
       "bytes": 431831,
-      "sha256": "ba0b3f2b23314b8b771fa31704e39f513ae99b4cad0bca9aa5494b66462136a2"
+      "sha256": "e392c7e9ae3f77e68eb9b40dd6b3756718b90e131f90284b036d983b93d9f841"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.pdf",
       "bytes": 888612,
-      "sha256": "476ba294c660166672a3e7fbc8ef4a1338a974c79a68a039e4ac5c0f28560662"
+      "sha256": "071a35a9cc910428759257e0f2e17bdb7463e6320ed19a4700d59e207d53dd0f"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.docx",
       "bytes": 147413,
-      "sha256": "df5914f6ca5336ad308d037fb96593a487456a8c67aefaad8cff437f81014e23"
+      "sha256": "74bf8fd15b9fe3ca420cdb86ce40147421965da58deb491b9b40eeb93aeea09a"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.pdf",
       "bytes": 1187930,
-      "sha256": "d70627eedab18a608d33a31016814598136cf4ea09eee0426beb08850cd01528"
+      "sha256": "0a5419fbb1c18630719c2410d075bb27e27ac8590c83d42d498d37ec8c106bd4"
     },
     {
       "path": "paper_artifacts/release_20260614/release_manifest_20260614.json",
       "bytes": 2137,
-      "sha256": "5abf4139da57e2b486e0ae32f331f0b51a13ff054b604d6dd62590b40d0bc85e"
+      "sha256": "83d9fabcd5d2f46a78c2cb3ca2525542d8ff62532b4c9e778c27569acc2a9bba"
     },
     {
       "path": "README.md",

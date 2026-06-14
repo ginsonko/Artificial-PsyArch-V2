@@ -4001,6 +4001,20 @@ class MemoryStore:
             "current_read_tick",
             "feedback_outcome",
             "feedback_correctness",
+            "token",
+            "candidate_token",
+            "expected_token",
+            "source",
+            "source_event_type",
+            "cursor_before",
+            "cursor_after",
+            "visible_text_before",
+            "visible_text_after",
+            "action_param_reason",
+            "action_id",
+            "parameter_kind",
+            "self_generated",
+            "readout_expected_token",
         )
         for key in allowed_keys:
             if key not in meta:
@@ -5315,7 +5329,11 @@ class MemoryStore:
         for row in list(items or []):
             if not isinstance(row, dict):
                 continue
-            if self._is_current_teacher_text_payload_item(row, snapshot_tick=snapshot_tick) or self._is_negative_feedback_text_payload_item(row):
+            if (
+                self._is_current_teacher_text_payload_item(row, snapshot_tick=snapshot_tick)
+                or self._is_output_text_process_anchor_item(row)
+                or self._is_negative_feedback_text_payload_item(row)
+            ):
                 token = self._text_payload_token(row)
                 if token:
                     companion_tokens.add(token)
@@ -5333,6 +5351,43 @@ class MemoryStore:
                 rows.append(dict(row))
                 existing_labels.add(label)
         return self._sort_text_process_payload_candidates(rows)[: max(8, self.successor_payload_text_reserve_limit * 4)]
+
+    def _is_output_text_process_anchor_item(self, row: dict) -> bool:
+        """
+        Preserve output-side text motor events when rebuilding Cn payloads.
+
+        Older persisted skill snapshots may have kept `text_action::insert::x`
+        in the full-fidelity item list while the bounded state-field view kept
+        only higher-energy external text or generic action nodes. Cn needs the
+        low-grain output event as a process anchor so the existing companion
+        logic can expose the matching `text::x` token candidate. This does not
+        invent a reply; it restores an already-recorded AP text action.
+        """
+
+        if not isinstance(row, dict):
+            return False
+        label = str(row.get("sa_label", "") or "")
+        family = str(row.get("family", "") or "")
+        source_type = str(row.get("source_type", "") or "")
+        meta = dict(row.get("anchor_meta", {}) or {}) if isinstance(row.get("anchor_meta", {}), dict) else {}
+        event_type = str(meta.get("event_type", "") or "")
+        operation = str(meta.get("operation", "") or "")
+        source = str(meta.get("source", "") or "")
+        if not (
+            label.startswith("text_action::")
+            or family == "text_action"
+            or source_type == "text_action"
+        ):
+            return False
+        if not self._text_payload_token(row):
+            return False
+        if event_type in {"insert", "replace", "write_revision", "draft_read_token", "visible_draft_token"}:
+            return True
+        if operation in {"insert", "replace"}:
+            return True
+        if source in {"action::text_insert", "text_actuator_direct_replace"}:
+            return True
+        return False
 
     def _augment_current_text_payload_items(self, rows: list[dict]) -> list[dict]:
         """
@@ -5407,6 +5462,12 @@ class MemoryStore:
                             meta[key] = value
                         else:
                             meta.setdefault(key, value)
+                    visible_before = str(meta.get("visible_text_before", "") or "")
+                    if visible_before and not str(meta.get("previous_prefix", "") or ""):
+                        meta["previous_prefix"] = visible_before
+                    cursor_before = meta.get("cursor_before")
+                    if cursor_before is not None and str(cursor_before) != "":
+                        meta.setdefault("current_glyph_index", cursor_before)
                     meta.setdefault("prediction_payload_priority", "current_glyph_character")
                     meta.setdefault("current_glyph_role", "read_tick_target")
                     meta["process_meta_restored_from_low_grain_companion"] = True
@@ -5435,6 +5496,12 @@ class MemoryStore:
             meta = dict(process_meta or {})
             if not meta:
                 continue
+            visible_before = str(meta.get("visible_text_before", "") or "")
+            if visible_before and not str(meta.get("previous_prefix", "") or ""):
+                meta["previous_prefix"] = visible_before
+            cursor_before = meta.get("cursor_before")
+            if cursor_before is not None and str(cursor_before) != "":
+                meta.setdefault("current_glyph_index", cursor_before)
             meta.setdefault("schema_id", "predicted_text_payload_from_process_companion/v1")
             meta.setdefault("prediction_payload_priority", "current_glyph_character")
             meta.setdefault("current_glyph_role", "read_tick_target")
@@ -5599,6 +5666,20 @@ class MemoryStore:
             "dynamic_slot_role",
             "slot_role",
             "previous_prefix",
+            "token",
+            "candidate_token",
+            "expected_token",
+            "source",
+            "source_event_type",
+            "cursor_before",
+            "cursor_after",
+            "visible_text_before",
+            "visible_text_after",
+            "action_param_reason",
+            "action_id",
+            "parameter_kind",
+            "self_generated",
+            "readout_expected_token",
         }
         return {
             key: value
