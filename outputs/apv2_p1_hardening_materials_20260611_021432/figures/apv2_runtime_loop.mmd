@@ -1,0 +1,10 @@
+flowchart LR
+  input["Sensors / state input"] --> pool["State pool: all-SA dual energy field"]
+  pool --> fast["Fast B/C recall"]
+  fast --> attention["Attention selection"]
+  attention --> slot["Short-term narrative slot"] 
+  slot --> pool
+  attention --> slow["Slow recall / readback"]
+  slow --> action["Action competition"]
+  action --> feedback["Action feedback / reward-punishment"]
+  feedback --> pool

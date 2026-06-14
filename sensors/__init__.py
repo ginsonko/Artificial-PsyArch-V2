@@ -1,3 +1,3 @@
-# -*- coding: utf-8 -*-
-"""感受器模块。"""
+from .text.sensor import TextSensor, normalize_text, split_text_units
 
+__all__ = ["TextSensor", "normalize_text", "split_text_units"]

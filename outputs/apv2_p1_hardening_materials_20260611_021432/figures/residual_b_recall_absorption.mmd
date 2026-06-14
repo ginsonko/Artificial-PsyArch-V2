@@ -1,0 +1,5 @@
+flowchart LR
+  q0["query SA mixture"] --> b1["round 1 winner B1"]
+  b1 --> r1["matched SA mass absorbed"] --> q1["residual query"]
+  q1 --> b2["round 2 winner B2"]
+  b2 --> r2["remaining mass becomes salient"] --> q2["next residual"]

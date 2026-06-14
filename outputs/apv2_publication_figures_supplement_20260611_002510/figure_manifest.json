@@ -1,0 +1,66 @@
+{
+  "schema_id": "apv2_publication_figures_supplement/v1",
+  "generated_at": "2026-06-11T00:25:10",
+  "scope": "AP-Core architecture/runtime publication figures and supplement index",
+  "not_scope": "GL learning proof / DPP / Skill37 / product-shell proof",
+  "figure_count": 5,
+  "figures": [
+    {
+      "figure_id": "F1",
+      "title": "APV2 runtime loop",
+      "source": "outputs/apv2_p1_hardening_materials_20260611_000013/figures/apv2_runtime_loop.mmd",
+      "svg_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f1_apv2_runtime_loop.svg",
+      "png_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f1_apv2_runtime_loop.png",
+      "svg_bytes": 43286,
+      "png_bytes": 93726,
+      "svg_sha256": "2f7e0b165f21cbb0edc89ca309042f82117a0891bda8b4cd8712f3c298119742",
+      "png_sha256": "d25b3db455b6452d189a72afaaffd302cd81d4519bd08d320a921e85047f250b"
+    },
+    {
+      "figure_id": "F2",
+      "title": "State pool vs short-term narrative slot",
+      "source": "outputs/apv2_p1_hardening_materials_20260611_000013/figures/state_pool_vs_short_term_slot.mmd",
+      "svg_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f2_state_pool_vs_short-term_narrative_slot.svg",
+      "png_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f2_state_pool_vs_short-term_narrative_slot.png",
+      "svg_bytes": 43494,
+      "png_bytes": 109592,
+      "svg_sha256": "18b31e16cb438d279a1121ab8b1379b97de0006468293dd027afd13adc48574d",
+      "png_sha256": "8b2a072f98d6d450bd701f165d9fd1d3058e13527a5323b8ca51947fed4b287a"
+    },
+    {
+      "figure_id": "F3",
+      "title": "Residual B recall absorption",
+      "source": "outputs/apv2_p1_hardening_materials_20260611_000013/figures/residual_b_recall_absorption.mmd",
+      "svg_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f3_residual_b_recall_absorption.svg",
+      "png_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f3_residual_b_recall_absorption.png",
+      "svg_bytes": 47410,
+      "png_bytes": 93390,
+      "svg_sha256": "1e73340691453496d011d75f6c49c8866b36725d077a950ef1c6f11b91ed856e",
+      "png_sha256": "b90fc3d3eb02908cab940b0965e63e64d34efcd2ff7f8053154efdca7730a3bd"
+    },
+    {
+      "figure_id": "F4",
+      "title": "Successor lag and rhythm replay",
+      "source": "outputs/apv2_p1_hardening_materials_20260611_000013/figures/successor_lag_rhythm_replay.mmd",
+      "svg_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f4_successor_lag_and_rhythm_replay.svg",
+      "png_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f4_successor_lag_and_rhythm_replay.png",
+      "svg_bytes": 48552,
+      "png_bytes": 120845,
+      "svg_sha256": "64183f44978a6205a8e792856b8060276269523e72902b54e58547bcb26869de",
+      "png_sha256": "ae44935ed998ea71d15665d0980c85e3cd840a83b5912051f6673b32b414557e"
+    },
+    {
+      "figure_id": "F5",
+      "title": "Evidence layer split",
+      "source": "outputs/apv2_p1_hardening_materials_20260611_000013/figures/evidence_layer_split.mmd",
+      "svg_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f5_evidence_layer_split.svg",
+      "png_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f5_evidence_layer_split.png",
+      "svg_bytes": 47350,
+      "png_bytes": 102491,
+      "svg_sha256": "0b7aaa03df5d6ab8b53cb442d6de879e35029e0e719f9250a8fa600ddcb4ec5a",
+      "png_sha256": "b1ab22f78211ffd87515b477c316a22a402131c4ed7381bb19f0cfcbd89b258e"
+    }
+  ],
+  "supplement_path": "docs/APV2_MainPaper_Supplement_Index_20260611.md",
+  "manifest_path": "outputs/apv2_publication_figures_supplement_20260611_002510/figure_manifest.json"
+}

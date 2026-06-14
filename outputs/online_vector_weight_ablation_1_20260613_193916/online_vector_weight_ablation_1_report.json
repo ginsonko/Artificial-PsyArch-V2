@@ -1,0 +1,134 @@
+{
+  "schema_id": "online_vector_weight_ablation_1/v1",
+  "artifact_id": "online_vector_weight_ablation_1",
+  "created_at": "2026-06-13",
+  "generated_at": "2026-06-13T19:39:16",
+  "boundary": {
+    "artifact_id": "online_vector_weight_ablation_1",
+    "route": "AP-Core bottom-loop mechanism hardening: online learned vector weight ablation",
+    "student_side_llm": false,
+    "answer_table_lookup": false,
+    "regex_answer_route": false,
+    "keyword_hard_gate": false,
+    "full_sentence_macro": false,
+    "hidden_solver": false,
+    "runtime_mechanism_modified": false,
+    "ap_core_full_proof_claimed": false,
+    "open_world_dialogue_claimed": false
+  },
+  "summary": {
+    "passed": true,
+    "checks": {
+      "h1_learned_vector_improves_neighborhood_recall": true,
+      "h1b_learned_similarity_improves_main_recall": true,
+      "h2_exact_match_not_dominated_by_learned_vector": true,
+      "h3_monotonic_and_bounded": true
+    }
+  },
+  "probe": {
+    "schema_id": "online_vector_weight_ablation_1/v1",
+    "weights": {
+      "off": 0.0,
+      "default": 0.28,
+      "high": 0.9
+    },
+    "snapshot_legend": {
+      "mem-1": "A_neighbor (learned neighbor of query subject, no surface overlap)",
+      "mem-2": "A_unrelated (no surface overlap, no learned experience)",
+      "mem-3": "B_exact (exact label/energy match, no learned experience)"
+    },
+    "per_weight": {
+      "off": {
+        "weight": 0.0,
+        "audit": {
+          "neighbor": {
+            "score": 0.6848,
+            "learned_vector_score": 0.4413,
+            "learned_score": 0.9432,
+            "rank": 1
+          },
+          "unrelated": {
+            "score": 0.6522,
+            "learned_vector_score": 0.1117,
+            "rank": 2
+          },
+          "exact": {
+            "score": 14.6954,
+            "learned_vector_score": 0.8534,
+            "rank": 0
+          }
+        },
+        "main_recall": {
+          "neighbor": {
+            "score": 0.6848,
+            "learned_score": 0.9432,
+            "rank": 1
+          }
+        }
+      },
+      "default": {
+        "weight": 0.28,
+        "audit": {
+          "neighbor": {
+            "score": 1.046,
+            "learned_vector_score": 0.4413,
+            "learned_score": 0.9432,
+            "rank": 1
+          },
+          "unrelated": {
+            "score": 0.6768,
+            "learned_vector_score": 0.1117,
+            "rank": 2
+          },
+          "exact": {
+            "score": 14.966,
+            "learned_vector_score": 0.8534,
+            "rank": 0
+          }
+        },
+        "main_recall": {
+          "neighbor": {
+            "score": 0.9489,
+            "learned_score": 0.9432,
+            "rank": 1
+          }
+        }
+      },
+      "high": {
+        "weight": 0.9,
+        "audit": {
+          "neighbor": {
+            "score": 1.6308,
+            "learned_vector_score": 0.4413,
+            "learned_score": 0.9432,
+            "rank": 1
+          },
+          "unrelated": {
+            "score": 0.6768,
+            "learned_vector_score": 0.1117,
+            "rank": 2
+          },
+          "exact": {
+            "score": 15.1495,
+            "learned_vector_score": 0.8534,
+            "rank": 0
+          }
+        },
+        "main_recall": {
+          "neighbor": {
+            "score": 1.5336,
+            "learned_score": 0.9432,
+            "rank": 1
+          }
+        }
+      }
+    },
+    "checks": {
+      "h1_learned_vector_improves_neighborhood_recall": true,
+      "h1b_learned_similarity_improves_main_recall": true,
+      "h2_exact_match_not_dominated_by_learned_vector": true,
+      "h3_monotonic_and_bounded": true
+    },
+    "passed": true
+  }
+}

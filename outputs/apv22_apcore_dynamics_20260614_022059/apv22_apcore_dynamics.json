@@ -1,0 +1,2041 @@
+{
+  "schema_id": "apv22_apcore_dynamics_suite/v1",
+  "generated_at": "2026-06-14T02:20:59",
+  "route_split": {
+    "this_suite": "AP-Core bottom-loop dynamics",
+    "not_this_suite": "GL curriculum learning or skill-package generalization"
+  },
+  "experiments": [
+    {
+      "experiment": "FeedbackOverride-1",
+      "verdict": "pass",
+      "design": "Punishment-dominant later evidence overrides a rewarded same-token positive payload by deriving repair context.",
+      "observed": {
+        "payload_labels_after_punishment": [
+          "text_revision_opportunity::negative_feedback::same"
+        ],
+        "repair_meta": {
+          "schema_id": "text_revision_opportunity/v1",
+          "event_type": "negative_feedback_repair_context",
+          "token": "same",
+          "feedback_outcome": "repair",
+          "feedback_reward": 0.0,
+          "feedback_punishment": 0.82,
+          "feedback_correctness": 0.0,
+          "current_read_tick": true,
+          "current_glyph_role": "read_tick_target",
+          "prediction_payload_priority": "current_glyph_character",
+          "used_in_strict_teacher_off_input": false,
+          "operation": "repair_or_avoid",
+          "source_feedback_outcome": "punished",
+          "prediction_payload_role": "negative_feedback_repair_context",
+          "source_text_label": "text::same",
+          "positive_text_prediction_allowed": false,
+          "answer_table_lookup": false,
+          "notes": [
+            "negative_feedback_text_not_reserved_as_positive_payload"
+          ]
+        }
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false
+      }
+    },
+    {
+      "experiment": "PersistenceReload-1",
+      "verdict": "pass",
+      "design": "Reloaded authoritative memory restores state B recall, C successor prediction, and short-term-slot memory objects.",
+      "observed": {
+        "warm_load": {
+          "schema_id": "apv21_warm_load/v1",
+          "loaded": 3,
+          "skipped": 0,
+          "indexed": 0,
+          "pending_index_jobs": 0,
+          "process_indexes": true,
+          "replay_learning": false,
+          "learned_relations": 0,
+          "policy": "bounded_hot_window_loaded_from_authoritative_persistence;no_full_history_load"
+        },
+        "write_count": 3,
+        "bn_source_texts": [
+          "cue context",
+          "outcome"
+        ],
+        "predicted_labels": [
+          "text::outcome"
+        ],
+        "slot_bn_source_texts": [
+          "slot cue context"
+        ]
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false
+      }
+    },
+    {
+      "experiment": "NegativeFeedback-Ablation-1",
+      "verdict": "pass",
+      "design": "Disable only the negative-text detector and verify punished raw text leaks back into positive payload.",
+      "observed": {
+        "normal_payload_labels": [
+          "text_revision_opportunity::negative_feedback::bad"
+        ],
+        "ablated_payload_labels": [
+          "text::bad"
+        ],
+        "normal_suppressed": true,
+        "ablated_leaks_bad": true
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false
+      }
+    },
+    {
+      "experiment": "ShortTermInterruptionRecovery-1",
+      "verdict": "pass",
+      "design": "Stable focus, interruption, and return should create observable interruption/resumption traces while slot packets keep narrative energy online.",
+      "observed": {
+        "recent_interruptions": [
+          {
+            "schema_id": "focus_interruption_event/v1",
+            "tick_index": 2,
+            "from_episode_id": 0,
+            "to_labels": [
+              "focus::alarm",
+              "focus::red"
+            ],
+            "continuity_score": 0.0
+          },
+          {
+            "schema_id": "focus_interruption_event/v1",
+            "tick_index": 4,
+            "from_episode_id": 1,
+            "to_labels": [
+              "focus::river",
+              "focus::stone",
+              "focus::bright"
+            ],
+            "continuity_score": 0.0
+          }
+        ],
+        "recent_resumptions": [
+          {
+            "schema_id": "focus_resumption_event/v1",
+            "tick_index": 4,
+            "resumed_episode_id": 0,
+            "new_episode_id": 2,
+            "labels": [
+              "focus::river",
+              "focus::stone",
+              "focus::bright"
+            ],
+            "interruption_gap_episode": 1
+          }
+        ],
+        "slot_labels": [
+          "short_term_slot::summary",
+          "short_term_slot::item::focus::river",
+          "short_term_slot::item::focus::stone",
+          "short_term_slot::item::focus::bright",
+          "short_term_slot::order::0::focus::river",
+          "short_term_slot::order::1::focus::stone",
+          "short_term_slot::order::2::focus::bright",
+          "short_term_slot::continuity"
+        ],
+        "slot_virtual_mass": 0.167,
+        "disabled_slot_labels": [],
+        "state_readback_labels": [
+          "short_term_slot::summary",
+          "short_term_slot::item::focus::river",
+          "short_term_slot::item::focus::stone",
+          "short_term_slot::item::focus::bright",
+          "short_term_slot::order::0::focus::river",
+          "short_term_slot::order::1::focus::stone"
+        ],
+        "slot_memory_labels": [
+          "short_term_slot::summary",
+          "short_term_slot::item::focus::river",
+          "short_term_slot::item::focus::stone",
+          "short_term_slot::item::focus::bright",
+          "short_term_slot::order::0::focus::river",
+          "short_term_slot::order::1::focus::stone",
+          "short_term_slot::order::2::focus::bright",
+          "short_term_slot::continuity"
+        ],
+        "active_episode_id": 2,
+        "episode_count": 3
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false
+      }
+    },
+    {
+      "experiment": "ResidualDepth-1",
+      "verdict": "pass",
+      "design": "A multi-component query should be absorbed over multiple B rounds rather than reduced to a single winner.",
+      "observed": {
+        "residual_winners": [
+          "AB",
+          "CD",
+          "E",
+          "A"
+        ],
+        "ordinary_winners": [
+          "AB",
+          "CD",
+          "E",
+          "A"
+        ],
+        "absorption_trace": [
+          {
+            "schema_id": "residual_b_recall_round/v1",
+            "round_index": 1,
+            "winner_memory_id": "mem-1",
+            "winner_score": 8.8739,
+            "match_efficiency": 0.985,
+            "matched_labels": [
+              "text::A",
+              "text::B"
+            ],
+            "drained_labels": [
+              "text::A",
+              "text::B"
+            ],
+            "residual_mass_before": 4.6,
+            "residual_mass_after": 2.1671,
+            "policy": "one_b_per_round_matched_sa_absorption"
+          },
+          {
+            "schema_id": "residual_b_recall_round/v1",
+            "round_index": 2,
+            "winner_memory_id": "mem-2",
+            "winner_score": 4.6743,
+            "match_efficiency": 0.8295,
+            "matched_labels": [
+              "text::C"
+            ],
+            "drained_labels": [
+              "text::C"
+            ],
+            "residual_mass_before": 2.1671,
+            "residual_mass_after": 1.3533,
+            "policy": "one_b_per_round_matched_sa_absorption"
+          },
+          {
+            "schema_id": "residual_b_recall_round/v1",
+            "round_index": 3,
+            "winner_memory_id": "mem-3",
+            "winner_score": 4.8924,
+            "match_efficiency": 0.8443,
+            "matched_labels": [
+              "text::E"
+            ],
+            "drained_labels": [
+              "text::E"
+            ],
+            "residual_mass_before": 1.3533,
+            "residual_mass_after": 0.7742,
+            "policy": "one_b_per_round_matched_sa_absorption"
+          }
+        ],
+        "matched_by_round": [
+          [
+            "text::A",
+            "text::B"
+          ],
+          [
+            "text::C"
+          ],
+          [
+            "text::E"
+          ]
+        ],
+        "mass_declines": true
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false
+      }
+    },
+    {
+      "experiment": "SuccessorPeakAblation-1",
+      "verdict": "pass",
+      "design": "Lag-shaped successor energy should have a next-tick peak; disabling lag shaping should flatten the distribution.",
+      "observed": {
+        "shaped": [
+          {
+            "successor_memory_id": "m1",
+            "lag": 1,
+            "kernel": 1.0,
+            "predicted_labels": [
+              "text::one"
+            ]
+          },
+          {
+            "successor_memory_id": "m2",
+            "lag": 2,
+            "kernel": 0.42,
+            "predicted_labels": [
+              "text::two"
+            ]
+          },
+          {
+            "successor_memory_id": "m5",
+            "lag": 5,
+            "kernel": 0.1101,
+            "predicted_labels": [
+              "text::five"
+            ]
+          }
+        ],
+        "flat_kernels": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false
+      }
+    },
+    {
+      "experiment": "DoubleEnergyBalance-PressureDynamics-1",
+      "design": "Higher cognitive pressure should shift action competition toward reread / replace / replay and away from direct commit; removing pressure anchors or mismatch evidence should weaken the effect.",
+      "verdict": "pass",
+      "observed": {
+        "cases": [
+          {
+            "name": "baseline",
+            "pressure": 0.04,
+            "pressure_anchor": 0.0,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.4012,
+            "selected_actions": [
+              "action::text_insert",
+              "action::continue_focus",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::replay_recent_context",
+              "action::widen_visual_focus",
+              "action::wait"
+            ],
+            "commit_readiness": 0.1145,
+            "commit_reread_need": 0.1638,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0989,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.7514,
+              "revision_pressure": 0.0028,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.0828,
+              "cleanup_pressure": 0.0028,
+              "pressure_cost": 0.0064,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.4228,
+            "candidate_drives": {
+              "action::text_commit": 0.7302,
+              "action::text_reread": 0.3887,
+              "action::text_replace": 0.0,
+              "action::replay_episode": 0.2178
+            },
+            "candidate_notes": {
+              "action::text_commit": [
+                "draft_commit_ready",
+                "draft_satisfaction_field_commit_ready",
+                "commit_still_external_safety_gate_boundary",
+                "commit_is_internal_draft_closure_not_external_send",
+                "field_satisfaction=0.1191",
+                "goal_alignment=0.0",
+                "closure_pressure=0.0894",
+                "habitual_commit_pressure=0.1114",
+                "outcome_commit_pressure=0.025",
+                "risk_commit_pressure=0.0758"
+              ],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.0",
+                "episode_risk=0.0088",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "stress",
+            "pressure": 0.78,
+            "pressure_anchor": 0.82,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::wait",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::replay_recent_context",
+              "action::widen_visual_focus",
+              "action::diverge_attention",
+              "action::text_replace",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0063,
+            "commit_reread_need": 0.1988,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.6274,
+              "revision_pressure": 0.0546,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.142,
+              "cleanup_pressure": 0.0546,
+              "pressure_cost": 0.2068,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.1478,
+            "candidate_drives": {
+              "action::text_commit": 0.0,
+              "action::text_reread": 0.367,
+              "action::text_replace": 0.6668,
+              "action::replay_episode": 0.7539
+            },
+            "candidate_notes": {
+              "action::text_commit": [],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [
+                "output_side_revision_pressure",
+                "revise_unresolved_write_mismatch",
+                "correction_pressure=0.5",
+                "reread_after_mismatch=False",
+                "latest_expected_token=K",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.82",
+                "episode_risk=0.516",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "stress_no_anchor",
+            "pressure": 0.78,
+            "pressure_anchor": 0.0,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::replay_recent_context",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::wait",
+              "action::widen_visual_focus",
+              "action::diverge_attention",
+              "action::text_replace",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0063,
+            "commit_reread_need": 0.1988,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.6274,
+              "revision_pressure": 0.0546,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.142,
+              "cleanup_pressure": 0.0546,
+              "pressure_cost": 0.1248,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.1478,
+            "candidate_drives": {
+              "action::text_commit": 0.0,
+              "action::text_reread": 0.367,
+              "action::text_replace": 0.6668,
+              "action::replay_episode": 0.3068
+            },
+            "candidate_notes": {
+              "action::text_commit": [],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [
+                "output_side_revision_pressure",
+                "revise_unresolved_write_mismatch",
+                "correction_pressure=0.5",
+                "reread_after_mismatch=False",
+                "latest_expected_token=K",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.0",
+                "episode_risk=0.1716",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "stress_no_mismatch",
+            "pressure": 0.78,
+            "pressure_anchor": 0.82,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::wait",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::text_insert",
+              "action::widen_visual_focus",
+              "action::diverge_attention",
+              "action::stabilize_prediction",
+              "action::replay_episode"
+            ],
+            "commit_readiness": 0.0063,
+            "commit_reread_need": 0.1988,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.6274,
+              "revision_pressure": 0.0546,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.142,
+              "cleanup_pressure": 0.0546,
+              "pressure_cost": 0.2068,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.1478,
+            "candidate_drives": {
+              "action::text_commit": 0.2886,
+              "action::text_reread": 0.367,
+              "action::text_replace": 0.0,
+              "action::replay_episode": 0.7539
+            },
+            "candidate_notes": {
+              "action::text_commit": [
+                "draft_commit_ready",
+                "draft_satisfaction_field_commit_ready",
+                "commit_still_external_safety_gate_boundary",
+                "commit_is_internal_draft_closure_not_external_send",
+                "field_satisfaction=0.0",
+                "goal_alignment=0.0",
+                "closure_pressure=0.0894",
+                "habitual_commit_pressure=0.1114",
+                "outcome_commit_pressure=0.025",
+                "risk_commit_pressure=0.0758"
+              ],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.82",
+                "episode_risk=0.516",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          }
+        ],
+        "checks": {
+          "baseline_commit_has_positive_drive": true,
+          "stress_commit_drops_to_zero_or_near_zero": true,
+          "stress_reread_or_replace_outruns_commit": true,
+          "stress_anchor_boosts_replay": true,
+          "stress_mismatch_boosts_replace": true,
+          "stress_commit_ready_lower_than_baseline": true,
+          "stress_selected_actions_include_revision_or_replay": true,
+          "baseline_selected_actions_include_commit_or_insert": true
+        }
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false,
+        "runtime_mechanism_modified": false,
+        "ap_core_full_proof_claimed": false
+      }
+    },
+    {
+      "experiment": "DoubleEnergyBalance-PressureDynamics-Sweep-1",
+      "verdict": "pass",
+      "design": "Two pressure sweeps should show the same underlying shape in both clean and stressed regimes: clean drafts stay commit-dominant while commit weakens with pressure, and stressed drafts shift toward replay / revision as pressure rises.",
+      "observed": {
+        "clean_cases": [
+          {
+            "name": "clean_low",
+            "pressure": 0.04,
+            "pressure_anchor": 0.0,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.4012,
+            "selected_actions": [
+              "action::text_insert",
+              "action::continue_focus",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::replay_recent_context",
+              "action::widen_visual_focus",
+              "action::wait"
+            ],
+            "commit_readiness": 0.1145,
+            "commit_reread_need": 0.1638,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0989,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.7514,
+              "revision_pressure": 0.0028,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.0828,
+              "cleanup_pressure": 0.0028,
+              "pressure_cost": 0.0064,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.4228,
+            "candidate_drives": {
+              "action::text_commit": 0.7302,
+              "action::text_reread": 0.3887,
+              "action::text_replace": 0.0,
+              "action::replay_episode": 0.2178
+            },
+            "candidate_notes": {
+              "action::text_commit": [
+                "draft_commit_ready",
+                "draft_satisfaction_field_commit_ready",
+                "commit_still_external_safety_gate_boundary",
+                "commit_is_internal_draft_closure_not_external_send",
+                "field_satisfaction=0.1191",
+                "goal_alignment=0.0",
+                "closure_pressure=0.0894",
+                "habitual_commit_pressure=0.1114",
+                "outcome_commit_pressure=0.025",
+                "risk_commit_pressure=0.0758"
+              ],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.0",
+                "episode_risk=0.0088",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "clean_mid",
+            "pressure": 0.28,
+            "pressure_anchor": 0.0,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::continue_focus",
+              "action::text_insert",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::wait",
+              "action::widen_visual_focus",
+              "action::replay_recent_context",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0126,
+            "commit_reread_need": 0.1752,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.7112,
+              "revision_pressure": 0.0196,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.102,
+              "cleanup_pressure": 0.0196,
+              "pressure_cost": 0.0448,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.2882,
+            "candidate_drives": {
+              "action::text_commit": 0.4801,
+              "action::text_reread": 0.3661,
+              "action::text_replace": 0.0,
+              "action::replay_episode": 0.2317
+            },
+            "candidate_notes": {
+              "action::text_commit": [
+                "draft_commit_ready",
+                "draft_satisfaction_field_commit_ready",
+                "commit_still_external_safety_gate_boundary",
+                "commit_is_internal_draft_closure_not_external_send",
+                "field_satisfaction=0.0",
+                "goal_alignment=0.0",
+                "closure_pressure=0.0894",
+                "habitual_commit_pressure=0.1114",
+                "outcome_commit_pressure=0.025",
+                "risk_commit_pressure=0.0758"
+              ],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.0",
+                "episode_risk=0.0616",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "clean_high",
+            "pressure": 0.52,
+            "pressure_anchor": 0.0,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::continue_focus",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::text_insert",
+              "action::llm_think",
+              "action::wait",
+              "action::widen_visual_focus",
+              "action::replay_recent_context",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0095,
+            "commit_reread_need": 0.1865,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.671,
+              "revision_pressure": 0.0364,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.1212,
+              "cleanup_pressure": 0.0364,
+              "pressure_cost": 0.0832,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.2209,
+            "candidate_drives": {
+              "action::text_commit": 0.3888,
+              "action::text_reread": 0.3665,
+              "action::text_replace": 0.0,
+              "action::replay_episode": 0.2677
+            },
+            "candidate_notes": {
+              "action::text_commit": [
+                "draft_commit_ready",
+                "draft_satisfaction_field_commit_ready",
+                "commit_still_external_safety_gate_boundary",
+                "commit_is_internal_draft_closure_not_external_send",
+                "field_satisfaction=0.0",
+                "goal_alignment=0.0",
+                "closure_pressure=0.0894",
+                "habitual_commit_pressure=0.1114",
+                "outcome_commit_pressure=0.025",
+                "risk_commit_pressure=0.0758"
+              ],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.0",
+                "episode_risk=0.1144",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "clean_peak",
+            "pressure": 0.78,
+            "pressure_anchor": 0.0,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::wait",
+              "action::text_insert",
+              "action::widen_visual_focus",
+              "action::replay_recent_context",
+              "action::diverge_attention",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0063,
+            "commit_reread_need": 0.1988,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.6274,
+              "revision_pressure": 0.0546,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.142,
+              "cleanup_pressure": 0.0546,
+              "pressure_cost": 0.1248,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.1478,
+            "candidate_drives": {
+              "action::text_commit": 0.2886,
+              "action::text_reread": 0.367,
+              "action::text_replace": 0.0,
+              "action::replay_episode": 0.3068
+            },
+            "candidate_notes": {
+              "action::text_commit": [
+                "draft_commit_ready",
+                "draft_satisfaction_field_commit_ready",
+                "commit_still_external_safety_gate_boundary",
+                "commit_is_internal_draft_closure_not_external_send",
+                "field_satisfaction=0.0",
+                "goal_alignment=0.0",
+                "closure_pressure=0.0894",
+                "habitual_commit_pressure=0.1114",
+                "outcome_commit_pressure=0.025",
+                "risk_commit_pressure=0.0758"
+              ],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.0",
+                "episode_risk=0.1716",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          }
+        ],
+        "stress_cases": [
+          {
+            "name": "stress_low",
+            "pressure": 0.04,
+            "pressure_anchor": 0.82,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.4012,
+            "selected_actions": [
+              "action::continue_focus",
+              "action::replay_recent_context",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::wait",
+              "action::llm_think",
+              "action::text_replace",
+              "action::widen_visual_focus"
+            ],
+            "commit_readiness": 0.0325,
+            "commit_reread_need": 0.1638,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0169,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.7514,
+              "revision_pressure": 0.0028,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.0828,
+              "cleanup_pressure": 0.0028,
+              "pressure_cost": 0.0884,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.4228,
+            "candidate_drives": {
+              "action::text_commit": 0.0,
+              "action::text_reread": 0.3887,
+              "action::text_replace": 0.7073,
+              "action::replay_episode": 0.5793
+            },
+            "candidate_notes": {
+              "action::text_commit": [],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [
+                "output_side_revision_pressure",
+                "revise_unresolved_write_mismatch",
+                "correction_pressure=0.5",
+                "reread_after_mismatch=False",
+                "latest_expected_token=K",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.82",
+                "episode_risk=0.3532",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "stress_mid",
+            "pressure": 0.28,
+            "pressure_anchor": 0.82,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::continue_focus",
+              "action::wait",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::replay_recent_context",
+              "action::widen_visual_focus",
+              "action::text_replace",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0126,
+            "commit_reread_need": 0.1752,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.7112,
+              "revision_pressure": 0.0196,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.102,
+              "cleanup_pressure": 0.0196,
+              "pressure_cost": 0.1268,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.2882,
+            "candidate_drives": {
+              "action::text_commit": 0.0,
+              "action::text_reread": 0.3661,
+              "action::text_replace": 0.6724,
+              "action::replay_episode": 0.618
+            },
+            "candidate_notes": {
+              "action::text_commit": [],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [
+                "output_side_revision_pressure",
+                "revise_unresolved_write_mismatch",
+                "correction_pressure=0.5",
+                "reread_after_mismatch=False",
+                "latest_expected_token=K",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.82",
+                "episode_risk=0.406",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "stress_high",
+            "pressure": 0.52,
+            "pressure_anchor": 0.82,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::continue_focus",
+              "action::wait",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::replay_recent_context",
+              "action::widen_visual_focus",
+              "action::text_replace",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0095,
+            "commit_reread_need": 0.1865,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.671,
+              "revision_pressure": 0.0364,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.1212,
+              "cleanup_pressure": 0.0364,
+              "pressure_cost": 0.1652,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.2209,
+            "candidate_drives": {
+              "action::text_commit": 0.0,
+              "action::text_reread": 0.3665,
+              "action::text_replace": 0.6697,
+              "action::replay_episode": 0.6883
+            },
+            "candidate_notes": {
+              "action::text_commit": [],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [
+                "output_side_revision_pressure",
+                "revise_unresolved_write_mismatch",
+                "correction_pressure=0.5",
+                "reread_after_mismatch=False",
+                "latest_expected_token=K",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.82",
+                "episode_risk=0.4588",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          },
+          {
+            "name": "stress_peak",
+            "pressure": 0.78,
+            "pressure_anchor": 0.82,
+            "expectation_gap": 0.0,
+            "effective_threshold": 0.1,
+            "selected_actions": [
+              "action::wait",
+              "action::scan_visual_field",
+              "action::widen_audio_band",
+              "action::llm_think",
+              "action::replay_recent_context",
+              "action::widen_visual_focus",
+              "action::diverge_attention",
+              "action::text_replace",
+              "action::stabilize_prediction"
+            ],
+            "commit_readiness": 0.0063,
+            "commit_reread_need": 0.1988,
+            "goal_alignment": 0.0,
+            "goal_alignment_block": {
+              "schema_id": "draft_goal_alignment/v1",
+              "goal_alignment": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.5013,
+              "revision_pressure": 0.0,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "task_anchor_count": 0,
+              "dialogue_anchor_count": 0,
+              "dialogue_closure_need": 0.0,
+              "task_anchors": [],
+              "target_label_hits": [],
+              "expected_text": {
+                "token": "K",
+                "strength": 0.3078,
+                "source": "fast_cn+unpositioned_text_memory_background_cost",
+                "alternatives": [
+                  {
+                    "token": "K",
+                    "score": 0.3078,
+                    "share": 0.8901,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  },
+                  {
+                    "token": "Q",
+                    "score": 0.038,
+                    "share": 0.1099,
+                    "sources": [
+                      "fast_cn",
+                      "unpositioned_text_memory_background_cost"
+                    ],
+                    "position_notes": [
+                      "unpositioned_text_memory_background_cost"
+                    ]
+                  }
+                ],
+                "candidate_count": 2,
+                "top_share": 0.8901,
+                "dominance_gap": 0.2698,
+                "dominance_ratio": 8.1,
+                "ambiguity": 0.0604,
+                "decisive": true
+              },
+              "habit_scope": "action_level_only",
+              "outcome_support": 0.3185,
+              "consequence_support": 0.0
+            },
+            "satisfaction_field": {
+              "schema_id": "draft_satisfaction_field/v1",
+              "satisfaction": 0.0,
+              "closure_pressure": 0.0894,
+              "continuation_pressure": 0.6274,
+              "revision_pressure": 0.0546,
+              "habitual_commit_pressure": 0.1114,
+              "outcome_commit_pressure": 0.025,
+              "risk_commit_pressure": 0.0,
+              "goal_alignment": 0.0,
+              "ambiguity_pause": 0.142,
+              "cleanup_pressure": 0.0546,
+              "pressure_cost": 0.2068,
+              "ttl_ticks": 1,
+              "meaning": "short_term_action_field_not_locked_state"
+            },
+            "satisfaction": 0.1478,
+            "candidate_drives": {
+              "action::text_commit": 0.0,
+              "action::text_reread": 0.367,
+              "action::text_replace": 0.6668,
+              "action::replay_episode": 0.7539
+            },
+            "candidate_notes": {
+              "action::text_commit": [],
+              "action::text_reread": [
+                "text_revision_opportunity_review",
+                "humanlike_reread_before_multi_edit",
+                "opportunity_kind=continue_after_visible_prefix",
+                "opportunity_count=1",
+                "top_support=0.22",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0",
+                "draft_review_saturation",
+                "same_draft_reread_low_information_gain"
+              ],
+              "action::text_replace": [
+                "output_side_revision_pressure",
+                "revise_unresolved_write_mismatch",
+                "correction_pressure=0.5",
+                "reread_after_mismatch=False",
+                "latest_expected_token=K",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ],
+              "action::replay_episode": [
+                "episode_replay_before_risky_action",
+                "pressure_consequence_memory_query",
+                "pressure_anchor_level=0.82",
+                "episode_risk=0.516",
+                "no_same_parameter_action_fatigue",
+                "experience_support=0.0",
+                "outcome_memory_support=0.0"
+              ]
+            }
+          }
+        ],
+        "checks": {
+          "clean_commit_nonincreasing": true,
+          "clean_commit_remains_positive": true,
+          "clean_replay_non_decreasing": true,
+          "stress_commit_suppressed": true,
+          "stress_replay_non_decreasing": true,
+          "stress_replay_outruns_clean_peak_replay": true,
+          "stress_peak_revision_outruns_clean_peak": true
+        },
+        "clean_commit_series": [
+          0.7302,
+          0.4801,
+          0.3888,
+          0.2886
+        ],
+        "clean_replay_series": [
+          0.2178,
+          0.2317,
+          0.2677,
+          0.3068
+        ],
+        "stress_commit_series": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "stress_replay_series": [
+          0.5793,
+          0.618,
+          0.6883,
+          0.7539
+        ],
+        "stress_revision_series": [
+          0.7073,
+          0.6724,
+          0.6883,
+          0.7539
+        ]
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "answer_table_lookup": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false,
+        "runtime_mechanism_modified": false,
+        "ap_core_full_proof_claimed": false
+      }
+    }
+  ],
+  "summary": {
+    "pass": 8,
+    "partial": 0,
+    "fail": 0,
+    "all_passed": true,
+    "acceptance_policy": "pass_requires_mechanism_trace_and_module_specific_ablation_where_applicable"
+  }
+}

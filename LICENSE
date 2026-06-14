@@ -1,21 +1,66 @@
-MIT License
+APV2.1 TEMPORARY PRIVATE REVIEW LICENSE
+Version 2026-06-02
 
-Copyright (c) 2026 ginsonko
+Copyright (c) 2026 ginsonko / APV2.1 project authors.
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository is provided only for temporary private review, local testing,
+and technical discussion with explicitly invited reviewers.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Permission Granted
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Subject to all restrictions below, the copyright holder grants the reviewer a
+limited, revocable, non-exclusive, non-transferable permission to:
+
+- read the source code and documentation;
+- run the included tests and experiments locally;
+- inspect the included generated reports and skill packages; and
+- provide private technical feedback to the copyright holder.
+
+2. No Open-Source Grant
+
+This license is not an open-source license. No rights are granted except the
+limited review permission described above.
+
+3. Restrictions
+
+Without prior written permission from the copyright holder, you may not:
+
+- redistribute, mirror, publish, upload, sublicense, or transfer this repository
+  or any substantial part of it;
+- use it commercially or provide a service based on it;
+- deploy derivative systems based on it;
+- incorporate it into another product, dataset, benchmark, research release, or
+  production system;
+- train, fine-tune, distill, evaluate, benchmark, or otherwise improve a model
+  using this repository, its code, docs, traces, reports, skill packages, or
+  generated data;
+- extract, repackage, or reuse the skill experience packages, state-field
+  traces, experiment outputs, or teaching protocols as standalone assets;
+- remove provenance, notice, authorship, or license information;
+- claim authorship or independent origin of this project or substantially
+  similar code derived from it.
+
+4. Confidentiality
+
+Reviewers must treat this repository as private review material unless the
+copyright holder states otherwise in writing.
+
+5. No Warranty
+
+The repository is provided "as is", without warranty of any kind. The prototype
+is research software and may contain bugs, incomplete modules, or experimental
+behavior.
+
+6. Termination
+
+The permission granted by this license terminates automatically if you violate
+any term. After termination, you must stop using the repository and delete all
+copies under your control.
+
+7. Contact
+
+For permission requests, commercial discussions, publication questions, or
+research collaboration, contact the repository owner through the associated
+GitHub account.
+

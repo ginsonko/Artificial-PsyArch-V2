@@ -1,0 +1,104 @@
+{
+  "schema_id": "apv2_p1_artifact_freeze_manifest/v1",
+  "generated_at": "2026-06-11T02:14:32",
+  "status": "local_pre_public_freeze",
+  "entry_count": 12,
+  "entries": [
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\Design_APV2_BottomLoopP0Materials_20260610.md",
+      "relative_path": "docs\\Design_APV2_BottomLoopP0Materials_20260610.md",
+      "exists": true,
+      "bytes": 3041,
+      "sha256": "687ce002e3e675b186769e695e608f6601653ce979bef6d5f78ad1a078db3939"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\Design_APV2_P1HardeningMaterials_20260610.md",
+      "relative_path": "docs\\Design_APV2_P1HardeningMaterials_20260610.md",
+      "exists": true,
+      "bytes": 5055,
+      "sha256": "ae2072c26778f9eec5b68d0c614b99e66d90349628aeef55b02cc1a2241e9e52"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\experiments\\apv2_bottom_loop_p0_materials.py",
+      "relative_path": "experiments\\apv2_bottom_loop_p0_materials.py",
+      "exists": true,
+      "bytes": 29950,
+      "sha256": "fd87914b5f3bf28443523c76fd23b0410f967fe21613ad4cbae51384acdd43ee"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\experiments\\apv2_p1_hardening_materials.py",
+      "relative_path": "experiments\\apv2_p1_hardening_materials.py",
+      "exists": true,
+      "bytes": 25732,
+      "sha256": "bc31d6df66cd3556e86c32922ca1d734b2fe348bc0816ea8a7ecad1a3990e0eb"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\tests\\test_apv2_bottom_loop_p0_materials.py",
+      "relative_path": "tests\\test_apv2_bottom_loop_p0_materials.py",
+      "exists": true,
+      "bytes": 4414,
+      "sha256": "a9613941c27cdc8a8133eeb9dd92e41ff197c388e683c6989fd84c5a8c464647"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\tests\\test_apv2_p1_hardening_materials.py",
+      "relative_path": "tests\\test_apv2_p1_hardening_materials.py",
+      "exists": true,
+      "bytes": 3576,
+      "sha256": "5b45ff1e0120fa3787d4692f477d7bfa409c4097c7984b6402577b044a6a9287"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\memory\\persistence\\jsonl_store.py",
+      "relative_path": "memory\\persistence\\jsonl_store.py",
+      "exists": true,
+      "bytes": 5505,
+      "sha256": "833920bc36f2732f252bd47626bb64e6def24b567fc0adabc4fbebb24cf3783e"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\apv2_runtime_loop.mmd",
+      "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\apv2_runtime_loop.mmd",
+      "exists": true,
+      "bytes": 419,
+      "sha256": "55d4d6946228b6bf8f0253565e402a7e9dca00a78bf80e9cf549884452205b3c"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\state_pool_vs_short_term_slot.mmd",
+      "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\state_pool_vs_short_term_slot.mmd",
+      "exists": true,
+      "bytes": 328,
+      "sha256": "4739cf4223d6d45c774fc4a810b2d5753eed3d2d75df770b29e5b5306cb10f51"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\residual_b_recall_absorption.mmd",
+      "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\residual_b_recall_absorption.mmd",
+      "exists": true,
+      "bytes": 239,
+      "sha256": "18cf64d3a0a16821df0500664ca4d00cb8615524984f415391ff4224ac378e2d"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\successor_lag_rhythm_replay.mmd",
+      "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\successor_lag_rhythm_replay.mmd",
+      "exists": true,
+      "bytes": 244,
+      "sha256": "d40e9b4489815e1601f1430a0428a537c3b5020fdf1b1fb027fa13bb4de9a154"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\evidence_layer_split.mmd",
+      "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\evidence_layer_split.mmd",
+      "exists": true,
+      "bytes": 321,
+      "sha256": "a38796b562fcd183d1c152d857e96d9fd0b3708dc671a9d7688529e840be4409"
+    }
+  ],
+  "validation_passed": true,
+  "boundary": {
+    "ap_core_scope_only": true,
+    "gl_learning_protocol_scope": false,
+    "product_shell_scope": false,
+    "answer_table_lookup": false,
+    "keyword_hard_gate": false,
+    "regex_route": false,
+    "student_side_llm": false,
+    "hidden_solver": false,
+    "full_sentence_macro": false
+  }
+}

@@ -1,0 +1,1174 @@
+{
+  "schema_id": "apv2_public_repo_staging_manifest/v1",
+  "repo_id": "Artificial-PsyArch-V2",
+  "generated_at": "2026-06-14T21:23:25",
+  "file_count": 233,
+  "total_bytes": 6694304,
+  "items": [
+    {
+      "path": ".gitignore",
+      "bytes": 200,
+      "sha256": "a1c810bd54125073354bbcdcfbc4314b761a933b1c9dac5537c9e76b51c144d9"
+    },
+    {
+      "path": "channels/__init__.py",
+      "bytes": 55,
+      "sha256": "928ce9d19da8a6ba92d572ceec1f21c6e8c5cff09aee0a799dd9d78a0f64ebec"
+    },
+    {
+      "path": "channels/cognitive_feelings/__init__.py",
+      "bytes": 73,
+      "sha256": "7ce431fe28125893ba1ae74c675d7f43cb2b38704a7bb04cd4193e7662545570"
+    },
+    {
+      "path": "channels/cognitive_feelings/channel.py",
+      "bytes": 25586,
+      "sha256": "52fe994e4e45c61b59a3354e92bd3dca9b9b44a3bf9f2d709851ec78356513be"
+    },
+    {
+      "path": "channels/expectation_pressure/__init__.py",
+      "bytes": 277,
+      "sha256": "10850ded7eee61439f0e81621898e89cc489cea4684e7d39ed7de0f05d51003c"
+    },
+    {
+      "path": "channels/expectation_pressure/anchor_verifier.py",
+      "bytes": 22664,
+      "sha256": "0422ba13bdf4d670c7e522ded924d1a3ddb9e194589e154eaca5c86ab180ef44"
+    },
+    {
+      "path": "channels/expectation_pressure/channel.py",
+      "bytes": 8963,
+      "sha256": "2cff510ccaca05ce4b62078ecdc17040c2ede85ec0e7874d0cc4d58d13952a6c"
+    },
+    {
+      "path": "channels/rhythm/__init__.py",
+      "bytes": 68,
+      "sha256": "831ff19cb4f59627c25b76511ff23fa45a2220d195617c70ac6cb27d6165083b"
+    },
+    {
+      "path": "channels/rhythm/channel.py",
+      "bytes": 9582,
+      "sha256": "4e73c62d4cfd480f053f83fe9e2f08bfc85a04ee61b048b0269fac0c4517b7e4"
+    },
+    {
+      "path": "channels/runtime_load.py",
+      "bytes": 10298,
+      "sha256": "f8768d28fa124cf9c5515b538bd5abc009ae6be6668e8bc04c6793aaaa930a95"
+    },
+    {
+      "path": "channels/task_feeling/__init__.py",
+      "bytes": 77,
+      "sha256": "0fb8616db90cd63216ea5dc97705000c5e5864686384d47740d0ebc82ead4b17"
+    },
+    {
+      "path": "channels/task_feeling/channel.py",
+      "bytes": 7579,
+      "sha256": "e86223f4dd469e097e176c263c4f1118935f914466e0b34b1665fefeb405d0dc"
+    },
+    {
+      "path": "channels/time/__init__.py",
+      "bytes": 44,
+      "sha256": "4ab83e40dd3bc20b0d2480e43604381a2c22fb87590158428e51a55853537ab6"
+    },
+    {
+      "path": "channels/time/channel.py",
+      "bytes": 8231,
+      "sha256": "3b66461e92531d4188f10eb73bb190cea6dff94299260e91086004a19b2693b4"
+    },
+    {
+      "path": "config/__init__.py",
+      "bytes": 147,
+      "sha256": "b38b5b2a296c9da97955c325baa45c23df50eedb3783e7e0da2132cf157c4942"
+    },
+    {
+      "path": "config/defaults.py",
+      "bytes": 19020,
+      "sha256": "2fa7de38dafa8dc6104fc35d4b7844b377411b623cbba21600066b86ddd376b7"
+    },
+    {
+      "path": "config/performance_profiles.py",
+      "bytes": 19929,
+      "sha256": "c35086179c215c3e289126c63b0752f405ffcfe136bb682c4673879fc5f32487"
+    },
+    {
+      "path": "config/persistence.py",
+      "bytes": 1764,
+      "sha256": "915c12d73882f5d99b75a6b518f0682d12a665931bd2a863bb56b72efaa245b1"
+    },
+    {
+      "path": "core/__init__.py",
+      "bytes": 72,
+      "sha256": "ff3500d87c187f970d0f47e5e89fcbaecf1ec033b80534fcec6b0ba4f5189584"
+    },
+    {
+      "path": "core/action/__init__.py",
+      "bytes": 934,
+      "sha256": "8f6f3d7f735d2820ec696830737dba775dbc920e5d72ed09f5ba86e71dec60cc"
+    },
+    {
+      "path": "core/action/consequence_evaluator.py",
+      "bytes": 19778,
+      "sha256": "bda08323fecaee71f3ac462fb7e713daa72dbb6a013a770d5a5f4c82d414a8a3"
+    },
+    {
+      "path": "core/action/control_effects.py",
+      "bytes": 31485,
+      "sha256": "4da975094e65db6951c35979f4ef4686726bb93ac723354b0cba06fd2b22bc0b"
+    },
+    {
+      "path": "core/action/focus_actuators.py",
+      "bytes": 13586,
+      "sha256": "f39d859169850274cc83dddbef4c10b9c8a922b603f9c08e09e30e3d47fd82f2"
+    },
+    {
+      "path": "core/action/outcome_memory.py",
+      "bytes": 11208,
+      "sha256": "73ba0293f909b35e58d390626baf43f26224853b1f899f6cdd2ccda6ff3c4ba4"
+    },
+    {
+      "path": "core/action/parameter_memory.py",
+      "bytes": 26864,
+      "sha256": "55e19b3aea429c8bc53bd10529843dcd5bd4b181f8b3f35ea9b70bcb8e70ded7"
+    },
+    {
+      "path": "core/action/planner.py",
+      "bytes": 351788,
+      "sha256": "9025275332d091324bae7c1ec29c3616c2d861788ee44f48d5dc43ff5a254f62"
+    },
+    {
+      "path": "core/action/registry.py",
+      "bytes": 14055,
+      "sha256": "b3d6c8b4e1afe26346f024af77479370ffc1852b55e8539be4d9a52083d94a08"
+    },
+    {
+      "path": "core/action/safety_gate.py",
+      "bytes": 13241,
+      "sha256": "794235d90ce208bcd1188f96d5bee83a4286fe906ea9d2d84449c7f38a9cddbc"
+    },
+    {
+      "path": "core/action/text_actuator.py",
+      "bytes": 60843,
+      "sha256": "1c05214e66c82e35cdce609521544d4f44bd909a3c6f9432ea44b90e40ccfaa2"
+    },
+    {
+      "path": "core/attention/__init__.py",
+      "bytes": 76,
+      "sha256": "28cba0135683420648adc20bf627a1b5cbeecc140823333a7b1de68945f6d592"
+    },
+    {
+      "path": "core/attention/selector.py",
+      "bytes": 14507,
+      "sha256": "bcdb90939495501c53a58275e55777a984b6f487a6f44fb64977ef379c19f547"
+    },
+    {
+      "path": "core/cognition/__init__.py",
+      "bytes": 65,
+      "sha256": "cfe92ad493c9e53c745199ac70d41618879462b636233c47690926fc290fef8b"
+    },
+    {
+      "path": "core/cognition/sa_registry.py",
+      "bytes": 6584,
+      "sha256": "fe19f31a4b0c8697253cd8bc05dfdda9eb123bcce90dfed91ab40679b7ce2618"
+    },
+    {
+      "path": "core/emotion/__init__.py",
+      "bytes": 291,
+      "sha256": "965112e6e3ee8950064c5fde0f79e547f865117f93f63f60836f42a235b83ebc"
+    },
+    {
+      "path": "core/emotion/emotion_modulator.py",
+      "bytes": 10780,
+      "sha256": "a78f3ac8f6184118d119a5c429bec5c1ff6af72e37c55640715e17731f341b61"
+    },
+    {
+      "path": "core/emotion/emotion_state.py",
+      "bytes": 5558,
+      "sha256": "7c854e22a7a92b338c4b4089ae74740fdde7222e44b9a4175ecfb0230518b230"
+    },
+    {
+      "path": "core/innate/__init__.py",
+      "bytes": 153,
+      "sha256": "2ecfea3552b29bf6e56c034da7a6f811d21f126b2203b35886b9ac226f606545"
+    },
+    {
+      "path": "core/innate/default_rules.py",
+      "bytes": 17131,
+      "sha256": "156b6842a3e1ab390ff0786200ccf082b032f2717dee9a1aa790c945cf59a00f"
+    },
+    {
+      "path": "core/innate/engine.py",
+      "bytes": 49650,
+      "sha256": "98d1ded99f30a51eeaace8636e6c386ada0dd0bec34e5235bcc46b11559abade"
+    },
+    {
+      "path": "core/learning/__init__.py",
+      "bytes": 240,
+      "sha256": "58911698451c76504a7d4257467d5ddf1e539dec6793fdd467993cd6cd636c8f"
+    },
+    {
+      "path": "core/learning/event_builder.py",
+      "bytes": 126,
+      "sha256": "facb19b409a2006212bd034370451a4193889094485dedb1c9fcf68a23de8420"
+    },
+    {
+      "path": "core/learning/innate_event_router.py",
+      "bytes": 7974,
+      "sha256": "4f9775af1cec4a0d428c6cb759e3024d3847f7b3aca8e931a98a7811fbc99706"
+    },
+    {
+      "path": "core/release_identity.py",
+      "bytes": 1271,
+      "sha256": "290d56f4c3c0e37744fe91b382d559110d45983544d2a220943ab69ff2436c82"
+    },
+    {
+      "path": "core/runtime/__init__.py",
+      "bytes": 64,
+      "sha256": "30bc865a8f793900bf637f23febefc46458d27d0c6b808fd8f8b75b603b9f1f5"
+    },
+    {
+      "path": "core/runtime/budget_controller.py",
+      "bytes": 11833,
+      "sha256": "ea825dcf02901860ee025df97d39015810b6f309e3a8ec6f0d56a553fa0c6789"
+    },
+    {
+      "path": "core/runtime/engine.py",
+      "bytes": 343049,
+      "sha256": "954528f12a04b3690a039d19dd2c744bab36325dd1a0def44521a1c81cf23aa1"
+    },
+    {
+      "path": "core/state_pool/__init__.py",
+      "bytes": 106,
+      "sha256": "541f47387fdabaef71fc7d9cb73c9f92fe2e3810bf358dc87537385f3f9d2155"
+    },
+    {
+      "path": "core/state_pool/energy_updater.py",
+      "bytes": 6154,
+      "sha256": "96fb7269932a220c404a54a21268bca0b76b7713733451bc8455d63b917de6b7"
+    },
+    {
+      "path": "core/state_pool/energy_view.py",
+      "bytes": 11430,
+      "sha256": "faffb020c95c32e2f39c28a1792d311dde1ea786ac5f3b5187f19176dfd7c510"
+    },
+    {
+      "path": "core/state_pool/residual_tracker.py",
+      "bytes": 7405,
+      "sha256": "aa3ac6fdd027ed569931576c3e44a535e0d84faf93b105d55e8a06829932670d"
+    },
+    {
+      "path": "core/state_pool/state_pool.py",
+      "bytes": 82980,
+      "sha256": "ffa35f03dd82e615cac83dbce7bac1e676f794c0fa2e4daaaaffa66306ef07ae"
+    },
+    {
+      "path": "core/tuner/__init__.py",
+      "bytes": 122,
+      "sha256": "186e92101c5378f41c339e065c2613354ded05ee80026278f62818adf34bf3ff"
+    },
+    {
+      "path": "core/tuner/adaptive_tuner.py",
+      "bytes": 23209,
+      "sha256": "2a6ab3fb8122c7e0a41f93bd16694b7c528c325d7ff7afdba46a2c8b48223615"
+    },
+    {
+      "path": "docs/APV21_BottomLayer_Design_Supplement_20260610.md",
+      "bytes": 12512,
+      "sha256": "e39585740409062d02525095da5b86a96405bf438db8953727e25b4492cb8a65"
+    },
+    {
+      "path": "docs/APV21_Current_State_Manual_20260610.md",
+      "bytes": 52486,
+      "sha256": "1d6b228e827db50d7d2d43051eac5d926a0cbbae0269ac567dd01e3f9e2b6d19"
+    },
+    {
+      "path": "docs/APV22_APCore_Dynamics_ExperimentPlan_20260610.md",
+      "bytes": 5273,
+      "sha256": "e7e0467fe3dead2fa42ae932762e258a9ddf390d0a4c681488facc6564f477bd"
+    },
+    {
+      "path": "docs/APV2_MainPaper_ArchitectureRuntime_Draft_20260611.md",
+      "bytes": 60283,
+      "sha256": "f05202555b667cb0d8db328229c8f9c1808b26f9834fd2f55e154b1dde0fa174"
+    },
+    {
+      "path": "docs/APV2_MainPaper_Supplement_Index_20260611.md",
+      "bytes": 15562,
+      "sha256": "7ef4df4e299de3c6cf71f95fee2cfa9dbbe3257799b05bdc00d92d243afcc32c"
+    },
+    {
+      "path": "docs/APV2_PressArticle_PublicValue_zh_en_20260613.md",
+      "bytes": 12987,
+      "sha256": "a3db4e1c623c5dbe34e5eaad5684b7154eabc90568c20549e2df86d82f754fd7"
+    },
+    {
+      "path": "docs/FinalReport_APV21_ParamSensitivity1_RepresentationAblation1_20260608.md",
+      "bytes": 6974,
+      "sha256": "edd831e2cbc54f39b7dcbb26e1e16b3aada7183f29d9a7af767cd1d7c77b959d"
+    },
+    {
+      "path": "docs/FinalReport_APV21_STPv2_ProcessAnchorTransfer_v0_4_20260608.md",
+      "bytes": 6931,
+      "sha256": "f99f2d4e15033c1eaeef6628a2a1c92d0cc65b6151f8ef280457e6ce3023c6bb"
+    },
+    {
+      "path": "docs/FinalReport_APV2_OnlineLearnedVector_APCoreSync_20260612.md",
+      "bytes": 6659,
+      "sha256": "c94cd15db52a9b8b638e5666b61467b6e5790535a5e2e48788818e2cde059ae7"
+    },
+    {
+      "path": "docs/FinalReport_APV2_OnlineVectorNegativePressure1_20260613.md",
+      "bytes": 5108,
+      "sha256": "e4f6dd56949ea2e16b610e164a84b9b45e55c5c1281e4ffa7a4630ac4db9ba12"
+    },
+    {
+      "path": "docs/FinalReport_APV2_OnlineVectorWeightAblation1_20260613.md",
+      "bytes": 6024,
+      "sha256": "810732c45d25de90192c1d640dc51ec4c92c945cc4eb057aa00c5e7a6880259d"
+    },
+    {
+      "path": "docs/FinalReport_APV2_P2StressMechanismEvidence_20260611.md",
+      "bytes": 7372,
+      "sha256": "899b3c39ac49fda0176a9536c281a838d5ccf96316032048ff35bd5c767168fd"
+    },
+    {
+      "path": "docs/FinalReport_APV2_PublicFreezeCleanRoomRerun_20260611.md",
+      "bytes": 8128,
+      "sha256": "4742b2571ec1f425f73be5103f8d6c36b850ddb88cc66d58fc9a39fa7c03eed9"
+    },
+    {
+      "path": "docs/FinalReport_APV2_TransitionIsolation1_20260613.md",
+      "bytes": 3895,
+      "sha256": "c55cde53a833a42cc0a53e8e23d623e39a6ed34c2ea9a5eb625592f638728ae9"
+    },
+    {
+      "path": "docs/Release_APV2_FinalPaper_20260614.md",
+      "bytes": 18143,
+      "sha256": "231eece9535470f234d0454b3623540b007554c55d89f19a9d263da664b6d28e"
+    },
+    {
+      "path": "docs/Release_APV2_NewsArticle_20260614.md",
+      "bytes": 5299,
+      "sha256": "68795e9e790ae9d58e1d37f8d8f76bba77d3dd6ed28997e5c0ceb67deab6d348"
+    },
+    {
+      "path": "docs/Release_APV2_RepositorySetup_20260614.md",
+      "bytes": 2255,
+      "sha256": "9e69524dff093682a1093c1d6dd4f1ec239ce28013f0dd10b5c7017598e9f156"
+    },
+    {
+      "path": "education/__init__.py",
+      "bytes": 1092,
+      "sha256": "16ce98371ba4be9863de1178199e84ac729f51eb7014d0e0321e1be366256d78"
+    },
+    {
+      "path": "education/fake_llm_teacher.py",
+      "bytes": 16024,
+      "sha256": "aaae29d2be566844bd3d9f9d7ff575abd60ad5375b3829b6193bc24eb9b41e5b"
+    },
+    {
+      "path": "education/intervention.py",
+      "bytes": 10038,
+      "sha256": "1ac1e0d04145d6ce425273dd47b6471d979047fedef14af575b02a778eb52dc0"
+    },
+    {
+      "path": "education/llm_teacher.py",
+      "bytes": 12215,
+      "sha256": "803f2da7022497d04d344e8ba5c090fcc42f1453ecfa82c2299940545d29ac53"
+    },
+    {
+      "path": "education/skill_protocol_v2.py",
+      "bytes": 26425,
+      "sha256": "fa2bf436c4c9b2c7da706c5bf483cbbf30da8c36b7dcfd26ab14cab29ff03ea4"
+    },
+    {
+      "path": "education/skill_scaffold.py",
+      "bytes": 17848,
+      "sha256": "459299b948ffcfbc1289c9dae52a0181bae2a473953acb726ff4e0af2c2d4f75"
+    },
+    {
+      "path": "experiments/apv22_apcore_dynamics.py",
+      "bytes": 35724,
+      "sha256": "348ffef74ebea9d64c1ae216a64cc6c89b8f9a3828ba2babb19a57769a37ec76"
+    },
+    {
+      "path": "experiments/apv2_action_feedback_writeback_trace_audit_1.py",
+      "bytes": 7137,
+      "sha256": "2fbba5e589ac6af4fff3ddd423615e818f3e38141d267b03c6cc1a984a2bc00b"
+    },
+    {
+      "path": "experiments/apv2_attention_band_online_vector_integration_1.py",
+      "bytes": 7589,
+      "sha256": "673485f82aba458dd948eaea7bd0e171b912f032e36906059ab5914a209fa588"
+    },
+    {
+      "path": "experiments/apv2_cognitive_feeling_causal_ablation_2.py",
+      "bytes": 6910,
+      "sha256": "76bbe51af376437611387767cc0178f05e086159eb2893da894ec460895e8773"
+    },
+    {
+      "path": "experiments/apv2_emotion_modulation_long_run_dynamics_1.py",
+      "bytes": 6207,
+      "sha256": "77e99d77dd6d631f0dfb76a2d8ae357863dee981aaed9513cd132249082e6c85"
+    },
+    {
+      "path": "experiments/apv2_feedback_override_mechanism_1.py",
+      "bytes": 7317,
+      "sha256": "78059f74b20b53c00865a41f16f75cde02d7723123741ea37e92b0a2aeb873a9"
+    },
+    {
+      "path": "experiments/apv2_negative_feedback_ablation_1.py",
+      "bytes": 6388,
+      "sha256": "0da64e7016a0771074b7fccf38dbbcd689589efd47df50b7b759a9f41257ffc2"
+    },
+    {
+      "path": "experiments/apv2_residual_b_recall_ordered_completion_1.py",
+      "bytes": 6374,
+      "sha256": "953aa6ac690f724e91d0511fc3b2fc5c770ff573bc88b1fd9f42f59c04d2147e"
+    },
+    {
+      "path": "experiments/apv2_short_term_slot_history_reload_1.py",
+      "bytes": 8400,
+      "sha256": "17fe30ba57d12851373a8d161ebc25798b5034b0dccbf6d89f8ea4f32a26da78"
+    },
+    {
+      "path": "experiments/apv2_successor_peak_gate_1.py",
+      "bytes": 7120,
+      "sha256": "3e52b87cdfcaad0fed20586ad457fe899fb9f699914bf48c89595d5eb9874757"
+    },
+    {
+      "path": "experiments/online_vector_negative_pressure_1.py",
+      "bytes": 9793,
+      "sha256": "afb9d15915947fff34f65a898e80e39eb80d30839913e2e20e6555341d55cbb6"
+    },
+    {
+      "path": "experiments/online_vector_weight_ablation_1.py",
+      "bytes": 13244,
+      "sha256": "5a2b1ebffbc7d11f48c43ed6aedf76c615ca474474a95052fd0eae926d888bcb"
+    },
+    {
+      "path": "experiments/transition_isolation_1.py",
+      "bytes": 9406,
+      "sha256": "9a05873f0393aaa497c8689091154e6fdf4f86e4111555d963996018d46e2b98"
+    },
+    {
+      "path": "learning_events.py",
+      "bytes": 10771,
+      "sha256": "2affb42fbd32d9644a2826b32af92756ff1b3dc1f72cd865d1cd97d0cd8873d7"
+    },
+    {
+      "path": "legacy_apv2/__init__.py",
+      "bytes": 61,
+      "sha256": "903e4ecd1e1ffc6a5545fb1e6f2cfbbe1ea95a90a008e215bbe46c694f601d7c"
+    },
+    {
+      "path": "legacy_apv2/sensors/__init__.py",
+      "bytes": 53,
+      "sha256": "f27220ffc49e69f49e24e96153113b97b89cbc8b991443479cac9afb79388bdb"
+    },
+    {
+      "path": "legacy_apv2/sensors/hearing_sensor_v1.py",
+      "bytes": 75618,
+      "sha256": "9be4cf21de17e4ad8ff31288bc1094010ee1466da2d1b38a547a193971686986"
+    },
+    {
+      "path": "legacy_apv2/sensors/stream_adapter_v1.py",
+      "bytes": 27137,
+      "sha256": "e8227264b69b8e21ed19d9dac917290e2da871bc38651b123e85c1bc0968fad8"
+    },
+    {
+      "path": "legacy_apv2/sensors/text_sensor_v2.py",
+      "bytes": 5697,
+      "sha256": "ea7f8ccdd551dd6dc1f9fbc047c1cda1d8541d4ee301275ad457c5176460d837"
+    },
+    {
+      "path": "legacy_apv2/sensors/video_decoder_v1.py",
+      "bytes": 8817,
+      "sha256": "1ed0593e19f1842a8a2d88afc8f88c09867216a2fb40753a427cc1d930885178"
+    },
+    {
+      "path": "legacy_apv2/sensors/vision_sensor_v1.py",
+      "bytes": 215569,
+      "sha256": "667532ea8410acabae0308292b2d82c43e0d2596599dc44b05d0af4821ffb8e7"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 2417,
+      "sha256": "e1db998d75606eff4858a0e0f13994a1906766547e2990bf188fa8a7007b080a"
+    },
+    {
+      "path": "memory/__init__.py",
+      "bytes": 363,
+      "sha256": "ac2b02328ec023710539f287a3214a7ec6435533f9e392ccc7baa9908d7c6964"
+    },
+    {
+      "path": "memory/assets/__init__.py",
+      "bytes": 85,
+      "sha256": "557d4237a505317f0c1627f15f1212f8175e8fce4c0d1caa897616b330806c70"
+    },
+    {
+      "path": "memory/assets/asset_store.py",
+      "bytes": 9394,
+      "sha256": "9536f32e4c9c2130a896595d21b1af8d3b8a7aec7b202b97b7f25a58cfe22d49"
+    },
+    {
+      "path": "memory/embedding/__init__.py",
+      "bytes": 65,
+      "sha256": "45d6259a71b40c605c9688187f7c8a8d798f7784564c57be60328783f8b4c041"
+    },
+    {
+      "path": "memory/embedding/online_store.py",
+      "bytes": 25505,
+      "sha256": "bf00e75f3abb6588ae8a0e9e2b8d5d01c54886d7cc89db7359efa43482949bbe"
+    },
+    {
+      "path": "memory/layered_fidelity.py",
+      "bytes": 23773,
+      "sha256": "f09aa45e13d9b84e54c3dc89d65d121800b71a1c43ffce72a726ccaaa1eac8d2"
+    },
+    {
+      "path": "memory/persistence/__init__.py",
+      "bytes": 983,
+      "sha256": "27ea925dab289501ddaaeb2005afb90a269e89306aed6880ee16deb75b4aaf82"
+    },
+    {
+      "path": "memory/persistence/base.py",
+      "bytes": 3082,
+      "sha256": "2b2060bbf3b057da5e855c5912ba9a96760edc04beefabd62e67f623108231bf"
+    },
+    {
+      "path": "memory/persistence/jsonl_store.py",
+      "bytes": 7252,
+      "sha256": "d2c6c7272940810a2f1c2c3cbea8dcf0795e25f53b0e12b14e9187a99c3bdb4f"
+    },
+    {
+      "path": "memory/persistence/pg_health.py",
+      "bytes": 5382,
+      "sha256": "8d3db03d375054b032a4c7512d7200043e2203d53ac219284bdfce9f0ddb2a88"
+    },
+    {
+      "path": "memory/persistence/postgres_store.py",
+      "bytes": 27183,
+      "sha256": "f188b07110e5ff2ab00facf7c208b66e1ff02333970bd16da4c3885bf06aed05"
+    },
+    {
+      "path": "memory/persistence/recording.py",
+      "bytes": 4865,
+      "sha256": "a3748e79cefaf94f7e94ef5ea2b6ab3c8d8a01cabc9759d77731709f25850f73"
+    },
+    {
+      "path": "memory/persistence/schema.py",
+      "bytes": 10563,
+      "sha256": "2882e292cd71ddf4d9e72e7a0fd340f59b2a70ee90d771af3d095223cb138aa3"
+    },
+    {
+      "path": "memory/persistence/sqlite_store.py",
+      "bytes": 98871,
+      "sha256": "ea6cb832c3b8d9462ec48f702c29db1b44b922bdfd7911866005df9b57aabd0e"
+    },
+    {
+      "path": "memory/relations/__init__.py",
+      "bytes": 99,
+      "sha256": "bcb1ccc3bf2d07d36779223a71f4ef7a3148b0164673e54f741fcd0268cace09"
+    },
+    {
+      "path": "memory/relations/relative_relation_store.py",
+      "bytes": 30543,
+      "sha256": "b0c1acf54e7fbd682d64f67f6f75281830346294a3cfaffa4ec3b4436a930fdf"
+    },
+    {
+      "path": "memory/retrieval/__init__.py",
+      "bytes": 149,
+      "sha256": "4fd3298329df6c5daa40be27157eee2ffaf3e9b89a07698040b2c05704060bdd"
+    },
+    {
+      "path": "memory/retrieval/faiss_index.py",
+      "bytes": 7409,
+      "sha256": "1c4be6e4dff8fe7cfeda6183a1a1f865d85ef07fdf81871c181552fed2405584"
+    },
+    {
+      "path": "memory/retrieval/hash_vector_index.py",
+      "bytes": 3756,
+      "sha256": "611dbac1a331e0d2f174b6d184ce51d15a254d435ea0e4c0a61e3637c3802490"
+    },
+    {
+      "path": "memory/retrieval/numeric_feature_index.py",
+      "bytes": 10183,
+      "sha256": "99c65286025b295e288ed4ece426d422bf81a5c9f12e169ec2d4c10f3957e31e"
+    },
+    {
+      "path": "memory/retrieval/posting_index.py",
+      "bytes": 8734,
+      "sha256": "7ead7f18f1f53a6ddef931f9cad16e0c2589e91bf70b138de1ea2e49802be35e"
+    },
+    {
+      "path": "memory/short_term/__init__.py",
+      "bytes": 371,
+      "sha256": "018b56c1082b193e639323c1c6f91c17825a38ae48f4ba123e6ba76774a5d444"
+    },
+    {
+      "path": "memory/short_term/echo_buffer.py",
+      "bytes": 21292,
+      "sha256": "1112ce5df1d1c8baeb835d396dd3ffbfa71427ed1264257d808cb581b75178a8"
+    },
+    {
+      "path": "memory/short_term/focus_buffer.py",
+      "bytes": 26781,
+      "sha256": "d8f374cd778ead605bcd79a22f73dab0e77655e5e45ed1a5b8c539a344ea35cd"
+    },
+    {
+      "path": "memory/short_term/focus_successor_bias.py",
+      "bytes": 18332,
+      "sha256": "7a5ffe75c75f97c0571fbb141d01298037b810b64345efba943d307198ce4e6a"
+    },
+    {
+      "path": "memory/short_term/memory_window.py",
+      "bytes": 33476,
+      "sha256": "07e451cb12c3ab0050cf6bab794046568eb9ea984bf8b75486dae24c242d1531"
+    },
+    {
+      "path": "memory/short_term/slot_packet.py",
+      "bytes": 23693,
+      "sha256": "56b98a290e58792fbe8fa5ff46bece46ac45c72c1feddf5841f056f3ae05d25b"
+    },
+    {
+      "path": "memory/spacetime/__init__.py",
+      "bytes": 56,
+      "sha256": "908765ab19d59ac34cbce9502aef3cd3eaf8c1f77e2b6130995274ffc3c7f82c"
+    },
+    {
+      "path": "memory/spacetime/transition_store.py",
+      "bytes": 12349,
+      "sha256": "eb501dc619acd3d47d6b632a9233e6a691263083bc3475fb6ca6c446c76f50f7"
+    },
+    {
+      "path": "memory/store/__init__.py",
+      "bytes": 68,
+      "sha256": "bdf32e0a67ffa46e56d1a085d66c7675399eaea09242b90c4cb7718b842c871e"
+    },
+    {
+      "path": "memory/store/memory_store.py",
+      "bytes": 318039,
+      "sha256": "0e09dddaf7cff0388b698ac42d2f37775140ee603eb3351f2121bcd04f4f48a3"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 977,
+      "sha256": "9f2a8107418ed7e16852b98fdb9894c1060c459b4dd91eea8861c170180a94d1"
+    },
+    {
+      "path": "observatory/__init__.py",
+      "bytes": 859,
+      "sha256": "88644279f06d6408d7a013a4fec553e40eae8949cf082f834725f63f8e94920f"
+    },
+    {
+      "path": "observatory/reconstruct.py",
+      "bytes": 70157,
+      "sha256": "200ebf9498845d6cf78f969c1197aaae3ecda45a596161c2445098dcfc98606f"
+    },
+    {
+      "path": "observatory/render_model.py",
+      "bytes": 96251,
+      "sha256": "a458c498cb2024345ba53f45f10e4125ef1177b035aa796131a12b0ccc893dc3"
+    },
+    {
+      "path": "observatory/server.py",
+      "bytes": 33202,
+      "sha256": "ea0dd3a5adc7df18f5bbf16fc21332c739cf82d1eda0a8cbfc25fa1be270deab"
+    },
+    {
+      "path": "observatory/trace_view.py",
+      "bytes": 2192,
+      "sha256": "adc8cbccb026cf90fefd9a5fb4e60701eb3b6c60eb077dd505d473619ea0d330"
+    },
+    {
+      "path": "outputs/apv22_apcore_dynamics_20260614_022059/apv22_apcore_dynamics.json",
+      "bytes": 78690,
+      "sha256": "84df77c29b8df476a5a5384c14f661ef34e304c7aabb4a42eacdf774c1c33376"
+    },
+    {
+      "path": "outputs/apv22_apcore_dynamics_20260614_022059/apv22_apcore_dynamics_report.md",
+      "bytes": 3783,
+      "sha256": "a7d0860de0784794d2ef4ed0e0b56f7b1dff5899724d7e07fe6a9c42fd20e39b"
+    },
+    {
+      "path": "outputs/apv2_bottom_loop_p0_materials_20260611_021431/apv2_bottom_loop_p0_materials.json",
+      "bytes": 41307,
+      "sha256": "eae57890d18f5bfc6bc12d3607087e0f4a4e25b6af32f14ca5fe861c6cecd9ec"
+    },
+    {
+      "path": "outputs/apv2_bottom_loop_p0_materials_20260611_021431/apv2_bottom_loop_p0_materials_report.md",
+      "bytes": 7190,
+      "sha256": "f154d4fd3c147ce6ab90486e04e9edb3e36d9b4ebf6dc41c8e46769b54c88f5b"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/apv2_p1_hardening_materials.json",
+      "bytes": 22971,
+      "sha256": "33f9fdb31f0cefa8cae161f6a5410e281fc24360c070895bbcf8a41d5d5541c1"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/apv2_p1_hardening_materials_report.md",
+      "bytes": 5292,
+      "sha256": "7a922c2e528371d02d32ccdbb959eecccbcc4ac0a4ef3119f92a491c9f89c8d9"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/artifact_freeze_manifest.json",
+      "bytes": 5017,
+      "sha256": "f69ca1d2d7131def3a660e126dcacccdc7cacc4072b12cfcf2db7b0aff9b36f4"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/figures/apv2_runtime_loop.mmd",
+      "bytes": 419,
+      "sha256": "55d4d6946228b6bf8f0253565e402a7e9dca00a78bf80e9cf549884452205b3c"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/figures/evidence_layer_split.mmd",
+      "bytes": 321,
+      "sha256": "a38796b562fcd183d1c152d857e96d9fd0b3708dc671a9d7688529e840be4409"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/figures/residual_b_recall_absorption.mmd",
+      "bytes": 239,
+      "sha256": "18cf64d3a0a16821df0500664ca4d00cb8615524984f415391ff4224ac378e2d"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/figures/state_pool_vs_short_term_slot.mmd",
+      "bytes": 328,
+      "sha256": "4739cf4223d6d45c774fc4a810b2d5753eed3d2d75df770b29e5b5306cb10f51"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/figures/successor_lag_rhythm_replay.mmd",
+      "bytes": 244,
+      "sha256": "d40e9b4489815e1601f1430a0428a537c3b5020fdf1b1fb027fa13bb4de9a154"
+    },
+    {
+      "path": "outputs/apv2_p1_hardening_materials_20260611_021432/jsonl_persistence/apv2_memory.jsonl",
+      "bytes": 16506,
+      "sha256": "19a0d88ba4ce8eacb01fe488ae72207a427c50f85bd8cc7bf4a30f74a50e60d7"
+    },
+    {
+      "path": "outputs/apv2_p2_stress_mechanism_evidence_20260611_021433/apv2_p2_stress_mechanism_evidence.json",
+      "bytes": 178320,
+      "sha256": "61e1703325759dc66dcb422bc58c59842c544fab00f4fbc494923151dc3214d1"
+    },
+    {
+      "path": "outputs/apv2_p2_stress_mechanism_evidence_20260611_021433/apv2_p2_stress_mechanism_evidence_report.md",
+      "bytes": 2612,
+      "sha256": "8755c075e7d481dc0c2121713db0a1d2b04047e8fc44d7e95ba50d91eb440590"
+    },
+    {
+      "path": "outputs/apv2_p2_stress_mechanism_evidence_20260611_021433/artifact_manifest.json",
+      "bytes": 2814,
+      "sha256": "acc32834952ce8ce991775c3b28e44a0db32434a996de1d70fd2f9ab3dd2f180"
+    },
+    {
+      "path": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev1_evidence_panorama.png",
+      "bytes": 224992,
+      "sha256": "64ed2f6f876219d7022a09189aad275febc90aad2fd4161329b6d7a33a5d41e3"
+    },
+    {
+      "path": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev1_evidence_panorama.svg",
+      "bytes": 127859,
+      "sha256": "f960fc7ad698c852ab3bcd4b4c82519ea4b91ed4f5d311f07f4c5dcba3f1e954"
+    },
+    {
+      "path": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev2_baseline_cost_vs_capability.png",
+      "bytes": 182507,
+      "sha256": "c02d74e34be0adbf175be15754ea1165d3872f4150a7d3184b0d3a0c684daafb"
+    },
+    {
+      "path": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev2_baseline_cost_vs_capability.svg",
+      "bytes": 115020,
+      "sha256": "77c5e35eead1a3283fbf2961ed38001aea1413363d076989d331441b5c095f36"
+    },
+    {
+      "path": "outputs/apv2_press_evidence_figures_20260614_015121/figure_manifest.json",
+      "bytes": 1060,
+      "sha256": "6617a5f32d4255d33b70cfe73546bbdd6e8375ef58eebffdc257c23ae46c0612"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figure_manifest.json",
+      "bytes": 3878,
+      "sha256": "52ddd5dda9d26b68c5924ec334ae48097713a4f7a96afd969a2d92cb373e146a"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f1_apv2_runtime_loop.png",
+      "bytes": 93726,
+      "sha256": "d25b3db455b6452d189a72afaaffd302cd81d4519bd08d320a921e85047f250b"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f1_apv2_runtime_loop.svg",
+      "bytes": 43286,
+      "sha256": "2f7e0b165f21cbb0edc89ca309042f82117a0891bda8b4cd8712f3c298119742"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f2_state_pool_vs_short-term_narrative_slot.png",
+      "bytes": 109592,
+      "sha256": "8b2a072f98d6d450bd701f165d9fd1d3058e13527a5323b8ca51947fed4b287a"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f2_state_pool_vs_short-term_narrative_slot.svg",
+      "bytes": 43494,
+      "sha256": "18b31e16cb438d279a1121ab8b1379b97de0006468293dd027afd13adc48574d"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f3_residual_b_recall_absorption.png",
+      "bytes": 93390,
+      "sha256": "b90fc3d3eb02908cab940b0965e63e64d34efcd2ff7f8053154efdca7730a3bd"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f3_residual_b_recall_absorption.svg",
+      "bytes": 47410,
+      "sha256": "1e73340691453496d011d75f6c49c8866b36725d077a950ef1c6f11b91ed856e"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f4_successor_lag_and_rhythm_replay.png",
+      "bytes": 120845,
+      "sha256": "ae44935ed998ea71d15665d0980c85e3cd840a83b5912051f6673b32b414557e"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f4_successor_lag_and_rhythm_replay.svg",
+      "bytes": 48552,
+      "sha256": "64183f44978a6205a8e792856b8060276269523e72902b54e58547bcb26869de"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f5_evidence_layer_split.png",
+      "bytes": 102491,
+      "sha256": "b1ab22f78211ffd87515b477c316a22a402131c4ed7381bb19f0cfcbd89b258e"
+    },
+    {
+      "path": "outputs/apv2_publication_figures_supplement_20260611_002510/figures/f5_evidence_layer_split.svg",
+      "bytes": 47350,
+      "sha256": "0b7aaa03df5d6ab8b53cb442d6de879e35029e0e719f9250a8fa600ddcb4ec5a"
+    },
+    {
+      "path": "outputs/online_vector_negative_pressure_1_20260613_210139/online_vector_negative_pressure_1_report.json",
+      "bytes": 1788,
+      "sha256": "5a42501c3e1079d03bbbddc2c3294865fae8e7909ea200936131ee47e447d433"
+    },
+    {
+      "path": "outputs/online_vector_negative_pressure_1_20260613_210139/online_vector_negative_pressure_1_report.md",
+      "bytes": 1271,
+      "sha256": "a62ca4940f03c9fc4f4bed57e07cb72f53be8ddc9ddf1ddc6e5d76f5646d4e8c"
+    },
+    {
+      "path": "outputs/online_vector_weight_ablation_1_20260613_193916/online_vector_weight_ablation_1_report.json",
+      "bytes": 3797,
+      "sha256": "b3feb6db2d42634091d26f7a7964cce091813157de1aaf7463653a7858871f9c"
+    },
+    {
+      "path": "outputs/online_vector_weight_ablation_1_20260613_193916/online_vector_weight_ablation_1_report.md",
+      "bytes": 1755,
+      "sha256": "964161b8a0fa449fb8e7772ac0971ccd89156ae94aece6ec48b1078a65ab3f1c"
+    },
+    {
+      "path": "outputs/transition_isolation_1_20260613_211028/transition_isolation_1_report.json",
+      "bytes": 1914,
+      "sha256": "2ccf75ed7ef038db521b603b3bda934d23c191127205f5ecc03d266a43fa47c0"
+    },
+    {
+      "path": "outputs/transition_isolation_1_20260613_211028/transition_isolation_1_report.md",
+      "bytes": 1267,
+      "sha256": "ecece9d0ad2fad319987df1a0fa8fc8f14a65493a25c94ec784abc9bba4735f2"
+    },
+    {
+      "path": "paper_artifacts/release_20260614/APV2_FinalPaper_20260614.docx",
+      "bytes": 426074,
+      "sha256": "159aa85b1b0a760a87f8d8f0ba555325f60b60a77cd14cfc78dd1e5529a2210a"
+    },
+    {
+      "path": "paper_artifacts/release_20260614/APV2_NewsArticle_20260614.docx",
+      "bytes": 419423,
+      "sha256": "baf5ddbf7d2d68dbbf12f47547e0c699605ea3aa543b7cdef4d28de1b614bc6a"
+    },
+    {
+      "path": "paper_artifacts/release_20260614/APV2_RepositorySetup_20260614.docx",
+      "bytes": 37765,
+      "sha256": "ce13eb41b77fd517e52e31afab72f79e63091d5cff0fffe98298ee850428100a"
+    },
+    {
+      "path": "paper_artifacts/release_20260614/release_manifest_20260614.json",
+      "bytes": 826,
+      "sha256": "a09c846f3e48cba39376cba3144487c637fabce897abca860df4e1cc415a2543"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1743,
+      "sha256": "7d3a92fbad22bb01dfa7f1e69c0e6126f6849f0d74daacc9e9e948b13672846e"
+    },
+    {
+      "path": "RELEASE_MANIFEST.md",
+      "bytes": 3726,
+      "sha256": "34ade1a3c2e7b95f3563600ca1d773964e3e1959f63e4f652142eff867e0a8ef"
+    },
+    {
+      "path": "scripts/build_apv2_press_evidence_figures.py",
+      "bytes": 9515,
+      "sha256": "daa72b6d24b04383f639eb43303e0f91266e023007dc38200e72e9f208fb421c"
+    },
+    {
+      "path": "scripts/build_apv2_publication_figures_supplement.py",
+      "bytes": 16853,
+      "sha256": "4947dfa6b69ea8bd5fa7b736135d92a7e0d7c186d211299d318c3cc6741d997a"
+    },
+    {
+      "path": "scripts/build_apv2_release_docx.py",
+      "bytes": 5951,
+      "sha256": "8801fe7a721f7a1d6f5c53a1b32fdd6be991ce1a8d933e6daf0c252de0ffe967"
+    },
+    {
+      "path": "scripts/check_apv2_mainpaper_runtime_draft.py",
+      "bytes": 5326,
+      "sha256": "3adf04c73267c6ab3a1144bb41307600d82d8f4d7fe1df28f3ddc6f5c26664d9"
+    },
+    {
+      "path": "scripts/run_paper_key_suite.py",
+      "bytes": 22313,
+      "sha256": "15b583dbe18e3aee1f87ed4731d5cc1cd86f10364eddd6387a9ce1a6b4b2b465"
+    },
+    {
+      "path": "scripts/run_param_sensitivity_1.py",
+      "bytes": 24543,
+      "sha256": "c062b5ea6e035bccd7a7d3c74abad4155627518ec97e65fdda481430faedc9bf"
+    },
+    {
+      "path": "scripts/run_representation_ablation_1.py",
+      "bytes": 28120,
+      "sha256": "db74ac6ba73830a421473912bbf98e3433437dc183fe8915d78624838da3a7f2"
+    },
+    {
+      "path": "SECURITY_AND_PRIVACY.md",
+      "bytes": 2386,
+      "sha256": "8f3d563dccac19493c95f8a60733d2512d581cbcc7a3902968c5cdae3c5a6446"
+    },
+    {
+      "path": "sensors/__init__.py",
+      "bytes": 137,
+      "sha256": "02db5e4de9205ec06bcce4742ae8d1f4f3da9500bf15c954a89a8e0184e554c3"
+    },
+    {
+      "path": "sensors/audio/__init__.py",
+      "bytes": 163,
+      "sha256": "613f5a54395d9c747e7a231fb4be7d4d32bb677c308bcad73f5c8789fbb4a5da"
+    },
+    {
+      "path": "sensors/audio/legacy_bridge.py",
+      "bytes": 3581,
+      "sha256": "85be07497f8bed4d160ea39520744f2f768f8819693fc06f4c1b5d6d02b1ba44"
+    },
+    {
+      "path": "sensors/audio/numeric_sensor.py",
+      "bytes": 31263,
+      "sha256": "cb5fba2ab03489b048dee415b78b59a75f4a0d25605384c048e19fff483649d2"
+    },
+    {
+      "path": "sensors/reconstruction_payload.py",
+      "bytes": 2449,
+      "sha256": "43a8676eb343531f8b36315a18a570959d7ee67606b6c91e2414a4b521c55e6e"
+    },
+    {
+      "path": "sensors/text/__init__.py",
+      "bytes": 132,
+      "sha256": "26ffbdc14bad7b8d2ec3e8294a00b4f6dedfe06c6bfcc1bdd48ddeed6ecdbbf8"
+    },
+    {
+      "path": "sensors/text/sensor.py",
+      "bytes": 3171,
+      "sha256": "b0e61450dc43e33efcbdeccf352c191201aab52fdc46923b7e990a676007380e"
+    },
+    {
+      "path": "sensors/vision/__init__.py",
+      "bytes": 167,
+      "sha256": "e01a9880a0c082ee9f3250a03b2a098bfd39d4b2ca9cda0c0d3d9e7ce6473fa6"
+    },
+    {
+      "path": "sensors/vision/legacy_bridge.py",
+      "bytes": 4427,
+      "sha256": "229c96ed5fd58834714eeecc0fd2af7decf3062ce1de8f6218d0d3bd57800d3a"
+    },
+    {
+      "path": "sensors/vision/numeric_sensor.py",
+      "bytes": 56771,
+      "sha256": "54ebd6ca92b825423d77f0d75e663ae2013d3256112f0e70f84aab084cb29c50"
+    },
+    {
+      "path": "skill_registry/ap_learned_skill_registry.json",
+      "bytes": 22026,
+      "sha256": "9300926ed722c1d3ca55f94adadbe3306b6406a1bfea6a92d03dd5a0a43cfd78"
+    },
+    {
+      "path": "skill_registry/AP_LearnedSkillRegistry_Report_20260603.md",
+      "bytes": 9048,
+      "sha256": "ac2c919e72d92d14690b8d357c6d57cbe4822d3c4024de77607e7429b5a2615d"
+    },
+    {
+      "path": "skill_registry/packages/countloop0_object_quantity_experience_package.json",
+      "bytes": 4887,
+      "sha256": "683162379967a9134dd2d4c0d65820e0cb7e5201580437435c8dbf1262229cad"
+    },
+    {
+      "path": "skill_registry/packages/elementary_math_nosolver0_skill_package.json",
+      "bytes": 16013,
+      "sha256": "20ab0811d11ceb450b4d58a7d381fd6e78441f6bd3a0a1f7fecfdf0e7741be2c"
+    },
+    {
+      "path": "skill_registry/packages/elementary_math_nosolver1_skill_package.json",
+      "bytes": 23224,
+      "sha256": "9ffd9a69721cbfe5dbe257053152a04c25884072498dab60b957c6a13ab5cbd0"
+    },
+    {
+      "path": "skill_registry/packages/elementary_math_nosolver2_skill_package.json",
+      "bytes": 28818,
+      "sha256": "e89f04741b7f99ce0a7ab49485597751b33432e57d1b395e0923ef0571d58823"
+    },
+    {
+      "path": "skill_registry/packages/elementary_math_nosolver3_skill_package.json",
+      "bytes": 271646,
+      "sha256": "f4a3640ae409cb7b6564630e60241ef327a66599d3f7e2fe1a4e5a4366540f92"
+    },
+    {
+      "path": "skill_registry/packages/elementary_math_nosolver4_skill_package.json",
+      "bytes": 240620,
+      "sha256": "5a65faf2228b90a531da1a135faff55109a9657e465cb8294af4ab0e81436487"
+    },
+    {
+      "path": "skill_registry/packages/math_fullchain1_skill_package.json",
+      "bytes": 45517,
+      "sha256": "4b978fc704af720e7e7069bc942c7a73095c71b82e21c4b4e1b1c66aa38f345f"
+    },
+    {
+      "path": "strict_core/__init__.py",
+      "bytes": 223,
+      "sha256": "e257441f9a014f68ace812ca7f645304b38867e740d75a07439f03e695559136"
+    },
+    {
+      "path": "strict_core/common.py",
+      "bytes": 3355,
+      "sha256": "29ae82e2f2fcde1637ca1de847b0c04b64e878b907b381761927508f47fd4625"
+    },
+    {
+      "path": "strict_core/environments.py",
+      "bytes": 12667,
+      "sha256": "7abd45e1b9707691deb69d2c68d43815328d707a4b35171f8a7a625a8dd3b058"
+    },
+    {
+      "path": "strict_core/experiments.py",
+      "bytes": 22026,
+      "sha256": "b3de9f56bbaee0d9d92e0bb1f296150c7c3eb84452466779db240364d4ddb8b3"
+    },
+    {
+      "path": "strict_core/policies.py",
+      "bytes": 15872,
+      "sha256": "d1ec6e18e0ba771c84057d82b2b8c5441aee57afc14c823885c66dccd6a5c307"
+    },
+    {
+      "path": "strict_core/runtime_bridge.py",
+      "bytes": 9186,
+      "sha256": "f374b79ecc2bc4c70bc5856208ce6f5f80e0e967a455f91ce7e5d7fbae9f9a00"
+    },
+    {
+      "path": "test_acceptance.py",
+      "bytes": 4435,
+      "sha256": "8d19acb335cc75f2f0cbf47fae2222bb99bca44e8c72f755989ac7120d892c41"
+    },
+    {
+      "path": "test_emotion_8channel.py",
+      "bytes": 8109,
+      "sha256": "2c59f8ede3ee6dda266f7a018307e2df17f9bcb5d09d7e663b4489919b4f2405"
+    },
+    {
+      "path": "tests/test_apv22_apcore_dynamics.py",
+      "bytes": 4630,
+      "sha256": "6dace5f6d4f5b215cc286103bf8295b9f860907841dd06acbfb235752ee0d3bf"
+    },
+    {
+      "path": "tests/test_apv2_action_feedback_writeback_trace_audit_1.py",
+      "bytes": 1499,
+      "sha256": "284a5e9d5d00196c407bcf4c0daa3e6c0dcb95af7765c6d669ada899dbe31b1c"
+    },
+    {
+      "path": "tests/test_apv2_attention_band_online_vector_integration_1.py",
+      "bytes": 1548,
+      "sha256": "8f1688c662513d3dce79e6d14014f27ad2894f624f469dea3031f04aff93fcd1"
+    },
+    {
+      "path": "tests/test_apv2_bottom_loop_p0_materials.py",
+      "bytes": 4506,
+      "sha256": "ab769d2122efda250aae48bfd0a6753ce8632f124a657a84d008af74e4305650"
+    },
+    {
+      "path": "tests/test_apv2_cognitive_feeling_causal_ablation_2.py",
+      "bytes": 1554,
+      "sha256": "de57151f1341f0dbd939956fdb3ef17d03e21008616953eecbf5ae1855a91b02"
+    },
+    {
+      "path": "tests/test_apv2_emotion_modulation_long_run_dynamics_1.py",
+      "bytes": 937,
+      "sha256": "bfed644a60e741f087fff34d50911296b3202de4b1f507bae48b4fadb4e83a43"
+    },
+    {
+      "path": "tests/test_apv2_feedback_override_mechanism_1.py",
+      "bytes": 1674,
+      "sha256": "3d3adc080154c922809775855fd4e94c18e7385e900581d8b0efd167b1b5f3c8"
+    },
+    {
+      "path": "tests/test_apv2_negative_feedback_ablation_1.py",
+      "bytes": 1459,
+      "sha256": "161cb9958c45d5293235ccc9bbc634a12095a6b4bbba4d482326bb7e6109eae4"
+    },
+    {
+      "path": "tests/test_apv2_p1_hardening_materials.py",
+      "bytes": 3661,
+      "sha256": "fd7a01b29d25dd022a4ba9cd46bdfd8ed80f6827d2b89fbda8bc01269dc2e4ec"
+    },
+    {
+      "path": "tests/test_apv2_p2_stress_mechanism_evidence.py",
+      "bytes": 4020,
+      "sha256": "0a80b9f250a51940eae202dd1ca30608536b8c5c73c48bfcfe8cec7ac9ac8634"
+    },
+    {
+      "path": "tests/test_apv2_public_freeze_clean_room.py",
+      "bytes": 3825,
+      "sha256": "38cdf91b2f78ada2108d5981cf829f6ae50e1d734b8b02713d63599cfa5b5707"
+    },
+    {
+      "path": "tests/test_apv2_publication_figures_supplement.py",
+      "bytes": 2626,
+      "sha256": "aabaf3f88f63e44c75c8e24df58da8c57e0cc653cd739488397786dd8c76e8b3"
+    },
+    {
+      "path": "tests/test_apv2_residual_b_recall_ordered_completion_1.py",
+      "bytes": 1595,
+      "sha256": "45e4c4ab9e9bb8a2ba926928e5192b6ce8efdf84e1363d038ff5cde34670df16"
+    },
+    {
+      "path": "tests/test_apv2_short_term_slot_history_reload_1.py",
+      "bytes": 1314,
+      "sha256": "2dc7ad9c26ab4998de2902081290c2f798f070f581ad97ad9268087344132d36"
+    },
+    {
+      "path": "tests/test_apv2_successor_peak_gate_1.py",
+      "bytes": 1755,
+      "sha256": "86437071c89657f2e41f4b1577f2231b128838287ef87fc401f8da4183b0769c"
+    },
+    {
+      "path": "tests/test_online_learned_vector_boundary.py",
+      "bytes": 10127,
+      "sha256": "8363ce8ada550f0c624f770a33973f2b7537eccf2b4da17c983afb24bd2e2ccb"
+    },
+    {
+      "path": "tests/test_online_vector_negative_pressure_1.py",
+      "bytes": 2169,
+      "sha256": "2347196260d649fc11cc77c4be62abc3b1b48ce800207fb4d40270a85d2c1990"
+    },
+    {
+      "path": "tests/test_online_vector_weight_ablation_1.py",
+      "bytes": 2720,
+      "sha256": "1afc70c21a6db04072305a7b0251b4dc452d6acf6f25df9a6f9c188e73acd70c"
+    },
+    {
+      "path": "tests/test_transition_isolation_1.py",
+      "bytes": 2106,
+      "sha256": "53090c7c1b62bc8f344a674f6525c2b6e1d33e56f4b2b16401b1db72355fa5f7"
+    }
+  ]
+}

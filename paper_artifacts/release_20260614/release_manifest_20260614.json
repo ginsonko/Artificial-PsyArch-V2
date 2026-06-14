@@ -1,0 +1,24 @@
+{
+  "schema_id": "apv2_release_package_manifest/v1",
+  "generated_at": "2026-06-14T19:44:01",
+  "items": [
+    {
+      "file": "paper_artifacts/release_20260614/APV2_FinalPaper_20260614.docx",
+      "bytes": 426074,
+      "sha256": "e4d7a0c5de0e24b5397019357d1c7380b00c6819b78a55f25d890c09de4c8fe5"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_NewsArticle_20260614.docx",
+      "bytes": 419423,
+      "sha256": "25a7ddd3a53a117a8a02ef5bce46db80361c15b72ba555f1e6a33d2e85629a71"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_RepositorySetup_20260614.docx",
+      "bytes": 37811,
+      "sha256": "bb3e966c32febab3ca70ab194b222f3697ee1ec5148fffda76e7a0ea488413c0"
+    }
+  ],
+  "notes": [
+    "Repository URLs were finalized for ginsonko release repositories."
+  ]
+}

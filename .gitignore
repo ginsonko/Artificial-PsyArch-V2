@@ -1,11 +1,12 @@
 __pycache__/
-.pytest_cache/
-.venv/
-outputs/
-*.pyc
-*.pyo
-*.log
-.tmp*
-tmp_http_index.html
-tmp_ap_paper.*
-config/generated_long_multimodal_dataset*.json
+        .pytest_cache/
+        .env*
+        *.pyc
+        *.pyo
+        *.sqlite3
+        *.sqlite3-*
+        *.db
+        *.db-*
+        *.log
+        *.log.*
+        tmp*/

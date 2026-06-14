@@ -1,0 +1,600 @@
+{
+  "schema_id": "apv2_p1_hardening_materials/v1",
+  "generated_at": "2026-06-11T02:14:32",
+  "output_dir": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432",
+  "route_split": {
+    "this_suite": "AP-Core runtime hardening and publication materials",
+    "not_this_suite": "GL learning protocol, DPP/Skill37 open dialogue learning, desktop-pet product shell"
+  },
+  "figures": {
+    "schema_id": "apv2_static_figures/v1",
+    "figure_count": 5,
+    "figures": [
+      {
+        "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\apv2_runtime_loop.mmd",
+        "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\apv2_runtime_loop.mmd",
+        "exists": true,
+        "bytes": 419,
+        "sha256": "55d4d6946228b6bf8f0253565e402a7e9dca00a78bf80e9cf549884452205b3c"
+      },
+      {
+        "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\state_pool_vs_short_term_slot.mmd",
+        "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\state_pool_vs_short_term_slot.mmd",
+        "exists": true,
+        "bytes": 328,
+        "sha256": "4739cf4223d6d45c774fc4a810b2d5753eed3d2d75df770b29e5b5306cb10f51"
+      },
+      {
+        "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\residual_b_recall_absorption.mmd",
+        "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\residual_b_recall_absorption.mmd",
+        "exists": true,
+        "bytes": 239,
+        "sha256": "18cf64d3a0a16821df0500664ca4d00cb8615524984f415391ff4224ac378e2d"
+      },
+      {
+        "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\successor_lag_rhythm_replay.mmd",
+        "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\successor_lag_rhythm_replay.mmd",
+        "exists": true,
+        "bytes": 244,
+        "sha256": "d40e9b4489815e1601f1430a0428a537c3b5020fdf1b1fb027fa13bb4de9a154"
+      },
+      {
+        "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\evidence_layer_split.mmd",
+        "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\evidence_layer_split.mmd",
+        "exists": true,
+        "bytes": 321,
+        "sha256": "a38796b562fcd183d1c152d857e96d9fd0b3708dc671a9d7688529e840be4409"
+      }
+    ]
+  },
+  "experiments": [
+    {
+      "experiment": "LongRun-InterruptionRecovery-1",
+      "verdict": "pass",
+      "design": "White-box AP-Core focus packets are interrupted and resumed; short-term-slot and recall traces should recover the earlier narrative.",
+      "observed": {
+        "recent_interruptions": [
+          {
+            "schema_id": "focus_interruption_event/v1",
+            "tick_index": 3,
+            "from_episode_id": 0,
+            "to_labels": [
+              "text::alarm",
+              "text::red",
+              "text::loud"
+            ],
+            "continuity_score": 0.0
+          },
+          {
+            "schema_id": "focus_interruption_event/v1",
+            "tick_index": 5,
+            "from_episode_id": 1,
+            "to_labels": [
+              "text::river",
+              "text::stone",
+              "text::bright"
+            ],
+            "continuity_score": 0.0
+          }
+        ],
+        "recent_resumptions": [
+          {
+            "schema_id": "focus_resumption_event/v1",
+            "tick_index": 5,
+            "resumed_episode_id": 0,
+            "new_episode_id": 2,
+            "labels": [
+              "text::river",
+              "text::stone",
+              "text::bright"
+            ],
+            "interruption_gap_episode": 1
+          },
+          {
+            "schema_id": "focus_resumption_event/v1",
+            "tick_index": 6,
+            "resumed_episode_id": 0,
+            "new_episode_id": 2,
+            "labels": [
+              "text::river",
+              "text::stone",
+              "text::bright"
+            ],
+            "interruption_gap_episode": -1
+          }
+        ],
+        "episode_summaries": [
+          {
+            "episode_id": 2,
+            "first_tick": 5,
+            "last_tick": 6,
+            "entry_count": 2,
+            "mean_continuity": 0.5,
+            "top_labels": [
+              "text::river",
+              "text::stone",
+              "text::bright"
+            ]
+          },
+          {
+            "episode_id": 1,
+            "first_tick": 3,
+            "last_tick": 4,
+            "entry_count": 2,
+            "mean_continuity": 0.5,
+            "top_labels": [
+              "text::alarm",
+              "text::red",
+              "text::loud"
+            ]
+          },
+          {
+            "episode_id": -1,
+            "first_tick": 0,
+            "last_tick": 2,
+            "entry_count": 3,
+            "mean_continuity": 0.5,
+            "top_labels": [
+              "text::river",
+              "text::stone",
+              "text::bright",
+              "focus::calm"
+            ]
+          }
+        ],
+        "final_slot_virtual_mass": 1.3715,
+        "final_slot_labels": [
+          "short_term_slot::summary",
+          "short_term_slot::item::text::river",
+          "short_term_slot::item::text::stone",
+          "short_term_slot::item::text::bright",
+          "short_term_slot::order::0::text::river",
+          "short_term_slot::order::1::text::stone",
+          "short_term_slot::order::2::text::bright",
+          "short_term_slot::continuity"
+        ],
+        "readback": {
+          "available": true,
+          "labels": [
+            "text::river",
+            "text::stone",
+            "text::bright",
+            "text::alarm",
+            "text::red",
+            "text::loud"
+          ],
+          "strength": 1.0,
+          "mean_continuity": 0.5833
+        },
+        "replay_candidates": [
+          {
+            "episode_id": 1,
+            "last_tick": 4,
+            "entry_count": 2,
+            "labels": [
+              "text::alarm",
+              "text::red",
+              "text::loud"
+            ],
+            "replay_weight": 2.5679,
+            "raw_replay_weight": 2.5679,
+            "governance": {
+              "schema_id": "focus_replay_governance/v1",
+              "weight_multiplier": 1.0,
+              "replay_count": 0,
+              "same_as_current": false,
+              "reasons": [
+                "eligible_past_episode"
+              ]
+            }
+          },
+          {
+            "episode_id": 0,
+            "last_tick": 2,
+            "entry_count": 3,
+            "labels": [
+              "text::river",
+              "text::stone",
+              "text::bright",
+              "focus::calm"
+            ],
+            "replay_weight": 1.7324,
+            "raw_replay_weight": 1.7324,
+            "governance": {
+              "schema_id": "focus_replay_governance/v1",
+              "weight_multiplier": 1.0,
+              "replay_count": 0,
+              "same_as_current": false,
+              "reasons": [
+                "eligible_past_episode"
+              ]
+            }
+          }
+        ],
+        "state_recall_winners": [
+          "river_story",
+          "river_successor",
+          "alarm_distractor"
+        ],
+        "slot_recall_winners": [
+          "slot_tick_6",
+          "slot_tick_5"
+        ]
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "product_shell_scope": false,
+        "answer_table_lookup": false,
+        "keyword_hard_gate": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false,
+        "white_box_focus_probe": true,
+        "open_dialogue_learning_claim": false
+      }
+    },
+    {
+      "experiment": "RhythmSuccessor-Replay-1",
+      "verdict": "pass",
+      "design": "Periodic focus pulses should create phase expectation, slot rhythm rows, and next-tick successor peak with a decaying tail.",
+      "observed": {
+        "hit_ticks": [
+          0,
+          4,
+          8,
+          12
+        ],
+        "phase_traces": [
+          {
+            "tick": 13,
+            "channels": {
+              "family_key": "beat",
+              "period_ticks": 4.0,
+              "regularity": 1.0,
+              "recurrence": 0.3333,
+              "recovery_match": 1.0,
+              "groove": 0.1389,
+              "phase_expectation": 0.0111,
+              "fatigue": 0.0
+            },
+            "items": []
+          },
+          {
+            "tick": 14,
+            "channels": {
+              "family_key": "beat",
+              "period_ticks": 4.0,
+              "regularity": 1.0,
+              "recurrence": 0.3333,
+              "recovery_match": 1.0,
+              "groove": 0.1389,
+              "phase_expectation": 0.1353,
+              "fatigue": 0.0
+            },
+            "items": []
+          },
+          {
+            "tick": 15,
+            "channels": {
+              "family_key": "beat",
+              "period_ticks": 4.0,
+              "regularity": 1.0,
+              "recurrence": 0.3333,
+              "recovery_match": 1.0,
+              "groove": 0.1389,
+              "phase_expectation": 0.6065,
+              "fatigue": 0.0
+            },
+            "items": [
+              "rhythmfelt::phase_expectation"
+            ]
+          },
+          {
+            "tick": 16,
+            "channels": {
+              "family_key": "beat",
+              "period_ticks": 4.0,
+              "regularity": 1.0,
+              "recurrence": 0.3333,
+              "recovery_match": 1.0,
+              "groove": 0.1297,
+              "phase_expectation": 1.0,
+              "fatigue": 0.12
+            },
+            "items": [
+              "rhythmfelt::phase_expectation"
+            ]
+          }
+        ],
+        "slot_labels": [
+          "short_term_slot::summary",
+          "short_term_slot::item::text::beat",
+          "short_term_slot::item::text::next_beat",
+          "short_term_slot::order::0::text::beat",
+          "short_term_slot::order::1::text::next_beat",
+          "short_term_slot::continuity",
+          "short_term_slot::rhythm"
+        ],
+        "slot_summary": {
+          "schema_id": "short_term_slot_summary/v1",
+          "tick_index": 16,
+          "slot_virtual_budget": 0.72,
+          "continuity": 1.0,
+          "continuity_quality": 1.0,
+          "load_gate": 1.0,
+          "rhythm_gate": 1.0,
+          "focus_count": 2,
+          "item_count": 2,
+          "summary_ratio": 0.18,
+          "order_ratio": 0.16,
+          "continuity_ratio": 0.14,
+          "rhythm_ratio": 0.1
+        },
+        "successor_shaped": [
+          {
+            "lag": 1,
+            "kernel": 1.0,
+            "predicted_labels": [
+              "text::next_beat"
+            ]
+          },
+          {
+            "lag": 2,
+            "kernel": 0.42,
+            "predicted_labels": [
+              "text::second_tail"
+            ]
+          },
+          {
+            "lag": 4,
+            "kernel": 0.172,
+            "predicted_labels": [
+              "text::period_tail"
+            ]
+          }
+        ],
+        "flat_kernels": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "product_shell_scope": false,
+        "answer_table_lookup": false,
+        "keyword_hard_gate": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false,
+        "music_performance_claim": false,
+        "rhythm_replay_dynamics_probe": true
+      }
+    },
+    {
+      "experiment": "PersistenceBackend-Reload-1",
+      "verdict": "pass",
+      "design": "A real local JSONL persistence boundary should support cold MemoryStore reload and restore state, successor, and slot recall.",
+      "observed": {
+        "persistence_path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\jsonl_persistence\\apv2_memory.jsonl",
+        "exists": true,
+        "bytes": 16506,
+        "sha256": "19a0d88ba4ce8eacb01fe488ae72207a427c50f85bd8cc7bf4a30f74a50e60d7",
+        "writer_summary": {
+          "backend": "jsonl",
+          "enabled": true,
+          "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\jsonl_persistence\\apv2_memory.jsonl",
+          "exists": true,
+          "bytes": 16506,
+          "write_count": 3,
+          "error_count": 0,
+          "last_error": "",
+          "meaning": "local_jsonl_authoritative_snapshot_boundary",
+          "write_count_seen_by_memory_store": 3,
+          "error_count_seen_by_memory_store": 0,
+          "last_error_seen_by_memory_store": "",
+          "required": true,
+          "policy": {
+            "authoritative_layer": "PostgreSQL/pgvector when adapter is attached",
+            "runtime_layer": "bounded in-memory posting/ANN/numeric/relation/transition indexes",
+            "load_all_history_into_memory": false
+          }
+        },
+        "reader_summary": {
+          "backend": "jsonl",
+          "enabled": true,
+          "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\jsonl_persistence\\apv2_memory.jsonl",
+          "exists": true,
+          "bytes": 16506,
+          "write_count": 0,
+          "error_count": 0,
+          "last_error": "",
+          "meaning": "local_jsonl_authoritative_snapshot_boundary",
+          "write_count_seen_by_memory_store": 0,
+          "error_count_seen_by_memory_store": 0,
+          "last_error_seen_by_memory_store": "",
+          "required": false,
+          "policy": {
+            "authoritative_layer": "PostgreSQL/pgvector when adapter is attached",
+            "runtime_layer": "bounded in-memory posting/ANN/numeric/relation/transition indexes",
+            "load_all_history_into_memory": false
+          }
+        },
+        "warm_load": {
+          "schema_id": "apv21_warm_load/v1",
+          "loaded": 3,
+          "skipped": 0,
+          "indexed": 0,
+          "pending_index_jobs": 0,
+          "process_indexes": true,
+          "replay_learning": false,
+          "policy": "bounded_hot_window_loaded_from_authoritative_persistence;no_full_history_load"
+        },
+        "written_memory_ids": [
+          "mem-1",
+          "mem-2",
+          "mem-3"
+        ],
+        "bn_source_texts": [
+          "cue context",
+          "outcome"
+        ],
+        "predicted_labels": [
+          "text::outcome"
+        ],
+        "slot_bn_source_texts": [
+          "slot cue context"
+        ]
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "product_shell_scope": false,
+        "answer_table_lookup": false,
+        "keyword_hard_gate": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false,
+        "local_file_persistence_boundary": true,
+        "postgres_production_claim": false
+      }
+    },
+    {
+      "experiment": "ArtifactFreeze-1",
+      "verdict": "pass",
+      "design": "Local pre-public artifact freeze records exact files, sizes, and SHA-256 hashes for paper-material traceability.",
+      "observed": {
+        "manifest_path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\artifact_freeze_manifest.json",
+        "entry_count": 12,
+        "entries": [
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\Design_APV2_BottomLoopP0Materials_20260610.md",
+            "relative_path": "docs\\Design_APV2_BottomLoopP0Materials_20260610.md",
+            "exists": true,
+            "bytes": 3041,
+            "sha256": "687ce002e3e675b186769e695e608f6601653ce979bef6d5f78ad1a078db3939"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\Design_APV2_P1HardeningMaterials_20260610.md",
+            "relative_path": "docs\\Design_APV2_P1HardeningMaterials_20260610.md",
+            "exists": true,
+            "bytes": 5055,
+            "sha256": "ae2072c26778f9eec5b68d0c614b99e66d90349628aeef55b02cc1a2241e9e52"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\experiments\\apv2_bottom_loop_p0_materials.py",
+            "relative_path": "experiments\\apv2_bottom_loop_p0_materials.py",
+            "exists": true,
+            "bytes": 29950,
+            "sha256": "fd87914b5f3bf28443523c76fd23b0410f967fe21613ad4cbae51384acdd43ee"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\experiments\\apv2_p1_hardening_materials.py",
+            "relative_path": "experiments\\apv2_p1_hardening_materials.py",
+            "exists": true,
+            "bytes": 25732,
+            "sha256": "bc31d6df66cd3556e86c32922ca1d734b2fe348bc0816ea8a7ecad1a3990e0eb"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\tests\\test_apv2_bottom_loop_p0_materials.py",
+            "relative_path": "tests\\test_apv2_bottom_loop_p0_materials.py",
+            "exists": true,
+            "bytes": 4414,
+            "sha256": "a9613941c27cdc8a8133eeb9dd92e41ff197c388e683c6989fd84c5a8c464647"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\tests\\test_apv2_p1_hardening_materials.py",
+            "relative_path": "tests\\test_apv2_p1_hardening_materials.py",
+            "exists": true,
+            "bytes": 3576,
+            "sha256": "5b45ff1e0120fa3787d4692f477d7bfa409c4097c7984b6402577b044a6a9287"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\memory\\persistence\\jsonl_store.py",
+            "relative_path": "memory\\persistence\\jsonl_store.py",
+            "exists": true,
+            "bytes": 5505,
+            "sha256": "833920bc36f2732f252bd47626bb64e6def24b567fc0adabc4fbebb24cf3783e"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\apv2_runtime_loop.mmd",
+            "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\apv2_runtime_loop.mmd",
+            "exists": true,
+            "bytes": 419,
+            "sha256": "55d4d6946228b6bf8f0253565e402a7e9dca00a78bf80e9cf549884452205b3c"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\state_pool_vs_short_term_slot.mmd",
+            "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\state_pool_vs_short_term_slot.mmd",
+            "exists": true,
+            "bytes": 328,
+            "sha256": "4739cf4223d6d45c774fc4a810b2d5753eed3d2d75df770b29e5b5306cb10f51"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\residual_b_recall_absorption.mmd",
+            "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\residual_b_recall_absorption.mmd",
+            "exists": true,
+            "bytes": 239,
+            "sha256": "18cf64d3a0a16821df0500664ca4d00cb8615524984f415391ff4224ac378e2d"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\successor_lag_rhythm_replay.mmd",
+            "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\successor_lag_rhythm_replay.mmd",
+            "exists": true,
+            "bytes": 244,
+            "sha256": "d40e9b4489815e1601f1430a0428a537c3b5020fdf1b1fb027fa13bb4de9a154"
+          },
+          {
+            "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\evidence_layer_split.mmd",
+            "relative_path": "outputs\\apv2_p1_hardening_materials_20260611_021432\\figures\\evidence_layer_split.mmd",
+            "exists": true,
+            "bytes": 321,
+            "sha256": "a38796b562fcd183d1c152d857e96d9fd0b3708dc671a9d7688529e840be4409"
+          }
+        ],
+        "validation_passed": true
+      },
+      "boundary": {
+        "ap_core_scope_only": true,
+        "gl_learning_protocol_scope": false,
+        "product_shell_scope": false,
+        "answer_table_lookup": false,
+        "keyword_hard_gate": false,
+        "regex_route": false,
+        "student_side_llm": false,
+        "hidden_solver": false,
+        "full_sentence_macro": false,
+        "public_doi_claim": false,
+        "local_pre_public_freeze": true
+      }
+    }
+  ],
+  "summary": {
+    "pass": 4,
+    "partial": 0,
+    "fail": 0,
+    "all_passed": true,
+    "acceptance_policy": "pass_requires_longrun_rhythm_persistence_artifact_freeze_and_figures"
+  },
+  "boundary": {
+    "ap_core_scope_only": true,
+    "gl_learning_protocol_scope": false,
+    "product_shell_scope": false,
+    "answer_table_lookup": false,
+    "keyword_hard_gate": false,
+    "regex_route": false,
+    "student_side_llm": false,
+    "hidden_solver": false,
+    "full_sentence_macro": false
+  },
+  "artifacts": {
+    "json_path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\apv2_p1_hardening_materials.json",
+    "markdown_path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432\\apv2_p1_hardening_materials_report.md",
+    "output_dir": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p1_hardening_materials_20260611_021432"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_id": "online_vector_negative_pressure_1/v1",
+  "artifact_id": "online_vector_negative_pressure_1",
+  "created_at": "2026-06-13",
+  "generated_at": "2026-06-13T21:01:39",
+  "boundary": {
+    "artifact_id": "online_vector_negative_pressure_1",
+    "route": "AP-Core bottom-loop mechanism hardening: negative pressure prunes wrong residue",
+    "student_side_llm": false,
+    "answer_table_lookup": false,
+    "regex_answer_route": false,
+    "keyword_hard_gate": false,
+    "full_sentence_macro": false,
+    "hidden_solver": false,
+    "runtime_mechanism_modified": false,
+    "ap_core_full_proof_claimed": false,
+    "open_world_dialogue_claimed": false
+  },
+  "summary": {
+    "passed": true,
+    "checks": {
+      "direct_pressure_probe_passed": true,
+      "recall_competition_probe_passed": true
+    }
+  },
+  "direct_pressure_probe": {
+    "schema_id": "negative_pressure_direct_probe/v1",
+    "scores": {
+      "good_before": 0.879,
+      "good_after": 0.8504,
+      "wrong_before": 0.3598,
+      "wrong_after": -0.5937,
+      "good_drop": 0.0286,
+      "wrong_drop": 0.9535
+    },
+    "pair_evidence": {
+      "negative_raw": 20.0,
+      "source_negative_support": 20.0,
+      "vector_similarity": -0.5937
+    },
+    "checks": {
+      "wrong_residue_pushed_down": true,
+      "wrong_residue_now_non_positive": true,
+      "good_association_preserved": true,
+      "negative_evidence_visible": true
+    },
+    "passed": true
+  },
+  "recall_competition_probe": {
+    "schema_id": "negative_pressure_recall_probe/v1",
+    "good_snapshot_learned_vector_score": 0.8136,
+    "wrong_snapshot_learned_vector_score": 0.0,
+    "checks": {
+      "correct_subject_outscores_wrong_residue": true
+    },
+    "passed": true
+  }
+}

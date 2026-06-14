@@ -1,0 +1,451 @@
+from __future__ import annotations
+
+from dataclasses import replace
+
+from config.defaults import RuntimeConfig
+
+
+def runtime_config_for_profile(profile: str = "balanced", *, target_tick_ms: int = 100) -> RuntimeConfig:
+    """
+    Build a runtime config for a coarse local compute budget.
+
+    This is intentionally deterministic and local. It does not benchmark the
+    machine at runtime; it gives APV2.1 a single place to tune accuracy/cost
+    without scattering constants through the codebase.
+    """
+
+    name = str(profile or "balanced").strip().lower()
+    target = max(30, int(target_tick_ms))
+    base = RuntimeConfig()
+
+    if name in {"realtime", "desktop", "tiny", "ultrafast"}:
+        return replace(
+            base,
+            observability=replace(
+                base.observability,
+                target_tick_ms=float(target),
+                trace_item_preview_limit=12,
+                trace_r_state_item_preview_limit=3,
+                trace_text_preview_chars=220,
+                trace_matched_token_preview_limit=5,
+            ),
+            text_sensor=replace(base.text_sensor, budget_limit=48, competition_limit=48, dynamic_phrase_scan_budget=20, dynamic_phrase_emit_budget=4),
+            vision_sensor=replace(base.vision_sensor, max_objects=2, max_side=96, preview_side=56),
+            audio_sensor=replace(base.audio_sensor, max_samples=4096, band_count=6),
+            state_pool=replace(
+                base.state_pool,
+                r_state_head_limit=3,
+                r_state_items_per_head=12,
+                maintenance_budget=4,
+                recent_external_limit=96,
+                hot_anchor_limit=96,
+                memory_snapshot_limit=48,
+                prediction_validation_actual_limit=20,
+                prediction_validation_update_limit=8,
+                cstar_trace_top_labels=3,
+            ),
+            memory=replace(
+                base.memory,
+                # Open dialogue needs at least two Bn branches: top-1 can be a
+                # valid task/process match whose successor is not the current
+                # output chain, while top-2 often carries the charwise successor
+                # trace. This keeps Bn/Cn semantics intact instead of adding a
+                # reply rule.
+                recall_top_k=2,
+                predict_top_k=2,
+                # Hot working-set capacity must hold the imported skill seed bank
+                # (single-kind skill count ~1486) so skill snapshots stay in the
+                # posting candidate pool + document-frequency stats. 48 evicted
+                # them, starving recall. 2048 >= skill count and <= warm_load
+                # limit (4096); per-tick paths are O(1) on this bucket (recall
+                # candidates come from posting indexes, not a full bucket scan).
+                max_snapshots_per_kind=2048,
+                # Candidate-layer caps must be large enough that skill snapshots
+                # reach the scoring loop. With a skill seed bank, posting top-2/4
+                # is dominated by generic-token residue, so skills never got
+                # scored. These are still bounded (tick stays <100ms: the scoring
+                # loop is cheap set-intersections + DF lookups), just no longer
+                # starved. numeric/learned channels re-enabled to add recall
+                # signal beyond raw token overlap.
+                candidate_limit=64,
+                core_item_limit=40,
+                query_feature_limit=24,
+                posting_label_token_limit=18,
+                posting_display_token_limit=12,
+                posting_bigram_token_limit=12,
+                posting_sequence_token_limit=10,
+                vector_token_limit=24,
+                scoring_candidate_limit=32,
+                learned_rerank_limit=4,
+                state_query_signature_token_limit=20,
+                numeric_candidate_limit=16,
+                numeric_top_k_per_channel=4,
+                numeric_weight=0.9,
+                relation_token_limit=10,
+                relation_event_limit=4,
+                relation_context_limit=96,
+                relation_score_weight=0.24,
+                relation_focus_score_weight=0.32,
+                index_jobs_per_tick=0,
+                index_maintenance_min_remaining_ms=95.0,
+                index_maintenance_max_ms=0.0,
+                idle_heavy_index_jobs=0,
+                idle_index_maintenance_max_ms=0.0,
+            ),
+            attention=replace(
+                base.attention,
+                focus_limit=3,
+                focus_family_text_max=2,
+                focus_family_vision_max=1,
+                focus_family_audio_max=1,
+                focus_family_cognitive_feeling_max=1,
+                focus_family_emotion_max=1,
+                focus_family_action_max=1,
+                focus_family_expectation_pressure_max=1,
+                successor_bias_context_limit=96,
+                successor_bias_max_successors_per_context=4,
+                successor_bias_top_k=2,
+                successor_bias_gain=0.22,
+                successor_bias_max=0.24,
+                successor_bias_per_tick_update_limit=2,
+                successor_bias_max_context_labels=4,
+            ),
+            short_term=replace(
+                base.short_term,
+                focus_history_limit=4,
+                max_replay_items=2,
+                replay_query_weight=0.5,
+                echo_max_items_per_tick=3,
+                memory_window_history_limit=16,
+                memory_window_max_items_per_event=4,
+                memory_window_recall_limit=2,
+            ),
+            short_term_slot=replace(
+                base.short_term_slot,
+                capacity=6,
+                base_virtual_budget=0.44,
+                item_max_virtual=0.08,
+                summary_ratio=0.10,
+                order_ratio=0.06,
+                continuity_ratio=0.08,
+                rhythm_ratio=0.04,
+                working_memory_fill_limit=1,
+                focus_merge_limit=4,
+            ),
+            runtime_load_feeling=replace(
+                base.runtime_load_feeling,
+                state_item_soft_limit=144,
+                r_state_item_soft_limit=72,
+                attention_candidate_soft_limit=24,
+                pending_index_soft_limit=2,
+                family_overflow_soft_limit=2,
+            ),
+            runtime_budget_controller=replace(
+                base.runtime_budget_controller,
+                readout_min_multiplier=0.3,
+                readout_max_multiplier=0.85,
+                attention_candidate_min_multiplier=0.3,
+                attention_candidate_max_multiplier=0.85,
+                trace_detail_min_multiplier=0.25,
+                trace_detail_max_multiplier=0.65,
+                min_r_state_items_per_head=10,
+                preserve_1024_query_floor=False,
+                max_extra_index_jobs=0,
+            ),
+            online_embedding=replace(
+                base.online_embedding,
+                # Token table must hold the imported skill seed bank's tokens
+                # (~18.9k distinct) so the learned-similarity / learned-vector
+                # bridge survives warm-load restore instead of LRU-evicting all
+                # but the last 96. scoring_token_limit must be large enough to
+                # pool a query's tokens into a meaningful learned coordinate.
+                token_limit=24000,
+                per_tick_update_limit=1,
+                scoring_token_limit=64,
+                learned_weight=0.1,
+                transition_learned_weight=0.04,
+            ),
+            time_feeling=replace(
+                base.time_feeling,
+                rerun_recall_confidence_threshold=1.01,
+                rerun_recall_energy_threshold=1.01,
+            ),
+        )
+
+    if name in {"fast", "low", "conservative", "small"} or target < 75:
+        return replace(
+            base,
+            observability=replace(
+                base.observability,
+                target_tick_ms=float(target),
+                trace_item_preview_limit=20,
+                trace_r_state_item_preview_limit=5,
+                trace_text_preview_chars=320,
+                trace_matched_token_preview_limit=8,
+            ),
+            text_sensor=replace(base.text_sensor, budget_limit=72, competition_limit=72, dynamic_phrase_scan_budget=36, dynamic_phrase_emit_budget=6),
+            vision_sensor=replace(base.vision_sensor, max_objects=3, max_side=112, preview_side=72),
+            audio_sensor=replace(base.audio_sensor, max_samples=8192, band_count=8),
+            state_pool=replace(
+                base.state_pool,
+                r_state_head_limit=4,
+                r_state_items_per_head=18,
+                maintenance_budget=8,
+                recent_external_limit=160,
+                hot_anchor_limit=176,
+                memory_snapshot_limit=96,
+                prediction_validation_actual_limit=36,
+                prediction_validation_update_limit=14,
+                cstar_trace_top_labels=5,
+            ),
+            memory=replace(
+                base.memory,
+                recall_top_k=2,
+                predict_top_k=2,
+                # See realtime profile: hot working set must hold the skill seed
+                # bank so skill snapshots stay in posting candidates + DF stats.
+                max_snapshots_per_kind=2048,
+                candidate_limit=8,
+                core_item_limit=72,
+                query_feature_limit=40,
+                posting_label_token_limit=32,
+                posting_display_token_limit=20,
+                posting_bigram_token_limit=24,
+                posting_sequence_token_limit=22,
+                vector_token_limit=40,
+                scoring_candidate_limit=4,
+                learned_rerank_limit=1,
+                state_query_signature_token_limit=32,
+                numeric_candidate_limit=4,
+                numeric_top_k_per_channel=2,
+                numeric_weight=0.9,
+                relation_token_limit=22,
+                relation_event_limit=8,
+                relation_context_limit=256,
+                relation_score_weight=0.42,
+                relation_focus_score_weight=0.58,
+                index_jobs_per_tick=0,
+                index_maintenance_min_remaining_ms=80.0,
+                index_maintenance_max_ms=1.0,
+                idle_heavy_index_jobs=0,
+                idle_index_maintenance_max_ms=1.0,
+            ),
+            attention=replace(
+                base.attention,
+                focus_limit=4,
+                focus_family_text_max=3,
+                focus_family_vision_max=2,
+                focus_family_audio_max=2,
+                focus_family_cognitive_feeling_max=1,
+                focus_family_emotion_max=1,
+                focus_family_action_max=1,
+                focus_family_expectation_pressure_max=1,
+                successor_bias_context_limit=160,
+                successor_bias_max_successors_per_context=8,
+                successor_bias_top_k=3,
+                successor_bias_gain=0.28,
+                successor_bias_max=0.3,
+                successor_bias_per_tick_update_limit=3,
+                successor_bias_max_context_labels=5,
+            ),
+            short_term=replace(
+                base.short_term,
+                focus_history_limit=5,
+                max_replay_items=3,
+                replay_query_weight=0.58,
+                echo_max_items_per_tick=4,
+                memory_window_history_limit=24,
+                memory_window_max_items_per_event=5,
+                memory_window_recall_limit=3,
+            ),
+            short_term_slot=replace(
+                base.short_term_slot,
+                capacity=8,
+                base_virtual_budget=0.52,
+                item_max_virtual=0.10,
+                summary_ratio=0.12,
+                order_ratio=0.08,
+                continuity_ratio=0.10,
+                rhythm_ratio=0.05,
+                working_memory_fill_limit=2,
+                focus_merge_limit=6,
+            ),
+            runtime_load_feeling=replace(
+                base.runtime_load_feeling,
+                state_item_soft_limit=224,
+                r_state_item_soft_limit=144,
+                attention_candidate_soft_limit=40,
+                pending_index_soft_limit=4,
+                family_overflow_soft_limit=3,
+            ),
+            runtime_budget_controller=replace(
+                base.runtime_budget_controller,
+                readout_min_multiplier=0.36,
+                readout_max_multiplier=1.0,
+                attention_candidate_min_multiplier=0.36,
+                attention_candidate_max_multiplier=1.0,
+                trace_detail_min_multiplier=0.35,
+                trace_detail_max_multiplier=1.0,
+                min_r_state_items_per_head=16,
+                preserve_1024_query_floor=False,
+                max_extra_index_jobs=0,
+            ),
+            online_embedding=replace(
+                base.online_embedding,
+                token_limit=192,
+                per_tick_update_limit=2,
+                scoring_token_limit=10,
+                learned_weight=0.14,
+                transition_learned_weight=0.06,
+            ),
+            time_feeling=replace(
+                base.time_feeling,
+                rerun_recall_confidence_threshold=1.01,
+                rerun_recall_energy_threshold=1.01,
+            ),
+        )
+
+    if name in {"high", "high_accuracy", "large"} and target >= 100:
+        return replace(
+            base,
+            observability=replace(base.observability, target_tick_ms=float(target)),
+            text_sensor=replace(base.text_sensor, budget_limit=1024, competition_limit=1024, dynamic_phrase_scan_budget=512, dynamic_phrase_emit_budget=64),
+            vision_sensor=replace(base.vision_sensor, max_objects=6, max_side=224, preview_side=128),
+            audio_sensor=replace(base.audio_sensor, max_samples=65536, band_count=16),
+            state_pool=replace(
+                base.state_pool,
+                r_state_head_limit=8,
+                r_state_items_per_head=384,
+                maintenance_budget=96,
+                recent_external_limit=4096,
+                hot_anchor_limit=4096,
+                memory_snapshot_limit=2048,
+                prediction_validation_actual_limit=512,
+                prediction_validation_update_limit=256,
+            ),
+            memory=replace(
+                base.memory,
+                recall_top_k=8,
+                predict_top_k=6,
+                candidate_limit=512,
+                core_item_limit=2048,
+                query_feature_limit=2048,
+                posting_label_token_limit=512,
+                posting_display_token_limit=256,
+                posting_bigram_token_limit=384,
+                posting_sequence_token_limit=384,
+                vector_token_limit=768,
+                scoring_candidate_limit=160,
+                learned_rerank_limit=24,
+                state_query_signature_token_limit=512,
+                numeric_candidate_limit=128,
+                numeric_top_k_per_channel=48,
+                numeric_weight=1.25,
+                relation_token_limit=384,
+                relation_event_limit=192,
+                relation_context_limit=16384,
+                relation_score_weight=0.82,
+                relation_focus_score_weight=1.08,
+                index_jobs_per_tick=2,
+                index_maintenance_min_remaining_ms=48.0,
+                index_maintenance_max_ms=38.0,
+                idle_heavy_index_jobs=2,
+                idle_index_maintenance_max_ms=24.0,
+            ),
+            attention=replace(
+                base.attention,
+                focus_limit=16,
+                successor_bias_context_limit=4096,
+                successor_bias_max_successors_per_context=96,
+                successor_bias_top_k=16,
+                successor_bias_gain=0.48,
+                successor_bias_max=0.56,
+                successor_bias_per_tick_update_limit=24,
+            ),
+            short_term=replace(
+                base.short_term,
+                focus_history_limit=16,
+                max_replay_items=12,
+                replay_query_weight=0.9,
+            ),
+            time_feeling=replace(
+                base.time_feeling,
+                rerun_recall_confidence_threshold=0.62,
+                rerun_recall_energy_threshold=0.35,
+            ),
+        )
+
+    return replace(
+        base,
+        observability=replace(base.observability, target_tick_ms=float(target)),
+        text_sensor=replace(base.text_sensor, budget_limit=1024, competition_limit=1024, dynamic_phrase_scan_budget=128, dynamic_phrase_emit_budget=0),
+        vision_sensor=replace(base.vision_sensor, max_objects=4, max_side=160, preview_side=96),
+        audio_sensor=replace(base.audio_sensor, max_samples=32768, band_count=12),
+        state_pool=replace(
+            base.state_pool,
+            r_state_head_limit=7,
+            r_state_items_per_head=256,
+            maintenance_budget=64,
+            recent_external_limit=2048,
+            hot_anchor_limit=2048,
+            memory_snapshot_limit=1024,
+            prediction_validation_actual_limit=256,
+            prediction_validation_update_limit=128,
+        ),
+            memory=replace(
+                base.memory,
+                recall_top_k=5,
+                predict_top_k=5,
+                candidate_limit=128,
+            core_item_limit=1024,
+            query_feature_limit=1024,
+            posting_label_token_limit=256,
+            posting_display_token_limit=128,
+                posting_bigram_token_limit=192,
+                posting_sequence_token_limit=192,
+                vector_token_limit=384,
+                scoring_candidate_limit=12,
+                learned_rerank_limit=2,
+                state_query_signature_token_limit=256,
+                numeric_candidate_limit=48,
+                numeric_top_k_per_channel=16,
+                numeric_weight=1.05,
+                relation_token_limit=192,
+                relation_event_limit=96,
+                relation_context_limit=4096,
+                relation_score_weight=0.62,
+                relation_focus_score_weight=0.86,
+                index_jobs_per_tick=1,
+                index_maintenance_min_remaining_ms=60.0,
+                index_maintenance_max_ms=2.0,
+                idle_heavy_index_jobs=1,
+                idle_index_maintenance_max_ms=10.0,
+        ),
+            attention=replace(
+                base.attention,
+                focus_limit=8,
+                successor_bias_context_limit=2048,
+                successor_bias_max_successors_per_context=64,
+                successor_bias_top_k=12,
+                successor_bias_gain=0.4,
+                successor_bias_max=0.44,
+                successor_bias_per_tick_update_limit=16,
+            ),
+            short_term=replace(
+                base.short_term,
+                focus_history_limit=12,
+                max_replay_items=8,
+                replay_query_weight=0.78,
+            ),
+            online_embedding=replace(
+                base.online_embedding,
+                scoring_token_limit=48,
+                learned_weight=0.22,
+                transition_learned_weight=0.12,
+            ),
+            time_feeling=replace(
+                base.time_feeling,
+                rerun_recall_confidence_threshold=1.01,
+                rerun_recall_energy_threshold=1.01,
+            ),
+    )

@@ -1,0 +1,61 @@
+{
+  "schema_id": "apv2_p2_stress_artifact_manifest/v1",
+  "generated_at": "2026-06-11T02:14:33",
+  "entries": [
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\Design_APV2_P2StressMechanismEvidence_20260611.md",
+      "relative_path": "docs\\Design_APV2_P2StressMechanismEvidence_20260611.md",
+      "exists": true,
+      "bytes": 3570,
+      "sha256": "33b879fe5312c5668f15f5630e2e653d1bc9944ca0e96a4fce86e2a127912577"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\Review_APV2_P2StressMechanismEvidence_20260611.md",
+      "relative_path": "docs\\Review_APV2_P2StressMechanismEvidence_20260611.md",
+      "exists": true,
+      "bytes": 1677,
+      "sha256": "b32aa3e14ad470f959f4e39723ecb00c59047fa41bb739eb02b02a01dc8342c7"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\experiments\\apv2_p2_stress_mechanism_evidence.py",
+      "relative_path": "experiments\\apv2_p2_stress_mechanism_evidence.py",
+      "exists": true,
+      "bytes": 25482,
+      "sha256": "d418b2f9a4243e533fe18f489b8c850f23396332a2e2535d0ce3d5d2b7702bd6"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\tests\\test_apv2_p2_stress_mechanism_evidence.py",
+      "relative_path": "tests\\test_apv2_p2_stress_mechanism_evidence.py",
+      "exists": true,
+      "bytes": 3927,
+      "sha256": "a140bd48d9ce99c6f898c2f2424e598c43ad42b2d49fc08bd1fb6bd4aa364046"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p2_stress_mechanism_evidence_20260611_021433\\apv2_p2_stress_mechanism_evidence.json",
+      "relative_path": "outputs\\apv2_p2_stress_mechanism_evidence_20260611_021433\\apv2_p2_stress_mechanism_evidence.json",
+      "exists": true,
+      "bytes": 178320,
+      "sha256": "61e1703325759dc66dcb422bc58c59842c544fab00f4fbc494923151dc3214d1"
+    },
+    {
+      "path": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\outputs\\apv2_p2_stress_mechanism_evidence_20260611_021433\\apv2_p2_stress_mechanism_evidence_report.md",
+      "relative_path": "outputs\\apv2_p2_stress_mechanism_evidence_20260611_021433\\apv2_p2_stress_mechanism_evidence_report.md",
+      "exists": true,
+      "bytes": 2612,
+      "sha256": "8755c075e7d481dc0c2121713db0a1d2b04047e8fc44d7e95ba50d91eb440590"
+    }
+  ],
+  "boundary": {
+    "ap_core_scope_only": true,
+    "gl_learning_protocol_scope": false,
+    "product_shell_scope": false,
+    "third_party_replication_scope": false,
+    "answer_table_lookup": false,
+    "keyword_hard_gate": false,
+    "regex_route": false,
+    "student_side_llm": false,
+    "hidden_solver": false,
+    "full_sentence_macro": false
+  },
+  "validation_passed": true
+}

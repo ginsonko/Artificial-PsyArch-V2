@@ -1,0 +1,22 @@
+{
+  "schema_id": "apv2_press_evidence_figures/v1",
+  "generated_at": "2026-06-14T01:51:23",
+  "figures": [
+    {
+      "figure_id": "F-EV1",
+      "title": "APV2 evidence stack",
+      "svg": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev1_evidence_panorama.svg",
+      "png": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev1_evidence_panorama.png",
+      "svg_sha256": "f960fc7ad698c852ab3bcd4b4c82519ea4b91ed4f5d311f07f4c5dcba3f1e954",
+      "png_sha256": "64ed2f6f876219d7022a09189aad275febc90aad2fd4161329b6d7a33a5d41e3"
+    },
+    {
+      "figure_id": "F-EV2",
+      "title": "Controlled pilot cost vs capability",
+      "svg": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev2_baseline_cost_vs_capability.svg",
+      "png": "outputs/apv2_press_evidence_figures_20260614_015121/f_ev2_baseline_cost_vs_capability.png",
+      "svg_sha256": "77c5e35eead1a3283fbf2961ed38001aea1413363d076989d331441b5c095f36",
+      "png_sha256": "c02d74e34be0adbf175be15754ea1165d3872f4150a7d3184b0d3a0c684daafb"
+    }
+  ]
+}

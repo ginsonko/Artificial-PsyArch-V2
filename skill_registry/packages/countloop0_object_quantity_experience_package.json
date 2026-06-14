@@ -1,0 +1,136 @@
+{
+  "artifact_id": "countloop0_object_quantity_successor_acquisition",
+  "policy": "object_slot_quantity_and_move_relation_no_successor_table_v1",
+  "design_doc": "H:\\AP原型实验第二期\\APV2.1版本原型测试\\docs\\ColdSave_CountLoop0_ObjectQuantity_Successor_Acquisition_design_20260603.md",
+  "strict_claim": "small object-slot quantity label and add/remove move relation acquired without a successor table",
+  "not_claiming": [
+    "complete_natural_number_concept",
+    "infinite_recursion",
+    "full_arithmetic",
+    "open_world_semantics"
+  ],
+  "learner_primitives": [
+    "object_slot_presence_aggregation",
+    "reward_punishment_label_memory",
+    "move_relation_memory",
+    "low_grasp_hold"
+  ],
+  "summary": {
+    "passed": true,
+    "pass_conditions": {
+      "cold_label_not_preloaded": true,
+      "label_training_improves": true,
+      "shuffled_slot_label_learned": true,
+      "add_move_relation_learned": true,
+      "remove_move_relation_learned": true,
+      "ood_hold_succeeds": true,
+      "exact_slot_control_fails": true,
+      "inverted_feedback_control_fails": true,
+      "no_memory_control_fails": true,
+      "no_sensor_control_fails": true,
+      "add_move_trace_found": true,
+      "remove_move_trace_found": true,
+      "static_lint_passed": true,
+      "visible_trace_taint_free": true,
+      "package_taint_free": true,
+      "passed": true
+    },
+    "claim": "strict controlled evidence for object-slot quantity and add/remove move relation acquisition",
+    "boundary": "not evidence for complete natural number concept, infinite recursion, or full arithmetic"
+  },
+  "add_move_samples": [
+    {
+      "found": true,
+      "case_id": "teacher_off_add_before_008",
+      "move_action": "action::add_one_token",
+      "selected_action": "action::say_lum",
+      "mark": 1.0,
+      "selection_reason": "learned_quantity_relation",
+      "evidence_chain": [
+        "object_slots_observed",
+        "move_relation_memory_recalled_before_after_sensor",
+        "move_actuator_event_committed",
+        "label_actuator_event_committed",
+        "teacher_off_scored_without_feedback"
+      ]
+    },
+    {
+      "found": true,
+      "case_id": "teacher_off_add_before_006",
+      "move_action": "action::add_one_token",
+      "selected_action": "action::say_mip",
+      "mark": 3.0,
+      "selection_reason": "learned_quantity_relation",
+      "evidence_chain": [
+        "object_slots_observed",
+        "move_relation_memory_recalled_before_after_sensor",
+        "move_actuator_event_committed",
+        "label_actuator_event_committed",
+        "teacher_off_scored_without_feedback"
+      ]
+    },
+    {
+      "found": true,
+      "case_id": "teacher_off_add_before_022",
+      "move_action": "action::add_one_token",
+      "selected_action": "action::say_mip",
+      "mark": 3.0,
+      "selection_reason": "learned_quantity_relation",
+      "evidence_chain": [
+        "object_slots_observed",
+        "move_relation_memory_recalled_before_after_sensor",
+        "move_actuator_event_committed",
+        "label_actuator_event_committed",
+        "teacher_off_scored_without_feedback"
+      ]
+    }
+  ],
+  "remove_move_samples": [
+    {
+      "found": true,
+      "case_id": "teacher_off_remove_before_005",
+      "move_action": "action::remove_one_token",
+      "selected_action": "action::say_lum",
+      "mark": 3.0,
+      "selection_reason": "learned_quantity_relation",
+      "evidence_chain": [
+        "object_slots_observed",
+        "move_relation_memory_recalled_before_after_sensor",
+        "move_actuator_event_committed",
+        "label_actuator_event_committed",
+        "teacher_off_scored_without_feedback"
+      ]
+    },
+    {
+      "found": true,
+      "case_id": "teacher_off_remove_before_017",
+      "move_action": "action::remove_one_token",
+      "selected_action": "action::say_dax",
+      "mark": 3.0,
+      "selection_reason": "learned_quantity_relation",
+      "evidence_chain": [
+        "object_slots_observed",
+        "move_relation_memory_recalled_before_after_sensor",
+        "move_actuator_event_committed",
+        "label_actuator_event_committed",
+        "teacher_off_scored_without_feedback"
+      ]
+    },
+    {
+      "found": true,
+      "case_id": "teacher_off_remove_before_015",
+      "move_action": "action::remove_one_token",
+      "selected_action": "action::say_mip",
+      "mark": 5.0,
+      "selection_reason": "learned_quantity_relation",
+      "evidence_chain": [
+        "object_slots_observed",
+        "move_relation_memory_recalled_before_after_sensor",
+        "move_actuator_event_committed",
+        "label_actuator_event_committed",
+        "teacher_off_scored_without_feedback"
+      ]
+    }
+  ],
+  "successor_table_absent_from_package": true
+}

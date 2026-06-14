@@ -1,3 +1,3 @@
-# -*- coding: utf-8 -*-
-"""AP 二期核心最小模块。"""
+from .runtime.engine import APV21Runtime
 
+__all__ = ["APV21Runtime"]

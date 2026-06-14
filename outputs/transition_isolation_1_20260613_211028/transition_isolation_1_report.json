@@ -1,0 +1,62 @@
+{
+  "schema_id": "transition_isolation_1/v1",
+  "artifact_id": "transition_isolation_1",
+  "created_at": "2026-06-13",
+  "generated_at": "2026-06-13T21:10:28",
+  "boundary": {
+    "artifact_id": "transition_isolation_1",
+    "route": "AP-Core bottom-loop mechanism hardening: transition strengthens successor without contaminating concept vectors",
+    "student_side_llm": false,
+    "answer_table_lookup": false,
+    "regex_answer_route": false,
+    "keyword_hard_gate": false,
+    "full_sentence_macro": false,
+    "hidden_solver": false,
+    "runtime_mechanism_modified": false,
+    "ap_core_full_proof_claimed": false,
+    "open_world_dialogue_claimed": false
+  },
+  "summary": {
+    "passed": true,
+    "checks": {
+      "direct_isolation_probe_passed": true,
+      "recall_successor_probe_passed": true
+    }
+  },
+  "direct_isolation_probe": {
+    "schema_id": "transition_isolation_direct_probe/v1",
+    "scores": {
+      "vec_sim_before": 0.184,
+      "vec_sim_after": 0.184,
+      "sim_before": 0.0,
+      "sim_after": 0.0,
+      "transition_before": 0.0,
+      "transition_after": 0.9412,
+      "transition_reverse": 0.0
+    },
+    "pair_evidence": {
+      "transition_raw": 32.0,
+      "positive_raw": 0.0,
+      "vector_similarity": 0.184
+    },
+    "checks": {
+      "transition_rises": true,
+      "concept_vector_not_contaminated": true,
+      "cooccurrence_similarity_not_contaminated": true,
+      "transition_is_directed": true,
+      "evidence_is_pure_transition": true
+    },
+    "passed": true
+  },
+  "recall_successor_probe": {
+    "schema_id": "transition_isolation_recall_probe/v1",
+    "source_a_id": "mem-1",
+    "top_successor_id": "mem-2",
+    "top_successor_score": 1.0436,
+    "top_learned_transition_score": 0.2422,
+    "checks": {
+      "successor_recall_exposes_positive_transition": true
+    },
+    "passed": true
+  }
+}
