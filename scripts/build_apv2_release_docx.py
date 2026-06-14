@@ -16,15 +16,15 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = [
     (
         ROOT / "docs" / "Release_APV2_FinalPaper_20260614.md",
-        ROOT / "paper_artifacts" / "release_20260614" / "APV2_FinalPaper_20260614.docx",
+        ROOT / "paper_artifacts" / "release_20260614" / "APV2_论文_白箱预测行动闭环架构_20260614.docx",
     ),
     (
         ROOT / "docs" / "Release_APV2_NewsArticle_20260614.md",
-        ROOT / "paper_artifacts" / "release_20260614" / "APV2_NewsArticle_20260614.docx",
+        ROOT / "paper_artifacts" / "release_20260614" / "APV2_新闻稿_让机器一直是它自己_20260614.docx",
     ),
     (
         ROOT / "docs" / "Release_APV2_RepositorySetup_20260614.md",
-        ROOT / "paper_artifacts" / "release_20260614" / "APV2_RepositorySetup_20260614.docx",
+        ROOT / "paper_artifacts" / "release_20260614" / "APV2_仓库发布说明_20260614.docx",
     ),
 ]
 

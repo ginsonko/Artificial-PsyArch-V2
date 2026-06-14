@@ -96,6 +96,7 @@ class MemoryStore:
         temporal_tick_seconds: float = 0.1,
         temporal_fatigue_window_ticks: int = 80,
         temporal_fatigue_strength: float = 0.92,
+        temporal_fatigue_recovery_exponent: float = 1.0,
         temporal_recent_gain_window_ticks: int = 864_000,
         temporal_recent_gain: float = 0.14,
         temporal_long_half_life_ticks: int = 25_920_000,
@@ -150,6 +151,7 @@ class MemoryStore:
         self.temporal_tick_seconds = max(0.001, float(temporal_tick_seconds))
         self.temporal_fatigue_window_ticks = max(0, int(temporal_fatigue_window_ticks))
         self.temporal_fatigue_strength = _clamp(float(temporal_fatigue_strength), 0.0, 0.98)
+        self.temporal_fatigue_recovery_exponent = _clamp(float(temporal_fatigue_recovery_exponent), 0.25, 4.0)
         self.temporal_recent_gain_window_ticks = max(1, int(temporal_recent_gain_window_ticks))
         self.temporal_recent_gain = _clamp(float(temporal_recent_gain), 0.0, 0.65)
         self.temporal_long_half_life_ticks = max(1, int(temporal_long_half_life_ticks))
@@ -5026,7 +5028,8 @@ class MemoryStore:
         phase = "fresh"
         if self.temporal_fatigue_window_ticks > 0 and age_ticks < self.temporal_fatigue_window_ticks:
             progress = age_ticks / max(1.0, float(self.temporal_fatigue_window_ticks))
-            weight *= 1.0 - float(self.temporal_fatigue_strength) * (1.0 - progress)
+            recovered = progress ** float(self.temporal_fatigue_recovery_exponent)
+            weight *= 1.0 - float(self.temporal_fatigue_strength) * (1.0 - recovered)
             phase = "short_fatigue"
         elif age_ticks <= self.temporal_recent_gain_window_ticks:
             progress = age_ticks / max(1.0, float(self.temporal_recent_gain_window_ticks))
@@ -5044,7 +5047,8 @@ class MemoryStore:
             "weight": _round4(_clamp(weight, lower_bound, 1.0 + self.temporal_recent_gain)),
             "age_ticks": int(age_ticks),
             "phase": phase,
-            "policy": "short_fatigue_then_recent_gain_then_long_half_life_floor",
+            "fatigue_recovery_exponent": _round4(self.temporal_fatigue_recovery_exponent),
+            "policy": "short_fatigue_power_recovery_then_recent_gain_then_long_half_life_floor",
         }
 
     def _apply_successor_temporal_applicability(

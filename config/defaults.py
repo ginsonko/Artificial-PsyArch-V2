@@ -133,6 +133,7 @@ class MemoryConfig:
     temporal_tick_seconds: float = 0.1
     temporal_fatigue_window_ticks: int = 80
     temporal_fatigue_strength: float = 0.92
+    temporal_fatigue_recovery_exponent: float = 1.0
     temporal_recent_gain_window_ticks: int = 864_000
     temporal_recent_gain: float = 0.14
     temporal_long_half_life_ticks: int = 25_920_000
@@ -158,6 +159,8 @@ class AttentionConfig:
     attention_gain_weight: float = 0.8
     fatigue_weight: float = 0.5
     continuation_bias: float = 0.35
+    real_energy_weight: float = 0.0
+    virtual_energy_weight: float = 0.25
     focus_family_budget_enabled: bool = True
     focus_family_text_max: int = 4
     focus_family_vision_max: int = 3

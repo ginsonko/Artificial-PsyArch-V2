@@ -1,26 +1,42 @@
 {
   "schema_id": "apv2_release_package_manifest/v1",
-  "generated_at": "2026-06-14T22:30:38",
+  "generated_at": "2026-06-14T22:57:16",
   "items": [
     {
-      "file": "paper_artifacts/release_20260614/APV2_FinalPaper_20260614.docx",
-      "bytes": 429245,
-      "sha256": "70bd650a735f031abd916147830aca1715f9b41db2ea87fc547e05a179219ca5"
+      "file": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.docx",
+      "bytes": 39227,
+      "sha256": "094732dd8b8467fdc088ef36b1bfadc7ca1bcbcac367e98ccfb14359ca3f16af"
     },
     {
-      "file": "paper_artifacts/release_20260614/APV2_NewsArticle_20260614.docx",
-      "bytes": 420237,
-      "sha256": "08ece177219f289a989b1fb66dd7524d65c9f9836a0ae1df5e2477b8186ee2ab"
+      "file": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.pdf",
+      "bytes": 206073,
+      "sha256": "16d25fc7ff789a7a779c7475575c53ecab9067eec73fcb096a75dfaa35528c67"
     },
     {
-      "file": "paper_artifacts/release_20260614/APV2_RepositorySetup_20260614.docx",
-      "bytes": 38964,
-      "sha256": "431361d148a9d02b8bfece893f1095b567e7ff4f7ddc3fd0ab9ee29d44f9d1cb"
+      "file": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.docx",
+      "bytes": 420243,
+      "sha256": "e399c0aa929206202a98e1ea31e464805b2ccbf0cf34aa23924a9511eeec8b88"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.pdf",
+      "bytes": 665621,
+      "sha256": "579731886a13062e0776fd4103dcb5c240a58b24014cb15618d3f42be90e40a6"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.docx",
+      "bytes": 429257,
+      "sha256": "4897908d11a5915c9e9d579b64ea84e6a3af3d5525753492a67a8a04ec8959f7"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.pdf",
+      "bytes": 827709,
+      "sha256": "fe2216a77f610e6e4e5737b8badcb20f0149d70fd9ccd367f2f57202866e924d"
     }
   ],
   "notes": [
-    "Repository URLs were finalized for ginsonko release repositories.",
-    "Final public release tag apv2-release-20260614-final and repository manifests are used as stable public anchors.",
+    "Release documents use Chinese filenames for reader-facing distribution.",
+    "Word and PDF versions are generated from the same Markdown sources.",
+    "Final public release tag apv2-release-20260614-final-cn-pdf and repository manifests are used as stable public anchors.",
     "Outer zip SHA-256 anchors are recorded in release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json to avoid recursive hash drift inside packaged files.",
     "Inline Markdown code spans are rendered as Word inline styling instead of literal backticks.",
     "Public research license wording was synchronized across release documents and staging README/LICENSE/NOTICE files.",

@@ -6,7 +6,7 @@
 GL 开放中文对话仓库: `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`  
 实验复现与冻结锚定仓库: `https://github.com/ginsonko/APV2-Reproduction-Artifacts`  
 第三方独立复现参考: `https://github.com/ACG-j/artificial_psyarch`
-发布冻结 tag: `apv2-release-20260614-final`  
+发布冻结 tag: `apv2-release-20260614-final-cn-pdf`  
 复现锚点: 以公开仓库 tag、各仓库 `PUBLIC_STAGING_MANIFEST.json` 和外层 `PUBLIC_REPO_STAGING_SUMMARY.json` 为准。  
 
 ## 摘要
@@ -209,7 +209,7 @@ APV2 的独特性不在于它现在已经比所有大模型更强，而在于它
 
 | 层级 | 锚定内容 | 审查用途 |
 |---|---|---|
-| 公开仓库 tag | `apv2-release-20260614-final` | 固定 GitHub 可浏览源代码和文档版本 |
+| 公开仓库 tag | `apv2-release-20260614-final-cn-pdf` | 固定 GitHub 可浏览源代码和文档版本 |
 | 每仓库 manifest | `PUBLIC_STAGING_MANIFEST.json` | 记录仓库内每个公开文件的 bytes 和 SHA-256 |
 | 外层 release summary | `release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json` | 记录三个外发 zip 包的 SHA-256 和字节数 |
 

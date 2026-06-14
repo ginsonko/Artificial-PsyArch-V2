@@ -20,12 +20,16 @@ class AttentionSelector:
         attention_gain_weight: float,
         fatigue_weight: float,
         continuation_bias: float = 0.35,
+        real_energy_weight: float = 0.0,
+        virtual_energy_weight: float = 0.25,
     ) -> None:
         self.focus_limit = max(1, int(focus_limit))
         self.pressure_gain = float(pressure_gain)
         self.attention_gain_weight = float(attention_gain_weight)
         self.fatigue_weight = float(fatigue_weight)
         self.continuation_bias = float(continuation_bias)
+        self.real_energy_weight = max(0.0, float(real_energy_weight))
+        self.virtual_energy_weight = max(0.0, float(virtual_energy_weight))
 
     def select(
         self,
@@ -64,8 +68,9 @@ class AttentionSelector:
             learned_band_net_bias = learned_band_boost - learned_band_suppression
             base_score = (
                 float(row.get("cognitive_pressure", 0.0) or 0.0) * self.pressure_gain
+                + float(row.get("real_energy", 0.0) or 0.0) * self.real_energy_weight
                 + float(row.get("attention_gain", 0.0) or 0.0) * self.attention_gain_weight
-                + float(row.get("virtual_energy", 0.0) or 0.0) * 0.25
+                + float(row.get("virtual_energy", 0.0) or 0.0) * self.virtual_energy_weight
                 - float(row.get("fatigue", 0.0) or 0.0) * self.fatigue_weight
                 + continuation_bonus
                 + successor_bonus
@@ -88,6 +93,8 @@ class AttentionSelector:
             enriched["learned_band_score"] = round(float(learned_band.get("score", 0.0) or 0.0), 4)
             enriched["learned_band_association_score"] = round(float(learned_band.get("association_score", 0.0) or 0.0), 4)
             enriched["learned_band_vector_score"] = round(float(learned_band.get("vector_score", 0.0) or 0.0), 4)
+            enriched["real_energy_attention_weight"] = round(self.real_energy_weight, 4)
+            enriched["virtual_energy_attention_weight"] = round(self.virtual_energy_weight, 4)
             if action_bias.get("sources"):
                 enriched["action_attention_sources"] = list(action_bias.get("sources", []) or [])[:4]
             if learned_band.get("sources"):

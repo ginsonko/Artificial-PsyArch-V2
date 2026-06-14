@@ -6,7 +6,7 @@ APV2 is a white-box predictive-action runtime for continuous cognition. It organ
 
 ## 发布锚点 / Release Anchors
 
-- Official release tag: `apv2-release-20260614-final`
+- Official release tag: `apv2-release-20260614-final-cn-pdf`
 - Repository manifest: `PUBLIC_STAGING_MANIFEST.json`
 - Release documents: `paper_artifacts/release_20260614/`
 - Companion GL repository: `APV2-GL-OpenWorld-Chinese`

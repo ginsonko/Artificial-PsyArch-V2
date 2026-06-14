@@ -6,7 +6,7 @@
 - `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`
 - `https://github.com/ginsonko/APV2-Reproduction-Artifacts`
 
-统一冻结 tag: `apv2-release-20260614-final`
+统一冻结 tag: `apv2-release-20260614-final-cn-pdf`
 
 | 仓库 | 主要内容 | 版本锚定 |
 |---|---|---|
@@ -15,6 +15,14 @@
 | `APV2-Reproduction-Artifacts` | 发布稿、实验输出、第三方复现与冻结 artifact | Git tag + `PUBLIC_STAGING_MANIFEST.json` |
 
 外发 zip 包的 SHA-256 不写入会被重新打包的仓库内部文件，统一由外层 `release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json` 记录。这样可以避免 zip 内文件记录自身 zip hash 造成的递归漂移。
+
+发布文档使用中文文件名，并同时提供 Word 与 PDF:
+
+| 文件 | 用途 |
+|---|---|
+| `APV2_论文_白箱预测行动闭环架构_20260614.docx` / `.pdf` | 发布版论文稿 |
+| `APV2_新闻稿_让机器一直是它自己_20260614.docx` / `.pdf` | 新闻稿/科普稿 |
+| `APV2_仓库发布说明_20260614.docx` / `.pdf` | 仓库和复现入口说明 |
 
 许可证: `APV2 Public Research License v2026-06-14`。这是 source-available public research license, 不是 OSI open-source license。它允许公开阅读、clone、fork、本地运行、非商业研究复验和合理引用，同时保留商业使用、模型训练、数据再打包、产品部署和派生系统公开分发等权限边界。
 

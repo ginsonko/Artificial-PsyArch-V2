@@ -105,6 +105,8 @@ class APV21Runtime:
             attention_gain_weight=self.config.attention.attention_gain_weight,
             fatigue_weight=self.config.attention.fatigue_weight,
             continuation_bias=self.config.attention.continuation_bias,
+            real_energy_weight=self.config.attention.real_energy_weight,
+            virtual_energy_weight=self.config.attention.virtual_energy_weight,
         )
         self.memory = MemoryStore(
             recall_top_k=self.config.memory.recall_top_k,
@@ -137,6 +139,7 @@ class APV21Runtime:
             temporal_tick_seconds=self.config.memory.temporal_tick_seconds,
             temporal_fatigue_window_ticks=self.config.memory.temporal_fatigue_window_ticks,
             temporal_fatigue_strength=self.config.memory.temporal_fatigue_strength,
+            temporal_fatigue_recovery_exponent=self.config.memory.temporal_fatigue_recovery_exponent,
             temporal_recent_gain_window_ticks=self.config.memory.temporal_recent_gain_window_ticks,
             temporal_recent_gain=self.config.memory.temporal_recent_gain,
             temporal_long_half_life_ticks=self.config.memory.temporal_long_half_life_ticks,
