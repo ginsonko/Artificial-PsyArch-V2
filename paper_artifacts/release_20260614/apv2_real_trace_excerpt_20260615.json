@@ -1,0 +1,385 @@
+{
+  "schema_id": "apv2_journal_real_trace_excerpt/v1",
+  "generated_from": {
+    "dialogue_fulltrace": "outputs/apv21_debug_fresh10_turn9_fulltrace/sessions/dlg-a6a07b0851414743.json",
+    "apcore_dynamics": "outputs/apv22_apcore_dynamics_20260614_022059/apv22_apcore_dynamics.json",
+    "dialogue_fulltrace_sha256": "9c20d46c26d90ee6b654d707fe708021b3d566458c0c98334d03be00ffec8c87",
+    "apcore_dynamics_sha256": "84df77c29b8df476a5a5384c14f661ef34e304c7aabb4a42eacdf774c1c33376"
+  },
+  "dialogue_frame_excerpt": {
+    "session_id": "dlg-a6a07b0851414743",
+    "frame_index": 78,
+    "tick_index": 201,
+    "turn_id": "turn-0007",
+    "input_text": "我有点累的时候，你应该先怎么回应？",
+    "focus": {
+      "selected_labels": [
+        "feeling::coherence",
+        "action_feedback::stabilize_prediction",
+        "timefelt::elapsed"
+      ],
+      "reason": {},
+      "ranked_items": []
+    },
+    "feelings": {
+      "grasp": 0.8478,
+      "coherence": 0.82,
+      "surprise": 0.686,
+      "dissonance": 0.5277,
+      "correctness": 0.5235,
+      "task_available": 0.4813,
+      "complexity": 0.4334,
+      "pressure": 0.375,
+      "uncertainty": 0.3742,
+      "fulfillment": 0.3465,
+      "evidence_gap": 0.2474,
+      "expectation": 0.1952,
+      "boredom": 0.0958,
+      "computation_pressure": 0.0526
+    },
+    "selected_actions_top4": [
+      {
+        "action_id": "action::stabilize_prediction",
+        "drive": 1.8
+      },
+      {
+        "action_id": "action::recall_recent_context",
+        "drive": 1.1734,
+        "params": {
+          "truncated": true,
+          "preview": "{\"preview\": \"{\\\"active_episode_id\\\": 7, \\\"horizon\\\": 6, \\\"labels\\\": [\\\"feeling::coherence\\\", \\\"action_feedback::stabilize_prediction\\\"], \\\"reason\\\": \\\"recent_thought_readback\\\", \\\"recall_mode\\\": \\\"no_param_recent_context\\\", \\\"short_term_event_ids\\\": [\\\"stm::00"
+        }
+      },
+      {
+        "action_id": "action::continue_focus",
+        "drive": 0.9368,
+        "params": {
+          "truncated": true,
+          "preview": "{\"preview\": \"{\\\"attention_process_need\\\": {\\\"action::continue_focus\\\": 0.3566, \\\"action::diverge_attention\\\": 0.1537, \\\"action::focus_anchor\\\": 0.2414, \\\"action::release_focus\\\": 0.5258}, \\\"source_focus_labels\\\": [\\\"feeling::coherence\\\", \\\"timefelt::elapsed\\\","
+        }
+      },
+      {
+        "action_id": "action::wait",
+        "drive": 0.9217,
+        "params": {
+          "duration_ticks": 1,
+          "rhythm_expectation": 0.0,
+          "uncertainty": 0.3742
+        }
+      }
+    ],
+    "action_candidates_top4": [
+      {
+        "action_id": "action::recall_recent_context",
+        "drive": 1.8,
+        "params": {
+          "truncated": true,
+          "preview": "{\"preview\": \"{\\\"active_episode_id\\\": 7, \\\"horizon\\\": 6, \\\"labels\\\": [\\\"feeling::coherence\\\", \\\"action_feedback::stabilize_prediction\\\"], \\\"reason\\\": \\\"recent_thought_readback\\\", \\\"recall_mode\\\": \\\"no_param_recent_context\\\", \\\"short_term_event_ids\\\": [\\\"stm::00"
+        },
+        "selected": false
+      },
+      {
+        "action_id": "action::stabilize_prediction",
+        "drive": 1.8,
+        "selected": false
+      },
+      {
+        "action_id": "action::continue_focus",
+        "drive": 1.5472,
+        "params": {
+          "truncated": true,
+          "preview": "{\"preview\": \"{\\\"attention_process_need\\\": {\\\"action::continue_focus\\\": 0.3566, \\\"action::diverge_attention\\\": 0.1537, \\\"action::focus_anchor\\\": 0.2414, \\\"action::release_focus\\\": 0.5258}, \\\"source_focus_labels\\\": [\\\"feeling::coherence\\\", \\\"timefelt::elapsed\\\","
+        },
+        "selected": false
+      },
+      {
+        "action_id": "action::wait",
+        "drive": 0.9217,
+        "params": {
+          "duration_ticks": 1,
+          "rhythm_expectation": 0.0,
+          "uncertainty": 0.3742
+        },
+        "selected": false
+      }
+    ],
+    "thought_cloud_top5": [
+      {
+        "label": "action::stabilize_prediction",
+        "text": "行动:stabilize_prediction",
+        "energy": 17.999997085880995,
+        "virtual": 0.0,
+        "source": "state"
+      },
+      {
+        "label": "feeling::coherence",
+        "text": "合理感",
+        "energy": 15.411999990584489,
+        "virtual": 1.9210607770655026,
+        "source": "state"
+      },
+      {
+        "label": "action_feedback::stabilize_prediction",
+        "text": "行动反馈:stabilize_prediction",
+        "energy": 11.851420477610995,
+        "virtual": 3.6130060847120937,
+        "source": "state"
+      },
+      {
+        "label": "feeling::surprise",
+        "text": "惊",
+        "energy": 13.217126549205187,
+        "virtual": 1.7890504190621865e-14,
+        "source": "state"
+      },
+      {
+        "label": "short_term_slot::item::feeling::coherence",
+        "text": "合理感",
+        "energy": 8.308053547454339,
+        "virtual": 2.113917859120956,
+        "source": "state"
+      }
+    ],
+    "short_term_slot_items_preview": [
+      {
+        "sa_label": "short_term_slot::summary",
+        "display_text": "合理感 行动反馈:stabilize_prediction 时间间隔感",
+        "real_energy": 0.0177,
+        "virtual_energy": 0.0934,
+        "age_ticks": null,
+        "source_type": "short_term_slot"
+      },
+      {
+        "sa_label": "short_term_slot::item::feeling::coherence",
+        "display_text": "合理感",
+        "real_energy": 0.8322,
+        "virtual_energy": 0.08,
+        "age_ticks": null,
+        "source_type": "short_term_slot"
+      },
+      {
+        "sa_label": "short_term_slot::item::action_feedback::stabilize_prediction",
+        "display_text": "行动反馈:stabilize_prediction",
+        "real_energy": 0.7111,
+        "virtual_energy": 0.0742,
+        "age_ticks": null,
+        "source_type": "short_term_slot"
+      },
+      {
+        "sa_label": "short_term_slot::order::0::feeling::coherence",
+        "display_text": "order 1 of 3",
+        "real_energy": 0.0,
+        "virtual_energy": 0.0264,
+        "age_ticks": null,
+        "source_type": "short_term_slot"
+      },
+      {
+        "sa_label": "short_term_slot::order::1::action_feedback::stabilize_prediction",
+        "display_text": "order 2 of 3",
+        "real_energy": 0.0,
+        "virtual_energy": 0.0243,
+        "age_ticks": null,
+        "source_type": "short_term_slot"
+      }
+    ],
+    "memory_fast_bn_top2": [
+      {
+        "memory_id": "mem-1731",
+        "memory_kind": "state",
+        "source_text": "",
+        "score": 14.7974,
+        "labels": []
+      },
+      {
+        "memory_id": "mem-1848",
+        "memory_kind": "state",
+        "source_text": "",
+        "score": 12.6356,
+        "labels": []
+      }
+    ],
+    "memory_fast_cn_top2": [
+      {
+        "source_memory_id": "mem-1731",
+        "successor_memory_id": "mem-1734",
+        "score": 0.0808,
+        "predicted_labels": []
+      },
+      {
+        "source_memory_id": "mem-1731",
+        "successor_memory_id": "mem-1732",
+        "score": 0.08,
+        "predicted_labels": []
+      }
+    ],
+    "memory_slow_bn_top1": [
+      {
+        "memory_id": "mem-1585",
+        "memory_kind": "focus",
+        "source_text": "",
+        "score": 6.9108,
+        "labels": []
+      }
+    ],
+    "performance": {
+      "runtime_ms": 183.7963,
+      "reconstruct_ms": 0.0,
+      "render_ms": 0.0,
+      "lab_total_ms": 183.7963,
+      "target_tick_ms": 100,
+      "audit_reconstructed": false
+    }
+  },
+  "mechanism_json_excerpts": {
+    "residual_b_recall_absorption": {
+      "experiment": "ResidualDepth-1",
+      "verdict": "pass",
+      "residual_winners": [
+        "AB",
+        "CD",
+        "E",
+        "A"
+      ],
+      "absorption_trace_first3": [
+        {
+          "schema_id": "residual_b_recall_round/v1",
+          "round_index": 1,
+          "winner_memory_id": "mem-1",
+          "winner_score": 8.8739,
+          "match_efficiency": 0.985,
+          "matched_labels": [
+            "text::A",
+            "text::B"
+          ],
+          "drained_labels": [
+            "text::A",
+            "text::B"
+          ],
+          "residual_mass_before": 4.6,
+          "residual_mass_after": 2.1671,
+          "policy": "one_b_per_round_matched_sa_absorption"
+        },
+        {
+          "schema_id": "residual_b_recall_round/v1",
+          "round_index": 2,
+          "winner_memory_id": "mem-2",
+          "winner_score": 4.6743,
+          "match_efficiency": 0.8295,
+          "matched_labels": [
+            "text::C"
+          ],
+          "drained_labels": [
+            "text::C"
+          ],
+          "residual_mass_before": 2.1671,
+          "residual_mass_after": 1.3533,
+          "policy": "one_b_per_round_matched_sa_absorption"
+        },
+        {
+          "schema_id": "residual_b_recall_round/v1",
+          "round_index": 3,
+          "winner_memory_id": "mem-3",
+          "winner_score": 4.8924,
+          "match_efficiency": 0.8443,
+          "matched_labels": [
+            "text::E"
+          ],
+          "drained_labels": [
+            "text::E"
+          ],
+          "residual_mass_before": 1.3533,
+          "residual_mass_after": 0.7742,
+          "policy": "one_b_per_round_matched_sa_absorption"
+        }
+      ],
+      "mass_declines": true
+    },
+    "successor_lag_kernel": {
+      "experiment": "SuccessorPeakAblation-1",
+      "verdict": "pass",
+      "shaped": [
+        {
+          "successor_memory_id": "m1",
+          "lag": 1,
+          "kernel": 1.0,
+          "predicted_labels": [
+            "text::one"
+          ]
+        },
+        {
+          "successor_memory_id": "m2",
+          "lag": 2,
+          "kernel": 0.42,
+          "predicted_labels": [
+            "text::two"
+          ]
+        },
+        {
+          "successor_memory_id": "m5",
+          "lag": 5,
+          "kernel": 0.1101,
+          "predicted_labels": [
+            "text::five"
+          ]
+        }
+      ],
+      "flat_kernels_when_ablation": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "pressure_sweep": {
+      "experiment": "DoubleEnergyBalance-PressureDynamics-Sweep-1",
+      "verdict": "pass",
+      "clean_cases": [
+        {
+          "name": "clean_low",
+          "pressure": 0.04,
+          "selected_actions": [
+            "action::text_insert",
+            "action::continue_focus",
+            "action::scan_visual_field"
+          ],
+          "commit_readiness": 0.1145,
+          "commit_reread_need": 0.1638
+        },
+        {
+          "name": "clean_mid",
+          "pressure": 0.28,
+          "selected_actions": [
+            "action::continue_focus",
+            "action::text_insert",
+            "action::scan_visual_field"
+          ],
+          "commit_readiness": 0.0126,
+          "commit_reread_need": 0.1752
+        }
+      ],
+      "stress_cases": [
+        {
+          "name": "stress_low",
+          "pressure": 0.04,
+          "selected_actions": [
+            "action::continue_focus",
+            "action::replay_recent_context",
+            "action::scan_visual_field"
+          ],
+          "commit_readiness": 0.0325,
+          "commit_reread_need": 0.1638
+        },
+        {
+          "name": "stress_mid",
+          "pressure": 0.28,
+          "selected_actions": [
+            "action::continue_focus",
+            "action::wait",
+            "action::scan_visual_field"
+          ],
+          "commit_readiness": 0.0126,
+          "commit_reread_need": 0.1752
+        }
+      ]
+    }
+  }
+}

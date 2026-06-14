@@ -1320,18 +1320,49 @@ class ActionConsequencePlanner:
                     0.0,
                     1.0,
                 )
+                visible_tokens_for_commit = [
+                    str(token or "")
+                    for token in list(draft_context.get("visible_tokens", []) or [])
+                    if str(token or "")
+                ]
+                if not visible_tokens_for_commit:
+                    visible_tokens_for_commit = list(str(draft_context.get("visible_text", "") or ""))
+                content_tokens_for_commit = [
+                    token
+                    for token in visible_tokens_for_commit
+                    if any(ch.isalnum() or "\u4e00" <= ch <= "\u9fff" for ch in token)
+                ]
+                task_anchor_count_for_commit = int(draft_goal_alignment.get("task_anchor_count", 0) or 0)
+                candidate_count_for_commit = int(expected_text.get("candidate_count", 0) or 0)
+                expression_slots = max(
+                    1,
+                    int(visible_length)
+                    + max(1, task_anchor_count_for_commit)
+                    + max(0, candidate_count_for_commit),
+                )
+                expression_saturation = _clamp(len(content_tokens_for_commit) / float(expression_slots), 0.0, 1.0)
+                expression_shortfall = _clamp(1.0 - expression_saturation, 0.0, 1.0)
+                punctuation_only_fragment = bool(visible_length > 0 and not content_tokens_for_commit)
+                learned_commit_support = _clamp(outcome_commit_pressure + habitual_commit_pressure, 0.0, 1.0)
                 fragment_commit_pressure = 0.0
-                if dialogue_closure_need_for_commit > 0.0 and visible_length <= 2:
-                    fragment_commit_pressure = _clamp(
-                        dialogue_closure_need_for_commit
+                if dialogue_closure_need_for_commit > 0.0:
+                    fragment_risk = _clamp(
+                        expression_shortfall
                         * (
-                            max(0.0, 0.58 - goal_alignment) * 0.72
-                            + max(0.0, 0.54 - field_satisfaction) * 0.44
-                            + max(0.0, 0.48 - closure_pressure) * 0.34
-                            + max(0.0, expected_strength - 0.20) * 0.22
-                            + max(0.0, continuation_pressure - 0.24) * 0.22
+                            max(0.0, 1.0 - goal_alignment) * 0.52
+                            + max(0.0, 1.0 - field_satisfaction) * 0.36
+                            + max(0.0, 1.0 - closure_pressure) * 0.28
+                            + continuation_pressure * 0.22
+                            + unexpressed_successor_pressure * 0.30
                         )
-                        + (0.12 if visible_length <= 1 else 0.04),
+                        + expression_shortfall * 0.42
+                        + (dialogue_closure_need_for_commit * 0.42 if punctuation_only_fragment else 0.0),
+                        0.0,
+                        1.0,
+                    )
+                    fragment_risk *= max(0.18, 1.0 - learned_commit_support * 0.72)
+                    fragment_commit_pressure = _clamp(
+                        dialogue_closure_need_for_commit * fragment_risk,
                         0.0,
                         1.0,
                     )
@@ -1423,7 +1454,7 @@ class ActionConsequencePlanner:
                         notes=[
                             "draft_commit_ready",
                             "draft_satisfaction_field_commit_ready",
-                            "commit_still_external_safety_gate_boundary",
+                            "commit_is_user_visible_draft_boundary",
                             "commit_is_internal_draft_closure_not_external_send",
                             f"field_satisfaction={_round4(field_satisfaction)}",
                             f"goal_alignment={_round4(goal_alignment)}",
@@ -1432,6 +1463,10 @@ class ActionConsequencePlanner:
                             f"outcome_commit_pressure={_round4(outcome_commit_pressure)}",
                             f"risk_commit_pressure={_round4(risk_commit_pressure)}",
                             f"fragment_commit_pressure={_round4(fragment_commit_pressure)}",
+                            f"expression_saturation={_round4(expression_saturation)}",
+                            f"expression_shortfall={_round4(expression_shortfall)}",
+                            f"punctuation_only_fragment={punctuation_only_fragment}",
+                            f"learned_commit_support={_round4(learned_commit_support)}",
                             f"continuation_pressure={_round4(continuation_pressure)}",
                             f"unexpressed_successor_pressure={_round4(unexpressed_successor_pressure)}",
                             f"revision_pressure={_round4(revision_pressure)}",
@@ -2781,6 +2816,26 @@ class ActionConsequencePlanner:
                 continue
             meta = dict(item.get("anchor_meta", {}) or {}) if isinstance(item.get("anchor_meta", {}), dict) else {}
             priority = 0.28 if bool(meta.get("focus_target", False)) else 0.0
+            try:
+                feedback_reward = max(
+                    float(meta.get("feedback_reward", 0.0) or 0.0),
+                    float(meta.get("reward_value", 0.0) or 0.0),
+                )
+                feedback_punishment = max(
+                    float(meta.get("feedback_punishment", 0.0) or 0.0),
+                    float(meta.get("punishment_value", 0.0) or 0.0),
+                )
+                feedback_correctness = float(meta.get("feedback_correctness", 0.0) or 0.0)
+            except (TypeError, ValueError):
+                feedback_reward = 0.0
+                feedback_punishment = 0.0
+                feedback_correctness = 0.0
+            feedback_utility = max(0.0, feedback_reward + feedback_correctness * 0.35 - feedback_punishment * 0.85)
+            feedback_risk = max(0.0, feedback_punishment - feedback_reward - feedback_correctness * 0.35)
+            if feedback_utility > 0.0:
+                priority += min(0.42, feedback_utility * 0.30)
+            if feedback_risk > 0.0:
+                priority -= min(0.36, feedback_risk * 0.28)
             if str(item.get("source_type", "") or "") in {"current_test_process", "current_target_sa", "external_text", "external_teacher"}:
                 priority += 0.18
             if prefix in {"math", "operation", "algorithm", "number", "relation", "desktop", "vision", "ocr", "permission", "emotion", "tone", "audio", "noise", "sound", "intention", "cue", "timefelt", "opportunity", "draft", "token"}:
@@ -3392,7 +3447,8 @@ class ActionConsequencePlanner:
                 correctness = float(meta.get("feedback_correctness", 0.0) or 0.0)
             except (TypeError, ValueError):
                 return False
-            return bool(punishment > max(reward, correctness) and punishment >= 0.18)
+            positive = max(0.0, reward) + max(0.0, correctness) * 0.35
+            return bool(punishment > 0.0 and punishment > positive)
 
         def _has_output_process_evidence(meta: dict) -> bool:
             schema_id = str(meta.get("schema_id", "") or "")
@@ -3561,6 +3617,31 @@ class ActionConsequencePlanner:
                         sources[token].add("negative_feedback_text_prediction_suppressed")
                         position_notes_by_token[token].add("negative_feedback_text_prediction_suppressed")
                         continue
+                    try:
+                        token_reward = max(
+                            float(meta.get("feedback_reward", 0.0) or 0.0),
+                            float(meta.get("reward_value", 0.0) or 0.0),
+                        )
+                        token_punishment = max(
+                            float(meta.get("feedback_punishment", 0.0) or 0.0),
+                            float(meta.get("punishment_value", 0.0) or 0.0),
+                        )
+                        token_correctness = float(meta.get("feedback_correctness", 0.0) or 0.0)
+                    except (TypeError, ValueError):
+                        token_reward = 0.0
+                        token_punishment = 0.0
+                        token_correctness = 0.0
+                    feedback_utility = token_reward + token_correctness * 0.35 - token_punishment * 0.85
+                    if feedback_utility > 0.0:
+                        gain = 1.0 + _clamp(feedback_utility, 0.0, 1.0) * 0.32
+                        strength *= gain
+                        sources[token].add("reward_supported_text_prediction")
+                        position_notes_by_token[token].add("reward_supported_text_prediction")
+                    elif feedback_utility < 0.0:
+                        scale = max(0.12, 1.0 + feedback_utility * 0.55)
+                        strength *= scale
+                        sources[token].add("punishment_softened_text_prediction")
+                        position_notes_by_token[token].add("punishment_softened_text_prediction")
                     position_weight, position_notes = _position_weight(meta, token)
                     strength *= position_weight
                     if strength <= 0.0:
@@ -3635,20 +3716,54 @@ class ActionConsequencePlanner:
         )
         top_position_notes = position_notes_by_token.get(top_token, set())
         top_cursor_aligned = bool("cursor_aligned_next_unread_region" in top_position_notes)
-        # Momentary state-pool refresh keeps process amplitudes bounded, so an
-        # explicit cursor-aligned successor may have low absolute energy while
-        # still being the clear next continuation. Treat that as decisive by
-        # relative confidence; this preserves Cn semantics instead of forcing
-        # process states to accumulate just to cross an absolute threshold.
-        enough_strength = bool(
-            top_score >= 0.18
-            or (
-                top_cursor_aligned
-                and top_score > 0.0
-                and (top_share >= 0.72 or dominance_ratio >= 1.75)
+        top_empty_start_output = bool(
+            "empty_draft_start_region_alignment" in top_position_notes
+            and "internal_output_start_position" in top_position_notes
+        )
+        top_closed_visible = bool("closed_visible_token_soft_cost" in top_position_notes)
+        random_share = 1.0 / max(1.0, float(candidate_count))
+        share_margin = (1.0 - random_share) / max(2.0, float(candidate_count + 1))
+        quantity_share_floor = random_share + share_margin
+        quantity_ratio_floor = 1.0 + (1.0 / max(1.0, float(candidate_count)))
+        gap_floor = total / max(1.0, float(candidate_count * (candidate_count + 1)))
+        process_position_clear = bool(top_cursor_aligned or top_empty_start_output)
+        reward_supported = bool("reward_supported_text_prediction" in top_position_notes)
+        weak_position_notes = {
+            "cursor_distance_soft_cost",
+            "empty_draft_later_region_soft_cost",
+            "empty_draft_readout_start_later_slot_suppression",
+            "closed_visible_token_soft_cost",
+        }
+        weak_position_only = bool(
+            top_position_notes.intersection(weak_position_notes)
+            and not process_position_clear
+            and not reward_supported
+        )
+        single_candidate_clear = bool(candidate_count == 1 and (process_position_clear or reward_supported))
+        multi_candidate_clear = bool(
+            candidate_count > 1
+            and (
+                top_share >= quantity_share_floor
+                or dominance_ratio >= quantity_ratio_floor
+                or dominance_gap >= gap_floor
             )
         )
-        decisive = bool(enough_strength and (candidate_count == 1 or top_share >= 0.55 or dominance_gap >= 0.22 or dominance_ratio >= 1.75))
+        relative_clear = bool(single_candidate_clear or multi_candidate_clear)
+        # Decisiveness is a distribution judgement, not a fixed energy bar.
+        # More competitors raise the share/ratio requirement; cursor/start
+        # process anchors and reward-supported traces make a low-amplitude but
+        # clear successor eligible without turning naked familiarity into text.
+        enough_strength = bool(
+            top_score > 0.0
+            and not top_closed_visible
+            and (
+                process_position_clear
+                or reward_supported
+                or (multi_candidate_clear and not weak_position_only)
+            )
+            and relative_clear
+        )
+        decisive = bool(enough_strength)
         return {
             "token": top_token,
             "strength": _round4(_clamp(top_score, 0.0, 1.2)),
@@ -3669,6 +3784,22 @@ class ActionConsequencePlanner:
             "dominance_ratio": _round4(min(99.0, dominance_ratio)),
             "ambiguity": _round4(ambiguity),
             "decisive": decisive,
+            "decisive_trace": {
+                "schema_id": "expected_text_dynamic_decisive_trace/v1",
+                "policy": "candidate_count_relative_distribution_plus_process_anchor_and_feedback",
+                "quantity_share_floor": _round4(quantity_share_floor),
+                "quantity_ratio_floor": _round4(quantity_ratio_floor),
+                "gap_floor": _round4(gap_floor),
+                "relative_clear": bool(relative_clear),
+                "single_candidate_clear": bool(single_candidate_clear),
+                "multi_candidate_clear": bool(multi_candidate_clear),
+                "process_position_clear": bool(process_position_clear),
+                "weak_position_only": bool(weak_position_only),
+                "cursor_aligned": bool(top_cursor_aligned),
+                "empty_start_output": bool(top_empty_start_output),
+                "closed_visible": bool(top_closed_visible),
+                "reward_supported": bool(reward_supported),
+            },
         }
 
     def _advance_expected_text_after_visible_closure(self, expected_text: dict, draft_context: dict) -> dict:

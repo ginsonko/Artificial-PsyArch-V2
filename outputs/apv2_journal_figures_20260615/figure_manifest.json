@@ -1,0 +1,33 @@
+{
+  "schema_id": "apv2_journal_figures/v1",
+  "generated_at": "2026-06-15",
+  "figures": [
+    {
+      "name": "fig1_apv2_evidence_stack_journal",
+      "svg": "outputs/apv2_journal_figures_20260615/fig1_apv2_evidence_stack_journal.svg",
+      "png": "outputs/apv2_journal_figures_20260615/fig1_apv2_evidence_stack_journal.png",
+      "svg_sha256": "0e8f8a071d70c1676067e180eb04e23ea09f07a39ca815827c56248cdfdbd53f",
+      "png_sha256": "a1de0bc21d890975f151ed6ed4408278ea4c3b001200b634cd2affe18a483269",
+      "svg_bytes": 50710,
+      "png_bytes": 98365
+    },
+    {
+      "name": "fig2_cost_capability_matrix_journal",
+      "svg": "outputs/apv2_journal_figures_20260615/fig2_cost_capability_matrix_journal.svg",
+      "png": "outputs/apv2_journal_figures_20260615/fig2_cost_capability_matrix_journal.png",
+      "svg_sha256": "f2694b77fefe99d8ac573bf4b9cf4559988245966684bf586c22845e23fc1f18",
+      "png_sha256": "0ad100a83ab8087f5ee9261c743a90341f56bbf88f4e110a464beeaa58641ba3",
+      "svg_bytes": 63628,
+      "png_bytes": 115576
+    },
+    {
+      "name": "fig3_runtime_loop_trace_journal",
+      "svg": "outputs/apv2_journal_figures_20260615/fig3_runtime_loop_trace_journal.svg",
+      "png": "outputs/apv2_journal_figures_20260615/fig3_runtime_loop_trace_journal.png",
+      "svg_sha256": "c791e31b8e638262dd5b32d3eaccf3fcedc1c0521742bd1d703ef3f5621ca30b",
+      "png_sha256": "1fcd4ff9ed973c230ebf62e78fd4704236baac5875a11710c273a124cae2eddc",
+      "svg_bytes": 49798,
+      "png_bytes": 89716
+    }
+  ]
+}

@@ -374,6 +374,7 @@ class InnateCodingEngine:
         bn_entropy_proxy = self._weight_entropy_proxy(bn_rows)
         slow_cn = list(context.get("slow_cn", []) or [])
         fast_cn = list(context.get("fast_cn", []) or [])
+        draft_context = dict(context.get("draft_context", {}) or {}) if isinstance(context.get("draft_context", {}), dict) else {}
         predicted_action_energy = self._predicted_action_energy(fast_cn + slow_cn)
         selected_actions = list(action_trace.get("selected_actions", []) or [])
         candidates = list(action_trace.get("candidates", []) or [])
@@ -384,7 +385,7 @@ class InnateCodingEngine:
         feedback_confidence = _clamp(float(observed_feedback.get("confidence", 0.0) or 0.0), 0.0, 1.0)
         predicted_error = self._action_prediction_error(action_feedback)
         external_risk = self._external_risk(candidates + selected_actions, channels, emotion_state)
-        expected_token_label = self._expected_token_label(fast_cn + slow_cn)
+        expected_token_label = self._expected_token_label(fast_cn + slow_cn, draft_context=draft_context)
         ui_goal_trace = self._ui_goal_metrics(state_items=state_items, ui_trace=ui_trace, channels=channels)
         click_ready = self._click_ready_strength(
             ui_goal=float(ui_goal_trace.get("ui_goal", 0.0) or 0.0),
@@ -436,7 +437,7 @@ class InnateCodingEngine:
             "voice_like": _clamp(max([self._voice_like_strength(item) for item in audio_rows] or [0.0]), 0.0, 1.0),
             "audio_low_grasp": _clamp((1.0 - max(top_bn, float(channels.get("grasp", 0.0) or 0.0))) * (1.0 if audio_rows else 0.0), 0.0, 1.0),
             "text_mismatch": _clamp(float(channels.get("dissonance", 0.0) or 0.0) * (1.0 if text_rows or candidates else 0.65), 0.0, 1.0),
-            "expected_token": _clamp(self._expected_token_strength(fast_cn + slow_cn), 0.0, 1.0),
+            "expected_token": _clamp(self._expected_token_strength(fast_cn + slow_cn, draft_context=draft_context), 0.0, 1.0),
             "expected_token_label": expected_token_label,
             "text_revision": _clamp(float(channels.get("dissonance", 0.0) or 0.0) + feedback_correctness * 0.2, 0.0, 1.0),
             "text_commit_ready": _clamp(float(channels.get("correctness", 0.0) or 0.0) - float(channels.get("pressure", 0.0) or 0.0) * 0.6, 0.0, 1.0),
@@ -700,15 +701,15 @@ class InnateCodingEngine:
                     total += max(0.0, float((item or {}).get("virtual_energy", 0.0) or 0.0))
         return _clamp(total, 0.0, 1.0)
 
-    def _expected_token_strength(self, branches: list[dict]) -> float:
+    def _expected_token_strength(self, branches: list[dict], *, draft_context: dict | None = None) -> float:
         for branch in branches or []:
             for item in list((branch or {}).get("predicted_items", []) or []):
                 label = str((item or {}).get("sa_label", "") or "")
-                if label.startswith("text::"):
+                if label.startswith("text::") and self._is_output_expected_token_item(item, draft_context=draft_context):
                     return _clamp(float((item or {}).get("virtual_energy", 0.2) or 0.2), 0.0, 1.0)
         return 0.0
 
-    def _expected_token_label(self, branches: list[dict]) -> str:
+    def _expected_token_label(self, branches: list[dict], *, draft_context: dict | None = None) -> str:
         best_label = ""
         best_energy = 0.0
         for branch in branches or []:
@@ -716,11 +717,106 @@ class InnateCodingEngine:
                 label = str((item or {}).get("sa_label", "") or "")
                 if not label.startswith("text::"):
                     continue
+                if not self._is_output_expected_token_item(item, draft_context=draft_context):
+                    continue
                 energy = float((item or {}).get("virtual_energy", 0.0) or 0.0)
                 if not best_label or energy > best_energy:
                     best_label = label
                     best_energy = energy
         return best_label.split("::", 1)[-1] if best_label else ""
+
+    def _prediction_item_meta(self, item: dict) -> dict:
+        meta = dict((item or {}).get("anchor_meta", {}) or {}) if isinstance((item or {}).get("anchor_meta", {}), dict) else {}
+        for key in ("source_type", "family", "sa_kind"):
+            if key in (item or {}) and key not in meta:
+                meta[key] = (item or {}).get(key)
+        return meta
+
+    def _has_output_text_process_evidence(self, meta: dict) -> bool:
+        schema_id = str(meta.get("schema_id", "") or "")
+        source = str(meta.get("source", "") or "")
+        source_event_type = str(meta.get("source_event_type", "") or meta.get("event_type", "") or "")
+        readout_role = str(meta.get("readout_semantic_role", "") or "")
+        priority = str(meta.get("prediction_payload_priority", "") or "")
+        return bool(
+            bool(meta.get("self_generated", False))
+            or schema_id in {
+                "gl_successful_skill_char_token/v1",
+                "text_visible_draft_token/v1",
+                "text_revision_opportunity/v1",
+                "text_slot_confirmation/v1",
+                "text_character_binding/v1",
+                "predicted_text_payload_from_process_companion/v1",
+            }
+            or readout_role == "reply_char_slot"
+            or source in {"action::text_insert", "action::text_reread", "text_actuator_direct_replace"}
+            or source_event_type in {"draft_read_token", "insert", "replace", "write_revision", "visible_draft_token"}
+            or priority.startswith(("current_glyph", "previous_prefix"))
+        )
+
+    def _is_external_input_text_meta(self, meta: dict) -> bool:
+        source_type = str(meta.get("source_type", "") or "")
+        source = str(meta.get("source", "") or "")
+        notes = {str(note or "") for note in list(meta.get("notes", []) or [])}
+        return bool(
+            source_type in {"external_text", "external_text_readback", "external_teacher"}
+            or source in {"external_text", "external_text_turn"}
+            or "external_text_read_into_input_channel" in notes
+            or "not_ap_visible_draft" in notes
+        )
+
+    def _is_output_expected_token_item(self, item: dict, *, draft_context: dict | None = None) -> bool:
+        meta = self._prediction_item_meta(item)
+        output_process = self._has_output_text_process_evidence(meta)
+        if self._is_external_input_text_meta(meta) and not output_process:
+            return False
+        if not output_process:
+            return False
+        token = str((item or {}).get("sa_label", "") or "").split("::", 1)[-1]
+        return self._text_token_position_aligned(token=token, meta=meta, draft_context=draft_context)
+
+    def _text_token_position_aligned(self, *, token: str, meta: dict, draft_context: dict | None = None) -> bool:
+        draft = dict(draft_context or {})
+        visible_text = str(draft.get("visible_text", "") or "")
+        try:
+            visible_length = int(draft.get("visible_length", len(visible_text)) or len(visible_text))
+        except (TypeError, ValueError):
+            visible_length = len(visible_text)
+
+        previous_prefix = str(meta.get("previous_prefix", "") or meta.get("visible_text_before", "") or "")
+        if previous_prefix and previous_prefix != visible_text:
+            return False
+
+        variant_text = str(meta.get("variant_text", "") or meta.get("expected_text", "") or "")
+        if variant_text:
+            if not variant_text.startswith(visible_text):
+                return False
+            if not variant_text[len(visible_text) :].startswith(str(token or "")):
+                return False
+
+        position_keys = ("current_glyph_index", "position", "cursor_before", "cursor", "cursor_index")
+        has_position = False
+        for key in position_keys:
+            if key not in meta:
+                continue
+            try:
+                position = int(meta.get(key))
+            except (TypeError, ValueError):
+                return False
+            has_position = True
+            if position != visible_length:
+                return False
+
+        if "visible_length" in meta:
+            try:
+                meta_visible_length = int(meta.get("visible_length"))
+            except (TypeError, ValueError):
+                return False
+            has_position = True
+            if meta_visible_length != visible_length:
+                return False
+
+        return has_position
 
     def _motion_strength(self, item: dict) -> float:
         numeric = dict((item or {}).get("numeric_features", {}) or {})

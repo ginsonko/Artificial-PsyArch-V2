@@ -158,6 +158,8 @@ class MemoryStore:
         self.temporal_long_half_life_ticks = max(1, int(temporal_long_half_life_ticks))
         self.temporal_floor = _clamp(float(temporal_floor), 0.01, 1.0)
         self._runtime_tick_offset = 0
+        self._recall_guard_min_tick: int | None = None
+        self._recall_guard_reason = ""
         self._persistence: MemoryPersistenceAdapter = persistence if persistence is not None else NullMemoryPersistence()
         self._persistence_required = bool(persistence_required)
         self._persistence_write_count = 0
@@ -389,6 +391,31 @@ class MemoryStore:
             "text_action",
             "action_control",
         }
+
+    def mark_recall_turn_boundary(self, *, tick_index: int, reason: str = "") -> dict:
+        effective_tick = self._effective_runtime_tick(tick_index)
+        self._recall_guard_min_tick = int(effective_tick)
+        self._recall_guard_reason = str(reason or "external_turn_boundary")
+        return {
+            "schema_id": "memory_recall_turn_boundary/v1",
+            "applied": True,
+            "local_tick": int(tick_index),
+            "effective_tick": int(effective_tick),
+            "reason": self._recall_guard_reason,
+            "policy": "snapshots_written_in_current_external_turn_are_saved_but_do_not_compete_as_long_term_Bn_or_Cn_until_next_turn",
+        }
+
+    def _snapshot_blocked_by_recall_guard(self, snapshot: dict | None) -> bool:
+        if not isinstance(snapshot, dict):
+            return False
+        guard_tick = self._recall_guard_min_tick
+        if guard_tick is None:
+            return False
+        try:
+            memory_tick = int(float(snapshot.get("tick_index", -1)))
+        except (TypeError, ValueError):
+            return False
+        return bool(memory_tick >= int(guard_tick))
 
     def write_snapshot(
         self,
@@ -768,6 +795,31 @@ class MemoryStore:
             runtime_state_trace=runtime_state_trace,
         )
 
+    def mark_successor_boundary(self, *, reason: str = "") -> dict:
+        """
+        Cut the in-memory "previous" cursors without deleting memories.
+
+        Persistence restore and a new dialogue session are not successor events.
+        Bn may still recall every loaded snapshot, but Cn must only follow
+        explicit stored transition edges or same-episode writes after this
+        boundary.
+        """
+
+        previous_by_kind_count = len([row for row in self._previous_by_kind.values() if row])
+        previous_episode_id = str((self._previous_episode_snapshot or {}).get("memory_id", "") or "")
+        self._previous_by_kind.clear()
+        self._previous_episode_snapshot = None
+        self._successor_cache.clear()
+        self._touch_memory_revision()
+        return {
+            "schema_id": "memory_successor_boundary/v1",
+            "applied": True,
+            "reason": str(reason or ""),
+            "cleared_previous_by_kind_count": int(previous_by_kind_count),
+            "cleared_previous_episode_memory_id": previous_episode_id,
+            "policy": "boundary_cuts_future_Cn_edges_without_deleting_Bn_memory",
+        }
+
     def ingest_persisted_snapshots(
         self,
         snapshots: list[dict],
@@ -810,8 +862,9 @@ class MemoryStore:
         )
         rows = [dict(row) for row in (snapshots or []) if isinstance(row, dict)]
         rows.sort(key=lambda row: (int(row.get("tick_index", -1) or -1), str(row.get("memory_kind", "") or ""), str(row.get("memory_id", "") or "")))
-        previous_by_kind: dict[str, dict] = dict(self._previous_by_kind)
-        previous_episode_snapshot: dict | None = self._previous_episode_snapshot
+        infer_loaded_order_successors = bool(replay_learning)
+        previous_by_kind: dict[str, dict] = dict(self._previous_by_kind) if infer_loaded_order_successors else {}
+        previous_episode_snapshot: dict | None = self._previous_episode_snapshot if infer_loaded_order_successors else None
         loaded_by_kind: dict[str, list[str]] = defaultdict(list)
         for row in rows:
             memory_id = str(row.get("memory_id", "") or "")
@@ -835,8 +888,12 @@ class MemoryStore:
             snapshot["relation_features"] = relations
             snapshot["prediction_payload_items"] = self._build_prediction_payload_items(snapshot)
             snapshot["action_feedback_items"] = self._extract_action_feedback_items(snapshot.get("items", []), limit=24)
-            previous_snapshot = previous_by_kind.get(memory_kind)
-            previous_episode_for_learning = None if bool(snapshot.get("successor_boundary", False)) else previous_episode_snapshot
+            previous_snapshot = previous_by_kind.get(memory_kind) if infer_loaded_order_successors else None
+            previous_episode_for_learning = (
+                None
+                if (not infer_loaded_order_successors or bool(snapshot.get("successor_boundary", False)))
+                else previous_episode_snapshot
+            )
             self._append_loaded_snapshot(
                 snapshot=snapshot,
                 features=features,
@@ -851,8 +908,9 @@ class MemoryStore:
                 replay_learning=replay_learning,
             )
             loaded_snapshots.append(snapshot)
-            previous_by_kind[memory_kind] = snapshot
-            previous_episode_snapshot = snapshot
+            if infer_loaded_order_successors:
+                previous_by_kind[memory_kind] = snapshot
+                previous_episode_snapshot = snapshot
             loaded_by_kind[memory_kind].append(memory_id)
             self._advance_next_id_from_memory_id(memory_id)
             loaded += 1
@@ -901,7 +959,8 @@ class MemoryStore:
             "replay_learning": bool(replay_learning),
             "learned_relations": int(learned_relations),
             "runtime_state": runtime_state_trace or self._runtime_state_restore_trace(),
-            "policy": "bounded_hot_window_loaded_from_authoritative_persistence;no_full_history_load",
+            "loaded_order_successor_inference": bool(infer_loaded_order_successors),
+            "policy": "bounded_hot_window_loaded_from_authoritative_persistence;explicit_transitions_only_on_default_warm_load;no_full_history_load",
         }
 
     def strip_runtime_snapshots(self, rows: list[dict], *, preview_limit: int = 8) -> list[dict]:
@@ -968,6 +1027,8 @@ class MemoryStore:
         for candidate_index, candidate in enumerate(merged[: self.scoring_candidate_limit]):
             snapshot = self._snapshot_by_id.get(str(candidate.get("memory_id", "") or ""))
             if not snapshot:
+                continue
+            if self._snapshot_blocked_by_recall_guard(snapshot):
                 continue
             snapshot_features = self._snapshot_features_by_id.get(snapshot["memory_id"]) or self._build_snapshot_features(snapshot)
             snapshot_label_set = snapshot_features.get("label_set", set(snapshot_features["labels"]))
@@ -1526,6 +1587,9 @@ class MemoryStore:
         cache_epoch = int(self._memory_revision)
         lag_shape_key = 1 if bool(getattr(self, "successor_lag_shaping_enabled", True)) else 0
         cache_key = (cache_epoch, str(memory_kind or ""), str(memory_id or ""), int(top_limit), lag_shape_key)
+        source_snapshot_for_guard = self._snapshot_by_id.get(str(memory_id or ""))
+        if self._snapshot_blocked_by_recall_guard(source_snapshot_for_guard):
+            return []
         cached = self._successor_cache.get(cache_key)
         if cached is not None:
             self._successor_cache.move_to_end(cache_key)
@@ -4015,6 +4079,10 @@ class MemoryStore:
             "parameter_kind",
             "self_generated",
             "readout_expected_token",
+            "feedback_reward",
+            "feedback_punishment",
+            "reward_value",
+            "punishment_value",
         )
         for key in allowed_keys:
             if key not in meta:
@@ -5104,6 +5172,13 @@ class MemoryStore:
         for row in clean_rows:
             successor_id = str(row.get("successor_memory_id", "") or "")
             snapshot = self._snapshot_by_id.get(successor_id)
+            if self._snapshot_blocked_by_recall_guard(snapshot):
+                row["score_before_recall_guard"] = _round4(float(row.get("score", 0.0) or 0.0))
+                row["score"] = 0.0
+                row["recall_guard_blocked"] = True
+                row["recall_guard_min_tick"] = self._recall_guard_min_tick
+                row["recall_guard_reason"] = self._recall_guard_reason
+                continue
             temporal = self._temporal_applicability(snapshot, current_tick=effective_tick)
             before = float(row.get("score", 0.0) or 0.0)
             weight = float(temporal.get("weight", 1.0) or 1.0)
@@ -5137,7 +5212,7 @@ class MemoryStore:
                 scaled_items.append(scaled)
             if scaled_items:
                 row["predicted_items"] = scaled_items
-        return clean_rows
+        return [row for row in clean_rows if float(row.get("score", 0.0) or 0.0) > 0.0]
 
     def _build_prediction_payload_items(self, snapshot: dict, *, limit: int | None = None) -> list[dict]:
         cap = max(1, int(limit if limit is not None else self.predict_top_k))
@@ -5685,6 +5760,12 @@ class MemoryStore:
             "parameter_kind",
             "self_generated",
             "readout_expected_token",
+            "feedback_outcome",
+            "feedback_reward",
+            "feedback_punishment",
+            "feedback_correctness",
+            "reward_value",
+            "punishment_value",
         }
         return {
             key: value
@@ -5708,7 +5789,8 @@ class MemoryStore:
             correctness = float(meta.get("feedback_correctness", 0.0) or 0.0)
         except (TypeError, ValueError):
             return False
-        return bool(punishment > max(reward, correctness) and punishment >= 0.18)
+        positive = max(0.0, reward) + max(0.0, correctness) * 0.35
+        return bool(punishment > 0.0 and punishment > positive)
 
     def _negative_text_payload_as_revision(self, row: dict) -> dict:
         label = str((row or {}).get("sa_label", "") or "")

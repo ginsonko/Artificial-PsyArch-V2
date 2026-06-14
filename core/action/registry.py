@@ -281,9 +281,12 @@ ACTION_NODE_REGISTRY: dict[str, dict] = {
         "params": ("target_channel",),
         "base_threshold": 1.05,
         "fatigue_type": "action_external",
-        # Commit is the boundary where an internal draft may become externally
-        # observable, so SafetyGate must continue to review it.
-        "external": True,
+        # Commit closes AP's own dialogue draft. It is user-visible in the
+        # dialogue lab, but it is not an OS/tool side effect; real external
+        # sends stay behind computer_keyboard/tool_api and SafetyGate.
+        "external": False,
+        "semi_external": True,
+        "user_visible_boundary": True,
     },
     "action::pointer_move": {
         "actuator_id": "actuator::computer_pointer",

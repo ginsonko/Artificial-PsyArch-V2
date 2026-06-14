@@ -46,6 +46,12 @@ PREDICTION_META_KEYS = {
     "parameter_kind",
     "self_generated",
     "readout_expected_token",
+    "feedback_outcome",
+    "feedback_reward",
+    "feedback_punishment",
+    "feedback_correctness",
+    "reward_value",
+    "punishment_value",
 }
 
 

@@ -568,8 +568,15 @@ class APV21Runtime:
         focus_turn_boundary_trace = {"schema_id": "focus_external_turn_boundary/v1", "applied": False, "reason": "no_new_external_text"}
         text_turn_boundary_trace = {"schema_id": "text_action_external_turn_boundary/v1", "applied": False, "reason": "no_new_external_text"}
         state_pool_turn_boundary_trace = {"schema_id": "state_pool_external_turn_boundary/v1", "applied": False, "reason": "no_new_external_text"}
+        memory_recall_turn_boundary_trace = {"schema_id": "memory_recall_turn_boundary/v1", "applied": False, "reason": "no_new_external_text"}
         if str(input_packet.get("normalized_text", "") or "").strip():
             self._clear_active_text_successor_cursor(reason="new_external_text_turn")
+            memory_recall_turn_boundary = getattr(self.memory, "mark_recall_turn_boundary", None)
+            if callable(memory_recall_turn_boundary):
+                memory_recall_turn_boundary_trace = memory_recall_turn_boundary(
+                    tick_index=self.tick_index,
+                    reason="new_external_text_turn",
+                )
             state_pool_turn_boundary_trace = self.state_pool.mark_external_turn_boundary(
                 tick_index=self.tick_index,
                 reason="new_external_text_turn",
@@ -586,6 +593,7 @@ class APV21Runtime:
         dialogue_turn_trace["focus_turn_boundary"] = focus_turn_boundary_trace
         dialogue_turn_trace["text_turn_boundary"] = text_turn_boundary_trace
         dialogue_turn_trace["state_pool_turn_boundary"] = state_pool_turn_boundary_trace
+        dialogue_turn_trace["memory_recall_turn_boundary"] = memory_recall_turn_boundary_trace
         mark_stage("ingest")
         self._apply_external_or_bootstrap(external_items, memory_bootstrap=memory_bootstrap)
         dialogue_turn_items = list(dialogue_turn_trace.get("items", []) or [])
@@ -1122,6 +1130,7 @@ class APV21Runtime:
             current_tick=self.tick_index,
         )
         mark_stage("emotion_and_consequence")
+        draft_context_before_action = self.text_actuator.draft_state(current_tick=self.tick_index)
         action_preselect_innate_trace = self._evaluate_innate_phase(
             "action_preselect",
             state_items=state_snapshot_before_action["items"],
@@ -1139,6 +1148,7 @@ class APV21Runtime:
             emotion_state=emotion_update_trace.get("emotion_state", {}),
             action_feedback_trace=action_feedback_trace,
             action_consequence_trace=action_consequence_trace,
+            draft_context=draft_context_before_action,
         )
         innate_traces["action_preselect"] = action_preselect_innate_trace
         action_biases_for_planner = list(action_preselect_innate_trace.get("action_biases", []) or []) + list(
@@ -2206,6 +2216,7 @@ class APV21Runtime:
         action_feedback_trace: dict | None = None,
         action_consequence_trace: dict | None = None,
         runtime_load_trace: dict | None = None,
+        draft_context: dict | None = None,
     ) -> dict:
         context = {
             "tick_index": self.tick_index,
@@ -2226,6 +2237,7 @@ class APV21Runtime:
             "action_feedback_trace": dict(action_feedback_trace or {}),
             "action_consequence_trace": dict(action_consequence_trace or {}),
             "runtime_load_trace": dict(runtime_load_trace or {}),
+            "draft_context": dict(draft_context or {}),
             "ui_trace": dict((action_trace or {}).get("ui_trace", {}) or {}),
             "pointer_trace": dict((action_trace or {}).get("pointer_trace", {}) or {}),
         }
@@ -2403,6 +2415,30 @@ class APV21Runtime:
             association_cache[key] = value
             return dict(value)
 
+        def candidate_feedback(candidate: dict) -> dict:
+            meta = dict(candidate.get("anchor_meta", {}) or {}) if isinstance(candidate.get("anchor_meta", {}), dict) else {}
+
+            def value_for(*keys: str) -> float:
+                values: list[float] = []
+                for key in keys:
+                    for source in (candidate, meta):
+                        try:
+                            values.append(float(source.get(key, 0.0) or 0.0))
+                        except (TypeError, ValueError):
+                            continue
+                return max(values) if values else 0.0
+
+            reward = max(0.0, value_for("feedback_reward", "reward_value", "reward"))
+            punishment = max(0.0, value_for("feedback_punishment", "punishment_value", "punishment"))
+            correctness = max(0.0, value_for("feedback_correctness", "correctness"))
+            utility = reward + correctness * 0.35 - punishment * 0.85
+            return {
+                "reward": round(reward, 4),
+                "punishment": round(punishment, 4),
+                "correctness": round(correctness, 4),
+                "utility": round(utility, 4),
+            }
+
         rows: list[dict] = []
         for candidate in list(attention_candidates or [])[:scan_limit]:
             if not isinstance(candidate, dict):
@@ -2433,6 +2469,14 @@ class APV21Runtime:
             score = max(0.0, association_score * 0.72 + vector_score * 0.28 * learned_evidence_gate)
             if str(band_mode or "") == "release":
                 score = max(score, vector_score * 0.18 if evidence_count > 0 else 0.0)
+            feedback = candidate_feedback(candidate)
+            positive_feedback = max(0.0, float(feedback.get("utility", 0.0) or 0.0))
+            negative_feedback = max(0.0, -float(feedback.get("utility", 0.0) or 0.0))
+            if score > 0.0 and positive_feedback > 0.0:
+                support_ratio = float(evidence_count) / max(1.0, float(evidence_count + 1))
+                score *= 1.0 + positive_feedback * (1.0 + support_ratio)
+            if score > 0.0 and negative_feedback > 0.0:
+                score /= 1.0 + negative_feedback
             if score <= 0.0 and evidence_count <= 0:
                 continue
             rows.append(
@@ -2444,6 +2488,10 @@ class APV21Runtime:
                     "score": round(score, 4),
                     "vector_score": round(vector_score, 4),
                     "association_score": round(association_score, 4),
+                    "feedback_reward": float(feedback.get("reward", 0.0) or 0.0),
+                    "feedback_punishment": float(feedback.get("punishment", 0.0) or 0.0),
+                    "feedback_correctness": float(feedback.get("correctness", 0.0) or 0.0),
+                    "feedback_utility": float(feedback.get("utility", 0.0) or 0.0),
                     "evidence_count": int(evidence_count),
                     "positive_contribution_count": int(contribution_count),
                     "negative_contribution_count": int(negative_count),
@@ -3977,13 +4025,11 @@ class APV21Runtime:
         dominates_internal = bool(external.get("dominates_internal_prediction", False))
         observed_is_clear_punishment = bool(
             observed_dominates_internal
-            and observed_punishment > max(observed_reward, observed_correctness)
-            and observed_punishment >= 0.18
+            and observed_punishment > (observed_reward + observed_correctness)
         )
         external_is_clear_punishment = bool(
             dominates_internal
-            and external_punishment > max(external_reward, external_correctness)
-            and external_punishment >= 0.18
+            and external_punishment > (external_reward + external_correctness)
         )
         if external_is_clear_punishment:
             # A process teacher's post-action punishment should not be washed
@@ -4305,6 +4351,40 @@ class APV21Runtime:
                         "visible_text_after": str(event.get("visible_text_after", "") or ""),
                     },
                 }
+            if event_type == "reread":
+                branch = self._find_text_action_successor_source(event=event, fast_cn=fast_cn, slow_cn=slow_cn)
+                if branch:
+                    successor_snapshot = self.memory.snapshot_by_id(str(branch.get("successor_memory_id", "") or "")) or {}
+                    ttl = self._active_text_successor_cursor_ttl()
+                    cursor = {
+                        "schema_id": "active_text_successor_cursor/v1",
+                        "source_memory_id": str(branch.get("source_memory_id", "") or ""),
+                        "successor_memory_id": str(branch.get("successor_memory_id", "") or ""),
+                        "successor_memory_kind": str((successor_snapshot or {}).get("memory_kind", "") or "focus"),
+                        "successor_edge_kind": str(branch.get("successor_edge_kind", "") or ""),
+                        "token": str(event.get("token", "") or ""),
+                        "visible_text_before": str(event.get("visible_text_before", "") or ""),
+                        "visible_text_after": str(event.get("visible_text_after", "") or ""),
+                        "created_tick": int(self.tick_index),
+                        "expires_at_tick": int(self.tick_index) + ttl,
+                        "source_channel": str(branch.get("source_channel", "") or ""),
+                        "branch_score": float(branch.get("branch_score", 0.0) or 0.0),
+                        "item_virtual_energy": float(branch.get("item_virtual_energy", 0.0) or 0.0),
+                        "source_b_row": dict(branch.get("source_b_row", {}) or {}),
+                        "reason": "selected_text_reread_followed_cn_successor",
+                        "policy": "follow_explicit_successor_branch_after_actual_text_reread",
+                    }
+                    self._active_text_successor_cursor = cursor
+                    return {
+                        "schema_id": "active_text_successor_cursor_update/v1",
+                        "updated": True,
+                        "reason": "reread_bound_to_cn_branch",
+                        "cursor": self._compact_text_successor_cursor(cursor),
+                        "event": {
+                            "token": str(event.get("token", "") or ""),
+                            "visible_text_after": str(event.get("visible_text_after", "") or ""),
+                        },
+                    }
         return {
             "schema_id": "active_text_successor_cursor_update/v1",
             "updated": False,
@@ -4384,6 +4464,94 @@ class APV21Runtime:
         best = dict(candidates[0])
         best.pop("sort_key", None)
         return best
+
+    def _find_text_action_successor_source(self, *, event: dict, fast_cn: list[dict], slow_cn: list[dict]) -> dict:
+        event_type = str((event or {}).get("event_type", "") or "")
+        action_id = str((event or {}).get("action_id", "") or "")
+        token = str((event or {}).get("token", "") or "")
+        if not event_type or not action_id:
+            return {}
+        candidates = []
+        for source_rank, (channel, branches) in enumerate((("slow_cn", slow_cn), ("fast_cn", fast_cn))):
+            for branch_index, branch in enumerate(list(branches or [])):
+                if not isinstance(branch, dict):
+                    continue
+                successor_id = str(branch.get("successor_memory_id", "") or "")
+                if not successor_id:
+                    continue
+                for item_index, item in enumerate(list(branch.get("predicted_items", []) or [])):
+                    if not isinstance(item, dict):
+                        continue
+                    if not self._text_action_prediction_matches_event(item=item, event=event):
+                        continue
+                    try:
+                        item_energy = float(item.get("virtual_energy", 0.0) or 0.0)
+                    except (TypeError, ValueError):
+                        item_energy = 0.0
+                    try:
+                        branch_score = float(branch.get("score", 0.0) or 0.0)
+                    except (TypeError, ValueError):
+                        branch_score = 0.0
+                    try:
+                        source_b_weight = float(branch.get("source_b_weight", branch.get("successor_normalized_weight", 0.0)) or 0.0)
+                    except (TypeError, ValueError):
+                        source_b_weight = 0.0
+                    try:
+                        source_b_efficiency = float(branch.get("source_b_match_efficiency", branch.get("successor_normalized_weight", 0.0)) or 0.0)
+                    except (TypeError, ValueError):
+                        source_b_efficiency = 0.0
+                    candidates.append(
+                        {
+                            "source_memory_id": str(branch.get("source_memory_id", "") or ""),
+                            "successor_memory_id": successor_id,
+                            "successor_edge_kind": str(branch.get("successor_edge_kind", "") or ""),
+                            "source_channel": channel,
+                            "branch_score": branch_score,
+                            "source_b_weight": source_b_weight,
+                            "source_b_match_efficiency": source_b_efficiency,
+                            "item_virtual_energy": item_energy,
+                            "event_type": event_type,
+                            "action_id": action_id,
+                            "token": token,
+                            "source_b_row": self._active_text_successor_source_b_row(
+                                branch=branch,
+                                successor_id=successor_id,
+                                item_energy=item_energy,
+                            ),
+                            "sort_key": (
+                                -branch_score,
+                                -source_b_weight,
+                                -source_b_efficiency,
+                                source_rank,
+                                -item_energy,
+                                branch_index,
+                                item_index,
+                            ),
+                        }
+                    )
+        if not candidates:
+            return {}
+        candidates.sort(key=lambda row: row["sort_key"])
+        best = dict(candidates[0])
+        best.pop("sort_key", None)
+        return best
+
+    def _text_action_prediction_matches_event(self, *, item: dict, event: dict) -> bool:
+        label = str((item or {}).get("sa_label", "") or "")
+        meta = dict((item or {}).get("anchor_meta", {}) or {}) if isinstance((item or {}).get("anchor_meta", {}), dict) else {}
+        event_type = str((event or {}).get("event_type", "") or "")
+        action_id = str((event or {}).get("action_id", "") or "")
+        token = str((event or {}).get("token", "") or "")
+        if action_id and label == action_id:
+            return True
+        if event_type and label.startswith(f"text_action::{event_type}"):
+            predicted_token = str(meta.get("token", "") or meta.get("candidate_token", "") or meta.get("expected_token", "") or "")
+            if not predicted_token and label.startswith(f"text_action::{event_type}::"):
+                predicted_token = label.split("::", 2)[-1]
+            return bool(not token or not predicted_token or token == predicted_token)
+        source_event_type = str(meta.get("source_event_type", "") or meta.get("event_type", "") or "")
+        meta_action_id = str(meta.get("action_id", "") or "")
+        return bool(source_event_type == event_type and meta_action_id == action_id)
 
     def _active_text_successor_source_b_row(self, *, branch: dict, successor_id: str, item_energy: float) -> dict:
         inherited_virtual = max(0.0, float(item_energy or 0.0))

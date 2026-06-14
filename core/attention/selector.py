@@ -198,6 +198,18 @@ class AttentionSelector:
             if band_gain <= 0.0 and suppression_gain <= 0.0:
                 band_gain = 0.42 if control_kind in {"focus_anchor", "inspect_residual"} else 0.30
                 suppression_gain = 0.30 if band_mode == "narrow" else 0.0
+            positive_scores = [
+                max(0.0, float(row.get("score", 0.0) or 0.0))
+                for row in band_biases
+                if isinstance(row, dict)
+            ]
+            positive_scores = [score for score in positive_scores if score > 0.0]
+            score_total = sum(positive_scores)
+            top_band_score = max(positive_scores) if positive_scores else 0.0
+            band_candidate_count = max(1, len(positive_scores))
+            random_share = 1.0 / float(band_candidate_count)
+            share_floor = random_share * (1.0 - random_share)
+            relative_floor = random_share
             for row in band_biases:
                 if not isinstance(row, dict):
                     continue
@@ -208,6 +220,12 @@ class AttentionSelector:
                 vector_score = float(row.get("vector_score", 0.0) or 0.0)
                 association_score = float(row.get("association_score", 0.0) or 0.0)
                 evidence_count = int(row.get("evidence_count", 0) or 0)
+                feedback_utility = float(row.get("feedback_utility", 0.0) or 0.0)
+                feedback_reward = max(0.0, float(row.get("feedback_reward", 0.0) or 0.0))
+                feedback_correctness = max(0.0, float(row.get("feedback_correctness", 0.0) or 0.0))
+                feedback_punishment = max(0.0, float(row.get("feedback_punishment", 0.0) or 0.0))
+                score_share = score / score_total if score_total > 0.0 else 0.0
+                relative_score = score / top_band_score if top_band_score > 0.0 else 0.0
                 if score <= 0.0 and evidence_count <= 0:
                     continue
                 bucket = by_label.setdefault(
@@ -218,22 +236,42 @@ class AttentionSelector:
                         "score": 0.0,
                         "vector_score": 0.0,
                         "association_score": 0.0,
+                        "feedback_utility": 0.0,
+                        "feedback_reward": 0.0,
+                        "feedback_correctness": 0.0,
+                        "feedback_punishment": 0.0,
                         "sources": [],
                         "anchor_tokens": [],
                     },
                 )
                 if band_mode == "release":
-                    suppression = min(0.42, strength * max(0.08, suppression_gain or 0.22) * max(0.18, score))
+                    distribution_mass = max(score, score_total / float(band_candidate_count) if score_total > 0.0 else 0.0)
+                    suppression = min(0.42, strength * max(0.08, suppression_gain or 0.22) * distribution_mass)
                     bucket["suppression"] = float(bucket.get("suppression", 0.0) or 0.0) + suppression
                 else:
                     boost = min(0.52, strength * max(0.08, band_gain) * score)
                     bucket["boost"] = float(bucket.get("boost", 0.0) or 0.0) + boost
-                    if band_mode == "narrow" and evidence_count > 0 and score < 0.18:
-                        suppression = min(0.28, strength * max(0.04, suppression_gain) * (0.18 - score))
+                    weak_by_distribution = bool(
+                        band_mode == "narrow"
+                        and evidence_count > 0
+                        and score_total > 0.0
+                        and score < top_band_score
+                        and score_share < share_floor
+                        and relative_score < relative_floor
+                    )
+                    if weak_by_distribution:
+                        weakness = max(0.0, share_floor - score_share) + max(0.0, relative_floor - relative_score)
+                        positive_feedback = max(0.0, feedback_utility, feedback_reward + feedback_correctness * 0.35 - feedback_punishment)
+                        feedback_relief = positive_feedback / max(positive_feedback + weakness, 1e-6)
+                        suppression = min(0.28, strength * max(0.04, suppression_gain) * weakness * (1.0 - feedback_relief))
                         bucket["suppression"] = float(bucket.get("suppression", 0.0) or 0.0) + suppression
                 bucket["score"] = max(float(bucket.get("score", 0.0) or 0.0), score)
                 bucket["vector_score"] = max(float(bucket.get("vector_score", 0.0) or 0.0), vector_score)
                 bucket["association_score"] = max(float(bucket.get("association_score", 0.0) or 0.0), association_score)
+                bucket["feedback_utility"] = max(float(bucket.get("feedback_utility", 0.0) or 0.0), feedback_utility)
+                bucket["feedback_reward"] = max(float(bucket.get("feedback_reward", 0.0) or 0.0), feedback_reward)
+                bucket["feedback_correctness"] = max(float(bucket.get("feedback_correctness", 0.0) or 0.0), feedback_correctness)
+                bucket["feedback_punishment"] = max(float(bucket.get("feedback_punishment", 0.0) or 0.0), feedback_punishment)
                 sources = list(bucket.get("sources", []) or [])
                 if source not in sources:
                     sources.append(source)
@@ -251,6 +289,10 @@ class AttentionSelector:
                 "score": round(float(value.get("score", 0.0) or 0.0), 4),
                 "vector_score": round(float(value.get("vector_score", 0.0) or 0.0), 4),
                 "association_score": round(float(value.get("association_score", 0.0) or 0.0), 4),
+                "feedback_utility": round(float(value.get("feedback_utility", 0.0) or 0.0), 4),
+                "feedback_reward": round(float(value.get("feedback_reward", 0.0) or 0.0), 4),
+                "feedback_correctness": round(float(value.get("feedback_correctness", 0.0) or 0.0), 4),
+                "feedback_punishment": round(float(value.get("feedback_punishment", 0.0) or 0.0), 4),
                 "sources": list(value.get("sources", []) or [])[:4],
                 "anchor_tokens": list(value.get("anchor_tokens", []) or [])[:8],
             }

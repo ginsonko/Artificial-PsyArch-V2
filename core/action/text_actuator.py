@@ -290,10 +290,13 @@ class TextActionActuator:
                 "tick_index": int(tick_index),
                 "event_type": kind,
                 "token": input_token,
-                "expected_token": expected_token,
                 "source": "external_text",
                 "notes": notes,
             }
+            if expected_token:
+                event["input_prediction_token"] = expected_token
+                event["input_prediction_alignment"] = str(expected_token_info.get("alignment", "") or "")
+                event["notes"].append("input_prediction_not_output_expected_token")
             events.append(event)
             output_items.append(
                 {
@@ -1112,6 +1115,9 @@ class TextActionActuator:
                 if not token or token == exclude:
                     continue
                 meta = dict((item or {}).get("anchor_meta", {}) or {}) if isinstance((item or {}).get("anchor_meta", {}), dict) else {}
+                for key in ("source_type", "family", "sa_kind"):
+                    if key in (item or {}) and key not in meta:
+                        meta[key] = (item or {}).get(key)
                 alignment = self._prediction_token_alignment(token=token, meta=meta, visible_text=current_text, visible_length=current_len)
                 if alignment == "misaligned":
                     continue
@@ -1132,6 +1138,39 @@ class TextActionActuator:
             return {"token": fallback_best_token, "alignment": "fallback", "energy": _round4(fallback_best_energy)}
         return {"token": "", "alignment": "", "energy": 0.0}
 
+    def _prediction_meta_has_output_process_evidence(self, meta: dict) -> bool:
+        schema_id = str(meta.get("schema_id", "") or "")
+        source = str(meta.get("source", "") or "")
+        source_event_type = str(meta.get("source_event_type", "") or meta.get("event_type", "") or "")
+        readout_role = str(meta.get("readout_semantic_role", "") or "")
+        priority = str(meta.get("prediction_payload_priority", "") or "")
+        return bool(
+            bool(meta.get("self_generated", False))
+            or schema_id in {
+                "gl_successful_skill_char_token/v1",
+                "text_visible_draft_token/v1",
+                "text_revision_opportunity/v1",
+                "text_slot_confirmation/v1",
+                "text_character_binding/v1",
+                "predicted_text_payload_from_process_companion/v1",
+            }
+            or readout_role == "reply_char_slot"
+            or source in {"action::text_insert", "action::text_reread", "text_actuator_direct_replace"}
+            or source_event_type in {"draft_read_token", "insert", "replace", "write_revision", "visible_draft_token"}
+            or priority.startswith(("current_glyph", "previous_prefix"))
+        )
+
+    def _prediction_meta_is_external_input_text(self, meta: dict) -> bool:
+        source_type = str(meta.get("source_type", "") or "")
+        source = str(meta.get("source", "") or "")
+        notes = {str(note or "") for note in list(meta.get("notes", []) or [])}
+        return bool(
+            source_type in {"external_text", "external_text_readback", "external_teacher"}
+            or source in {"external_text", "external_text_turn"}
+            or "external_text_read_into_input_channel" in notes
+            or "not_ap_visible_draft" in notes
+        )
+
     def _prediction_token_alignment(self, *, token: str, meta: dict, visible_text: str, visible_length: int) -> str:
         """
         Respect low-grain char-trace process metadata when it exists.
@@ -1141,9 +1180,13 @@ class TextActionActuator:
         character as the next token for an earlier draft cursor.
         """
 
+        output_process_evidence = self._prediction_meta_has_output_process_evidence(meta)
+        if self._prediction_meta_is_external_input_text(meta) and not output_process_evidence:
+            return "misaligned"
+
         has_position = any(key in meta for key in ("current_glyph_index", "visible_length", "cursor", "cursor_index", "previous_prefix"))
         if not has_position:
-            return "fallback"
+            return "fallback" if output_process_evidence else "misaligned"
 
         for key in ("visible_length", "current_glyph_index", "cursor", "cursor_index"):
             if key not in meta:

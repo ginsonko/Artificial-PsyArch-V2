@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from heapq import nsmallest
+from math import exp
 
 from core.state_pool.energy_view import build_energy_flow_trace
 from core.state_pool.energy_updater import PredictionEnergyUpdater
@@ -192,12 +193,19 @@ class DualEnergyStatePool:
         }
         self._prediction_slot: list[str] = []
         self._maintenance_cursor: int = 0
+        self._current_external_real_baseline = 1.0
+        self._last_external_real_baseline = 1.0
+        self._tick_prediction_mass_by_label: dict[str, float] = {}
+        self._tick_prediction_base_virtual_by_label: dict[str, float] = {}
 
     def begin_tick(self, tick_index: int) -> None:
         # DO NOT scan the full pool here.
         self._tick_index = int(tick_index)
         self._current_external_labels = []
         self._current_source_types_by_label = {}
+        self._current_external_real_baseline = max(0.05, float(self._last_external_real_baseline or 1.0))
+        self._tick_prediction_mass_by_label = {}
+        self._tick_prediction_base_virtual_by_label = {}
         self._residual_tracker.begin_tick(self._tick_index)
         self._maintenance_step()
 
@@ -613,6 +621,7 @@ class DualEnergyStatePool:
 
     def apply_external_items(self, items: list[dict], *, tick_index: int) -> None:
         comparable_actual_items = []
+        external_real_samples: list[float] = []
         if items and (self._pending_prediction_items or len(items) <= self.prediction_validation_actual_limit):
             for item in items:
                 if len(comparable_actual_items) >= self.prediction_validation_actual_limit:
@@ -704,6 +713,7 @@ class DualEnergyStatePool:
             if self._is_external_source(incoming_source_type):
                 self._recent_external.append(label)
                 self._current_external_labels.append(label)
+                external_real_samples.append(max(0.0, float(entry.real_energy or 0.0)))
                 recent_external_dirty = True
             # Hot anchor: keep high-salience entries quickly addressable without full sorts.
             # We bias toward items with positive real energy and high attention_gain.
@@ -723,12 +733,19 @@ class DualEnergyStatePool:
             self._hot_anchor = self._hot_anchor[-self.hot_anchor_limit :]
             for old_label in removed_hot:
                 self._hot_anchor_members.discard(old_label)
+        if external_real_samples:
+            positive = [value for value in external_real_samples if value > 0.0]
+            if positive:
+                baseline = sum(positive) / max(1, len(positive))
+                self._current_external_real_baseline = max(0.05, baseline)
+                self._last_external_real_baseline = self._current_external_real_baseline
         if comparable_actual_items or self._pending_prediction_items:
             self.validate_predictions(comparable_actual_items, tick_index=tick_index)
 
     def apply_predictions(self, items: list[dict], *, tick_index: int, source: str) -> None:
         comparable_predictions: list[dict] = []
         cstar_trace = self._build_cstar_budget_trace(items, tick_index=tick_index, source=source)
+        calibration_updates: list[dict] = []
         for item in items:
             label = str(item.get("sa_label", "") or "")
             if not label:
@@ -746,8 +763,26 @@ class DualEnergyStatePool:
                 self._entry_order.append(label)
             self._touch_entry(entry)
             entry.display_text = str(item.get("display_text", entry.display_text) or entry.display_text)
-            entry.virtual_energy = float(entry.virtual_energy) + float(item.get("virtual_energy", 0.0) or 0.0)
+            incoming_virtual = max(0.0, float(item.get("virtual_energy", 0.0) or 0.0))
+            if label not in self._tick_prediction_base_virtual_by_label:
+                self._tick_prediction_base_virtual_by_label[label] = max(0.0, float(entry.virtual_energy or 0.0))
+            self._tick_prediction_mass_by_label[label] = (
+                max(0.0, float(self._tick_prediction_mass_by_label.get(label, 0.0) or 0.0))
+                + incoming_virtual
+            )
+            correction = self._calibrated_prediction_virtual_energy(
+                entry=entry,
+                item=item,
+                label=label,
+                incoming_virtual=incoming_virtual,
+                tick_prediction_mass=self._tick_prediction_mass_by_label[label],
+                source=source,
+            )
+            entry.virtual_energy = float(correction["after_virtual_energy"])
+            if len(calibration_updates) < self.cstar_trace_top_labels:
+                calibration_updates.append(correction)
             entry.anchor_meta["last_prediction_source"] = source
+            entry.anchor_meta["last_prediction_energy_calibration"] = dict(correction)
             entry.provenance.append(f"{source}@{tick_index}")
             entry.provenance = entry.provenance[-12:]
             entry.last_updated_tick = int(tick_index)
@@ -766,12 +801,119 @@ class DualEnergyStatePool:
                     }
                 )
         aggregate_trace = self._merge_cstar_budget_trace(cstar_trace)
+        cstar_trace["state_pool_energy_calibration"] = calibration_updates[: self.cstar_trace_top_labels]
+        aggregate_trace["state_pool_energy_calibration"] = (
+            list(aggregate_trace.get("state_pool_energy_calibration", []) or [])
+            + calibration_updates
+        )[-self.cstar_trace_top_labels :]
         fatigue_updates = self._apply_prediction_fatigue(cstar_trace, tick_index=tick_index, source=source)
         cstar_trace["fatigue_updates"] = fatigue_updates
         aggregate_trace["fatigue_updates"] = (list(aggregate_trace.get("fatigue_updates", []) or []) + fatigue_updates)[-self.cstar_trace_top_labels :]
         self._last_cstar_budget_trace = aggregate_trace
         if comparable_predictions:
             self._pending_prediction_items = (self._pending_prediction_items + comparable_predictions)[-max(16, self.r_state_items_per_head * 4) :]
+
+    def _prediction_real_baseline(self) -> float:
+        """
+        Return the current AP energy ruler.
+
+        Fresh external evidence defines the real-energy scale for the tick. In
+        empty ticks AP still keeps the last external scale as an internal
+        calibration ruler, so repeated imagination cannot create a larger
+        "reality" merely by being replayed.
+        """
+
+        return max(0.05, float(self._current_external_real_baseline or self._last_external_real_baseline or 1.0))
+
+    def _prediction_support_signals(self, item: dict) -> dict:
+        meta = dict(item.get("anchor_meta", {}) or {}) if isinstance(item.get("anchor_meta", {}), dict) else {}
+        transfer = dict(meta.get("prediction_energy_transfer", {}) or {}) if isinstance(meta.get("prediction_energy_transfer", {}), dict) else {}
+        reward = max(0.0, float(meta.get("feedback_reward", item.get("feedback_reward", 0.0)) or 0.0))
+        correctness = max(0.0, float(meta.get("feedback_correctness", item.get("feedback_correctness", 0.0)) or 0.0))
+        punishment = max(0.0, float(meta.get("feedback_punishment", item.get("feedback_punishment", 0.0)) or 0.0))
+        source_b_match = max(0.0, float(transfer.get("source_b_match_efficiency", 0.0) or 0.0))
+        successor_weight = max(0.0, float(transfer.get("successor_weight", 0.0) or 0.0))
+        calibration_gain = max(0.0, float(transfer.get("calibration_gain", 1.0) or 1.0))
+        positive_outcome = max(0.0, reward + correctness * 0.35 - punishment)
+        repeated_successor_support = max(0.0, source_b_match * successor_weight * min(2.0, calibration_gain))
+        return {
+            "reward": reward,
+            "correctness": correctness,
+            "punishment": punishment,
+            "positive_outcome": positive_outcome,
+            "source_b_match_efficiency": source_b_match,
+            "successor_weight": successor_weight,
+            "calibration_gain": calibration_gain,
+            "repeated_successor_support": repeated_successor_support,
+        }
+
+    def _calibrated_prediction_virtual_energy(
+        self,
+        *,
+        entry: PoolEntry,
+        item: dict,
+        label: str,
+        incoming_virtual: float,
+        tick_prediction_mass: float,
+        source: str,
+    ) -> dict:
+        """
+        Apply minimum-prediction-error calibration to Cn/C* state-pool writes.
+
+        Cn still supplies the predicted item and the C* trace still records the
+        raw prediction mass. The state-pool amplitude, however, is a bounded
+        expectation under the current real-energy ruler. Repeating the same
+        prediction across empty ticks therefore approaches a stable virtual
+        target instead of accumulating into a hallucinated external stimulus.
+        """
+
+        before = max(0.0, float(entry.virtual_energy or 0.0))
+        baseline = self._prediction_real_baseline()
+        support = self._prediction_support_signals(item)
+        base_ratio = max(0.05, min(1.0, float(self.bootstrap_virtual_energy or 0.6)))
+        support_signal = max(
+            0.0,
+            float(support["repeated_successor_support"])
+            + float(support["positive_outcome"]),
+        )
+        support_level = 1.0 - exp(-support_signal)
+        punishment_level = 1.0 - exp(-max(0.0, float(support["punishment"])))
+        ordinary_target = baseline * base_ratio
+        supported_target = baseline * (base_ratio + (1.0 - base_ratio) * support_level)
+        reward_lift = baseline * max(0.0, float(self.focus_boost or 0.0)) * (1.0 - exp(-float(support["positive_outcome"])))
+        target_cap = max(0.0, supported_target + reward_lift - baseline * max(0.0, float(self.prediction_fatigue_gain or 0.0)) * punishment_level)
+        target_cap = max(min(ordinary_target, baseline), target_cap)
+        # C* can contain several same-label branches in one tick. Their raw
+        # mass is visible in the trace; the state-pool target preserves it
+        # while it stays below the current real-energy ruler, and only
+        # saturates when repeated support would inflate imagination past that
+        # ruler.
+        target_signal = min(max(0.0, float(tick_prediction_mass)), target_cap)
+        if before <= target_signal:
+            after = target_signal
+            correction_kind = "prediction_uptake_to_saturating_target"
+        else:
+            miss_decay = max(0.0, min(1.0, float(getattr(self._energy_updater, "miss_virtual_decay", 0.52) or 0.52)))
+            after = target_signal + (before - target_signal) * miss_decay
+            correction_kind = "minimum_prediction_error_overprediction_decay"
+        return {
+            "sa_label": str(label),
+            "source": str(source or ""),
+            "baseline_real_energy": _round4(baseline),
+            "incoming_virtual_energy": _round4(incoming_virtual),
+            "tick_prediction_mass": _round4(tick_prediction_mass),
+            "ordinary_target": _round4(ordinary_target),
+            "target_cap": _round4(target_cap),
+            "target_signal": _round4(target_signal),
+            "before_virtual_energy": _round4(before),
+            "after_virtual_energy": _round4(after),
+            "correction_kind": correction_kind,
+            "support": {
+                key: _round4(value) if isinstance(value, float) else value
+                for key, value in support.items()
+            },
+            "policy": "raw_cstar_mass_is_audit;state_pool_virtual_energy_approaches_real_baseline_calibrated_prediction_target",
+        }
 
     def _build_cstar_budget_trace(self, items: list[dict], *, tick_index: int, source: str) -> dict:
         """
@@ -858,7 +1000,7 @@ class DualEnergyStatePool:
             "trace_scope": "prediction_branch",
             "source": str(source or ""),
             "energy_semantics": "same_label_sum_means_prediction_strength_not_occurrence_count",
-            "policy": "audit_only_no_energy_clipping",
+            "policy": "raw_cstar_audit_state_pool_write_uses_min_prediction_error_calibration",
             "input_item_count": int(input_count),
             "total_virtual_mass": _round4(total_virtual_mass),
             "label_count": len(by_label),
@@ -886,7 +1028,7 @@ class DualEnergyStatePool:
                 "trace_scope": "tick_cstar",
                 "source": "tick_aggregate",
                 "energy_semantics": "same_label_sum_means_prediction_strength_not_occurrence_count",
-                "policy": "audit_only_no_energy_clipping",
+                "policy": "raw_cstar_audit_state_pool_write_uses_min_prediction_error_calibration",
                 "input_item_count": 0,
                 "total_virtual_mass": 0.0,
                 "label_count": 0,
