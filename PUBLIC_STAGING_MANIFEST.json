@@ -1,14 +1,14 @@
 {
   "schema_id": "apv2_public_repo_staging_manifest/v1",
   "repo_id": "Artificial-PsyArch-V2",
-  "generated_at": "2026-06-14T21:23:25",
+  "generated_at": "2026-06-14T22:30:39",
   "file_count": 233,
-  "total_bytes": 6694304,
+  "total_bytes": 6713663,
   "items": [
     {
       "path": ".gitignore",
-      "bytes": 200,
-      "sha256": "a1c810bd54125073354bbcdcfbc4314b761a933b1c9dac5537c9e76b51c144d9"
+      "bytes": 112,
+      "sha256": "0314cc8897c2dc354ce15c644998f1291826fb3360f4b5e53c23053cc5536953"
     },
     {
       "path": "channels/__init__.py",
@@ -132,8 +132,8 @@
     },
     {
       "path": "core/action/planner.py",
-      "bytes": 351788,
-      "sha256": "9025275332d091324bae7c1ec29c3616c2d861788ee44f48d5dc43ff5a254f62"
+      "bytes": 353317,
+      "sha256": "788fb506f0e756ed4b8d8d50b3f6e52047ac103415994f376a498aacc4aca6e9"
     },
     {
       "path": "core/action/registry.py",
@@ -342,18 +342,18 @@
     },
     {
       "path": "docs/Release_APV2_FinalPaper_20260614.md",
-      "bytes": 18143,
-      "sha256": "231eece9535470f234d0454b3623540b007554c55d89f19a9d263da664b6d28e"
+      "bytes": 22660,
+      "sha256": "4d17f571ac1f7191458f81ff6d35a80cd4f0261fd59b1d5fa908cd797d8ac8d4"
     },
     {
       "path": "docs/Release_APV2_NewsArticle_20260614.md",
-      "bytes": 5299,
-      "sha256": "68795e9e790ae9d58e1d37f8d8f76bba77d3dd6ed28997e5c0ceb67deab6d348"
+      "bytes": 6108,
+      "sha256": "ac29d44c0b2929776799e3701859168867e1add077b2586ae235e58589669f11"
     },
     {
       "path": "docs/Release_APV2_RepositorySetup_20260614.md",
-      "bytes": 2255,
-      "sha256": "9e69524dff093682a1093c1d6dd4f1ec239ce28013f0dd10b5c7017598e9f156"
+      "bytes": 3560,
+      "sha256": "0688e179bdadac181462f6cf58a82e989c798651ccb382677c4869cf67749b8b"
     },
     {
       "path": "education/__init__.py",
@@ -492,8 +492,8 @@
     },
     {
       "path": "LICENSE",
-      "bytes": 2417,
-      "sha256": "e1db998d75606eff4858a0e0f13994a1906766547e2990bf188fa8a7007b080a"
+      "bytes": 4131,
+      "sha256": "9d266255a9aa3caae27b0ba0b010427d85486a8ad826d367edb69e11f6401e30"
     },
     {
       "path": "memory/__init__.py",
@@ -652,8 +652,8 @@
     },
     {
       "path": "NOTICE.md",
-      "bytes": 977,
-      "sha256": "9f2a8107418ed7e16852b98fdb9894c1060c459b4dd91eea8861c170180a94d1"
+      "bytes": 1303,
+      "sha256": "750c30811514a395e33730c9dc8568c86ad1eb9395c2e920c7b763facea8d84d"
     },
     {
       "path": "observatory/__init__.py",
@@ -872,28 +872,28 @@
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_FinalPaper_20260614.docx",
-      "bytes": 426074,
-      "sha256": "159aa85b1b0a760a87f8d8f0ba555325f60b60a77cd14cfc78dd1e5529a2210a"
+      "bytes": 429245,
+      "sha256": "70bd650a735f031abd916147830aca1715f9b41db2ea87fc547e05a179219ca5"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_NewsArticle_20260614.docx",
-      "bytes": 419423,
-      "sha256": "baf5ddbf7d2d68dbbf12f47547e0c699605ea3aa543b7cdef4d28de1b614bc6a"
+      "bytes": 420237,
+      "sha256": "08ece177219f289a989b1fb66dd7524d65c9f9836a0ae1df5e2477b8186ee2ab"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_RepositorySetup_20260614.docx",
-      "bytes": 37765,
-      "sha256": "ce13eb41b77fd517e52e31afab72f79e63091d5cff0fffe98298ee850428100a"
+      "bytes": 38964,
+      "sha256": "431361d148a9d02b8bfece893f1095b567e7ff4f7ddc3fd0ab9ee29d44f9d1cb"
     },
     {
       "path": "paper_artifacts/release_20260614/release_manifest_20260614.json",
-      "bytes": 826,
-      "sha256": "a09c846f3e48cba39376cba3144487c637fabce897abca860df4e1cc415a2543"
+      "bytes": 1470,
+      "sha256": "ba5c3864a04e98d4a06fa9824c8bbfec502646758c7bb42350cbced1057a9d52"
     },
     {
       "path": "README.md",
-      "bytes": 1743,
-      "sha256": "7d3a92fbad22bb01dfa7f1e69c0e6126f6849f0d74daacc9e9e948b13672846e"
+      "bytes": 3105,
+      "sha256": "fe26c284c8e7461145b18d2114177daad6cf2b7dca97602bc6e5c1efd9e84f93"
     },
     {
       "path": "RELEASE_MANIFEST.md",
@@ -912,8 +912,8 @@
     },
     {
       "path": "scripts/build_apv2_release_docx.py",
-      "bytes": 5951,
-      "sha256": "8801fe7a721f7a1d6f5c53a1b32fdd6be991ce1a8d933e6daf0c252de0ffe967"
+      "bytes": 8008,
+      "sha256": "2d488c80810bd6adb3534346400ec23ebea0b8400d71b15eaa01698ed3e1c48e"
     },
     {
       "path": "scripts/check_apv2_mainpaper_runtime_draft.py",

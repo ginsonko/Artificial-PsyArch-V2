@@ -1,24 +1,29 @@
 {
   "schema_id": "apv2_release_package_manifest/v1",
-  "generated_at": "2026-06-14T19:44:01",
+  "generated_at": "2026-06-14T22:30:38",
   "items": [
     {
       "file": "paper_artifacts/release_20260614/APV2_FinalPaper_20260614.docx",
-      "bytes": 426074,
-      "sha256": "e4d7a0c5de0e24b5397019357d1c7380b00c6819b78a55f25d890c09de4c8fe5"
+      "bytes": 429245,
+      "sha256": "70bd650a735f031abd916147830aca1715f9b41db2ea87fc547e05a179219ca5"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_NewsArticle_20260614.docx",
-      "bytes": 419423,
-      "sha256": "25a7ddd3a53a117a8a02ef5bce46db80361c15b72ba555f1e6a33d2e85629a71"
+      "bytes": 420237,
+      "sha256": "08ece177219f289a989b1fb66dd7524d65c9f9836a0ae1df5e2477b8186ee2ab"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_RepositorySetup_20260614.docx",
-      "bytes": 37811,
-      "sha256": "bb3e966c32febab3ca70ab194b222f3697ee1ec5148fffda76e7a0ea488413c0"
+      "bytes": 38964,
+      "sha256": "431361d148a9d02b8bfece893f1095b567e7ff4f7ddc3fd0ab9ee29d44f9d1cb"
     }
   ],
   "notes": [
-    "Repository URLs were finalized for ginsonko release repositories."
+    "Repository URLs were finalized for ginsonko release repositories.",
+    "Final public release tag apv2-release-20260614-final and repository manifests are used as stable public anchors.",
+    "Outer zip SHA-256 anchors are recorded in release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json to avoid recursive hash drift inside packaged files.",
+    "Inline Markdown code spans are rendered as Word inline styling instead of literal backticks.",
+    "Public research license wording was synchronized across release documents and staging README/LICENSE/NOTICE files.",
+    "Public repository README templates are dedented before writing so GitHub renders them as normal Markdown rather than code blocks."
   ]
 }

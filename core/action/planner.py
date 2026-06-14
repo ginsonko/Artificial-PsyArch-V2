@@ -166,68 +166,83 @@ class ActionConsequencePlanner:
         correctness = float(observed_feedback.get("correctness", 0.0) or 0.0)
         confidence = float(observed_feedback.get("confidence", 0.0) or 0.0)
         utility = reward + correctness * 0.4 - punishment
+        feedback_scope = str(observed_feedback.get("feedback_scope", "") or "")
+        repair_intent = str(observed_feedback.get("feedback_repair_intent", "") or "")
+        context_memory_only = feedback_scope in {"contextual_memory_only", "context_specific_action_outcome"} or repair_intent in {
+            "context_specific_reply_boundary_refinement",
+            "context_specific_user_feedback",
+        }
         events_by_action = self._parameter_events_by_action(parameter_events or [])
         parameter_estimates = []
         for row in selected_actions:
             action_id = str(row.get("action_id", "") or "")
             if not action_id:
                 continue
-            outcome_estimate = self._outcome_memory.record(
-                action_id=action_id,
-                observed_feedback=observed_feedback,
-                predicted_outcome=dict(row.get("predicted_outcome", {}) or {}),
-            )
+            if context_memory_only:
+                outcome_estimate = {"support": 0.0, "drive_bias": 0.0, "scope": feedback_scope or repair_intent}
+            else:
+                outcome_estimate = self._outcome_memory.record(
+                    action_id=action_id,
+                    observed_feedback=observed_feedback,
+                    predicted_outcome=dict(row.get("predicted_outcome", {}) or {}),
+                )
             actuator_id = str(row.get("actuator_id", "") or "")
-            self._drive_bias[action_id] = _clamp(
-                float(self._drive_bias[action_id]) + utility * self.bias_learning_rate,
-                -1.0,
-                1.0,
-            )
-            self._actuator_fatigue[actuator_id] = _clamp(
-                float(self._actuator_fatigue[actuator_id]) + self.fatigue_step * max(0.5, confidence),
-                0.0,
-                1.0,
-            )
-            self._record_parameter_action_fatigue(
-                action_id=action_id,
-                actuator_id=actuator_id,
-                params=dict(row.get("params", {}) or {}),
-                confidence=confidence,
-                utility=utility,
-            )
+            if not context_memory_only:
+                self._drive_bias[action_id] = _clamp(
+                    float(self._drive_bias[action_id]) + utility * self.bias_learning_rate,
+                    -1.0,
+                    1.0,
+                )
+                self._actuator_fatigue[actuator_id] = _clamp(
+                    float(self._actuator_fatigue[actuator_id]) + self.fatigue_step * max(0.5, confidence),
+                    0.0,
+                    1.0,
+                )
+                self._record_parameter_action_fatigue(
+                    action_id=action_id,
+                    actuator_id=actuator_id,
+                    params=dict(row.get("params", {}) or {}),
+                    confidence=confidence,
+                    utility=utility,
+                )
             modulation = 1.0
             ttl = 0
-            if utility < -0.04:
-                modulation = 0.48
-                ttl = 2
-            elif utility < 0.04:
-                modulation = 0.72
-                ttl = 1
-            elif utility > 0.32:
-                modulation = 1.08
-                ttl = 1
+            if not context_memory_only:
+                if utility < -0.04:
+                    modulation = 0.48
+                    ttl = 2
+                elif utility < 0.04:
+                    modulation = 0.72
+                    ttl = 1
+                elif utility > 0.32:
+                    modulation = 1.08
+                    ttl = 1
             self._feedback_modulation[action_id] = {
                 "modulation": _round4(modulation),
                 "ttl": int(ttl),
                 "last_utility": _round4(utility),
                 "outcome_support": _round4(float(outcome_estimate.get("support", 0.0) or 0.0)),
                 "outcome_drive_bias": _round4(float(outcome_estimate.get("drive_bias", 0.0) or 0.0)),
+                "feedback_scope": feedback_scope,
+                "context_memory_only": bool(context_memory_only),
                 }
-            for event in events_by_action.get(action_id, []):
-                parameter_estimates.append(
-                    self._parameter_memory.record(
-                        action_id=action_id,
-                        selected_action=row,
-                        control_event=event,
-                        observed_feedback=observed_feedback,
-                        tick_index=event.get("tick_index"),
+            if not context_memory_only:
+                for event in events_by_action.get(action_id, []):
+                    parameter_estimates.append(
+                        self._parameter_memory.record(
+                            action_id=action_id,
+                            selected_action=row,
+                            control_event=event,
+                            observed_feedback=observed_feedback,
+                            tick_index=event.get("tick_index"),
+                        )
                     )
-                )
-        self._update_visual_target_fatigue(
-            selected_actions=selected_actions,
-            parameter_events=parameter_events or [],
-            observed_feedback=observed_feedback,
-        )
+        if not context_memory_only:
+            self._update_visual_target_fatigue(
+                selected_actions=selected_actions,
+                parameter_events=parameter_events or [],
+                observed_feedback=observed_feedback,
+            )
         return {
             "updated_bias": {key: _round4(value) for key, value in self._drive_bias.items()},
             "updated_fatigue": {key: _round4(value) for key, value in self._actuator_fatigue.items()},
@@ -4374,6 +4389,13 @@ class ActionConsequencePlanner:
                 0.0,
                 1.0,
             )
+        successor_gap_pressure = _clamp(
+            (0.16 if current_turn_active and visible_length > 0 and candidate_count <= 0 else 0.0)
+            + (0.10 if current_turn_active and 0 < visible_length < 4 and candidate_count <= 0 else 0.0)
+            + (0.06 if current_turn_active and 0 < visible_length < 4 and not decisive else 0.0),
+            0.0,
+            1.0,
+        )
 
         continuation_pressure = _clamp(
             expected_strength * 0.34
@@ -4381,6 +4403,7 @@ class ActionConsequencePlanner:
             + dominance_gap * 0.34
             + (0.12 if decisive else 0.0)
             + unexpressed_successor_pressure * 0.46
+            + successor_gap_pressure * 0.72
             - ambiguity * 0.18,
             0.0,
             1.0,
@@ -4445,13 +4468,13 @@ class ActionConsequencePlanner:
         closure_pressure = _clamp(
             (0.15 if visible_length > 0 else 0.0)
             + (0.16 if last_reread_age <= 3 else 0.0)
-            + (0.10 if visible_length > 0 and candidate_count <= 0 else 0.0)
             + goal_alignment * 0.24
             + dialogue_closure_need * (0.28 if visible_length > 0 else 0.0)
             + outcome_commit_pressure * 0.16
             + habitual_commit_pressure * 0.14
             - continuation_pressure * 0.16
             - unexpressed_successor_pressure * 0.28
+            - successor_gap_pressure * 0.22
             - revision_pressure * 0.28
             - risk_commit_pressure * 0.18,
             0.0,
@@ -4463,6 +4486,7 @@ class ActionConsequencePlanner:
             "closure_pressure": _round4(closure_pressure),
             "continuation_pressure": _round4(continuation_pressure),
             "unexpressed_successor_pressure": _round4(unexpressed_successor_pressure),
+            "successor_gap_pressure": _round4(successor_gap_pressure),
             "has_unexpressed_successor": bool(has_unexpressed_successor),
             "revision_pressure": _round4(revision_pressure),
             "habitual_commit_pressure": _round4(habitual_commit_pressure),

@@ -1,10 +1,28 @@
-# APV2 今晚发布仓库开设说明
+# APV2 发布仓库说明
 
 本次发布使用 3 个公开仓库:
 
 - `https://github.com/ginsonko/Artificial-PsyArch-V2`
 - `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`
 - `https://github.com/ginsonko/APV2-Reproduction-Artifacts`
+
+统一冻结 tag: `apv2-release-20260614-final`
+
+| 仓库 | 主要内容 | 版本锚定 |
+|---|---|---|
+| `Artificial-PsyArch-V2` | AP-Core runtime、机制实验、主论文和补充材料 | Git tag + `PUBLIC_STAGING_MANIFEST.json` |
+| `APV2-GL-OpenWorld-Chinese` | GL 学习协议、开放中文对话验证、Fresh300/Skill38 证据 | Git tag + `PUBLIC_STAGING_MANIFEST.json` |
+| `APV2-Reproduction-Artifacts` | 发布稿、实验输出、第三方复现与冻结 artifact | Git tag + `PUBLIC_STAGING_MANIFEST.json` |
+
+外发 zip 包的 SHA-256 不写入会被重新打包的仓库内部文件，统一由外层 `release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json` 记录。这样可以避免 zip 内文件记录自身 zip hash 造成的递归漂移。
+
+许可证: `APV2 Public Research License v2026-06-14`。这是 source-available public research license, 不是 OSI open-source license。它允许公开阅读、clone、fork、本地运行、非商业研究复验和合理引用，同时保留商业使用、模型训练、数据再打包、产品部署和派生系统公开分发等权限边界。
+
+建议 GitHub 仓库简介、Release notes 和 README 都统一使用这句话:
+
+```text
+Source-available public research preview under the APV2 Public Research License v2026-06-14.
+```
 
 ## 1. AP-Core 主仓库
 

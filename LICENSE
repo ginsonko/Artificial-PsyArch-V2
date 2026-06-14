@@ -1,66 +1,92 @@
-APV2.1 TEMPORARY PRIVATE REVIEW LICENSE
-Version 2026-06-02
+APV2 PUBLIC RESEARCH LICENSE
+Version 2026-06-14
 
-Copyright (c) 2026 ginsonko / APV2.1 project authors.
-All rights reserved.
+Copyright (c) 2026 ginsonko / APV2 project authors.
+All rights reserved except as expressly granted below.
 
-This repository is provided only for temporary private review, local testing,
-and technical discussion with explicitly invited reviewers.
+This repository is a source-available public research preview. It is published
+so readers, reviewers, educators, and non-commercial researchers can inspect the
+APV2 prototype, reproduce the included experiments, evaluate the evidence, and
+cite the work.
 
-1. Permission Granted
+This is not an OSI-approved open-source license. No rights are granted except
+the permissions stated in this license.
 
-Subject to all restrictions below, the copyright holder grants the reviewer a
-limited, revocable, non-exclusive, non-transferable permission to:
+1. Permissions Granted
 
-- read the source code and documentation;
-- run the included tests and experiments locally;
-- inspect the included generated reports and skill packages; and
-- provide private technical feedback to the copyright holder.
+Subject to the restrictions below, you may:
 
-2. No Open-Source Grant
+- read, download, clone, and fork the repository;
+- run the included tests, demos, and experiment scripts locally;
+- modify the code locally for private evaluation or non-commercial research;
+- share links to the official repositories and release tags;
+- redistribute unmodified copies of the repository or release artifacts for
+  non-commercial review, archival, or academic reproduction, provided this
+  license, notices, and provenance metadata remain intact;
+- quote reasonable excerpts in papers, reviews, reports, lectures, or news
+  coverage with attribution to the APV2 project; and
+- publish non-commercial analysis, benchmark notes, reproduction notes, or
+  critique that references this repository.
 
-This license is not an open-source license. No rights are granted except the
-limited review permission described above.
-
-3. Restrictions
+2. Restrictions
 
 Without prior written permission from the copyright holder, you may not:
 
-- redistribute, mirror, publish, upload, sublicense, or transfer this repository
-  or any substantial part of it;
-- use it commercially or provide a service based on it;
-- deploy derivative systems based on it;
-- incorporate it into another product, dataset, benchmark, research release, or
-  production system;
+- use the repository, artifacts, teaching protocols, traces, generated reports,
+  or skill packages for commercial products, services, consulting, paid APIs, or
+  production deployments;
+- sell, sublicense, rent, host as a service, or otherwise commercially exploit
+  this repository or derivative systems;
 - train, fine-tune, distill, evaluate, benchmark, or otherwise improve a model
-  using this repository, its code, docs, traces, reports, skill packages, or
-  generated data;
-- extract, repackage, or reuse the skill experience packages, state-field
-  traces, experiment outputs, or teaching protocols as standalone assets;
-- remove provenance, notice, authorship, or license information;
-- claim authorship or independent origin of this project or substantially
-  similar code derived from it.
+  using the repository, code, documentation, traces, reports, skill packages,
+  curricula, generated data, or release artifacts as training/evaluation data;
+- extract, repackage, mirror, or redistribute the skill experience packages,
+  state-field traces, experiment outputs, teaching protocols, or datasets as
+  standalone assets;
+- remove, obscure, or alter copyright notices, license text, provenance
+  metadata, release tags, manifest hashes, authorship records, or citation
+  information;
+- present modified versions as official APV2 releases;
+- imply endorsement by the APV2 authors; or
+- bypass safety, audit, no-leakage, no-solver, or provenance checks included in
+  the repository when reporting results as APV2 evidence.
 
-4. Confidentiality
+3. Derivative Works
 
-Reviewers must treat this repository as private review material unless the
-copyright holder states otherwise in writing.
+You may create local modifications for private evaluation or non-commercial
+research. Public distribution of derivative systems, adapted curricula, derived
+datasets, repackaged artifacts, or product integrations requires prior written
+permission unless a separate license or written permission explicitly grants
+that right.
 
-5. No Warranty
+4. Third-Party Materials
 
-The repository is provided "as is", without warranty of any kind. The prototype
-is research software and may contain bugs, incomplete modules, or experimental
-behavior.
+Third-party dependencies, libraries, tools, and independently authored
+reproduction repositories remain under their own licenses. This license does
+not grant rights to third-party materials beyond the rights provided by their
+respective owners.
 
-6. Termination
+5. Academic Citation
 
-The permission granted by this license terminates automatically if you violate
-any term. After termination, you must stop using the repository and delete all
-copies under your control.
+If you use this repository or its artifacts in academic, technical, media, or
+reproduction work, cite the official repository, release tag, and relevant
+artifact hashes when available.
 
-7. Contact
+6. No Warranty
 
-For permission requests, commercial discussions, publication questions, or
-research collaboration, contact the repository owner through the associated
-GitHub account.
+The repository is provided "as is", without warranty of any kind, express or
+implied, including but not limited to warranties of merchantability, fitness for
+a particular purpose, non-infringement, correctness, safety, or suitability for
+deployment. You are responsible for any use, analysis, or modification.
 
+7. Termination
+
+The permissions granted by this license terminate automatically if you violate
+its terms. Upon termination, you must stop using the repository and remove any
+copies or derivative materials not otherwise lawfully retained.
+
+8. Additional Permission
+
+For commercial use, redistribution of derivative systems, model-training use,
+dataset reuse, product integration, or broader licensing, contact the APV2
+project authors for written permission.

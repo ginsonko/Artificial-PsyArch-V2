@@ -7,6 +7,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.opc.constants import RELATIONSHIP_TYPE
 from docx.shared import Inches, Pt
 
 
@@ -28,13 +29,58 @@ SOURCES = [
 ]
 
 
+def _set_run_font(run, *, name: str = "Microsoft YaHei", size: Pt = Pt(10.5), code: bool = False) -> None:
+    font_name = "Consolas" if code else name
+    run.font.name = font_name
+    run._element.rPr.rFonts.set(qn("w:eastAsia"), font_name)
+    run.font.size = size
+
+
+def _add_hyperlink(paragraph, text: str, url: str, *, size: Pt = Pt(10.5)) -> None:
+    rel_id = paragraph.part.relate_to(url, RELATIONSHIP_TYPE.HYPERLINK, is_external=True)
+    hyperlink = OxmlElement("w:hyperlink")
+    hyperlink.set(qn("r:id"), rel_id)
+    new_run = OxmlElement("w:r")
+    r_pr = OxmlElement("w:rPr")
+    color = OxmlElement("w:color")
+    color.set(qn("w:val"), "0563C1")
+    underline = OxmlElement("w:u")
+    underline.set(qn("w:val"), "single")
+    r_pr.append(color)
+    r_pr.append(underline)
+    new_run.append(r_pr)
+    text_element = OxmlElement("w:t")
+    text_element.text = text
+    new_run.append(text_element)
+    hyperlink.append(new_run)
+    paragraph._p.append(hyperlink)
+
+
+def _add_inline_text(paragraph, text: str, *, size: Pt = Pt(10.5)) -> None:
+    # Render common Markdown inline code spans cleanly in Word instead of
+    # leaking literal backticks into the public document.
+    pattern = re.compile(r"`([^`]+)`")
+    pos = 0
+    for match in pattern.finditer(text):
+        if match.start() > pos:
+            run = paragraph.add_run(text[pos : match.start()])
+            _set_run_font(run, size=size)
+        code_text = match.group(1)
+        if code_text.startswith(("http://", "https://")):
+            _add_hyperlink(paragraph, code_text, code_text, size=size)
+        else:
+            run = paragraph.add_run(code_text)
+            _set_run_font(run, size=size, code=True)
+        pos = match.end()
+    if pos < len(text):
+        run = paragraph.add_run(text[pos:])
+        _set_run_font(run, size=size)
+
+
 def _set_cell_text(cell, text: str) -> None:
-    cell.text = text
-    for paragraph in cell.paragraphs:
-        for run in paragraph.runs:
-            run.font.name = "Microsoft YaHei"
-            run._element.rPr.rFonts.set(qn("w:eastAsia"), "Microsoft YaHei")
-            run.font.size = Pt(9)
+    cell.text = ""
+    paragraph = cell.paragraphs[0]
+    _add_inline_text(paragraph, text, size=Pt(9))
 
 
 def _style_document(doc: Document) -> None:
@@ -144,22 +190,28 @@ def build_docx(md_path: Path, out_path: Path) -> None:
         if _try_add_image(doc, md_path, line):
             continue
         if line.startswith("# "):
-            p = doc.add_paragraph(line[2:].strip(), style="Title")
+            p = doc.add_paragraph(style="Title")
+            _add_inline_text(p, line[2:].strip(), size=Pt(18))
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         elif line.startswith("## "):
-            doc.add_paragraph(line[3:].strip(), style="Heading 1")
+            p = doc.add_paragraph(style="Heading 1")
+            _add_inline_text(p, line[3:].strip(), size=Pt(16))
         elif line.startswith("### "):
-            doc.add_paragraph(line[4:].strip(), style="Heading 2")
+            p = doc.add_paragraph(style="Heading 2")
+            _add_inline_text(p, line[4:].strip(), size=Pt(14))
         elif line.startswith("#### "):
-            doc.add_paragraph(line[5:].strip(), style="Heading 3")
+            p = doc.add_paragraph(style="Heading 3")
+            _add_inline_text(p, line[5:].strip(), size=Pt(12))
         elif line.startswith("- "):
-            doc.add_paragraph(line[2:].strip(), style="List Bullet")
+            p = doc.add_paragraph(style="List Bullet")
+            _add_inline_text(p, line[2:].strip())
         elif re.match(r"^\d+\. ", line):
-            doc.add_paragraph(re.sub(r"^\d+\. ", "", line).strip(), style="List Number")
+            p = doc.add_paragraph(style="List Number")
+            _add_inline_text(p, re.sub(r"^\d+\. ", "", line).strip())
         else:
             p = doc.add_paragraph()
             p.paragraph_format.first_line_indent = Pt(21)
-            p.add_run(line)
+            _add_inline_text(p, line)
 
     if table_lines:
         _flush_table(doc, table_lines)

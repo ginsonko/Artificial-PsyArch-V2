@@ -5,6 +5,10 @@
 项目仓库: `https://github.com/ginsonko/Artificial-PsyArch-V2`  
 开放中文对话仓库: `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`  
 实验复现仓库: `https://github.com/ginsonko/APV2-Reproduction-Artifacts`
+发布冻结: 三个官方仓库均已在 `apv2-release-20260614-final` tag 下冻结。
+许可证: `APV2 Public Research License v2026-06-14`, 允许公开阅读、本地复验和非商业研究引用，保留商业使用、模型训练、数据再打包和产品部署边界。
+
+媒体一句话: APV2 把“机器如何持续成为同一个自己”做成了可运行、可审计、可复现的白箱预测-行动架构。
 
 ## 导语
 
@@ -40,7 +44,7 @@ APV2 的证据分成四层。
 
 第一层是机制本身。底层循环在 16 种参数扰动下保持稳定; 短期记忆顺序是软偏置而不是硬规则; 系统被打断后能恢复主线; 后继预测有清晰的下一拍峰值; 记忆能持久化并重载; 压力上升会把行动从直接提交推向回看、替换和回放; 在线 learned vector 证明了有用、会纠错、不越界。
 
-第二层是开放中文对话学习验证。GL 线在 teacher-off/no-leakage 约束下完成 OpenWorld-Foundation 受控 Live Fresh300 验证，记录为 300/300, 回复唯一性 294, ablation 6/6。Skill38 Codex Fresh300 teacher-off 冻结题库同样记录为 300/300, no-leakage 300/300。学生侧没有 LLM、没有 provider、没有答案表、没有 regex route、没有整句动作宏、没有 hidden solver。
+第二层是开放中文对话学习验证。GL 线在 teacher-off/no-leakage 约束下完成 OpenWorld-Foundation 受控 Live Fresh300 验证，记录为 300/300, 回复唯一性 294, ablation 6/6。Skill38 Codex Fresh300 teacher-off 冻结题库同样记录为 300/300, no-leakage 300/300。学生侧回答链依靠过程记忆、动作竞争和逐字输出; 审计同时锁定 `student_side_llm=false`、无 provider、无答案表、无 regex route、无整句动作宏、无 hidden solver。
 
 第三层是与真实 LLM/agent 的受控对照。在一个未知规则、只能靠反馈慢慢学的任务中，AP-style 路线以 0 token、0 外部 API 达到 1.00; 真实 Claude 无记忆约 0.22-0.30; 真实 GPT 加记忆和工具约 0.83-0.85。这说明差异不是“谁更聪明”的简单胜负，而是机制、成本和可审计性的差异。
 
@@ -61,3 +65,5 @@ APV2 的证据分成四层。
 ## 一句话总结
 
 APV2 的价值不在于宣称机器已经拥有完整人类心智，而在于它把一个过去很难落地的问题变成了可运行、可审计、可复现的工程原型: 一个系统如何在连续时间中持续成为它自己。
+
+本次发布更适合被理解为研究原型和证据包的冻结版本。它已经给出 AP-Core 机制、GL 学习验证和第三方复现三条证据线; 后续工作将继续把这些证据推进到更长时间的真实在线运行、更多开放领域课程和更标准的跨机器复现包。
