@@ -264,7 +264,15 @@ APV2 的独特性不在于它现在已经比所有大模型更强，而在于它
 
 许可证采用 `APV2 Public Research License v2026-06-14`: 允许公开阅读、clone、本地运行、非商业研究复验和学术引用，同时保留商业使用、模型训练、数据再打包、产品部署和派生系统公开分发等权限边界。
 
-## 7. 适用边界与下一步
+## 7. 数据、代码与复现可用性
+
+APV2 发布版采用三个公开仓库和一个统一 tag 固定代码、文档与实验产物。`Artificial-PsyArch-V2` 承载 AP-Core runtime、机制实验、短主文、长篇技术报告和图表; `APV2-GL-OpenWorld-Chinese` 承载 GL 学习协议、开放中文对话课程、teacher-off/no-leakage 验证和技能包材料; `APV2-Reproduction-Artifacts` 承载冻结 artifact、manifest、SHA-256、复跑命令和第三方复现整理。第三方 Rust 复现仓库 `ACG-j/artificial_psyarch` 作为独立参考实现保留。
+
+复现锚点由三层组成: 公开仓库 tag `apv2-release-20260614-final-longreport`, 各仓库内的 `PUBLIC_STAGING_MANIFEST.json`, 以及外层 `PUBLIC_REPO_STAGING_SUMMARY.json` 中记录的 zip SHA-256。发布文档本身也由 `paper_artifacts/release_20260614/release_manifest_20260614.json` 记录 Word/PDF 文件的 bytes 与 SHA-256。这样读者可以从论文主张追溯到仓库文件、实验输出、文档版本和外发压缩包。
+
+代码以 `APV2 Public Research License v2026-06-14` 发布为 source-available public research preview。该许可证允许公开阅读、克隆、本地复验、非商业研究评估和合理引用，同时保留商业使用、模型训练或评测数据复用、数据集/技能包再打包、产品部署和官方衍生版本声明等权限边界。
+
+## 8. 适用边界与下一步
 
 APV2 当前最扎实的结论集中在三个层面。第一，AP-Core 已经把状态池、短期叙事槽、残差召回、后继预测、认知压力、行动反馈、持久化和在线 learned vector 做成可运行、可观察、可消融的底层循环。第二，GL 学习验证表明，这套底座可以被教学协议组织成稳定的中文开放对话基础反应，并在 teacher-off、no-leakage、cold/retest 和 ablation 条件下接受复验。第三，第三方 Rust 复现说明核心机制具有跨工程路线迁移的可能性。
 
@@ -272,7 +280,7 @@ APV2 的能力边界也必须正面说明。它当前不试图替代拥有海量
 
 这使 APV2 更适合被理解为持续认知架构的可复验工程原型，而不是一次性问答模型或产品包装。下一步最有价值的推进方向包括: 更长时间的真实在线运行、更多领域的 teacher-off/cold retest、真实桌面/桌宠长期交互、更多第三方独立实现、正式化引用与 venue 模板，以及把 artifact 仓库中的冻结证据扩展成更标准的学术复现包。这样的路线可以把当前的机制证明、学习验证和外部复现进一步推进为长期开放环境中的稳定能力证据。
 
-## 8. 结论
+## 9. 结论
 
 APV2 给出了一条与主流大模型路线互补的认知工程路线。它不把智能只看成一次输出，而把持续运行中的状态、预测、压力、注意、记忆、行动和反馈组织成同一条白箱循环。AP-Core 机制实验说明这条循环可以被参数扰动、顺序消融、打断恢复、节奏回放、持久化重载、残差召回、压力动力学和在线 learned vector 逐项检查。GL 开放中文对话验证说明这套底座可以被教学协议组织成稳定的日常对话基础能力。第三方 Rust 复现进一步说明核心机制不绑定单一代码库。
 

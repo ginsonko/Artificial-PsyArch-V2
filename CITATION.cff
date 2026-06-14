@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use APV2 in research, please cite the release paper and the tagged public repositories."
+title: "APV2: A White-Box Predictive-Action Architecture for Continuous Cognition"
+type: software
+authors:
+  - name: "Yinzi Laoshi"
+    affiliation: "Independent Researcher"
+date-released: "2026-06-14"
+version: "apv2-release-20260614-final-longreport"
+license: "APV2 Public Research License v2026-06-14"
+repository-code: "https://github.com/ginsonko/Artificial-PsyArch-V2"
+url: "https://github.com/ginsonko/Artificial-PsyArch-V2/releases/tag/apv2-release-20260614-final-longreport"
+abstract: "APV2 is a source-available research prototype for white-box continuous cognition, organized around state atoms, dual-energy state pools, short-term narrative slots, residual recall, successor prediction, process-grounded cognitive feelings, action feedback, GL learning validation, and reproducible artifact manifests."
+keywords:
+  - "cognitive architecture"
+  - "continuous cognition"
+  - "white-box AI"
+  - "predictive-action loop"
+  - "teacher-off validation"
+  - "agent memory"
+preferred-citation:
+  type: article
+  title: "APV2: 面向持续认知的白箱预测-行动闭环架构"
+  authors:
+    - name: "Yinzi Laoshi"
+      affiliation: "Independent Researcher"
+  year: 2026
+  url: "https://github.com/ginsonko/Artificial-PsyArch-V2"
+  notes: "Release package includes the short main paper, long technical report, GL open-world Chinese validation repository, reproduction artifacts, manifests, and SHA-256 anchors."

@@ -5085,14 +5085,19 @@ class MemoryStore:
         clean_rows = [dict(row) for row in rows or [] if isinstance(row, dict)]
         if not clean_rows:
             return []
-        effective_tick = current_tick
+        effective_tick = None
+        if current_tick is not None:
+            try:
+                effective_tick = self._effective_runtime_tick(current_tick)
+            except (TypeError, ValueError):
+                effective_tick = None
         if effective_tick is None and source_b_row:
             snapshot_ref = dict((source_b_row or {}).get("snapshot_ref", {}) or {})
             for value in ((source_b_row or {}).get("query_tick"), snapshot_ref.get("query_tick")):
                 if value is None:
                     continue
                 try:
-                    effective_tick = int(float(value))
+                    effective_tick = self._effective_runtime_tick(value)
                     break
                 except (TypeError, ValueError):
                     continue

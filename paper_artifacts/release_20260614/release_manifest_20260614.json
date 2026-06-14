@@ -1,47 +1,47 @@
 {
   "schema_id": "apv2_release_package_manifest/v1",
   "release_tag": "apv2-release-20260614-final-longreport",
-  "generated_at": "2026-06-14T23:43:58",
+  "generated_at": "2026-06-14T23:55:55",
   "items": [
     {
       "file": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.docx",
       "bytes": 39323,
-      "sha256": "0ee8d8d40a28c14c3398654e376b17e4073f3204e931b2691e7026fcdd3e4b8c"
+      "sha256": "b7c2a226b59fc891f88af669a37d9c9b5ecda9a989240875e5502549862e9ce7"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.pdf",
       "bytes": 213193,
-      "sha256": "266eec500ac05846eda4dddc4d5eb2b9bf089ac28300ebbc10d6226b2252bf7c"
+      "sha256": "83bc5d4b0ea6c3f82281c6d2a18c2ef202f8512c9420b89d1b4d825979ef4381"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.docx",
       "bytes": 420421,
-      "sha256": "64e16e7ba4aebc13b95bd976a7199bdc59d5b1ffa19dc902d32bb6eef8f1aa9a"
+      "sha256": "f407e1422144f13bc241100b4e393baaa64a8dc609bccb3d3412ce64ada0c6f1"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.pdf",
       "bytes": 673857,
-      "sha256": "65b8de876b7d885e8a4f961f09ffa3dbd0c46bf461adbf7ca80a0be1c3167303"
+      "sha256": "65d797bfd547b727c15de79f81b1509ff908c1b0852598683b8e62c433223907"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.docx",
-      "bytes": 431831,
-      "sha256": "e392c7e9ae3f77e68eb9b40dd6b3756718b90e131f90284b036d983b93d9f841"
+      "bytes": 432334,
+      "sha256": "335c72370e09aeae66748b7326ca808e0e4b22bd232b36bc67fab3a3645c4078"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.pdf",
-      "bytes": 888612,
-      "sha256": "071a35a9cc910428759257e0f2e17bdb7463e6320ed19a4700d59e207d53dd0f"
+      "bytes": 897069,
+      "sha256": "e6e74671d984b90af38ee0be0c7189a81a96c8adf72d074f70e1face57165e19"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.docx",
-      "bytes": 147413,
-      "sha256": "74bf8fd15b9fe3ca420cdb86ce40147421965da58deb491b9b40eeb93aeea09a"
+      "bytes": 147268,
+      "sha256": "16b5ed61d7763de3cf1852d122a60b501ca1da1937019bc451187a2e5cf3fb3d"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.pdf",
-      "bytes": 1187930,
-      "sha256": "0a5419fbb1c18630719c2410d075bb27e27ac8590c83d42d498d37ec8c106bd4"
+      "bytes": 1185095,
+      "sha256": "673dc49e0daac0b15cc53ad05df224c3db28eb8813c9b03b8557925465118fa9"
     }
   ],
   "notes": [
