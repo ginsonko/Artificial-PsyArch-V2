@@ -1,45 +1,50 @@
 {
   "schema_id": "apv2_release_package_manifest/v1",
-  "generated_at": "2026-06-14T22:57:16",
+  "release_tag": "apv2-release-20260614-final-longreport",
+  "generated_at": "2026-06-14T23:37:25",
   "items": [
     {
       "file": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.docx",
-      "bytes": 39227,
-      "sha256": "094732dd8b8467fdc088ef36b1bfadc7ca1bcbcac367e98ccfb14359ca3f16af"
+      "bytes": 39323,
+      "sha256": "74751450cfcc48ad397ef288b362e61b4f95dd453e79984ac0676c195ed7453f"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.pdf",
-      "bytes": 206073,
-      "sha256": "16d25fc7ff789a7a779c7475575c53ecab9067eec73fcb096a75dfaa35528c67"
+      "bytes": 213193,
+      "sha256": "b9ecc84ca977be640960fab67e75e75279a24854087f30858e8f3850eb9b09bb"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.docx",
-      "bytes": 420243,
-      "sha256": "e399c0aa929206202a98e1ea31e464805b2ccbf0cf34aa23924a9511eeec8b88"
+      "bytes": 420245,
+      "sha256": "a6c84e86d7cf8a32e9cab4147e70a9833515ff950f4193720651197999dc916b"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.pdf",
-      "bytes": 665621,
-      "sha256": "579731886a13062e0776fd4103dcb5c240a58b24014cb15618d3f42be90e40a6"
+      "bytes": 666017,
+      "sha256": "0e5f95bb6a6bdf39365aa747dc51ced1fdfcb7850ccedac1f2be3af7e4b26a33"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.docx",
-      "bytes": 429257,
-      "sha256": "4897908d11a5915c9e9d579b64ea84e6a3af3d5525753492a67a8a04ec8959f7"
+      "bytes": 431831,
+      "sha256": "ba0b3f2b23314b8b771fa31704e39f513ae99b4cad0bca9aa5494b66462136a2"
     },
     {
       "file": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.pdf",
-      "bytes": 827709,
-      "sha256": "fe2216a77f610e6e4e5737b8badcb20f0149d70fd9ccd367f2f57202866e924d"
+      "bytes": 888612,
+      "sha256": "476ba294c660166672a3e7fbc8ef4a1338a974c79a68a039e4ac5c0f28560662"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.docx",
+      "bytes": 147413,
+      "sha256": "df5914f6ca5336ad308d037fb96593a487456a8c67aefaad8cff437f81014e23"
+    },
+    {
+      "file": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.pdf",
+      "bytes": 1187930,
+      "sha256": "d70627eedab18a608d33a31016814598136cf4ea09eee0426beb08850cd01528"
     }
   ],
   "notes": [
-    "Release documents use Chinese filenames for reader-facing distribution.",
-    "Word and PDF versions are generated from the same Markdown sources.",
-    "Final public release tag apv2-release-20260614-final-cn-pdf and repository manifests are used as stable public anchors.",
-    "Outer zip SHA-256 anchors are recorded in release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json to avoid recursive hash drift inside packaged files.",
-    "Inline Markdown code spans are rendered as Word inline styling instead of literal backticks.",
-    "Public research license wording was synchronized across release documents and staging README/LICENSE/NOTICE files.",
-    "Public repository README templates are dedented before writing so GitHub renders them as normal Markdown rather than code blocks."
+    "Short main paper, long technical report, news article, and repository setup are released as Word/PDF pairs."
   ]
 }

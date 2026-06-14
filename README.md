@@ -6,7 +6,7 @@ APV2 is a white-box predictive-action runtime for continuous cognition. It organ
 
 ## 发布锚点 / Release Anchors
 
-- Official release tag: `apv2-release-20260614-final-cn-pdf`
+- Official release tag: `apv2-release-20260614-final-longreport`
 - Repository manifest: `PUBLIC_STAGING_MANIFEST.json`
 - Release documents: `paper_artifacts/release_20260614/`
 - Companion GL repository: `APV2-GL-OpenWorld-Chinese`
@@ -23,9 +23,9 @@ APV2 is a white-box predictive-action runtime for continuous cognition. It organ
 - `core/`, `memory/`, `config/`: AP-Core runtime 底座。
 - `experiments/`: AP-Core 机制实验入口。
 - `tests/`: 对应的可复跑测试。
-- `docs/`: 主论文、补充索引、设计说明和最终报告。
+- `docs/`: 短主文、长篇技术报告、补充索引、设计说明和最终报告。
 - `outputs/`: 精选机制证据输出和图表。
-- `paper_artifacts/release_20260614/`: Word 版发布论文、新闻稿和 manifest。
+- `paper_artifacts/release_20260614/`: Word/PDF 版短主文、长篇技术报告、新闻稿、仓库说明和 manifest。
 
 ## 快速验证 / Quick Validation
 

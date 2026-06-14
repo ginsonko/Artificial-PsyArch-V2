@@ -1,9 +1,9 @@
 {
   "schema_id": "apv2_public_repo_staging_manifest/v1",
   "repo_id": "Artificial-PsyArch-V2",
-  "generated_at": "2026-06-14T22:57:18",
-  "file_count": 236,
-  "total_bytes": 8416891,
+  "generated_at": "2026-06-14T23:38:16",
+  "file_count": 240,
+  "total_bytes": 10070696,
   "items": [
     {
       "path": ".gitignore",
@@ -82,13 +82,13 @@
     },
     {
       "path": "config/defaults.py",
-      "bytes": 19151,
-      "sha256": "ed2c03d1feee675a5c4c208367d01520a4b2aa14d5edefae6478758b25b3abef"
+      "bytes": 19611,
+      "sha256": "707912ecc96985c6193f850d7dd6acc8e27a4622c2ec03f41bd2b89756e821ba"
     },
     {
       "path": "config/performance_profiles.py",
-      "bytes": 20909,
-      "sha256": "8f18571af59ade3fb86d6ba238050a3da8b4eeac2fb58027d4b2f4dbdf9d8868"
+      "bytes": 21631,
+      "sha256": "21dea4bda0286e0240fe6c1d02b1afbf20fea26d31a9e5c3cef9a9737ee257bb"
     },
     {
       "path": "config/persistence.py",
@@ -132,8 +132,8 @@
     },
     {
       "path": "core/action/planner.py",
-      "bytes": 353317,
-      "sha256": "788fb506f0e756ed4b8d8d50b3f6e52047ac103415994f376a498aacc4aca6e9"
+      "bytes": 354693,
+      "sha256": "ea83d937aff941ffa8e54b0eb642719721e1828da43cd1e8cfae5b7b174c63f1"
     },
     {
       "path": "core/action/registry.py",
@@ -147,8 +147,8 @@
     },
     {
       "path": "core/action/text_actuator.py",
-      "bytes": 60843,
-      "sha256": "1c05214e66c82e35cdce609521544d4f44bd909a3c6f9432ea44b90e40ccfaa2"
+      "bytes": 61201,
+      "sha256": "3880c3bf9bd0883640e3a28d52bf31955674283ec3a6d00327225944e3c5772b"
     },
     {
       "path": "core/attention/__init__.py",
@@ -232,8 +232,8 @@
     },
     {
       "path": "core/runtime/engine.py",
-      "bytes": 343306,
-      "sha256": "f75d3d2a2285d83ad2f46b3c684c15fb0ec80d17d13af085f8e40683f153d4ab"
+      "bytes": 344494,
+      "sha256": "9bd5933a78fe97330c9234e3c170fec8efd54174fc0e6ddccfb56a853aaf8121"
     },
     {
       "path": "core/state_pool/__init__.py",
@@ -342,18 +342,23 @@
     },
     {
       "path": "docs/Release_APV2_FinalPaper_20260614.md",
-      "bytes": 22674,
-      "sha256": "54960e1ea0b15757ff32e1e80bec96b21c7aeb79db7f7cc891d8a76dde9dac3b"
+      "bytes": 27243,
+      "sha256": "11abbd6327da907566469e7a28482f490328f081edc681734048864c10e7dc06"
+    },
+    {
+      "path": "docs/Release_APV2_LongTechnicalReport_20260614.md",
+      "bytes": 212789,
+      "sha256": "262c77354bbfb8566a4cc30a67cc02b10bd1c6549405e3d3074b1d588d4d1cc6"
     },
     {
       "path": "docs/Release_APV2_NewsArticle_20260614.md",
-      "bytes": 6115,
-      "sha256": "b740ac0287cdd8a383d13af156f970599d564e834b7166abc2b3ae2d7ea706cf"
+      "bytes": 6119,
+      "sha256": "1a224769f5d2f640dd65ee9f428275f52e0b4aa98f774ce9822b75d2eab29ab9"
     },
     {
       "path": "docs/Release_APV2_RepositorySetup_20260614.md",
-      "bytes": 3943,
-      "sha256": "63e0e3510025154f79a69c1b49ee67cacbb624ebaa6ce7a4ca92ce27ce587a56"
+      "bytes": 4106,
+      "sha256": "017de2e4674fcf7010bd840049ee49f90f5db45cb3620c229a6c4e2a0f650868"
     },
     {
       "path": "education/__init__.py",
@@ -647,8 +652,8 @@
     },
     {
       "path": "memory/store/memory_store.py",
-      "bytes": 318401,
-      "sha256": "34b770fb4106aed0dc03fb32b500b8e07c2f00188cf4263553ca6b4c6432b887"
+      "bytes": 318798,
+      "sha256": "a13f813af5c5b8418e0c7009f93885fd9be8404a65981efe5f4507c972e25f37"
     },
     {
       "path": "NOTICE.md",
@@ -872,48 +877,63 @@
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.docx",
-      "bytes": 39227,
-      "sha256": "094732dd8b8467fdc088ef36b1bfadc7ca1bcbcac367e98ccfb14359ca3f16af"
+      "bytes": 39323,
+      "sha256": "74751450cfcc48ad397ef288b362e61b4f95dd453e79984ac0676c195ed7453f"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_仓库发布说明_20260614.pdf",
-      "bytes": 206073,
-      "sha256": "16d25fc7ff789a7a779c7475575c53ecab9067eec73fcb096a75dfaa35528c67"
+      "bytes": 213193,
+      "sha256": "b9ecc84ca977be640960fab67e75e75279a24854087f30858e8f3850eb9b09bb"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.docx",
-      "bytes": 420243,
-      "sha256": "e399c0aa929206202a98e1ea31e464805b2ccbf0cf34aa23924a9511eeec8b88"
+      "bytes": 420245,
+      "sha256": "a6c84e86d7cf8a32e9cab4147e70a9833515ff950f4193720651197999dc916b"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_新闻稿_让机器一直是它自己_20260614.pdf",
-      "bytes": 665621,
-      "sha256": "579731886a13062e0776fd4103dcb5c240a58b24014cb15618d3f42be90e40a6"
+      "bytes": 666017,
+      "sha256": "0e5f95bb6a6bdf39365aa747dc51ced1fdfcb7850ccedac1f2be3af7e4b26a33"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.docx",
-      "bytes": 429257,
-      "sha256": "4897908d11a5915c9e9d579b64ea84e6a3af3d5525753492a67a8a04ec8959f7"
+      "bytes": 431831,
+      "sha256": "ba0b3f2b23314b8b771fa31704e39f513ae99b4cad0bca9aa5494b66462136a2"
     },
     {
       "path": "paper_artifacts/release_20260614/APV2_论文_白箱预测行动闭环架构_20260614.pdf",
-      "bytes": 827709,
-      "sha256": "fe2216a77f610e6e4e5737b8badcb20f0149d70fd9ccd367f2f57202866e924d"
+      "bytes": 888612,
+      "sha256": "476ba294c660166672a3e7fbc8ef4a1338a974c79a68a039e4ac5c0f28560662"
+    },
+    {
+      "path": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.docx",
+      "bytes": 147413,
+      "sha256": "df5914f6ca5336ad308d037fb96593a487456a8c67aefaad8cff437f81014e23"
+    },
+    {
+      "path": "paper_artifacts/release_20260614/APV2_长篇技术报告_完整论证与实验附录_20260614.pdf",
+      "bytes": 1187930,
+      "sha256": "d70627eedab18a608d33a31016814598136cf4ea09eee0426beb08850cd01528"
     },
     {
       "path": "paper_artifacts/release_20260614/release_manifest_20260614.json",
-      "bytes": 2286,
-      "sha256": "2043fe834ae4fc7a663726713bf7189cab94f6a0a67a7e641ab2a9babdb3438c"
+      "bytes": 2137,
+      "sha256": "5abf4139da57e2b486e0ae32f331f0b51a13ff054b604d6dd62590b40d0bc85e"
     },
     {
       "path": "README.md",
-      "bytes": 3112,
-      "sha256": "df01cc72693f9a2f3477b372510412b0667fbe50a63fd75535f46cc627f0f844"
+      "bytes": 3174,
+      "sha256": "b0ce7e87c80a9f85beef8b7a0536b23f7517cfe18d9aeebefa4e7629839c93c4"
     },
     {
       "path": "RELEASE_MANIFEST.md",
       "bytes": 3726,
       "sha256": "34ade1a3c2e7b95f3563600ca1d773964e3e1959f63e4f652142eff867e0a8ef"
+    },
+    {
+      "path": "scripts/build_apv2_long_technical_report.py",
+      "bytes": 25218,
+      "sha256": "3d715013e4db1eef2cc31b267ff9a12248b3a07bbe753418db1022efced8744a"
     },
     {
       "path": "scripts/build_apv2_press_evidence_figures.py",
@@ -927,8 +947,8 @@
     },
     {
       "path": "scripts/build_apv2_release_docx.py",
-      "bytes": 8064,
-      "sha256": "0fb8408572c80dbf01423e5e3949633aad51c01d8e2e004f90d76f0f471fe3db"
+      "bytes": 8278,
+      "sha256": "b23aa42d05a0a011e128e618bc7889e03c2b4db285fad51b5938052f21c413b3"
     },
     {
       "path": "scripts/check_apv2_mainpaper_runtime_draft.py",

@@ -6,8 +6,9 @@
 GL 开放中文对话仓库: `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`  
 实验复现与冻结锚定仓库: `https://github.com/ginsonko/APV2-Reproduction-Artifacts`  
 第三方独立复现参考: `https://github.com/ACG-j/artificial_psyarch`
-发布冻结 tag: `apv2-release-20260614-final-cn-pdf`  
+发布冻结 tag: `apv2-release-20260614-final-longreport`  
 复现锚点: 以公开仓库 tag、各仓库 `PUBLIC_STAGING_MANIFEST.json` 和外层 `PUBLIC_REPO_STAGING_SUMMARY.json` 为准。  
+配套长技术报告: `APV2_长篇技术报告_完整论证与实验附录_20260614.docx` / `.pdf`。本文是短主文，负责给出问题、机制、关键证据和结论; 长技术报告承载完整定义、算法、运行 trace、实验附录、术语表和审稿疑问回应。  
 
 ## 摘要
 
@@ -37,6 +38,8 @@ Keywords: APV2; continuous cognition; white-box cognitive architecture; state at
 2. 给出 AP-Core 机制证据，证明短期叙事槽、残差 B 召回、C/C* 后继预测、压力动力学、持久化重载和在线 learned vector 都可以被独立测试和消融。
 3. 给出 GL 学习验证证据，证明 AP-style 学习协议可以在 teacher-off/no-leakage 条件下组织出稳定的中文开放对话基础能力。
 4. 给出第三方独立复现证据，证明核心思想可以跨语言和工程路线重建，而不是只存在于单一代码库的内部实验中。
+
+本文采用“短主文 + 长技术报告 + artifact 仓库”的发布结构。短主文保持可读性，长技术报告保留完整机制、公式、伪代码、tick trace、实验记录和边界讨论，artifact 仓库提供可复验文件、manifest 和 SHA-256 锚点。这样做的原因是 APV2 不是单一模型组件，而是一套持续认知架构; 若把全部实现细节塞入短主文，会破坏阅读节奏，但若只保留短主文，又无法充分回答白箱性、可复现性和机制边界问题。
 
 ## 1. 引言
 
@@ -93,6 +96,52 @@ C 表示相似历史对象的后继预测，C* 表示多个后继预测叠加后
 短期叙事槽每个 tick 都会把自身内容回读成 `short_term_slot::*` SA, 以虚能量注入状态池。这相当于系统每一刻都把“刚才显性意识里亮着的东西”重新投回当前场，维持思维连续性。
 
 短期槽会生成 summary、item、order、continuity、rhythm 等通道。不同槽位有不同槽位系数，越新的对象权重越高，但强对象也可以跨 tick 保持。这样既能保留近期输入，也能保留重要焦点。它不是外部输入，而是叙事性内感受槽: 类似人类用短期记忆中的印象维持一个显性认知片段，再据此判断、接话或行动。
+
+### 2.7 核心过程的形式化摘要
+
+为避免“白箱”停留在口号层面，APV2 在实现中把每个 tick 表达为可审计的状态变换。设状态原子集合为 `S_t = {s_i}`，每个 `s_i` 带有实能量 `r_i(t)`、虚能量 `v_i(t)` 和来源通道 `channel_i`。状态池更新可写成:
+
+```text
+r_i(t+1) = decay_r * r_i(t) + sensory_i(t) + action_feedback_i(t)
+v_i(t+1) = decay_v * v_i(t) + successor_i(t) + short_term_readback_i(t) + learned_vector_i(t)
+pressure_i(t) = |v_i(t) - r_i(t)| * salience_i(t)
+```
+
+残差式 B 召回不是一次性 top-k。给定当前 query 质量 `q_i^0`，第 `k` 轮选择相似度最高的历史对象 `B_k`:
+
+```text
+sim(B, q^k) = Σ_i q_i^k * match(s_i, B) / (Σ_i q_i^k + eps)
+energy(B_k) = sim(B_k, q^k) * Σ_i (r_i(t) + v_i(t)) * q_i^k
+q_i^{k+1} = q_i^k * (1 - absorb_rate * sim(B_k) * match(s_i, B_k))
+```
+
+这意味着已被 winner 解释的成分在下一轮自然降权，未被解释的成分相对上升。C/C* 后继预测则把被召回对象的未来片段按 lag kernel 叠加:
+
+```text
+C*(x) = Σ_k energy(B_k) * Σ_lag K(lag) * support(B_k, lag, x)
+K(1) >> K(2) > K(3) ... > 0
+```
+
+短期叙事槽每 tick 把最近若干槽位回读为内源性 `short_term_slot::*` SA:
+
+```text
+slot_energy(item) = base_readback * slot_coeff(slot_rank) * item_weight * continuity_gate
+order_bias = weak_in_slot_order + stronger_cross_slot_relative_order
+```
+
+认知感受来自过程量，而不是外界字段改名。例如，预测熵升高和 C* 峰不清晰会提高低把握/困惑; `Σ pressure_i` 和行动失败压力会提高回看、替换和请求澄清的 drive; 奖励/惩罚只通过行动后果写入后续记忆，不倒灌成当前行动前的证据。
+
+### 2.8 白箱 tick trace 示例
+
+下面是一个压缩示例，完整 trace schema 和更多样例放在长技术报告与 artifact 仓库中。假设用户输入“关关雎鸠”，系统历史中存在诗句后继经验:
+
+| tick | 状态池主峰 | 短期叙事槽 | B 召回/残差 | C* 后继峰 | 行动倾向 |
+|---|---|---|---|---|---|
+| t0 | `text::关`, `text::关`, `text::雎`, `text::鸠` 实能量上升 | 槽 0 保存当前注意包 | 第 1 轮 winner 解释“关关雎鸠”片段，残差质量下降 | `text::在` lag1 峰清晰 | 接着说 drive 上升 |
+| t1 | `short_term_slot::关关雎鸠` 虚能量回读 | 槽 0 为“关关雎鸠”，槽间连续性高 | 第 2 轮转向未解释后继成分 | `text::在` 胜出，`text::河` 为下一步候选 | 输出 `在` |
+| t2 | 输出反馈把 `text::在` 写回状态池 | 槽 0 更新为“关关雎鸠，在” | 已匹配“在”的 query 成分降权 | `text::河` 成为 lag1 峰 | 输出 `河` 或继续回放 |
+
+如果此时外界打断或 C* 没有清晰唯一峰，注意力会转向新输入、回看或请求澄清，而不是继续按固定 n-gram 输出。这个例子说明 APV2 的“接着说”来自状态池、短期槽、残差召回和 C* 后继峰共同作用，不是答案表或整句动作宏。
 
 ## 3. 学习机制: 从模仿到开放对话
 
@@ -209,7 +258,7 @@ APV2 的独特性不在于它现在已经比所有大模型更强，而在于它
 
 | 层级 | 锚定内容 | 审查用途 |
 |---|---|---|
-| 公开仓库 tag | `apv2-release-20260614-final-cn-pdf` | 固定 GitHub 可浏览源代码和文档版本 |
+| 公开仓库 tag | `apv2-release-20260614-final-longreport` | 固定 GitHub 可浏览源代码和文档版本 |
 | 每仓库 manifest | `PUBLIC_STAGING_MANIFEST.json` | 记录仓库内每个公开文件的 bytes 和 SHA-256 |
 | 外层 release summary | `release_repos_20260614/PUBLIC_REPO_STAGING_SUMMARY.json` | 记录三个外发 zip 包的 SHA-256 和字节数 |
 
@@ -219,7 +268,9 @@ APV2 的独特性不在于它现在已经比所有大模型更强，而在于它
 
 APV2 当前最扎实的结论集中在三个层面。第一，AP-Core 已经把状态池、短期叙事槽、残差召回、后继预测、认知压力、行动反馈、持久化和在线 learned vector 做成可运行、可观察、可消融的底层循环。第二，GL 学习验证表明，这套底座可以被教学协议组织成稳定的中文开放对话基础反应，并在 teacher-off、no-leakage、cold/retest 和 ablation 条件下接受复验。第三，第三方 Rust 复现说明核心机制具有跨工程路线迁移的可能性。
 
-这使 APV2 更适合被理解为持续认知架构的可复验工程原型，而不是一次性问答模型或产品包装。下一步最有价值的推进方向包括: 更长时间的真实在线运行、更多领域的 teacher-off/cold retest、跨机器 clean rerun、真实桌面/桌宠长期交互、更多第三方独立实现，以及把 artifact 仓库中的冻结证据扩展成更标准的学术复现包。这样的路线可以把当前的机制证明、学习验证和外部复现进一步推进为长期开放环境中的稳定能力证据。
+APV2 的能力边界也必须正面说明。它当前不试图替代拥有海量世界知识和强自然语言生成能力的大模型; 面对需要百科事实、复杂数学竞赛、长篇创作、代码工程或多工具开放规划的任务，APV2 需要教师、工具、外部知识源或更长课程。它的优势在另一层: 把当前状态、预测落差、短期叙事、行动反馈和学习痕迹组织成可审计的持续认知场。也就是说，APV2 更像一个可教学、可回看、可修正的认知底座; LLM 更适合承担教师、外部知识源、解释器和工具编排者。二者的关系是互补，而不是单纯胜负。
+
+这使 APV2 更适合被理解为持续认知架构的可复验工程原型，而不是一次性问答模型或产品包装。下一步最有价值的推进方向包括: 更长时间的真实在线运行、更多领域的 teacher-off/cold retest、真实桌面/桌宠长期交互、更多第三方独立实现、正式化引用与 venue 模板，以及把 artifact 仓库中的冻结证据扩展成更标准的学术复现包。这样的路线可以把当前的机制证明、学习验证和外部复现进一步推进为长期开放环境中的稳定能力证据。
 
 ## 8. 结论
 

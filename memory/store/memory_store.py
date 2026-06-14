@@ -104,6 +104,7 @@ class MemoryStore:
         persistence: MemoryPersistenceAdapter | None = None,
         persistence_required: bool = False,
         long_term_recall_enabled: bool = True,
+        long_term_recall_kinds: tuple[str, ...] | list[str] | None = None,
         long_term_posting_limit: int = 96,
         long_term_rehydrate_limit: int = 48,
         long_term_rehydrated_resident_limit: int = 512,
@@ -163,6 +164,11 @@ class MemoryStore:
         self._persistence_error_count = 0
         self._last_persistence_error = ""
         self.long_term_recall_enabled = bool(long_term_recall_enabled)
+        self.long_term_recall_kinds = {
+            str(kind or "")
+            for kind in list(long_term_recall_kinds or ("state", "focus", "short_term_slot"))
+            if str(kind or "")
+        }
         self.long_term_posting_limit = max(8, int(long_term_posting_limit))
         self.long_term_rehydrate_limit = max(1, int(long_term_rehydrate_limit))
         self.long_term_rehydrated_resident_limit = max(32, int(long_term_rehydrated_resident_limit))
@@ -3536,7 +3542,11 @@ class MemoryStore:
         rehydrate the matched snapshots, and let the normal B/C scorer decide.
         """
 
-        if not self.long_term_recall_enabled or not self._long_term_recall_available():
+        if (
+            not self.long_term_recall_enabled
+            or str(memory_kind or "") not in self.long_term_recall_kinds
+            or not self._long_term_recall_available()
+        ):
             return posting_rows, vector_rows, numeric_rows
         if self._hot_candidates_confident(posting_rows, vector_rows, numeric_rows):
             self._cache_stats["long_term_pruned_hot_confident"] += 1

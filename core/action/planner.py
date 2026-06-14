@@ -1320,6 +1320,21 @@ class ActionConsequencePlanner:
                     0.0,
                     1.0,
                 )
+                fragment_commit_pressure = 0.0
+                if dialogue_closure_need_for_commit > 0.0 and visible_length <= 2:
+                    fragment_commit_pressure = _clamp(
+                        dialogue_closure_need_for_commit
+                        * (
+                            max(0.0, 0.58 - goal_alignment) * 0.72
+                            + max(0.0, 0.54 - field_satisfaction) * 0.44
+                            + max(0.0, 0.48 - closure_pressure) * 0.34
+                            + max(0.0, expected_strength - 0.20) * 0.22
+                            + max(0.0, continuation_pressure - 0.24) * 0.22
+                        )
+                        + (0.12 if visible_length <= 1 else 0.04),
+                        0.0,
+                        1.0,
+                    )
                 same_draft_already_committed = bool(last_commit_tick >= 0 and last_commit_tick >= last_mutation_tick)
                 recent_commit_fatigue = 0.0
                 same_draft_commit_fatigue = 0.0
@@ -1329,6 +1344,7 @@ class ActionConsequencePlanner:
                     "satisfaction_field": dict(draft_satisfaction_field),
                     "goal_alignment": dict(draft_goal_alignment),
                     "pending_revision_pressure": _round4(pending_revision_pressure),
+                    "fragment_commit_pressure": _round4(fragment_commit_pressure),
                     "draft_signature": str(draft_context.get("visible_text", "") or ""),
                     "task_context_signature": self._draft_task_context_signature(draft_goal_alignment),
                 }
@@ -1350,6 +1366,7 @@ class ActionConsequencePlanner:
                     - unexpressed_successor_pressure * 0.74
                     - revision_pressure * 0.24
                     - risk_commit_pressure * 0.58
+                    - fragment_commit_pressure * 0.86
                     - ambiguity_pause * 0.22
                     - cleanup_pressure * 0.34
                     - pressure * 0.12
@@ -1383,7 +1400,8 @@ class ActionConsequencePlanner:
                                 + uncertainty * 0.04
                                 + cleanup_pressure * 0.04
                                 + revision_pressure * 0.05
-                                + risk_commit_pressure * 0.16,
+                                + risk_commit_pressure * 0.16
+                                + fragment_commit_pressure * 0.18,
                             ),
                             "expectation": expectation * 0.24,
                             "pressure": max(
@@ -1393,6 +1411,7 @@ class ActionConsequencePlanner:
                                 + cleanup_pressure * 0.08
                                 + continuation_pressure * 0.05
                                 + risk_commit_pressure * 0.22
+                                + fragment_commit_pressure * 0.24
                                 + pending_revision_pressure * 0.18
                                 + unexpressed_successor_pressure * 0.20
                                 + unfinished_strength * 0.10
@@ -1412,11 +1431,15 @@ class ActionConsequencePlanner:
                             f"habitual_commit_pressure={_round4(habitual_commit_pressure)}",
                             f"outcome_commit_pressure={_round4(outcome_commit_pressure)}",
                             f"risk_commit_pressure={_round4(risk_commit_pressure)}",
+                            f"fragment_commit_pressure={_round4(fragment_commit_pressure)}",
                             f"continuation_pressure={_round4(continuation_pressure)}",
                             f"unexpressed_successor_pressure={_round4(unexpressed_successor_pressure)}",
                             f"revision_pressure={_round4(revision_pressure)}",
                             f"pending_revision_pressure={_round4(pending_revision_pressure)}",
                             "commit_risk_from_text_revision_opportunity" if pending_revision_pressure > 0.0 else "no_pending_revision_opportunity",
+                            "fragment_draft_commit_suppressed"
+                            if fragment_commit_pressure > 0.0
+                            else "no_fragment_commit_pressure",
                             f"habit_scope={str(draft_goal_alignment.get('habit_scope', 'none') or 'none')}",
                             f"draft_satisfaction={_round4(draft_satisfaction)}",
                             f"ambiguity_pause={_round4(ambiguity_pause)}",

@@ -6,7 +6,7 @@
 - `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`
 - `https://github.com/ginsonko/APV2-Reproduction-Artifacts`
 
-统一冻结 tag: `apv2-release-20260614-final-cn-pdf`
+统一冻结 tag: `apv2-release-20260614-final-longreport`
 
 | 仓库 | 主要内容 | 版本锚定 |
 |---|---|---|
@@ -20,7 +20,8 @@
 
 | 文件 | 用途 |
 |---|---|
-| `APV2_论文_白箱预测行动闭环架构_20260614.docx` / `.pdf` | 发布版论文稿 |
+| `APV2_论文_白箱预测行动闭环架构_20260614.docx` / `.pdf` | 发布版短主文 |
+| `APV2_长篇技术报告_完整论证与实验附录_20260614.docx` / `.pdf` | 完整理论、机制、公式、trace、实验附录与审稿疑问回应 |
 | `APV2_新闻稿_让机器一直是它自己_20260614.docx` / `.pdf` | 新闻稿/科普稿 |
 | `APV2_仓库发布说明_20260614.docx` / `.pdf` | 仓库和复现入口说明 |
 

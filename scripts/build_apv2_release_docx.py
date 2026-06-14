@@ -19,6 +19,10 @@ SOURCES = [
         ROOT / "paper_artifacts" / "release_20260614" / "APV2_论文_白箱预测行动闭环架构_20260614.docx",
     ),
     (
+        ROOT / "docs" / "Release_APV2_LongTechnicalReport_20260614.md",
+        ROOT / "paper_artifacts" / "release_20260614" / "APV2_长篇技术报告_完整论证与实验附录_20260614.docx",
+    ),
+    (
         ROOT / "docs" / "Release_APV2_NewsArticle_20260614.md",
         ROOT / "paper_artifacts" / "release_20260614" / "APV2_新闻稿_让机器一直是它自己_20260614.docx",
     ),

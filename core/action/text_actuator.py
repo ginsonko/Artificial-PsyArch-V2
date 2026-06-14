@@ -64,11 +64,12 @@ class TextActionActuator:
                     action_param_kind = str(params.get("parameter_kind", "") or "")
                     candidate_token = str(params.get("candidate_token", token) or token)
                     action_expected_token = str(params.get("expected_token", "") or "")
+                    event_expected_token = str(action_expected_token or candidate_token or token)
                     event = {
                         "tick_index": int(tick_index),
                         "event_type": "insert",
                         "token": token,
-                        "expected_token": expected_token,
+                        "expected_token": event_expected_token,
                         "candidate_token": candidate_token,
                         "source": action_id,
                         "notes": ["direct_text_insert_action"],
@@ -81,6 +82,9 @@ class TextActionActuator:
                         event["action_param_reason"] = action_param_reason
                     if action_param_kind:
                         event["action_param_kind"] = action_param_kind
+                    if expected_token and expected_token != event_expected_token:
+                        event["readout_expected_token"] = expected_token
+                        event["notes"].append("readout_expected_token_preserved_as_reference")
                     if action_expected_token:
                         event["action_expected_token"] = action_expected_token
                     self._visible_tokens.insert(cursor, event)

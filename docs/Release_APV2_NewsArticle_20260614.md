@@ -5,7 +5,7 @@
 项目仓库: `https://github.com/ginsonko/Artificial-PsyArch-V2`  
 开放中文对话仓库: `https://github.com/ginsonko/APV2-GL-OpenWorld-Chinese`  
 实验复现仓库: `https://github.com/ginsonko/APV2-Reproduction-Artifacts`
-发布冻结: 三个官方仓库均已在 `apv2-release-20260614-final-cn-pdf` tag 下冻结。
+发布冻结: 三个官方仓库均已在 `apv2-release-20260614-final-longreport` tag 下冻结。
 许可证: `APV2 Public Research License v2026-06-14`, 允许公开阅读、本地复验和非商业研究引用，保留商业使用、模型训练、数据再打包和产品部署边界。
 
 媒体一句话: APV2 把“机器如何持续成为同一个自己”做成了可运行、可审计、可复现的白箱预测-行动架构。

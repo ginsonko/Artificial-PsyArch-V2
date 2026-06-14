@@ -124,6 +124,13 @@ class MemoryConfig:
     relation_context_limit: int = 8192
     relation_score_weight: float = 0.68
     relation_focus_score_weight: float = 0.92
+    # Residual Bn recall deepens the search after an initial Bn match. It is
+    # useful for broad offline probes, but realtime dialogue can first accept a
+    # high-grasp primary Bn and only deepen when grasp is low.
+    residual_recall_deepen_grasp_threshold: float = 1.01
+    residual_recall_min_primary_rows: int = 1
+    slow_residual_recall_enabled: bool = True
+    long_term_recall_kinds: tuple[str, ...] = ("state", "focus", "short_term_slot")
     # Temporal applicability is a slow humanlike memory-age modulator. It does
     # not delete old memories and does not filter SA types; it only changes how
     # much current grasp an old all-SA snapshot receives before Bn/Cn energy

@@ -145,6 +145,7 @@ class APV21Runtime:
             temporal_long_half_life_ticks=self.config.memory.temporal_long_half_life_ticks,
             temporal_floor=self.config.memory.temporal_floor,
             index_jobs_per_tick=self.config.memory.index_jobs_per_tick,
+            long_term_recall_kinds=self.config.memory.long_term_recall_kinds,
             ann_enabled=True,
             online_enabled=self.config.online_embedding.enabled,
             online_dim=self.config.online_embedding.dim,
@@ -4452,7 +4453,11 @@ class APV21Runtime:
         prediction_source: str,
         time_context: dict | None = None,
     ) -> tuple[list[dict], list[dict]]:
-        bn_rows = self.memory.recall_residual(query_items, memory_kind=memory_kind, time_context=time_context)
+        primary_bn = self.memory.recall(query_items, memory_kind=memory_kind, time_context=time_context)
+        if self._should_deepen_b_recall(primary_bn, memory_kind=memory_kind):
+            bn_rows = self.memory.recall_residual(query_items, memory_kind=memory_kind, time_context=time_context)
+        else:
+            bn_rows = primary_bn
         cn_rows = []
         for row in bn_rows:
             cn_rows.extend(
@@ -4467,6 +4472,22 @@ class APV21Runtime:
         if predicted_items:
             self.state_pool.apply_predictions(predicted_items, tick_index=self.tick_index, source=prediction_source)
         return bn_rows, cn_rows
+
+    def _should_deepen_b_recall(self, primary_bn: list[dict], *, memory_kind: str) -> bool:
+        if str(memory_kind or "") == "focus" and not bool(getattr(self.config.memory, "slow_residual_recall_enabled", True)):
+            return False
+        threshold = float(getattr(self.config.memory, "residual_recall_deepen_grasp_threshold", 1.01) or 1.01)
+        min_rows = max(1, int(getattr(self.config.memory, "residual_recall_min_primary_rows", 1) or 1))
+        rows = [dict(row) for row in list(primary_bn or []) if isinstance(row, dict)]
+        if len(rows) < min_rows:
+            return True
+        best_grasp = 0.0
+        for row in rows:
+            best_grasp = max(
+                best_grasp,
+                float(row.get("grasp_confidence", row.get("match_efficiency", 0.0)) or 0.0),
+            )
+        return best_grasp < threshold
 
     def _build_slow_query(self, selected_focus_items: list[dict], *, action_slow_query_hints: list[dict] | None = None) -> list[dict]:
         focus_labels = []
